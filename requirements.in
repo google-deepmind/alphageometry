@@ -1,0 +1,17 @@
+tensorflow==2.13.0
+numpy==1.23.5
+scipy==1.10.0
+matplotlib==3.7.0
+gdown==4.7.1
+jax==0.4.6
+jaxlib==0.4.6
+flax==0.5.3
+gin-config==0.5.0
+gin==0.1.6
+t5==0.9.4
+sentencepiece==0.1.99
+absl-py==1.4.0
+clu==0.0.7
+optax==0.1.7
+seqio==0.0.18
+tensorflow-datasets==4.9.3

@@ -1,0 +1,462 @@
+examples/complete2/012/complete_004_6_GDD_FULL_81-109_101.gex
+a b c = triangle a b c; o = circle o a b c; h = midpoint h c b; d = on_line d o h, on_line d a b; e = on_tline e c c o, on_tline e a a o ? cyclic a o e d
+examples/complete2/012/complete_002_6_GDD_FULL_41-60_59.gex
+a b c = triangle a b c; m = midpoint m b a; o = circle o a b c; n = on_line n o m, on_circle n o a ? eqangle c a c n c n c b
+examples/complete2/012/complete_002_6_GDD_FULL_01-20_04.gex
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; q = midpoint q c b; s = midpoint s a d; j = midpoint j s q; m = mirror m o j; i = on_line i a d, on_line i b c ? perp s m b c
+examples/complete2/012/complete_004_6_GDD_FULL_81-109_90.gex
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; g = foot g d a b; f = foot f d a c; c1 = on_circle c1 o d, on_line c1 d g; b1 = on_circle b1 o d, on_line b1 d f ? para c1 c b1 b
+examples/complete2/012/complete_004_6_GDD_FULL_81-109_94.gex
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; p = on_circle p o a; f = foot f p a d; g = foot g p a b; h = foot h p b c; e = foot e p c d; i = on_line i f g, on_line i h e ? cyclic p g i h
+examples/complete2/012/complete_003_6_GDD_FULL_21-40_37.gex
+a b c = triangle a b c; h = orthocenter h a b c; o = circle o a b c; c1 = on_circle c1 o c, on_line c1 c h; a1 = on_circle a1 o a, on_line a1 a h ? cong b a1 b c1
+examples/complete2/012/complete_003_6_GDD_FULL_21-40_22.gex
+a b c = triangle a b c; o = circle o a b c; p = foot p o a c; q = foot q o a b; m = on_line m o q, on_circle m o a; n = on_line n o p, on_circle n o a; e = on_line e a c, on_line e n m; d = on_line d a b, on_line d n m ? eqangle d a d e e d e a
+examples/complete2/012/complete_001_6_GDD_FULL_01-20_19.gex
+a b c = triangle a b c; f = free f; p = circle p a b f; o = circle o a b c; e = on_circle e p a, on_line e a c; d = on_circle d o b, on_line d b f ? para c d e f
+examples/complete2/012/complete_001_6_GDD_FULL_61-80_74.gex
+a b c = triangle a b c; g = foot g c a b; o = circle o a b c; d = on_circle d o c, on_line d c g; e = foot e d a c; f = foot f d b c ? cyclic a e f b
+examples/complete2/013/complete_002_6_GDD_FULL_41-60_49.gex
+a b c = triangle a b c; p = midpoint p b a; q = midpoint q c b; d = on_tline d b a c; r = midpoint r d c; s = midpoint s a d; o = on_line o p r, on_line o q s ? cong o s o r
+examples/complete2/013/complete_006_Other_ndgTest_70.gex
+p a b = triangle p a b; o = midpoint o b a; a1 = on_line a1 p a, on_circle a1 o a; b1 = on_line b1 p b, on_circle b1 o a; o1 = circle o1 p a1 b1 ? perp o a1 a1 o1
+examples/complete2/013/complete_001_6_GDD_FULL_01-20_16.gex
+a b o = triangle a b o; m = on_line m a b; p = foot p m a o; q = foot q m b o; d = foot d b a o; c = foot c a b o; t = foot t q a o; k = foot k p b o; s = on_line s q t, on_line s p k ? perp o s p q
+examples/complete2/013/complete_001_6_GDD_FULL_61-80_67.gex
+m b c = triangle m b c; i = incenter i m b c; i_b = on_tline i_b c c i, on_line i_b b i; i_c = on_tline i_c b b i, on_line i_c c i; a = midpoint a i_b i_c; o = circumcenter o b i c ? perp a b b o
+examples/complete2/013/complete_000_2_PWW_A018.gex
+o a = segment o a; p = on_circle p a o; q = intersection_cc q a o p; r = lc_tangent r p a, on_circle r o p ? cong p q p r
+examples/complete2/013/complete_004_6_GDD_FULL_81-109_88.gex
+o x l = triangle o x l; a = foot a l o x; y = free y; b = foot b l o y; p = mirror p l a; q = mirror q l b; q1 = on_line q1 l a, on_line q1 o y; p1 = on_line p1 o x, on_line p1 l b ? cyclic o p q p1
+examples/complete2/013/complete_003_6_GDD_FULL_21-40_24.gex
+q r p = triangle q r p; o1 = circle o1 q r p; s = on_circle s o1 q; y = on_line y q s; o = circle o y p q; x = on_circle x o q; i = on_line i r s, on_line i y x ? eqangle i r i x p r p x
+examples/complete2/013/complete_003_6_GDD_FULL_21-40_32.gex
+b c r = triangle b c r; o = circle o b c r; s = on_circle s o b; a = on_line a b r, on_line a c s; m = foot m a r s; n = foot n a b c ? eqangle a b a m a n a c
+examples/complete2/013/complete_002_6_GDD_FULL_41-60_54.gex
+a b c = r_triangle a b c; d = foot d a b c; o = midpoint o c b; m = foot m b a o; g = on_line g b m, on_circle g o a; f = on_line f c a, on_line f b m; e = on_line e a d, on_line e b m ? cong e a e b
+examples/complete2/013/complete_005_Other_ndg1_53.gex
+a o = segment a o; b = on_circle b o a; c = on_line c a b; e = intersection_tt e b b o c c o; d = intersection_lt d c e a a o ? cong o e o d
+examples/complete2/013/complete_002_6_GDD_FULL_41-60_56.gex
+m a b = iso_triangle m a b; o = circle o a b m; d = on_line d m o, on_line d a b; e = on_tline e a a o, on_pline e m a o ? cong m e m d
+examples/complete2/013/complete_002_6_GDD_FULL_41-60_52.gex
+e c d = r_triangle e c d; o = midpoint o d c; a = on_tline a c c d, on_tline a e e o; f = on_line f c a, on_line f d e ? cong a e a f
+examples/complete2/014/complete_008_7_Book_LLL_L053-1.gex
+b c d = triangle b c d; e = foot e b c d; a = free a; f = foot f a c d; g = midpoint g b a ? cong f g g e
+examples/complete2/014/complete_007_7_Book_LLL_L058-9.gex
+a b = segment a b; c = on_bline c a b; d = on_tline d b a b; e = intersection_lt e c d a a b ? cong e c c d
+examples/complete2/007/complete_003_6_GDD_FULL_more_E015-6.gex
+a b c = triangle a b c; d = midpoint d a c; e = midpoint e b a; f = midpoint f c b; g = on_pline g d a f, on_pline g f a c ? para c e g b
+examples/complete2/007/complete_003_6_GDD_FULL_more_E022-9.gex
+a b c = triangle a b c; d = circumcenter d b a c; e = on_line e a c, angle_bisector e c b a; f = intersection_lc f e d b; g = on_tline g f d f ? para f g a c
+examples/complete2/007/complete_012_7_Book_00EE_02_E028-2.gex
+a b c = triangle a b c; d e = square a c d e; g f = square c b g f ? perp d b f a
+examples/complete2/007/complete_012_7_Book_00EE_05_E051-22.gex
+a b = segment a b; c = midpoint c b a; d = on_tline d b a b; e = on_line e a d, on_circle e c a; f = on_pline f e a b, on_circle f c e; g = foot g d a f ? cong a f f g
+examples/complete2/007/complete_005_Other_other_E075-25-sss.gex
+a b c = triangle a b c; d = midpoint d c b; e = midpoint e a c; f = midpoint f b a; g = foot g a b c ? eqangle d f d e g f g e
+examples/complete2/007/complete_001_6_GDD_FULL_01-20_01.gex
+a b c = triangle a b c; d = foot d c a b; e = foot e b a c; f = midpoint f c b; g = midpoint g d e ? perp f g d e
+examples/complete2/007/complete_000_2_PWW_B016x.gex
+a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f b a; g = parallelogram d a e g ? cong c f g b
+examples/complete2/007/complete_001_6_GDD_FULL_61-80_66.gex
+a b c = triangle a b c; d = foot d c a b; e = on_tline e a b c, on_line e c d; f = midpoint f a e; g = midpoint g c b ? perp d g d f
+examples/complete2/007/complete_016_7_Book_00EE_06_E051-30.gex
+a b = segment a b; c = midpoint c b a; d = on_circle d c a; e = lc_tangent e d c, on_line e a b; f = angle_bisector f d e a, on_line f a d; g = on_line g e f, on_line g b d ? cong d f d g
+examples/complete2/007/complete_016_7_Book_00EE_06_E051-24.gex
+a b = segment a b; c = midpoint c b a; d = on_circle d c a; e = on_line e b d; f = circle f d c e; g = on_pline g e a b, on_circle g f c ? cong g e c b
+examples/complete2/007/complete_013_7_Book_00EE_11_E077-37.gex
+a b = segment a b; c = midpoint c b a; d = on_circle d c b; e = foot e d a b; f = lc_tangent f d c; g = on_line g d f ? eqangle d f d a d a d e
+examples/complete2/007/complete_013_7_Book_00EE_07_E059-54-1.gex
+a b = segment a b; c = midpoint c b a; d = mirror d c b; e = on_circle e c a, on_circle e b c; f = on_tline f b a b, on_line f a e; g = on_line g b f, on_line g d e ? cong e g g f
+examples/complete2/007/complete_008_ex-gao_ex160_e201f.gex
+a b c = triangle a b c; d e = square a b d e; f = foot f a b c; g = on_line g a f, eqdistance g a b c ? perp g b c d
+examples/complete2/000/complete_016_ex-gao_gao_M_M020-52.gex
+a b = segment a b; c = on_circle c a b; d = on_circle d a b; e = on_circle e a b, on_pline e d b c ? cong d c e b
+examples/complete2/000/complete_010_Other_gao_L_L190-7.gex
+a b = segment a b; c = nsquare c b a; d = psquare d a b; e = on_line e b d; f = foot f e b c; g = foot g e d c ? cong e a g f
+examples/complete2/000/complete_007_7_Book_LLL_L017-11.gex
+c a = segment c a; b = on_tline b c c a; d = foot d c a b ? eqangle a c a d c b c d
+examples/complete2/000/complete_016_ex-gao_gao_M_M024-94.gex
+a b c = triangle a b c; d = on_circle d a b, on_circle d c b; e = on_line e d a, on_circle e a d; f = on_line f d c, on_circle f c d ? coll e b f
+examples/complete2/000/complete_007_7_Book_LLL_L054-2-1.gex
+a b = segment a b; c = on_bline c a b; d = on_line d a c; e = eqdistance e b a d, on_line e b c; f = on_line f a b, on_line f d e; g = on_line g b c, on_pline g d a b ? cong d f f e
+examples/complete2/000/complete_007_7_Book_LLL_L057-1-1.gex
+a b = segment a b; m = midpoint m a b; c = on_circle c m a; d = angle_mirror d a b c; e = midpoint e a d; f = on_line f b d, on_line f a c ? para c e b d
+examples/complete2/000/complete_016_ex-gao_gao_M_M021-64.gex
+a b = segment a b; d = midpoint d b a; c = on_circle c b a, on_circle c a b; e = on_line e a c, on_circle e d a; f = on_circle f d a, on_line f b c ? cong a e e f
+examples/complete2/000/complete_007_7_Book_LLL_L057-3-2.gex
+a b = segment a b; c = on_bline c a b; e = midpoint e a c; d = on_circle d a c, on_line d a c; f = midpoint f b d ? cong b e b f
+examples/complete2/000/complete_004_6_GDD_FULL_81-109_95.gex
+a b c = triangle a b c; a1 = midpoint a1 c b; f = circle f a b c; s = on_aline s a b c a a1, on_line s b c; p = on_circle p f a, on_line p a a1; q = on_circle q f a, on_line q a s ? para b c p q
+examples/complete2/000/complete_001_6_GDD_FULL_01-20_02.gex
+a b c = triangle a b c; a1 = midpoint a1 c b; b1 = midpoint b1 c a; c1 = midpoint c1 b a; o = circle o a b c ? perp o a1 b1 c1
+examples/complete2/000/complete_004_6_GDD_FULL_81-109_96.gex
+a b c = triangle a b c; a1 = midpoint a1 c b; n = on_line n a a1; g = foot g n a b; h = foot h n a c; s = on_aline s a b c a a1, on_line s b c ? perp g h a s
+examples/complete2/000/complete_007_7_Book_LLL_L194-2.gex
+a b = segment a b; c = on_bline c a b; d = on_bline d a b; e = on_line e c d, on_line e a b ? cong a e e b
+examples/complete2/000/complete_017_ex-gao_gao_L_L022-1.gex
+a b = segment a b; c = on_bline c a b; d = on_line d a c; e = on_circle e c d, on_line e b c ? cong a e b d
+examples/complete2/000/complete_016_ex-gao_gao_M_M09-14.gex
+c b = segment c b; d = midpoint d c b; a = free a; e = midpoint e b a; f = midpoint f c a; g = on_line g a d, on_line g e f ? cong e g g f
+examples/complete2/009/complete_014_7_Book_00EE_09_E071-4.gex
+a b = segment a b; c = midpoint c b a; d = on_circle d c a; e = lc_tangent e d c, on_line e a b; f = foot f a d e ? eqangle a f a d a d a b
+examples/complete2/009/complete_013_7_Book_00EE_10_E072-13.gex
+a b c = triangle a b c; d = foot d b a c; e = foot e a b c; f = foot f b d e ? eqangle b a b d b c b f
+examples/complete2/009/complete_014_7_Book_00EE_09_E071-2.gex
+a b c = triangle a b c; d = midpoint d c b; e = foot e b a c; f = foot f c a b ? eqangle a b a c e f e d
+examples/complete2/009/complete_014_7_Book_00EE_09_E071-1.gex
+a b c = triangle a b c; e = on_line e a b, on_circle e a c; d = angle_bisector d b a c, on_line d b c; f = on_pline f e b c, on_line f a c ? eqangle e d e c e c e f
+examples/complete2/009/complete_017_ex-gao_ex160_4_e10.gex
+a b c d = isquare a b c d; e = on_line e b d, on_circle e b c; f = on_tline f e b d, on_line f d c ? cong e d c f
+examples/complete2/009/complete_003_6_GDD_FULL_more_E022-12.gex
+a b c = triangle a b c; e = circumcenter e a b c; d = on_line d a b, angle_bisector d a c b; f = on_tline f c c e, on_pline f d a c ? cong c f d b
+examples/complete2/009/complete_001_6_GDD_FULL_61-80_69.gex
+d a b = r_triangle d a b; c = midpoint c b a; e = circle e a c d; f = circle f b d c ? perp e d d f
+examples/complete2/009/complete_012_7_Book_00EE_05_E051-19.gex
+a b c = triangle a b c; d = circumcenter d a c b; e = on_line e b c; f = on_circle f d a, angle_bisector f a c e ? cong a f f b
+examples/complete2/009/complete_016_7_Book_00EE_06_E051-32.gex
+a b c = triangle a b c; d = eq_triangle d a b; e = eq_triangle e a c; f = eq_triangle f c b ? para e d c f
+examples/complete2/009/complete_013_7_Book_00EE_10_E074-23.gex
+a b c = triangle a b c; d = foot d a b c; e = circumcenter e b a c; f = angle_bisector f b a c, on_circle f e a ? eqangle e a a f f a a d
+examples/complete2/009/complete_011_Other_Auxiliary_aux2_trapezoid.gex
+a b c d = trapezoid a b c d; e = midpoint e d a; f = on_pline f e a b, on_line f b c ? midp f b c
+examples/complete2/009/complete_016_7_Book_00EE_06_E057-37.gex
+a b c = triangle a b c; d = eq_triangle d a b; e = eq_triangle e a c; f = parallelogram c e d f ? cong b f f c
+examples/complete2/008/complete_004_6_GDD_FULL_81-109_100.gex
+a c = segment a c; b = eq_triangle b c a; e = mirror e c b; d = mirror d b e; f = foot f d a b ? perp a c c f
+examples/complete2/008/complete_005_Other_ndgs_02.gex
+b a c = triangle b a c; d = foot d b a c; e = foot e c a b; f = intersection_ll f b d c e ? perp b c a f
+examples/complete2/008/complete_008_ex-gao_ex160_205.gex
+c a b = r_triangle c a b; d = midpoint d c a; f = midpoint f c b; e = on_line e a b, on_circle e d c ? perp d e e f
+examples/complete2/008/complete_015_7_Book_00EE_08_E061-62.gex
+a b = segment a b; c = on_circle c a b; e = on_circle e a b; d = on_circle d a b, on_circle d b c; f = on_circle f b c, on_line f c e ? cong e d e f
+examples/complete2/008/complete_015_7_Book_00EE_06_E051-31.gex
+a b c = triangle a b c; d = parallelogram a b c d; e = eq_triangle e a b; f = eq_triangle f b c ? cong d e d f
+examples/complete2/008/complete_011_7_Book_00EE_03_E037-22.gex
+c a b = risos c a b; e = midpoint e b a; d = on_line d a b, on_circle d b c; f = on_line f a c, on_circle f c e ? perp a c f d
+examples/complete2/008/complete_011_7_Book_00EE_03_E037-21.gex
+a b = segment a b; c = on_circle c a b; d = lc_tangent d c a, on_line d a b; e = on_line e a b, on_circle e a b; f = on_pline f a c e, on_line f c d ? perp f b a b
+examples/complete2/008/complete_011_7_Book_00EE_04_E051-5.gex
+c a = segment c a; b = eq_triangle b c a; d = circumcenter d c a b; e = on_pline e d a c, on_line e a b; f = on_pline f d b c, on_line f a b ? cong a e e f
+examples/complete2/008/complete_003_6_GDD_FULL_more_E009-1.gex
+a c = segment a c; b = on_tline b c a c; d = on_dia d b a, on_circle d a c; e = on_line e b c, on_circle e a b; f = on_line f b d, on_circle f a b ? para c d e f
+examples/complete2/008/complete_011_7_Book_00EE_03_E039-28.gex
+a b = segment a b; c = on_circle c a b; d = on_circle d a b, on_circle d c b; e = mirror e d c; f = on_circle f a b, on_line f b e ? coll d a f
+examples/complete2/008/complete_011_7_Book_00EE_03_E040-28-1.gex
+c a b = iso_triangle c a b; d = on_line d b c; e = circle e a b d; f = on_circle f e a, on_line f a c ? para a b f d
+examples/complete2/008/complete_018_ex-gao_ex160_4_004.gex
+b a c = triangle b a c; d = on_line d b c, on_circle d a b; e = on_tline e c a c, on_tline e b a b; f = on_tline f d a d, on_line f c e ? cong e c c f
+examples/complete2/008/complete_014_7_Book_00EE_07_E059-50.gex
+a b = segment a b; c = on_circle c a b; d = on_circle d a b; e = circle e c a d; f = on_line f b c, on_circle f e a ? cong d f f b
+examples/complete2/008/complete_013_7_Book_00EE_07_E057-44.gex
+c a b = iso_triangle c a b; d = foot d a b c; e = foot e b a c; f = on_line f a d, on_line f b e ? cong f a f b
+examples/complete2/001/complete_006_7_Book_LLL_L046-16.gex
+a b = segment a b; c = on_line c a b; d = on_circle d c a, on_circle d a c; e = on_aline e b a d c a, on_aline e c a d a b; f = on_line f c d, on_line f a e; g = on_line g b d, on_line g c e ? cong c f c g
+examples/complete2/001/complete_016_ex-gao_gao_M_M010-32.gex
+b c a = triangle b c a; d = on_pline d a b c, on_pline d c a b; e = on_line e b c; f = on_line f a d, on_pline f e a b; g = on_line g a e, on_line g b f; h = on_line h c f, on_line h d e ? para h g d a
+examples/complete2/001/complete_016_ex-gao_gao_M_M010-26.gex
+b d = segment b d; e = midpoint e b d; c = free c; a = on_pline a d b c, on_pline a b d c; f = on_line f c d; g = on_line g a b, on_line g e f; h = on_line h e f, on_line h a d; i = on_line i b c, on_line i e f ? cong f h g i
+examples/complete2/001/complete_016_ex-gao_gao_C_C101.gex
+a b c = triangle a b c; e = foot e a b c; f = foot f c a b; d = on_bline d a c, on_bline d a b; g = on_line g c f, on_line g a e; h = on_line h c f, on_circle h d c ? cong g f f h
+examples/complete2/001/complete_016_ex-gao_gao_C_C100.gex
+a c = segment a c; b = on_tline b c c a; e = on_circle e b c; d = on_circle d a c, on_circle d b c; f = on_line f c e, on_circle f a c; g = on_line g e b, on_circle g b e ? coll d f g
+examples/complete2/001/complete_016_ex-gao_gao_L_L182-6.gex
+a b c = triangle a b c; e = midpoint e b c; d = on_line d a b; f = midpoint f d c; g = midpoint g b a; h = midpoint h g f; i = on_line i a b, on_line i e h ? cong a i i d
+examples/complete2/001/complete_016_ex-gao_gao_C_C111.gex
+a d c = triangle a d c; b = on_pline b a d c; e = on_line e a d; f = on_line f a c, on_pline f e a b; g = on_line g b d, on_line g e f; h = on_line h b c, on_line h e f ? cong e f g h
+examples/complete2/001/complete_016_ex-gao_gao_L_L025-5.gex
+a b = segment a b; c = on_bline c a b; d = on_line d a c; e = on_circle e c d, on_line e b c; f = on_line f b d, on_line f a e ? eqangle a c c f f c c b
+examples/complete2/001/complete_017_ex-gao_gao_L_L189-2.gex
+a b = segment a b; c = on_bline c a b; e = midpoint e c a; f = midpoint f b c; d = on_pline d b a c, on_pline d a b c; g = midpoint g d b; h = midpoint h a d ? perp h e e f
+examples/complete2/001/complete_016_ex-gao_gao_L_L182-5.gex
+c d a = triangle c d a; b = on_pline b c d a, on_pline b a d c; e = on_line e c d; f = on_line f a b, on_pline f c a e; g = on_line g b e, on_line g c f; h = on_line h d f, on_line h a e ? cong g e f h
+examples/complete2/001/complete_017_ex-gao_gao_L_L189-1.gex
+a b = segment a b; c = on_tline c b a b; d = on_tline d c b c, on_tline d a a b; e = midpoint e c d; f = midpoint f b c; g = midpoint g a b; h = midpoint h a d ? cong h g h e
+examples/complete2/001/complete_016_ex-gao_gao_C_C109.gex
+b d a = triangle b d a; c = on_pline c d a b; e = on_line e b d, on_line e a c; f = on_line f a d, on_pline f e a b; g = on_line g b c, on_line g e f ? cong f e e g
+examples/complete2/001/complete_016_ex-gao_gao_L_LL153-1.gex
+c a d = triangle c a d; e = foot e c a d; b = free b; f = foot f b a d; g = midpoint g c b; h = midpoint h e f ? cong g e g f
+examples/complete2/001/complete_010_Other_gao_Y_yL182-4.gex
+c d = segment c d; e = midpoint e c d; a = free a; b = on_pline b c d a, on_pline b a d c; f = midpoint f a b; g = on_line g a c, on_line g b e; h = on_line h d f, on_line h a c ? cong a h h g
+examples/complete2/006/complete_012_7_Book_00EE_02_E028-3.gex
+c a b = risos c a b; d = midpoint d b a; e = on_line e b c; f = circle f d b e; g = on_line g a e, on_circle g f b ? perp c g a e
+examples/complete2/006/complete_003_6_GDD_FULL_more_E022-11.gex
+a b c = triangle a b c; d = circumcenter d a b c; f = foot f d a b; e = on_tline e c c d, on_tline e b b d; g = on_line g d f, on_line g a c ? para g e a b
+examples/complete2/006/complete_010_Other_Auxiliary_aux2_e04f.gex
+a b c d = trapezoid a b c d; e = midpoint e c a; f = midpoint f d b; g = on_line g e f, on_line g a d ? midp g a d
+examples/complete2/006/complete_004_6_GDD_FULL_81-109_98.gex
+a b c = triangle a b c; e = on_line e a b; d = circle d a b c; f = on_circle f d a, on_aline f c b a c e; g = on_circle g d c, on_line g c e ? para a b g f
+examples/complete2/006/complete_001_6_GDD_FULL_61-80_72.gex
+a b c = triangle a b c; d = circle d a b c; e = on_circle e d a; f = foot f e a c; g = foot g e a b ? simtri e f g e c b
+examples/complete2/006/complete_013_7_Book_00EE_11_E075-26.gex
+a b = segment a b; c = mirror c a b; d = mirror d b c; e = midpoint e c b; f = on_circle f e c, on_dia f a e; g = on_line g a f ? eqangle b f a f c f e f
+examples/complete2/006/complete_015_7_Book_00EE_06_E057-38.gex
+c a b = r_triangle c a b; d = foot d c a b; e = angle_bisector e c a b, on_line e b c; g = foot g e a b; f = on_line f c d, on_line f a e ? cong c e c f
+examples/complete2/006/complete_014_7_Book_00EE_07_E059-47.gex
+a b c d = rectangle a b c d; e = on_line e b d, on_line e a c; f = midpoint f e d; g = midpoint g e a ? cong f c g b
+examples/complete2/006/complete_014_7_Book_00EE_07_E059-53.gex
+a b c = triangle a b c; d = circle d c a b; e = circle e c d b; f = on_line f a b, on_circle f e b; g = on_line g a c, on_circle g e b ? cong g b g a
+examples/complete2/006/complete_003_6_GDD_FULL_more_E023-15.gex
+a b c d = quadrangle a b c d; e = on_line e a c; g = on_pline g e a b, on_line g b c; f = on_pline f e a d, on_line f c d ? para b d g f
+examples/complete2/011/complete_002_6_GDD_FULL_01-20_12.gex
+a b c = triangle a b c; o = circle o a b c; d = on_tline d b a c, on_circle d o a; f = midpoint f b a; e = on_line e a c, on_line e b d ? perp f e c d
+examples/complete2/011/complete_002_6_GDD_FULL_01-20_05.gex
+a b c = triangle a b c; h = orthocenter h a b c; o = circumcenter o a b c; c1 = circumcenter c1 a b h; b1 = circumcenter b1 a h c; a1 = circumcenter a1 b h c ? perp a1 o b1 c1
+examples/complete2/011/complete_003_6_GDD_FULL_21-40_34.gex
+a b c = triangle a b c; h = orthocenter h a b c; o = circle o h b c; p = on_tline p h c h, on_circle p o b ? para a h b p
+examples/complete2/011/complete_004_6_GDD_FULL_81-109_99.gex
+a b c = triangle a b c; m = free m; n = on_aline n a c b a m; q = foot q m a b; p = foot p m a c ? perp a n p q
+examples/complete2/011/complete_003_6_GDD_FULL_21-40_35.gex
+a b c = triangle a b c; d = foot d c a b; e = foot e b a c; o = circle o a b c; k = on_circle k o c, on_line k c d; h = on_line h c d, on_line h b e ? cong a k a h
+examples/complete2/011/complete_003_6_GDD_FULL_21-40_31.gex
+a b c = triangle a b c; c1 = midpoint c1 b a; b1 = midpoint b1 c a; o = circle o a b c; p = on_line p o c1, on_line p a c; q = on_line q o b1, on_line q a b ? cyclic q b c p
+examples/complete2/011/complete_002_6_GDD_FULL_41-60_41.gex
+a b c = triangle a b c; i = incenter i a b c; y = foot y i a c; l = foot l i b c; x = foot x b a i ? coll x y l
+examples/complete2/011/complete_002_6_GDD_FULL_41-60_43.gex
+c a b = r_triangle c a b; f e = square a b f e; p = on_line p b e, on_line p a f ? eqangle c a c p c p c b
+examples/complete2/011/complete_002_6_GDD_FULL_41-60_51.gex
+a b c = triangle a b c; o = circle o a b c; d = on_tline d b a c, on_circle d o a; e = on_circle e o d, on_line e d o ? para b e a c
+examples/complete2/011/complete_002_6_GDD_FULL_41-60_44.gex
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; a1 = on_tline a1 a a b, on_line a1 c d; c1 = on_tline c1 c c d, on_line c1 a b ? para d b a1 c1
+examples/complete2/010/complete_004_6_GDD_FULL_21-40_29.gex
+a b c = triangle a b c; d = foot d a b c; q = foot q d a b; p = foot p d a c ? cyclic b q p c
+examples/complete2/010/complete_002_6_GDD_FULL_01-20_10.gex
+a b c d = quadrangle a b c d; e = on_line e b c, on_line e a d; o1 = circle o1 c d e; o = circle o e b a; p = on_line p c d, on_line p a b; q = on_circle q o1 c, on_circle q o a ? cyclic p d q a
+examples/complete2/010/complete_013_7_Book_00EE_10_E072-15.gex
+b c a = triangle b c a; d = lc_tangent d c a, lc_tangent d b a; e = on_circle e a c, on_dia e a d ? eqangle b e b a b a b c
+examples/complete2/010/complete_011_7_Book_00EE_04_E051-6.gex
+a b c = triangle a b c; d = eq_triangle d c a; e = eq_triangle e b a ? cong d e c b
+examples/complete2/010/complete_012_7_Book_00EE_05_E051-20.gex
+a b = segment a b; d = midpoint d a b; c = on_tline c b a b; e = on_line e a c, on_circle e d b; f = lc_tangent f e d, on_line f b c ? cong f c f b
+examples/complete2/010/complete_011_7_Book_00EE_03_E037-20.gex
+a b = segment a b; c = midpoint c a b; d = on_circle d c a; e = lc_tangent e d c, angle_mirror e b a d ? perp a e e d
+examples/complete2/010/complete_012_7_Book_00EE_11_E076-32.gex
+c a b = r_triangle c a b; d = midpoint d b c; e = foot e c a d ? eqangle a b b c d e e b
+examples/complete2/010/complete_000_3_JAR_JAR02-new_fig214.gex
+a b c = triangle a b c; d = intersection_pp d a b c c a b; e = intersection_ll e a c b d ? cong a e e c
+examples/complete2/010/complete_003_6_GDD_FULL_more_E021-3.gex
+a b = segment a b; c = on_circle c a b; e = intersection_lc e a a c; d = on_tline d c a c, on_tline d b a b ? para a d b e
+examples/complete2/010/complete_013_7_Book_00EE_10_E074-22.gex
+a b = segment a b; c = on_circle c a b; d = on_line d a c; e = on_line e a b, on_circle e a d; f = on_line f b d, on_line f c e ? eqangle a b a f a f a c
+examples/complete2/010/complete_001_6_GDD_FULL_01-20_20.gex
+a b c = triangle a b c; d = foot d a b c; e = foot e b a c; h = on_line h a d, on_line h b e; g = foot g h a b ? eqangle g e g h g h g d
+examples/complete2/010/complete_002_6_GDD_FULL_41-60_57.gex
+a b c = triangle a b c; d = foot d a b c; o = midpoint o a d; e = on_line e a b, on_circle e o d; f = on_line f a c, on_circle f o d ? cyclic b c e f
+examples/complete2/010/complete_010_Other_Auxiliary_ye_aux_ppara.gex
+a b c d = eq_trapezoid a b c d; e = on_pline e b a d, on_line e c d ? eqangle a d a b b a b c
+examples/complete2/003/complete_003_6_GDD_FULL_more_E013-3.gex
+a b = segment a b; d = on_tline d b a b; e = on_circle e a b; f = on_line f d e, on_circle f a b; g = midpoint g e f; c = on_circle c a b, on_dia c d a; h = intersection_lc h g a c ? para e f b h
+examples/complete2/003/complete_005_Other_ndgs_01.gex
+b c a = triangle b c a; d = intersection_cc d b a c; e = on_circle e b c; g = intersection_lc g e a d; f = on_circle f b c; h = intersection_lc h f a c ? para g h e f
+examples/complete2/003/complete_013_7_Book_00EE_10_E072-12.gex
+b a c = triangle b a c; d = on_circle d a b, on_circle d c b; e = on_tline e d b d, on_circle e a b; f = on_circle f c d, on_line f d e; h = on_circle h a b, on_line h b f; g = on_circle g c b, on_line g b e ? eqangle d h d b d b d g
+examples/complete2/003/complete_010_Other_Auxiliary_ye_aux_wang3.gex
+a b c d = isquare a b c d; f = angle_bisector f a d b, on_line f a c; g = foot g c d f; e = on_line e b d, on_line e a c; h = on_line h c g, on_line h a d; i = on_line i b d, on_line i c g; x = midpoint x a h ? cong a x e i
+examples/complete2/003/complete_003_6_GDD_FULL_more_E022-8.gex
+b a c = triangle b a c; d = on_circle d a b, on_circle d c b; e = on_circle e c b; f = intersection_lc f e a d; g = intersection_lc g e a b; h = on_tline h e c e ? para h e g f
+examples/complete2/003/complete_008_ex-gao_ex160_206.gex
+a b c = triangle a b c; e d = square b a e d; f g = square a c f g; h = on_line h b e, on_line h a d; i = on_pline i e a g, on_pline i g a e ? perp c h h i
+examples/complete2/003/complete_013_7_Book_00EE_11_E077-38.gex
+a b c = triangle a b c; d = circumcenter d a b c; e = lc_tangent e b d; f = angle_bisector f e b c, on_circle f d a; g = foot g f b c; h = foot h f b e ? eqangle b a a f f a a c
+examples/complete2/003/complete_004_6_GDD_FULL_81-109_84.gex
+a b c = triangle a b c; d = midpoint d b a; e = midpoint e c b; f = midpoint f a c; g = circle g d e f; h = on_tline h e e g, on_line h a b; i = on_line i e h, on_line i a c ? cyclic b h c i
+examples/complete2/003/complete_003_6_GDD_FULL_more_E022-10.gex
+a b = segment a b; c = on_circle c a b; e = on_circle e a b; d = on_circle d a b; f = on_line f c e, on_line f b d; g = circumcenter g e f b; h = on_tline h f f g ? para h f c d
+examples/complete2/003/complete_011_7_Book_00EE_03_E037-25.gex
+a b = segment a b; c = midpoint c b a; d = on_tline d c a b, on_circle d c a; e = on_circle e c d, on_line e d c; f = on_line f a b; g = on_line g c d, on_circle g c f; h = on_circle h c e, on_line h e f; i = on_line i b g, on_circle i c a ? perp e h b i
+examples/complete2/003/complete_016_7_Book_00EE_06_E051-25.gex
+a b c = triangle a b c; d = foot d b a c; e = foot e c a b; g = circumcenter g b c a; h = intersection_lc h g g a; f = on_line f b d, on_line f c e; i = on_line i b c, on_line i f h ? cong f i i h
+examples/complete2/003/complete_013_7_Book_00EE_10_E074-20.gex
+a b c = triangle a b c; d = on_line d a b; e = foot e d b c; f = foot f e a b; g = on_line g b c; h = foot h g a b; i = foot i h b c ? eqangle d g d h f i f d
+examples/complete2/003/complete_017_ex-gao_ex160_4_003.gex
+a b = segment a b; c = on_circle c a b; e = on_line e b c; d = on_tline d c a c, on_tline d b a b; f = on_tline f e a e, on_line f c d; g = on_line g e f, on_circle g a b; h = on_line h e f, on_line h b d ? cong c f h b
+examples/complete2/003/complete_015_7_Book_00EE_08_E059-56.gex
+a b c = triangle a b c; d = foot d b a c; e = foot e a b c; f = on_line f b d, on_line f a e; g = circle g b f a; h = on_line h b c, on_circle h g a; i = on_line i a c, on_circle i g a ? cong f c f i
+examples/complete2/003/complete_014_7_Book_00EE_07_E059-52.gex
+a b = segment a b; d = on_circle d a b; c = on_tline c a a b, on_circle c a b; e = on_tline e c a c, on_tline e b a b; f = lc_tangent f d a, on_line f c e; g = on_line g b e, on_line g d f; h = on_line h c e, on_line h b d ? cong h e d g
+examples/complete2/004/complete_002_6_GDD_FULL_01-20_13.gex
+a b c = triangle a b c; d = parallelogram a b c d; e = foot e b a c; f = foot f a b d; g = foot g d a c; h = foot h c b d ? para e f g h
+examples/complete2/004/complete_006_Other_Auxiliary_E092-5.gex
+a b c = triangle a b c; d = parallelogram a b c d; e = angle_bisector e d a b, on_dia e a d; f = foot f b a e; g = foot g c b f; h = on_line h d e, on_line h c g ? para e g a b
+examples/complete2/004/complete_004_6_GDD_FULL_81-109_86.gex
+a b c = triangle a b c; d = midpoint d c a; e = midpoint e b c; f = midpoint f a b; g = angle_bisector g a b c, on_line g d f; h = on_line h b g, on_line h d e ? cong d g d h
+examples/complete2/004/complete_011_7_Book_00EE_03_E037-26.gex
+a b c d = isquare a b c d; e = on_line e b c; g = on_line g d c, on_line g a e; f = on_line f b d, on_line f a e; h = circle h g e c ? perp f c c h
+examples/complete2/004/complete_016_7_Book_00EE_06_E051-27.gex
+a b = segment a b; c = midpoint c b a; d = on_circle d c a; e = angle_bisector e d c a, on_circle e c a; f = foot f e a b; g = intersection_ll g a d e f; h = intersection_ll h a d b e ? cong a g g e
+examples/complete2/004/complete_001_6_GDD_FULL_61-80_73.gex
+a b c = triangle a b c; d = circle d a b c; e = on_circle e d a; f = foot f e a c; g = foot g e a b; h = on_circle h d e, on_line h e g ? para g f h c
+examples/complete2/004/complete_014_7_Book_00EE_07_E057-42.gex
+a b c = triangle a b c; d = midpoint d a c; e = midpoint e b a; f = midpoint f c b; g = on_line g a b; h = on_pline h d f g, on_line h a b ? cong h a g e
+examples/complete2/005/complete_005_Other_ndgs_03.gex
+b a c = triangle b a c; d = foot d b a c; e = foot e c a b; f = midpoint f c b; g = foot g f d e ? cong g e g d
+examples/complete2/005/complete_000_rebuilt example_9point.gex
+a b c = triangle a b c; d = foot d a b c; e = midpoint e b a; f = midpoint f c b; g = midpoint g a c; o = circumcenter o e f g ? cyclic d g e f
+examples/complete2/005/complete_013_7_Book_00EE_11_E081-2.gex
+a b = segment a b; d = on_circle d a b; c = on_circle c a b, on_circle c b d; e = foot e d b c; f = intersection_lc f e a d; g = on_line g d e, on_circle g e f ? cong f c g d
+examples/complete2/005/complete_002_6_GDD_FULL_41-60_58.gex
+a b c = triangle a b c; d = circle d a b c; e = on_circle e d a; f = on_line f a b, on_line f c e; g = on_pline g f a e, on_line g b c ? eqangle f g f b c f c b
+examples/complete2/005/complete_016_7_Book_00EE_06_E051-26.gex
+a b = segment a b; c = on_circle c a b; e = on_line e b c; d = lc_tangent d b a, lc_tangent d c a; f = on_tline f e a e, on_line f c d; g = on_line g e f, on_line g b d ? cong g e e f
+examples/complete2/005/complete_001_6_GDD_FULL_61-80_61.gex
+a b c = triangle a b c; e = midpoint e b a; d = circle d a b c; f = on_line f d e; g = on_line g b c, on_circle g f a ? simtri a d f a c g
+examples/complete2/005/complete_017_ex-gao_ex160_4_e03a_lratio.gex
+c a b = iso_triangle c a b; e = midpoint e b c; f = on_line f a b, on_circle f e b; d x = trisegment d x c b; g = on_line g c f, on_line g a d ? cong c g g f
+examples/complete2/005/complete_008_ex-gao_ex160_e122.gex
+a b = segment a b; c = on_circle c a b; d = on_circle d a b; e = on_circle e a b, on_pline e d b c; f = on_circle f a b; g = on_circle g a b, on_pline g d c f ? para g b e f
+examples/complete2/002/complete_007_7_Book_LLL_yL251-1.gex
+a d b = triangle a d b; c = free c; e = on_line e a d; f = on_line f a b; g = on_line g a c; h = on_line h a d; i = on_line i a c, on_pline i h e g; j = on_line j a b, on_pline j i f g ? para e f h j
+examples/complete2/002/complete_017_ex-gao_ex160_4_e12.gex
+a b c d = quadrangle a b c d; e = midpoint e c b; f = midpoint f d c; g = midpoint g a d; h = midpoint h b a; i = on_line i e g, on_line i f h ? midp i h f
+examples/complete2/002/complete_013_7_Book_00EE_10_E073-18.gex
+a b c = triangle a b c; d = parallelogram a b c d; e = on_line e b d; f = foot f e a b; g = foot g e b c; h = on_line h e f, on_line h c d; i = on_line i e g, on_line i a d ? para h i g f
+examples/complete2/002/complete_011_7_Book_00EE_03_E043-3.gex
+a b = segment a b; c = on_circle c a b; f = on_circle f a b; e = on_line e b c, on_dia e f a; g = intersection_lc g e a f; d = lc_tangent d b a, lc_tangent d c a; h = on_line h c d, on_line h e f; i = on_line i e f, on_line i b d ? cong c h b i
+examples/complete2/002/complete_012_7_Book_00EE_02_E028-2-1.gex
+a b c = triangle a b c; e d = square a c e d; f g = square c b f g; h = midpoint h a e; i = midpoint i b g; j = midpoint j a b ? perp h j j i
+examples/complete2/002/complete_008_ex-gao_ex160_e124.gex
+b a c = triangle b a c; e = on_circle e a b; d = on_circle d a b, on_circle d c b; h = on_tline h e a e, on_circle h c b; g = on_circle g c d, on_line g d e; f = on_circle f c b, on_line f b e; i = on_circle i c h, on_line i h e ? para g f h i
+examples/complete2/000/complete_004_6_GDD_FULL_81-109_106.gex
+q4 q1 q3 q0 q2 = pentagon q4 q1 q3 q0 q2; p0 = on_line p0 q4 q1, on_line p0 q0 q2; p4 = on_line p4 q4 q1, on_line p4 q3 q0; p3 = on_line p3 q3 q0, on_line p3 q4 q2; p2 = on_line p2 q1 q3, on_line p2 q4 q2; p1 = on_line p1 q1 q3, on_line p1 q0 q2; o0 = circle o0 q0 p0 p4; o1 = circle o1 p1 q1 p0; o4 = circle o4 p4 p3 q4; o3 = circle o3 p3 p2 q3; o2 = circle o2 p1 p2 q2; m0 = on_circle m0 o0 q0, on_circle m0 o1 q1; m4 = on_circle m4 o0 q0, on_circle m4 o4 q4; m3 = on_circle m3 o4 q4, on_circle m3 o3 q3; m2 = on_circle m2 o3 q3, on_circle m2 o2 q2; m1 = on_circle m1 o2 q2, on_circle m1 o1 q1 ? cyclic m4 m3 m2 m1
+examples/complete2/unsolved2/complete_010_Other_Auxiliary_ye_aux_think2.gex
+c a b = iso_triangle c a b; d = on_line d a c; e = on_line e b c, eqdistance e b d a; f = on_line f a b, on_line f d e; g = on_pline g f a c, on_line g b c ? midp f d e
+examples/complete2/unsolved2/complete_012_7_Book_00EE_02_E023-21.gex
+a b = segment a b; c = on_tline c b a b; d = on_circle d a b; f = midpoint f c b; g = on_line g d f, on_circle g a b; h = intersection_lc h c a g; e = on_line e c d, on_circle e a b ? para b c h e
+examples/complete2/unsolved2/complete_006_7_Book_LLL_yL252-6.gex
+a c d = triangle a c d; b = on_pline b c d a, on_pline b a d c; e = on_line e a c; g = on_line g a b, on_pline g e a d; f = on_line f a d, on_pline f e c d; h = on_line h e g, on_line h c d; i = on_line i b c, on_line i e f ? para f g h i
+examples/complete2/unsolved2/complete_015_7_Book_00EE_08_E059-59.gex
+a b c = triangle a b c; d = angle_bisector d b a c; e = on_pline e c b d, on_pline e b c d; f = on_line f b e, on_line f a c; g = on_line g c e, on_line g a b ? cong b g c f
+examples/complete2/unsolved2/complete_013_7_Book_00EE_10_E072-16.gex
+a b c = triangle a b c; d = parallelogram a b c d; e = on_line e c d; f = on_line f a d, eqdistance f c a e; g = on_line g a e, on_line g c f ? eqangle g a g b g b g c
+examples/complete2/unsolved2/complete_003_6_GDD_FULL_more_E023-19.gex
+c a b = r_triangle c a b; d = foot d c a b; e = on_line e c d, angle_bisector e b a c; f = on_line f a b, angle_bisector f d c b; g = on_line g b c, on_line g a e ? para e f c b
+examples/complete2/unsolved2/complete_010_Other_Auxiliary_ye_aux_ll43.gex
+a b = segment a b; c = on_dia c a b, on_bline c a b; d = midpoint d a c; e = foot e c b d; f = on_line f c e, on_line f a b ? eqangle d c d b d f d a
+examples/complete2/unsolved2/complete_010_Other_Auxiliary_aux2_22.gex
+c a b = iso_triangle c a b; d = on_line d a c; e = on_line e b c, eqdistance e b a d; f = on_line f a b, on_line f d e ? cong d f e f
+examples/complete2/unsolved2/complete_014_7_Book_00EE_09_E066-04.gex
+a b = segment a b; c = lc_tangent c b a; d = midpoint d b c; e = on_circle e a b; f = on_line f d e, on_circle f a b ? eqangle e c c d d f f c
+examples/complete2/unsolved2/complete_014_7_Book_00EE_08_E061-66.gex
+a b = segment a b; c = s_angle b a c 60; d = foot d a b c; e = foot e b a c; g = circumcenter g b c a; f = on_line f a d, on_line f b e ? cong a f a g
+examples/complete2/unsolved2/complete_011_7_Book_00EE_03_E037-24.gex
+a b c = triangle a b c; d = circle d b a c; e = lc_tangent e a d, on_line e b c; f = angle_bisector f b e a, on_line f a b; g = on_line g a c, on_line g e f; h = angle_bisector h b a c, on_line h b c ? perp f e a h
+examples/complete2/unsolved2/complete_014_7_Book_00EE_08_E061-65.gex
+a b c d = isquare a b c d; e = s_angle c d e 15, s_angle d c e -15; f = reflect f e a c ? contri e a b a b e
+examples/complete2/unsolved2/complete_012_7_Book_00EE_11_E076-31.gex
+a b c = triangle a b c; d = angle_bisector d c b a, on_line d a c; e = angle_bisector e a c b, on_line e a b; f = on_line f d e, on_line f b c; g = on_line g a b ? eqangle a g a f a f a c
+examples/complete2/unsolved2/complete_010_Other_Auxiliary_ye_aux_y1.gex
+a b c = triangle a b c; d = angle_bisector d a b c, on_dia d b c; e = angle_bisector e b a c, on_dia e a c ? para d e a b
+examples/complete2/unsolved2/complete_004_6_GDD_FULL_21-40_40.gex
+a b c = triangle a b c; i = incenter i a b c; e = on_pline e i a b, on_line e a c ? cong e i e a
+examples/complete2/unsolved2/complete_014_7_Book_00EE_09_E069-8.gex
+a b c = triangle a b c; d = parallelogram a b c d; e = eqangle2 e d a b ? eqangle d a a e e c c d
+examples/complete2/unsolved2/complete_011_7_Book_00EE_04_E051-9.gex
+a b = segment a b; c = s_angle b a c 30; d = mirror d b c; e = foot e d a b ? cong d e a c
+examples/complete2/unsolved2/complete_003_6_GDD_FULL_21-40_27.gex
+a b c = triangle a b c; h = orthocenter h a b c; o = circumcenter o a b c; o3 = circumcenter o3 a h b; o1 = circumcenter o1 b h c; o2 = circumcenter o2 c h a ? cong h o1 h o2
+examples/complete2/unsolved2/complete_017_ex-gao_ex160_4_e08.gex
+a b c = triangle a b c; d = on_line d b c, angle_bisector d b a c; e = on_pline e d a c, on_line e a b; f = on_pline f e b c, on_line f a c ? cong e a f c
+examples/complete2/unsolved2/complete_015_7_Book_00EE_06_E051-29.gex
+a b = segment a b; c = on_circle c a b; d = on_circle d a b; e = on_circle e a b; f = on_line f b e, on_line f c d; g = on_line g d e, on_pline g f b c; h = on_circle h a b, on_dia h g a ? cong f g g h
+examples/complete2/unsolved2/complete_002_6_GDD_FULL_41-60_42.gex
+a b c = triangle a b c; d = incenter d a b c; e = foot e a b c; f = foot f b a d; g = foot g c a d; h = midpoint h c b ? cyclic e f g h
+examples/complete2/unsolved2/complete_014_7_Book_00EE_08_E061-63f.gex
+a b = segment a b; c = midpoint c b a; d = s_angle b a d 30, on_circle d c a; e = lc_tangent e d c, on_line e a b ? cong d a d e
+examples/complete2/unsolved2/complete_007_7_Book_LLL_yL198-1.gex
+c d = segment c d; e = midpoint e c d; b = free b; f = midpoint f b c; a = eqdistance a d c b, on_pline a b d c; g = midpoint g a b; h = midpoint h d a ? cong h e e f
+examples/complete2/unsolved/complete_015_7_Book_00EE_08_E061-61.gex
+a b = segment a b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = lc_tangent f b a, on_line f c e; h = on_pline h c b f, on_line h b d; g = on_line g d e, on_line g b f; i = on_line i b e, on_line i c h ? cong c i i h
+examples/complete2/unsolved/complete_008_ex-gao_ex160_204.gex
+a b c = triangle a b c; d = circumcenter d a b c; e = on_circle e d a; f = on_line f a b, on_line f c e; h = on_line h b c, angle_bisector h a f c; g = on_line g a e, on_line g b c; i = on_line i a b, angle_bisector i a g b; j = on_line j f h, on_line j g i; k = on_line k a e, on_line k f h ? perp g i f h
+examples/complete2/unsolved/complete_005_Other_unsolved_65.gex
+a b c = triangle a b c; e = on_line e a b; f = on_pline f e b c, on_line f a c; d = circle d a b c; g = circle g a e f ? coll a g d
+examples/complete2/unsolved/complete_008_ex-gao_ex160_005.gex
+a b c = triangle a b c; d = on_line d b c, angle_bisector d b a c; e = on_line e a b; f = on_line f a c, eqdistance f c b e; g = midpoint g f e; h = midpoint h c b ? para g h a d
+examples/complete2/unsolved/complete_006_Other_ndgTest_65.gex
+a b c = triangle a b c; e = on_line e a b; f = intersection_lp f a c e c b; d = circle d a b c; g = circle g a e f ? coll a g d
+examples/complete2/unsolved/complete_005_Other_unsolved_E051-7.gex
+a b c = triangle a b c; d = on_line d a b; e = angle_bisector e c b a, on_line e a c; f = on_pline f e a b, on_line f b c; g = angle_bisector g c b d, on_line g e f ? cong e f f g
+examples/complete2/unsolved/complete_005_Other_unsolved_E046-10.gex
+a b c d = isquare a b c d; e = midpoint e b a; f = on_line f a b; g = on_tline g e d e, angle_bisector g c b f ? cong d e e g
+examples/complete2/unsolved/ex-gao_ex160_103.gex
+c b y = triangle c b y; a = foot a c b y; x = angle_bisector x c b y; d = foot d a b c; e = on_line e b x, on_line e c a; f = foot f e b c; g = on_line g b x, on_line g a d ? cong f g f e
+examples/complete2/unsolved/ex-gao_ex160_104.gex
+c a y = triangle c a y; b = foot b c a y; x = angle_bisector x c a y; e = foot e b a c; d = on_line d a x, on_line d c b; f = on_line f a x, on_line f b e; g = on_line g c b, on_pline g f a c ? cong b d c g
+examples/complete2/unsolved/complete_005_Other_unsolved_109f.gex
+a b d = triangle a b d; e = on_line e a d; c = on_line c a b; f = on_line f b e, on_line f c d; g = circle g d e f; h = circle h a c d; i = circle i b c f; j = circle j b a e ? cyclic i j h g
+examples/complete2/unsolved/complete_005_Other_unsolved_E046-7.gex
+a b c = triangle a b c; d = midpoint d c a; e = angle_bisector e b a d, on_line e b d; f = on_pline f b c e, on_line f a c ? cong b a c f
+examples/complete2/unsolved/complete_008_ex-gao_ex160_e121.gex
+a b = segment a b; d = midpoint d b a; c = on_tline c a a b; e = on_circle e c a; f = on_line f d e, on_circle f c a; g = on_circle g c f, on_line g f b; h = on_line h b e, on_circle h c a ? para a b g h
+examples/complete2/unsolved/complete_018_ex-gao_ex160_4_010.gex
+a b c d = isquare a b c d; e = mirror e a b; f = midpoint f b a; g = on_tline g f d f, angle_bisector g c b e; h = foot h g a b ? cong d f g f
+examples/complete2/unsolved/complete_005_Other_unsolved_82.gex
+a b c = triangle a b c; o = incenter o a b c; i = foot i c a o; e = on_tline e a a o; j = foot j c a e; l = foot l c b o ? coll i l j
+examples/complete2/unsolved/complete_014_7_Book_00EE_07_E057-41.gex
+a b c = triangle a b c; d = foot d c a b; e = free e; f = on_circle f c e; g = on_line g d f, on_circle g c e; h = on_line h d e, on_circle h c e; i = on_line i f h, on_line i a b; j = on_line j e g, on_line j a b ? cong j d d i
+examples/complete2/unsolved/complete_015_7_Book_00EE_08_E059-55.gex
+a b = segment a b; c = on_circle c a b; d = lc_tangent d b a, lc_tangent d c a; e = on_circle e a b; f = on_line f d e, on_circle f a b; g = angle_bisector g f b e, on_line g d e ? cong d b d g
+examples/complete2/unsolved/complete_005_Other_unsolved_E073-17.gex
+a b c = triangle a b c; o = circumcenter o a b c; p = lc_tangent p a o, on_line p b c; d = on_circle d p a; e = intersection_lc e d o b; f = intersection_lc f d o c ? para e f p d
+examples/complete2/unsolved/complete_015_7_Book_00EE_06_E056-33.gex
+a b = segment a b; c = on_tline c a a b, on_circle c a b; e = s_angle b a e 60, on_circle e a b; d = s_angle b a d 30, on_circle d a b; f = on_line f a e, on_line f b c; g = on_line g a d, on_line g b c ? cong c f g b
+examples/complete2/unsolved/complete_005_Other_unsolved_E074-24.gex
+a b = segment a b; c = on_tline c a a b; d = foot d a b c; e = midpoint e d a; f = on_line f b e, on_line f a c; g = foot g f b c; h = midpoint h c a; i = on_tline i f a c, on_circle i h a ? cong f i f g
+examples/complete2/unsolved1/complete_008_7_Book_LLL_L057-3.gex
+a b = segment a b; c = on_bline c a b; e = midpoint e a c; d = mirror d c a; f = midpoint f b d ? cong e b f b
+examples/complete2/unsolved1/complete_006_7_Book_LLL_L046-17.gex
+c a b = risos c a b; d = midpoint d b a; e = on_line e a b; f = foot f e a c; g = foot g e b c ? cong d f d g
+examples/complete2/unsolved1/complete_008_7_Book_LLL_L057-2.gex
+c a b = triangle a b c; d = angle_bisector d b a c; e = foot e c a d; f = intersection_lp f a c e a b ? cong f e f c
+examples/complete2/unsolved1/complete_008_ex-gao_ex160_e102.gex
+a b c = triangle a b c; d = on_line d a c, angle_bisector d c b a; e = on_line e a b, angle_bisector e b c a; f = foot f a c e; g = foot g a b d ? para g f b c
+examples/complete2/unsolved1/complete_012_7_Book_00EE_11_E075-27f.gex
+a b c = triangle a b c; d = foot d c a b; e = on_line e c d; f = on_line f b e, on_line f a c; g = on_line g a e, on_line g b c ? eqangle d f d c d c d g
+examples/complete2/unsolved1/complete_006_7_Book_LLL_L091-13.gex
+b c d = triangle b c d; e = midpoint e c d; a = eqdistance a d c b, on_pline a b d c; f = midpoint f b a ? perp a b e f
+examples/complete2/unsolved1/complete_010_Other_gao_Y_yL157-1.gex
+a b d = triangle a b d; e = midpoint e d a; c = angle_bisector c a b d, on_dia c a b ? para c e b d
+examples/complete2/unsolved1/complete_008_7_Book_LLL_L055-5.gex
+d b a = triangle d b a; c = angle_bisector c d a b, angle_bisector c d b a; e = on_line e b c, on_tline e d b c; f = on_line f a c, on_tline f d a c ? para e f a b
+examples/complete2/unsolved1/complete_013_7_Book_00EE_11_E075-29.gex
+a b = segment a b; d = midpoint d b a; f = on_circle f d a; c = intersection_lt c a b f d f; e = midpoint e c a; g = on_tline g b a b, on_circle g e a ? eqangle f c f g g f g c
+examples/complete2/unsolved1/complete_012_7_Book_00EE_05_E051-14-1.gex
+a b c d = quadrangle a b c d; e = midpoint e b a; f = foot f a c d; g = foot g b c d ? cong e f e g
+examples/complete2/unsolved1/complete_007_7_Book_LLL_L057-3-1.gex
+a b = segment a b; c = on_bline c a b; e = midpoint e a c; f = mirror f b e; d = on_circle d a c, on_line d a c ? cong f b b d
+examples/complete2/unsolved1/complete_001_6_GDD_FULL_61-80_80.gex
+a b c = triangle a b c; o = circle o a b c; u = angle_bisector u b a c, on_line u b c; t = on_tline t a a o, on_line t b c ? cong t a t u
+examples/complete2/unsolved1/complete_008_ex-gao_ex160_e213.gex
+a b c = triangle a b c; d = midpoint d a b; e = midpoint e c a; f = on_line f d e, angle_bisector f c b a ? perp a f b f
+examples/complete2/unsolved1/complete_011_7_Book_00EE_04_E051-2.gex
+a b c = triangle a b c; d = on_line d a b; e = on_pline e d b c, on_line e a c; f = on_line f c d, on_line f b e; g = on_line g a f, on_line g b c ? midp g b c
+examples/complete2/unsolved1/complete_007_7_Book_LLL_L043-5.gex
+a b = segment a b; c = on_circle c a b; d = on_circle d a b; e = on_circle e a b; f = intersection_ll f b c d e; g = intersection_ll g c d b e; h = angle_bisector h d f b; i = angle_bisector i c g b; j = intersection_ll j f h g i ? perp g i f h
+examples/complete2/unsolved1/complete_001_6_GDD_FULL_61-80_71.gex
+a b c = triangle a b c; o = circle o a b c; e = on_pline e a b c, on_circle e o a; f = foot f e a b; g = foot g e a c ? para f g a o
+examples/complete2/unsolved1/complete_007_7_Book_LLL_L043-5-1.gex
+a b = segment a b; c = on_circle c a b; d = on_circle d a b; e = on_circle e a b; f = intersection_ll f b c d e; g = intersection_ll g c d b e; h = angle_bisector h d f b; i = angle_bisector i c g b; j = intersection_ll j f h g i; k = intersection_ll k d e g i; l = intersection_ll l g i b c ? perp g i f h
+examples/complete2/unsolved1/complete_011_7_Book_00EE_04_E051-8.gex
+a b c = triangle a b c; d = angle_bisector d a c b, on_line d a b; e = on_pline e d b c, on_line e a c; f = on_pline f e a b, on_line f b c ? cong c e f b
+examples/complete2/unsolved1/complete_013_7_Book_00EE_10_E072-8.gex
+a b c = triangle a b c; d = angle_bisector d b a c, on_line d b c; f = on_line f b c, on_bline f a d; e = on_bline e a d, on_line e a d ? eqangle a b a f c f c a
+examples/complete2/unsolved1/complete_003_6_GDD_FULL_more_E023-14.gex
+a b c = triangle a b c; d = midpoint d b a; e = angle_bisector e c d a, on_line e a c; f = angle_bisector f c d b, on_line f c b ? para e f a b
+examples/complete2/unsolved1/complete_010_Other_gao_Y_yL182-1.gex
+a c d = triangle a c d; b = on_pline b c d a, on_pline b a d c; e = on_line e a c; f = shift f c a e ? para d e f b
+examples/complete2/unsolved1/complete_008_ex-gao_ex160_e120.gex
+a b = segment a b; c = midpoint c b a; d = on_circle d c a; e = on_tline e a a b, on_tline e d c d; f = on_tline f b a b, on_line f d e; g = on_line g b e, on_line g a f ? para d g a e
+new_unsolved/0.gex
+c d b = triangle c d b; e = midpoint e c d; a = eqdistance a d c b, on_pline a b d c; f = midpoint f b a ? perp a b e f
+new_unsolved/1.gex
+a b c d = eq_trapezoid a b c d ? eqangle a d a b b a b c
+examples/complete2/unsolved1/complete_009_Other_paper_Thebault_t5.gex
+a b c = triangle a b c; d = circle d a b c; e = on_line e b c; f g h i = 2l1c f g h i a b e d; j k l m = 2l1c j k l m a c e d; n = incenter n a b c ? coll m n i
+examples/complete2/unsolved/complete_013_7_Book_00EE_10_E072-11.gex
+a b = segment b a; c = on_line c a b; d = on_circle d a b; e = on_circle e a b; g = on_line g d e, on_circle g c b; f = on_line f d e, on_circle f c b ? eqangle b e b f b g b d
+examples/complete2/unsolved2/complete_015_7_Book_00EE_06_E051-28.gex
+b c = segment b c; a = on_tline a b b c; d = on_circle d c b; e g = e5128 e g a b c d ? cong a g g b
+examples/complete2/unsolved2/complete_010_Other_Auxiliary_ye_aux_think.gex
+c a b = iso_triangle c a b; d e f = 3peq d e f c a b ? cong d a b e
+examples/complete2/unsolved/morley.gex
+a b c = triangle a b c; d e = trisect d e b a c; f g = trisect f g c b a; h i = trisect h i a c b; j = intersection_ll j b f c i; k = intersection_ll k a e c h; l = intersection_ll l a d b g ? cong j l j k
