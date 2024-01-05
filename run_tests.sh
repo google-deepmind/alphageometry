@@ -15,7 +15,7 @@
 
 DATA=ag_ckpt_vocab
 MELIAD_PATH=meliad_lib/meliad
-PYTHONPATH=$PYTHONPATH:$MELIAD_PATH
+export PYTHONPATH=$PYTHONPATH:$MELIAD_PATH
 
 python problem_test.py
 python geometry_test.py

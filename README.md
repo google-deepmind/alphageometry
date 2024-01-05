@@ -65,7 +65,7 @@ registered with `pip`:
 MELIAD_PATH=meliad_lib/meliad
 mkdir -p $MELIAD_PATH
 git clone https://github.com/google-research/meliad $MELIAD_PATH
-PYTHONPATH=$PYTHONPATH:$MELIAD_PATH
+export PYTHONPATH=$PYTHONPATH:$MELIAD_PATH
 ```
 
 ## Set up common flags
