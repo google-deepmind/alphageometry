@@ -13,5 +13,5 @@
 # limitations under the License.
 # ==============================================================================
 
-gdown --folder https://bit.ly/g0-ckpt-vocab
-export DATA=g0_ckpt_vocab
+gdown --folder https://bit.ly/alphageometry
+export DATA=ag_ckpt_vocab
