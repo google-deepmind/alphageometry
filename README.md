@@ -5,7 +5,7 @@
 This repository contains the code necessary to
 reproduce DDAR and AlphaGeometry,
 the two geometry theorem provers
-introduced in the [Nature 2024](https://www.nature.com/) paper:
+introduced in the [Nature 2024](https://www.nature.com/articles/s41586-023-06747-5) paper:
 
 *<center>"Solving Olympiad Geometry without Human Demonstrations".</center>*
 
@@ -367,7 +367,7 @@ Resource files:
 ## Citing this work
 
 ```bibtex
-@Article{AlphaGeometryTrinh2023,
+@Article{AlphaGeometryTrinh2024,
   author  = {Trinh, Trieu and Wu, Yuhuai and Le, Quoc and He, He and Luong, Thang},
   journal = {Nature},
   title   = {Solving Olympiad Geometry without Human Demonstrations},
