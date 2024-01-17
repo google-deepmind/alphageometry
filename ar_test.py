@@ -191,7 +191,7 @@ class ARTest(unittest.TestCase):
     # Now we check whether tb has figured out that
     # distance(b, d1) == distance(e1, c)
 
-    # linear comb exprssion of each variables:
+    # linear comb expression of each variables:
     b = tb.v2e['bc:b']
     c = tb.v2e['bc:c']
     d1 = tb.v2e['bc:d1']
