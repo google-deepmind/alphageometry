@@ -308,7 +308,7 @@ def translate_constrained_to_constructive(
 
 
 def check_valid_args(name: str, args: list[str]) -> bool:
-  """Check whether a predicate is grammarically correct.
+  """Check whether a predicate is grammatically correct.
 
   Args:
     name: str: name of the predicate
@@ -441,7 +441,7 @@ def insert_aux_to_premise(pstring: str, auxstring: str) -> str:
 
   Args:
     pstring: str: describing the problem to solve.
-    auxstring: str: describing the auxiliar construction.
+    auxstring: str: describing the auxiliary construction.
 
   Returns:
     str: new pstring with auxstring inserted before the conclusion.
