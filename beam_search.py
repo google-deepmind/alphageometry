@@ -16,7 +16,7 @@
 """Fast decoding routines for inference from a trained model.
 
 Modified https://github.com/google/flax/blob/main/examples/wmt/decode.py
-to acommodate
+to accommodate
 
 (a) continued decoding from a previous beam cache.
 (b) init with with a single beam and then expand into beam_size beams.
@@ -235,7 +235,7 @@ def beam_search_flat(
 ):
   """Beam search for LM.
 
-  inputs and cache is already flat! i.e. first dimention == batch*beam.
+  inputs and cache is already flat! i.e. first dimension == batch*beam.
 
   Args:
     seed_token: array: [beam_size, 1] int32 sequence of tokens.
