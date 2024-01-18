@@ -702,7 +702,7 @@ def check_perp(points: list[Point]) -> bool:
 
 def check_cyclic(points: list[Point]) -> bool:
   points = list(set(points))
-  (a, b, c), *ps = points
+  (a, b, c, *ps) = points
   circle = Circle(p1=a, p2=b, p3=c)
   for d in ps:
     if not close_enough(d.distance(circle.center), circle.radius):
