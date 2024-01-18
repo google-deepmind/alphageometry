@@ -386,7 +386,7 @@ Thomas Kipf, Hieu Pham, Petar Veličković, Debidatta Dwibedi,
 Kyunghyun Cho, Lerrel Pinto, Alfredo Canziani,
 Thomas Wies, He He’s research group,
 Evan Chen (the USA’s IMO team coach),
-Mirek Olsak, Patrik Pak,
+Mirek Olsak, Patrik Bak,
 and all three Nature's referees for their help and support.
 
 The code of AlphaGeometry communicates with and/or references the following
