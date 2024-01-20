@@ -333,9 +333,9 @@ class HalfLine(Line):
       exclude += [obj.hole]
 
     a, b = line_circle_intersection(self.line, obj)
-    if any([a.close(x) for x in exclude]):
+    if any(a.close(x) for x in exclude):
       return b
-    if any([b.close(x) for x in exclude]):
+    if any(b.close(x) for x in exclude):
       return a
 
     v = self.head - self.tail
@@ -379,7 +379,7 @@ def _perpendicular_bisector(p1: Point, p2: Point) -> Line:
 def same_sign(
     a: Point, b: Point, c: Point, d: Point, e: Point, f: Point
 ) -> bool:
-  a, b, c, d, e, f = map(lambda p: p.sym, [a, b, c, d, e, f])
+  a, b, c, d, e, f = (p.sym for p in [a, b, c, d, e, f])
   ab, cb = a - b, c - b
   de, fe = d - e, f - e
   return (ab.x * cb.y - ab.y * cb.x) * (de.x * fe.y - de.y * fe.x) > 0
@@ -1064,7 +1064,7 @@ def highlight(
     color2: Any,
 ) -> None:
   """Draw highlights."""
-  args = list(map(lambda x: x.num if isinstance(x, gm.Point) else x, args))
+  args = [x.num if isinstance(x, gm.Point) else x for x in args]
 
   if name == 'cyclic':
     a, b, c, d = args
@@ -1311,10 +1311,10 @@ def reduce(
     if isinstance(result, Point):
       return [result]
     a, b = result
-    a_close = any([a.close(x) for x in existing_points])
+    a_close = any(a.close(x) for x in existing_points)
     if a_close:
       return [b]
-    b_close = any([b.close(x) for x in existing_points])
+    b_close = any(b.close(x) for x in existing_points)
     if b_close:
       return [a]
     return [np.random.choice([a, b])]

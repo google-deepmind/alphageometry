@@ -307,7 +307,7 @@ def translate_constrained_to_constructive(
     return 'on_aline', [a, x, b, c, y, d]
 
   elif name in ['cyclic', 'O']:
-    a, b, c = [x for x in args if x != point]
+    a, b, c = (x for x in args if x != point)
     return 'on_circum', [point, a, b, c]
 
   return name, args
@@ -478,8 +478,7 @@ class BeamQueue:
       self.queue[min_idx] = (val, node)
 
   def __iter__(self):
-    for val, node in self.queue:
-      yield val, node
+    yield from self.queue
 
   def __len__(self) -> int:
     return len(self.queue)

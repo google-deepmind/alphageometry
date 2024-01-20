@@ -432,7 +432,7 @@ def line_of_and_why(
   """Why points are collinear."""
   for l0 in get_lines_thru_all(*points):
     for l in l0.equivs():
-      if all([p in l.edge_graph for p in points]):
+      if all(p in l.edge_graph for p in points):
         x, y = l.points
         colls = list({x, y} | set(points))
         # if len(colls) < 3:
@@ -459,7 +459,7 @@ def circle_of_and_why(
   """Why points are concyclic."""
   for c0 in get_circles_thru_all(*points):
     for c in c0.equivs():
-      if all([p in c.edge_graph for p in points]):
+      if all(p in c.edge_graph for p in points):
         cycls = list(set(points))
         why = c.why_cyclic(cycls, level)
         if why is not None:
@@ -474,7 +474,7 @@ def name_map(struct: Any) -> Any:
   elif isinstance(struct, tuple):
     return tuple([name_map(x) for x in struct])
   elif isinstance(struct, set):
-    return set([name_map(x) for x in struct])
+    return {name_map(x) for x in struct}
   elif isinstance(struct, dict):
     return {name_map(x): name_map(y) for x, y in struct.items()}
   else:

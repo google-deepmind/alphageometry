@@ -76,7 +76,7 @@ def frac_string(f: frac) -> str:
 
 
 def hashed(e: dict[str, float]) -> tuple[tuple[str, float], ...]:
-  return tuple(sorted(list(e.items())))
+  return tuple(sorted(e.items()))
 
 
 def is_zero(e: dict[str, float]) -> bool:
@@ -632,7 +632,7 @@ class AngleTable(GeometricTable):
   ) -> None:
     """Add the inequality d1-d2=d3-d4."""
     # Use string as variables.
-    l1, l2, l3, l4 = [d._obj.num for d in [d1, d2, d3, d4]]  # pylint: disable=protected-access
+    l1, l2, l3, l4 = (d._obj.num for d in [d1, d2, d3, d4])  # pylint: disable=protected-access
     d1, d2, d3, d4 = self.get_name([d1, d2, d3, d4])
     ang1 = {d1: 1, d2: -1}
     ang2 = {d3: 1, d4: -1}
@@ -708,8 +708,7 @@ class DistanceTable(GeometricTable):
     return super().add_eq4(p1, p2, p3, p4, dep)
 
   def get_all_eqs_and_why(self) -> Generator[Any, None, None]:
-    for x in super().get_all_eqs_and_why(True):
-      yield x
+    yield from super().get_all_eqs_and_why(True)
 
     # Now we figure out all the const ratios.
     h2pairs = defaultdict(list)

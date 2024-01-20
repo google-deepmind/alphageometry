@@ -626,7 +626,7 @@ class Graph:
         self.remove([n])
 
     nodes = [node0] + nodes1
-    if any([node._val for node in nodes]):
+    if any(node._val for node in nodes):
       for node in nodes:
         self.connect_val(node, deps=None)
 
@@ -959,11 +959,7 @@ class Graph:
       if len(args) < 3:
         continue
 
-      whys = []
-      for x in args:
-        if x not in og_points:
-          whys.append(self.coll_dep(og_points, x))
-
+      whys = [self.coll_dep(og_points, x) for x in args if x not in og_points]
       abcd_deps = deps
       if whys + why0:
         dep0 = deps.populate('coll', og_points)
@@ -988,7 +984,7 @@ class Graph:
     for p in points:
       for l in p.neighbors(Line):
         line2count[l] += 1
-    return any([count == len(points) for _, count in line2count.items()])
+    return any(count == len(points) for count in line2count.values())
 
   def why_coll(self, args: tuple[Line, list[Point]]) -> list[Dependency]:
     line, points = args
@@ -1195,7 +1191,7 @@ class Graph:
     elif self.check_para([a, b, x, y]):
       extends.append(('para', [a, b, x, y]))
     elif self.check_coll([a, b, x, y]):
-      extends.append(('coll', set(list([a, b, x, y]))))
+      extends.append(('coll', {a, b, x, y}))
     else:
       return None
 
@@ -1214,7 +1210,7 @@ class Graph:
       return self.add_para([c, d, m, n], deps)
 
     deps = deps.extend_many(self, 'perp', [a, b, c, d], extends)
-    return self.add_coll(list(set([c, d, m, n])), deps)
+    return self.add_coll(list({c, d, m, n}), deps)
 
   def maybe_make_para_from_perp(
       self, points: list[Point], deps: EmptyDependency
@@ -1540,10 +1536,9 @@ class Graph:
       args = list({a, b, c, d, e, f})
       if len(args) < 4:
         continue
-      whys = []
-      for x in [a, b, c, d, e, f]:
-        if x not in og_points:
-          whys.append(self.cyclic_dep(og_points, x))
+      whys = [
+        self.cyclic_dep(og_points, x) for x in [a, b, c, d, e, f] if x not in og_points
+      ]
       abcdef_deps = deps
       if whys + why0:
         dep0 = deps.populate('cyclic', og_points)
@@ -1568,7 +1563,7 @@ class Graph:
     for p in points:
       for c in p.neighbors(Circle):
         circle2count[c] += 1
-    return any([count == len(points) for _, count in circle2count.items()])
+    return any(count == len(points) for count in circle2count.values())
 
   def make_equal_pairs(
       self,
@@ -2499,7 +2494,7 @@ class Graph:
       circle.points = center, point
 
     if name in ['incenter', 'excenter', 'incenter2', 'excenter2']:
-      d, a, b, c = [x for x in args[-4:]]
+      d, a, b, c = list(args[-4:])
       a, b, c = sorted([a, b, c], key=lambda x: x.name.lower())
       circle = self.new_node(Circle, f'({d.name},h.{a.name}{b.name})')
       p = d.num.foot(nm.Line(a.num, b.num))
@@ -2862,8 +2857,7 @@ class Graph:
       if d1 == d2:
         continue
       for l1, l2 in utils.cross(d1.neighbors(Line), d2.neighbors(Line)):
-        for a, b, c, d in utils.all_4points(l1, l2):
-          yield a, b, c, d
+        yield from utils.all_4points(l1, l2)
 
   def all_congs(self) -> Generator[tuple[Point, ...], None, None]:
     for l in self.type2nodes[Length]:
@@ -2996,13 +2990,11 @@ class Graph:
 
   def all_cyclics(self) -> Generator[tuple[Point, ...], None, None]:
     for c in self.type2nodes[Circle]:
-      for x, y, z, t in utils.perm4(c.neighbors(Point)):
-        yield x, y, z, t
+      yield from utils.perm4(c.neighbors(Point))
 
   def all_colls(self) -> Generator[tuple[Point, ...], None, None]:
     for l in self.type2nodes[Line]:
-      for x, y, z in utils.perm3(l.neighbors(Point)):
-        yield x, y, z
+      yield from utils.perm3(l.neighbors(Point))
 
   def all_midps(self) -> Generator[tuple[Point, ...], None, None]:
     for l in self.type2nodes[Line]:
