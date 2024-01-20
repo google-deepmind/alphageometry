@@ -1207,7 +1207,7 @@ def draw(
     segments: list[gm.Segment],
     goal: Any = None,
     highlights: list[tuple[str, list[gm.Point]]] = None,
-    equals=list[tuple[Any, Any]],
+    equals: list[tuple[Any, Any]] = None,
     block: bool = True,
     save_to: str = None,
     theme: str = 'dark',
