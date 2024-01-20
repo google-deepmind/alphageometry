@@ -373,7 +373,7 @@ def match_eqangle_ncoll_cyclic(
 ) -> Generator[dict[str, gm.Point], None, None]:
   """Match eqangle6 P A P B Q A Q B, ncoll P Q A B => cyclic A B P Q."""
   for l1, l2, l3, l4 in g.all_eqangles_distinct_linepairss():
-    if len(set([l1, l2, l3, l4])) < 4:
+    if len({l1, l2, l3, l4}) < 4:
       continue  # they all must be distinct.
 
     p1s = l1.neighbors(gm.Point, return_set=True)
@@ -393,7 +393,7 @@ def match_eqangle_ncoll_cyclic(
     b = intersect1(p2s, p4s)
     if not b:
       continue
-    if len(set([a, b, p, q])) < 4:
+    if len({a, b, p, q}) < 4:
       continue
 
     if not g.check_ncoll([a, b, p, q]):
@@ -488,7 +488,7 @@ def match_cong_cong_cong_ncoll_contri(
   for a, b, p, q in g_matcher('cong'):
     for c in g.type2nodes[gm.Point]:
       for r in g.type2nodes[gm.Point]:
-        if any([x in record for x in rotate_simtri(a, b, c, p, q, r)]):
+        if any(x in record for x in rotate_simtri(a, b, c, p, q, r)):
           continue
         if not g.check_ncoll([a, b, c]):
           continue
@@ -552,7 +552,7 @@ def match_eqratio6_eqangle6_ncoll_simtri(
   for b, a, b, c, q, p, q, r in enums:  # pylint: disable=redeclared-assigned-name,unused-variable
     if (a, b, c) == (p, q, r):
       continue
-    if any([x in record for x in rotate_simtri(a, b, c, p, q, r)]):
+    if any(x in record for x in rotate_simtri(a, b, c, p, q, r)):
       continue
     if not g.check_ncoll([a, b, c]):
       continue
@@ -578,7 +578,7 @@ def match_eqangle6_eqangle6_ncoll_simtri(
   for b, a, b, c, q, p, q, r in enums:  # pylint: disable=redeclared-assigned-name,unused-variable
     if (a, b, c) == (p, q, r):
       continue
-    if any([x in record for x in rotate_simtri(a, b, c, p, q, r)]):
+    if any(x in record for x in rotate_simtri(a, b, c, p, q, r)):
       continue
     if not g.check_eqangle([c, a, c, b, r, p, r, q]):
       continue
@@ -602,7 +602,7 @@ def match_eqratio6_eqratio6_ncoll_simtri(
   for b, a, b, c, q, p, q, r in enums:  # pylint: disable=redeclared-assigned-name,unused-variable
     if (a, b, c) == (p, q, r):
       continue
-    if any([x in record for x in rotate_simtri(a, b, c, p, q, r)]):
+    if any(x in record for x in rotate_simtri(a, b, c, p, q, r)):
       continue
     if not g.check_eqratio([c, a, c, b, r, p, r, q]):
       continue
@@ -626,7 +626,7 @@ def match_eqangle6_eqangle6_ncoll_simtri2(
   for b, a, b, c, q, r, q, p in enums:  # pylint: disable=redeclared-assigned-name,unused-variable
     if (a, b, c) == (p, q, r):
       continue
-    if any([x in record for x in rotate_simtri(a, b, c, p, q, r)]):
+    if any(x in record for x in rotate_simtri(a, b, c, p, q, r)):
       continue
     if not g.check_eqangle([c, a, c, b, r, q, r, p]):
       continue
@@ -641,8 +641,7 @@ def match_eqangle6_eqangle6_ncoll_simtri2(
 def rotate_contri(
     a: gm.Point, b: gm.Point, c: gm.Point, x: gm.Point, y: gm.Point, z: gm.Point
 ) -> Generator[tuple[gm.Point, ...], None, None]:
-  for p in [(b, a, c, y, x, z), (x, y, z, a, b, c), (y, x, z, b, a, c)]:
-    yield p
+  yield from [(b, a, c, y, x, z), (x, y, z, a, b, c), (y, x, z, b, a, c)]
 
 
 def match_eqangle6_eqangle6_ncoll_cong_contri(
@@ -659,7 +658,7 @@ def match_eqangle6_eqangle6_ncoll_cong_contri(
       continue
     if (a, b, c) == (p, q, r):
       continue
-    if any([x in record for x in rotate_contri(a, b, c, p, q, r)]):
+    if any(x in record for x in rotate_contri(a, b, c, p, q, r)):
       continue
     if not g.check_eqangle([c, a, c, b, r, p, r, q]):
       continue
@@ -686,7 +685,7 @@ def match_eqratio6_eqratio6_ncoll_cong_contri(
       continue
     if (a, b, c) == (p, q, r):
       continue
-    if any([x in record for x in rotate_contri(a, b, c, p, q, r)]):
+    if any(x in record for x in rotate_contri(a, b, c, p, q, r)):
       continue
     if not g.check_eqratio([c, a, c, b, r, p, r, q]):
       continue
@@ -713,7 +712,7 @@ def match_eqangle6_eqangle6_ncoll_cong_contri2(
       continue
     if (a, b, c) == (p, q, r):
       continue
-    if any([x in record for x in rotate_contri(a, b, c, p, q, r)]):
+    if any(x in record for x in rotate_contri(a, b, c, p, q, r)):
       continue
     if not g.check_eqangle([c, a, c, b, r, q, r, p]):
       continue
@@ -848,8 +847,7 @@ def try_to_map(
     if fail:
       continue
 
-    for m in try_to_map(clause_enum[1:], mpcpy):
-      yield m
+    yield from try_to_map(clause_enum[1:], mpcpy)
 
 
 def match_generic(
@@ -985,7 +983,7 @@ def match_all_theorems(
   theorem2mappings = {}
 
   # Step 1: list all matches
-  for _, theorem in theorems.items():
+  for theorem in theorems.values():
     name = theorem.name
     if name.split('_')[-1] in [
         'acompute',

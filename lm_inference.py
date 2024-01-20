@@ -95,7 +95,7 @@ class LanguageModelInference:
 
   def encode_list(self, inputs_strs: list[str]) -> list[int]:
     result = [self.vocab.encode(x) for x in inputs_strs]
-    assert all([len(x) == 1 for x in result]), [
+    assert all(len(x) == 1 for x in result), [
         self.decode(x) for x in result if len(x) != 1
     ]
     return [x[0] for x in result]

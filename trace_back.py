@@ -132,7 +132,7 @@ def separate_dependency_difference(
   for con in setup_:
     if con.name == 'ind':
       continue
-    elif any([p not in points for p in con.args if isinstance(p, gm.Point)]):
+    elif any(p not in points for p in con.args if isinstance(p, gm.Point)):
       aux_setup.append(con)
       aux_points.update(
           [p for p in con.args if isinstance(p, gm.Point) and p not in points]
@@ -238,7 +238,7 @@ def collx_to_coll(
   setup = collx_to_coll_setup(setup)
   aux_setup = collx_to_coll_setup(aux_setup)
 
-  con_set = set([p.hashed() for p in setup + aux_setup])
+  con_set = {p.hashed() for p in setup + aux_setup}
   log_, log = log, []
   for prems, cons in log_:
     prem_set = set()
@@ -308,7 +308,7 @@ def shorten_and_shave(
   log, _ = shorten_proof(log, merge_trivials=merge_trivials)
 
   all_prems = sum([list(prems) for prems, _ in log], [])
-  all_prems = set([p.hashed() for p in all_prems])
+  all_prems = {p.hashed() for p in all_prems}
   setup = [d for d in setup if d.hashed() in all_prems]
   aux_setup = [d for d in aux_setup if d.hashed() in all_prems]
   return setup, aux_setup, log

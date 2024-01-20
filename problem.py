@@ -193,10 +193,7 @@ class Problem:
   def translate(self) -> Problem:  # to single-char point names
     """Translate point names into alphabetical."""
     mapping = {}
-    clauses = []
-
-    for clause in self.clauses:
-      clauses.append(clause.translate(mapping))
+    clauses = [clause.translate(mapping) for clause in self.clauses]
 
     if self.goal:
       goal = self.goal.translate(mapping)
@@ -1092,7 +1089,7 @@ def hashed_txt(name: str, args: list[str]) -> tuple[str, ...]:
     return (name, a, b, c)
 
   if name in ['coll', 'cyclic', 'ncoll', 'diff', 'triangle']:
-    return (name,) + tuple(sorted(list(set(args))))
+    return (name,) + tuple(sorted(set(args)))
 
   if name == 'circle':
     x, a, b, c = args
