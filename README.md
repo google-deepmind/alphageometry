@@ -307,6 +307,8 @@ please make sure to pass all tests in the prepared test suite:
 bash run_tests.sh
 ```
 
+NOTE: [Issues#14](https://github.com/google-deepmind/alphageometry/issues/14) reports that although the top beam decodes are still the same, the LM is not giving the same score for different users.
+
 Then, pass the corresponding values for `--problem_file` (column)
 and `--mode` (row), and
 iterate on all problems to obtain the following results:
