@@ -347,7 +347,7 @@ each of them and their description.
 | `decoder_stack.py`     | Implements the transformer decoder stack.                                          |
 | `lm_inference.py`      | Implements an interface to a trained LM to perform decoding.                       |
 | `alphageometry.py`                | Main script that loads problems, calls DD+AR or AlphaGeometry solver, and prints solutions.   |
-| `pretty.py`            | Pretty formating the solutions output by solvers.                                  |
+| `pretty.py`            | Pretty formatting the solutions output by solvers.                                  |
 | `*_test.py`            | Tests for the corresponding module.                                                |
 | `download.sh`          | Script to download model checkpoints and LM                                        |
 | `run.sh`               | Script to execute instructions in README.                                          |
