@@ -26,6 +26,7 @@ import matplotlib.colors as mcolors
 import numpy as np
 from numpy.random import uniform as unif  # pylint: disable=g-importing-member
 
+
 matplotlib.use('TkAgg')
 
 
@@ -889,7 +890,7 @@ def draw_angle(
 def naming_position(
     ax: matplotlib.axes.Axes, p: Point, lines: list[Line], circles: list[Circle]
 ) -> tuple[Point, float]:
-  """Figure out a good naming position on the drawing."""
+  """Figure out a good naming position on the drawing. return values is a tuple of [position, radius]"""
   _ = ax
   r = 0.08
   c = Circle(center=p, radius=r)
