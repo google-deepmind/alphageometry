@@ -1,1 +1,4 @@
-cyclic A B C D E F, coll G A B, coll G D E, coll H B C, coll H E F, coll I C D, coll I F A => coll G H I
+coll A F B, coll B D C, coll C E A, coll D E F => eqratio30 A F F B B D D C C E E A
+eqangle6 B A B C Q P Q R, eqangle6 C A C B R P R Q, ncoll A B C => simtri A B C P Q R
+eqangle6 B A B C Q R Q P, eqangle6 C A C B R Q R P, ncoll A B C => simtri2 A B C P Q R
+eqratio a b c d m n p q, eqratio c d e f p q r u => eqratio a b e f m n r u

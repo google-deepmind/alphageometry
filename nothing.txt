@@ -20,3 +20,27 @@ circle O A B C, cong O A O D, cong O A O E, coll G A B, coll G D E, coll H B C, 
 cyclic A B C D E F, coll G A B, coll G D E, coll H B C, coll H E F, coll I C D, coll I F A => coll G H I
 circle O A B C, cong O A O D, cong O A O E, cong O A O F, coll G A B, coll G D E, coll H B C, coll H E F, coll I C D, coll I F A => coll G H I
 cyclic A B C D, cyclic A B C E => cong A D A E
+
+001. A,F,C are collinear [06] & B,D,C are collinear [03] & A,D,E are collinear [04] & F,B,E are collinear [07] ⇒  (AF:FC) * (CB:BD) * (DE:EA) = 1 [10]
+002. (AF:FC) * (CB:BD) * (DE:EA) = 1 [10] & BC = BA [00] & DB = DC [02] ⇒  (AF:FC) * (AB:AE) * (DE:DC) = 1 [11]
+003. A,D,E are collinear [04] & B,D,C are collinear [03] & BC ⟂ AB [01] & BE ⟂ AD [05] ⇒  ∠BEA = ∠ABD [12]
+004. A,D,E are collinear [04] ⇒  ∠BAE = ∠BAD [13]
+005. ∠BEA = ∠ABD [12] & ∠BAE = ∠BAD [13] ⇒  EB:EA = BD:BA [14]
+006. EB:EA = BD:BA [14] & DB = DC [02] ⇒  BE:AE = DC:AB [15]
+007. A,D,E are collinear [04] & B,D,C are collinear [03] & BC ⟂ AB [01] & BE ⟂ AD [05] ⇒  ∠BED = ∠DBA [16]
+008. D,B,C are collinear [03] & A,D,E are collinear [04] ⇒  ∠BDE = ∠BDA [17]
+009. ∠BED = ∠DBA [16] & ∠BDE = ∠BDA [17] ⇒  EB:ED = BA:BD [18]
+010. EB:ED = BA:BD [18] & DB = DC [02] ⇒  BE:DE = AB:DC [19]
+011. BC = BA [00] & DB = DC [02] & (AF:FC) * (AB:AE) * (DE:DC) = 1 [11] & BE:AE = DC:AB [15] & BE:DE = AB:DC [19] (Ratio chase)⇒  BC:DC = AF:FC [20]
+012. DB = DC [02] (Distance chase)⇒  CD:CB = 1_/2 [21]
+013. GA = GF [09] (Distance chase)⇒  FG:AF = 1_/2 [22]
+014. BC:DC = AF:FC [20] & BC = BA [00] & CD:CB = 1_/2 [21] & FG:AF = 1_/2 [22] & AG = FG [09] ⇒  AG:AF = FC:AF [23]
+015. AG:AF = FC:AF [23] & AF:AC = AF:AC [08] ⇒  AG = FC
+
+001. F,C,A are collinear [04] & D,B,C are collinear [01] & D,A,E are collinear [03] & B,F,E are collinear [05] ⇒  (AF:FC) * (CB:BD) * (DE:EA) = 1 [08]
+002. F,C,A are collinear [04] & D,B,C are collinear [01] & D,A,E are collinear [03] & B,F,E are collinear [05] ⇒  (DC:CB) * (EA:AD) * (BF:FE) = 1 [09]
+003. DB = DC [02] (Distance chase)⇒  CD:CB = 1_/2 [10]
+004. GA = GF [07] (Distance chase)⇒  FG:FA = 1_/2 [11]
+005. (AF:FC) * (CB:BD) * (DE:EA) = 1 [08] & BC = BA [00] & DB = DC [02] & (DC:CB) * (EA:AD) * (BF:FE) = 1 [09] & CD:CB = 1_/2 [10] & FG:FA = 1_/2 [11] ⇒  FG:FA = FC:FA [12]
+006. FG:FA = FC:FA [12] & FA:CA = FA:CA [06] ⇒  FG = FC [13]
+007. FG = FC [13] & GA = GF [07] ⇒  AG = CF

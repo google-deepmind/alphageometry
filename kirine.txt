@@ -1,24 +1,26 @@
 
 ==========================
  * From theorem premises:
-A B C D E F G H I J : Points
-DA = DB [00]
-DB = DC [01]
-DE = DA [02]
-DF = DA [03]
-DG = DA [04]
-E,F,H are collinear [05]
-H,A,B are collinear [06]
-F,I,G are collinear [07]
-C,I,B are collinear [08]
-J,A,G are collinear [09]
-E,C,J are collinear [10]
+A B C D E F G : Points
+BC = BA [00]
+D,B,C are collinear [01]
+DB = DC [02]
+D,A,E are collinear [03]
+F,C,A are collinear [04]
+B,F,E are collinear [05]
+FA:CA = FA:CA [06]
+GA = GF [07]
 
  * Auxiliary Constructions:
 : Points
 
 
  * Proof steps:
-001. DF = DA [03] & DG = DA [04] & DA = DB [00] & DE = DA [02] & DB = DC [01] ⇒  E,B,F,C,A,G are concyclic [11]
-002. E,B,F,C,A,G are concyclic [11] & E,F,H are collinear [05] & H,A,B are collinear [06] & F,I,G are collinear [07] & C,I,B are collinear [08] & J,A,G are collinear [09] & E,C,J are collinear [10] ⇒  I,J,H are collinear
+001. F,C,A are collinear [04] & D,B,C are collinear [01] & D,A,E are collinear [03] & B,F,E are collinear [05] ⇒  (AF:FC) * (CB:BD) * (DE:EA) = 1 [08]
+002. F,C,A are collinear [04] & D,B,C are collinear [01] & D,A,E are collinear [03] & B,F,E are collinear [05] ⇒  (DC:CB) * (EA:AD) * (BF:FE) = 1 [09]
+003. DB = DC [02] (Distance chase)⇒  CD:CB = 1_/2 [10]
+004. GA = GF [07] (Distance chase)⇒  FG:FA = 1_/2 [11]
+005. (AF:FC) * (CB:BD) * (DE:EA) = 1 [08] & BC = BA [00] & DB = DC [02] & (DC:CB) * (EA:AD) * (BF:FE) = 1 [09] & CD:CB = 1_/2 [10] & FG:FA = 1_/2 [11] ⇒  FG:FA = FC:FA [12]
+006. FG:FA = FC:FA [12] & FA:CA = FA:CA [06] ⇒  FG = FC [13]
+007. FG = FC [13] & GA = GF [07] ⇒  AG = CF
 ==========================

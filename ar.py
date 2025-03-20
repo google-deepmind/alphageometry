@@ -561,6 +561,7 @@ class GeometricTable(Table):
     for out in super().get_all_eqs_and_why(return_quads):
       if len(out) == 3:
         x, y, why = out
+        #print('out2', x, y)
         x, y = self.map2obj([x, y])
         yield x, y, why
       if len(out) == 4:
@@ -569,6 +570,7 @@ class GeometricTable(Table):
         yield x, y, f, why
       if len(out) == 5:
         a, b, x, y, why = out
+        #print('out4', a, b, x, y)
         a, b, x, y = self.map2obj([a, b, x, y])
         yield a, b, x, y, why
 
@@ -609,6 +611,8 @@ class RatioTable(GeometricTable):
       l2: gm.Length,
       dep=None,
   ) -> None:
+    if lp.name in self.v2obj:
+      return
     lp, l1, l2 = self.get_name([lp, l1, l2])
     return super().add_eq5(lp, l1, l2, dep)
 

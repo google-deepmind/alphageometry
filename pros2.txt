@@ -34,3 +34,17 @@ test_radical_axis2
 a b c = triangle a b c; e = free; o1 = circle o1 a b c; o2 = circle o2 a b e; o3 = on_bline o3 c e; d = on_circle d o1 a, on_circle d o3 c; f = on_circle f o2 a, on_circle f o3 c; g = on_line g c d, on_line g e f ? coll g a b
 test_radical_axis_rev
 a b c = triangle a b c; d = on_line a b; o1 = circle o1 a b c; e = on_line e c d, on_circle e o1 a; o2 = on_bline o2 c e; f = on_circle f o2 c; g = on_circle g o2 c, on_line g d f ? cyclic a b f g
+test_gcenter1
+a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; g = on_line g b e, on_line g a d; f = on_line f a b, on_line f c g ? cong f a f b
+test_gcenter2
+a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f a b; g = on_line g b e, on_line g c f ? coll a g d
+test_icenter1
+a b c = triangle a b c; d = angle_bisector d b a c, on_line d b c; e = angle_bisector e a b c, on_line e a c; i = on_line i a d, on_line i b e; f = on_line f c i, on_line f a b ? eqangle c a c f c f c b
+example2_1
+a b c = triangle a b c; d = foot d a b c; h = on_line h a d; e = on_line e a c, on_line e b h; f = on_line f a b, on_line f c h; p = on_pline p a b c, on_line p d f; q = on_line q p a, on_line q d e ? cong a p a q
+test_menelaus
+a b c = triangle a b c; d = midpoint d b c; e = on_line e c a; f = on_line f a b, on_line f d e ? eqratio c e e a b f f a
+exercise20_2
+a b = segment a b; c = on_tline c b a b, on_circle c b a; d = midpoint d b c; e = foot e b a d; f = on_line f b e, on_line f a c; g = midpoint g a f ? cong a g c f
+example1_11
+a b c = triangle a b c; d = on_line d a b; e = on_line e a c; f = midpoint f d e; g = on_line g d e; h = mirror h f g; i = on_line i a b; j = on_line j g i, on_line j a c; k = on_line k a b; l = on_line l k h, on_line l a c; m = on_line m j k, on_line m d e; n = on_line n i l, on_line n d e ? cong f m f n

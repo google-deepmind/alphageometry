@@ -762,6 +762,7 @@ class Dependency(Construction):
     self.trace = None
 
   def _find(self, dep_hashed: tuple[str, ...]) -> Dependency:
+    self.why = [w for w in self.why if type(w) is not EmptyDependency]
     for w in self.why:
       f = w._find(dep_hashed)
       if f:

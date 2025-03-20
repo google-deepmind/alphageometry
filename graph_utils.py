@@ -30,6 +30,14 @@ def _cross(elems1, elems2):
 def cross(elems1, elems2):
   return list(_cross(elems1, elems2))
 
+def _cross3(elems1, elems2, elems3):
+  for e1 in elems1:
+    for e2 in elems2:
+      for e3 in elems3:
+        yield e1, e2, e3
+
+def cross3(elems1, elems2, elems3):
+  return list(_cross3(elems1, elems2, elems3))
 
 def _comb2(elems):
   if len(elems) < 2:

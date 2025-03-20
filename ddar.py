@@ -42,10 +42,9 @@ def saturate_or_goal(
   eq4s = []
   branching = []
   all_added = []
-
   while len(level_times) < max_level:
     level = len(level_times) + 1
-
+    print(f"hello from {level}")
     t = time.time()
     added, derv, eq4, n_branching = dd.bfs_one_level(
         g, theorems, level, p, verbose=False, nm_check=True, timeout=timeout
@@ -55,6 +54,7 @@ def saturate_or_goal(
 
     derives.append(derv)
     eq4s.append(eq4)
+
     level_time = time.time() - t
 
     logging.info(f'Depth {level}/{max_level} time = {level_time}')  # pylint: disable=logging-fstring-interpolation
@@ -62,15 +62,21 @@ def saturate_or_goal(
 
     if p.goal is not None:
       goal_args = list(map(lambda x: g.get(x, lambda: int(x)), p.goal.args))
-      if g.check(p.goal.name, goal_args):  # found goal
+      #print(p.goal.name, [ag.name for ag in goal_args])
+      qicong = g.check(p.goal.name, goal_args)
+      if qicong:  # found goal
+        print("yattaze")
         break
+      else:
+        print("yamero")
+        pass
 
     if not added:  # saturated
+      print("satori")
       break
 
     if level_time > timeout:
       break
-
   return derives, eq4s, branching, all_added
 
 
@@ -93,10 +99,10 @@ def solve(
 
   while len(level_times) < max_level:
     dervs, eq4, next_branches, added = saturate_or_goal(
-        g, theorems, level_times, controller, max_level, timeout=timeout
+        g, theorems, level_times, controller, max_level/10, timeout=timeout
     )
     all_added += added
-
+    print(len(level_times),level_times)
     derives += dervs
     eq4s += eq4
     branches += next_branches
@@ -104,9 +110,15 @@ def solve(
     # Now, it is either goal or saturated
     if controller.goal is not None:
       goal_args = g.names2points(controller.goal.args)
-      if g.check(controller.goal.name, goal_args):  # found goal
+      #print(controller.goal.name, [ag.name for ag in goal_args])
+      ifcong = g.check(controller.goal.name, goal_args)
+      if ifcong:  # found goal
         status = 'solved'
+        print("solved")
         break
+      else:
+        pass
+        #print("failed")
 
     if not derives:  # officially saturated.
       break
