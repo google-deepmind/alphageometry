@@ -433,7 +433,7 @@ class Graph:
   ) -> dict[str, list[tuple[Point, ...]]]:
     """Derive new eqratio predicates."""
     added = {'cong2': [], 'eqratio': [], 'eqratio30': []}
-    new_products = []
+    new_products = set()
     for x in self.rtable.get_all_eqs_and_why():
       x, why = x[:-1], x[-1]
       dep = EmptyDependency(level=level, rule_name='a01')
@@ -510,7 +510,7 @@ class Graph:
           _b1c2_, _ = self._get_or_create_length_pro_l(b1, c2)
           _b2c1_, _ = self._get_or_create_length_pro_l(b2, c1)
           _b2c2_, _ = self._get_or_create_length_pro_l(b2, c2)
-          new_products.extend([_a1d1_,_a1d2_,_a2d1_,_a2d2_,_b1c1_,_b1c2_,_b2c1_,_b2c2_])
+          new_products.update([_a1d1_,_a1d2_,_a2d1_,_a2d2_,_b1c1_,_b1c2_,_b2c1_,_b2c2_])
           self._set_ratio_pro_equal(a, b, c, d)
           self._set_ratio_pro_equal(a, _b1c1_,_b2c2_, d)
           self._set_ratio_pro_equal(a, _b1c2_,_b2c1_, d)

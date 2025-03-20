@@ -1,6 +1,7 @@
-for why, (u, v), (u_, v_) in zip(
-    ['why1', 'why2', 'why3', 'why4'],
-    [('a', 'b'), ('c', 'd'), ('e', 'f'), ('g', 'h')],
-    [('a_', 'b_'), ('c_', 'd_'), ('e_', 'f_'), ('g_', 'h_')],
-  ):
-    print(why, u, v, u_, v_)
+from multiset import Multiset
+
+A = Multiset([1,2,2,3])
+B = Multiset([2,3,4,5])
+
+print(A-B)
+print(B-A)
