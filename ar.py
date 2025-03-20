@@ -219,6 +219,8 @@ def update_groups(
   Returns:
     groups1, links, history: result of the update.
   """
+  print("len1",len(groups1))
+  print("len2",len(groups2))
   history = []
   links = []
   for g2 in groups2:

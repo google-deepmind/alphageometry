@@ -117,6 +117,8 @@ def pretty_nl(name: str, args: list[str]) -> str:
     return '{}{}:{}{} = {}{}:{}{}'.format(*args)
   if name == 'eqratio30':
     return '({}{}:{}{}) * ({}{}:{}{}) * ({}{}:{}{}) = 1'.format(*args)
+  if name == 'eqratio40':
+    return '({}{}:{}{}) * ({}{}:{}{}) * ({}{}:{}{}) * ({}{}:{}{}) = 1'.format(*args)
   if name == 'eqratio3':
     a, b, c, d, o, o = args  # pylint: disable=redeclared-assigned-name
     return f'S {o} {a} {b} {o} {c} {d}'

@@ -380,7 +380,8 @@ def try_translate_constrained_to_construct(string: str, g: gh.Graph) -> str:
   """
   if string[-1] != ';':
     return 'ERROR: must end with ;'
-
+  if ':' not in string:
+    return 'ERROR: must contain :'
   head, prem_str = string.split(' : ')
   point = head.strip()
 

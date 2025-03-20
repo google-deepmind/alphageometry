@@ -481,7 +481,7 @@ class Graph:
           A = [a1, a2, d1, d2]
           B = [b1, b2, c1, c2]
 
-      print('before',[ag.name for ag in A],[ag.name for ag in B])
+      #print('before',[ag.name for ag in A],[ag.name for ag in B])
       A_ = []
       for x in A:
         for y in B:
@@ -492,7 +492,7 @@ class Graph:
       for x in A_:
         A.remove(x)
 
-      print('after',[ag.name for ag in A],[ag.name for ag in B])
+      #print('after',[ag.name for ag in A],[ag.name for ag in B])
       if len(A) == 0:
         continue
       elif len(A) == 1:
@@ -2321,9 +2321,22 @@ class Graph:
       return self._get_or_create_ratio_pro_l(l1, l2, l3, l4, deps)
   
   def _set_ratio_pro_equal(
-      self, lp1: Length_Pro, lp2: Length_Pro, lp3: Length_Pro, lp4: Length_Pro, dep=None
+      self, lp1: Length_Pro, lp2: Length_Pro, lp3: Length_Pro, lp4: Length_Pro, dep:EmptyDependency
   ) -> None:
-      deps = dep
+      l11, l12 = lp1._l
+      l21, l22 = lp2._l
+      l31, l32 = lp3._l
+      l41, l42 = lp4._l
+      a1, b1 = l11._obj.points
+      c1, d1 = l12._obj.points
+      a2, b2 = l21._obj.points
+      c2, d2 = l22._obj.points
+      a3, b3 = l31._obj.points
+      c3, d3 = l32._obj.points
+      a4, b4 = l41._obj.points
+      c4, d4 = l42._obj.points
+      deps = dep.populate('eqratio40', [a1, b1, a2, b2, c1, d1, c2, d2, a4, b4, a3, b3, c4, d4, c3, d3])
+      #deps = dep
       rp12, rp21, _ = self._get_or_create_ratio_pro_lp(lp1, lp2)
       rp34, rp43, _ = self._get_or_create_ratio_pro_lp(lp3, lp4)
       self.make_equal(rp12, rp34, deps=deps)
@@ -2851,7 +2864,7 @@ class Graph:
     _mnxy_, _ = self._get_or_create_length_pro(mn, xy, deps=None)
 
     for rat1, _, _ in gm.all_ratios(ab._val, cd._val):
-      for ratp2, _, _ in gm.all_ratios2(_pqzw_._val, _mnxy_._val):
+      for ratp2, _, _ in gm.all_ratios2(_pqzw_, _mnxy_):
         if self.is_equal(rat1, ratp2):
           return True
     return False

@@ -762,7 +762,7 @@ class Dependency(Construction):
     self.trace = None
 
   def _find(self, dep_hashed: tuple[str, ...]) -> Dependency:
-    self.why = [w for w in self.why if type(w) is not EmptyDependency]
+    #self.why = [w for w in self.why if type(w) is not EmptyDependency]
     for w in self.why:
       f = w._find(dep_hashed)
       if f:
@@ -1337,5 +1337,32 @@ def hashed_txt(name: str, args: list[str]) -> tuple[str, ...]:
     k, l = ratios2[2]
     
     return (name, a, b, c, d, e, f, g, h, i, j, k, l)
+  
+  if name in ['eqratio40']:
+    a, b, c, d, e, f, g, h, i, j, k, l, x, y, z, w = args
+    a, b = sorted([a, b])
+    c, d = sorted([c, d])
+    e, f = sorted([e, f])
+    g, h = sorted([g, h])
+    i, j = sorted([i, j])
+    k, l = sorted([k, l])
+    x, y = sorted([x, y])
+    z, w = sorted([z, w])
+    ratios1 = [(a, b),(e, f),(i, j),(x, y)]
+    ratios1.sort()
+    ratios2 = [(c, d),(g, h),(k, l),(z, w)]
+    ratios2.sort()
+    if ratios1 > ratios2:
+      ratios1, ratios2 = ratios2, ratios1
+    a, b = ratios1[0]
+    e, f = ratios1[1]
+    i, j = ratios1[2]
+    x, y = ratios1[3]
+    c, d = ratios2[0]
+    g, h = ratios2[1]
+    k, l = ratios2[2]
+    z, w = ratios2[3]
+    
+    return (name, a, b, c, d, e, f, g, h, i, j, k, l, x, y, z, w)
 
   raise ValueError(f'Not recognize {name} to hash.')

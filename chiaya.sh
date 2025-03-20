@@ -6,14 +6,14 @@ export PYTHONPATH=$PYTHONPATH:$MELIAD_PATH
 
 DDAR_ARGS=(
   --defs_file=$(pwd)/defs.txt \
-  --rules_file=$(pwd)/rules1.txt \
+  --rules_file=$(pwd)/rules.txt \
 );
 
-SIZE=8
+SIZE=4
 
-BATCH_SIZE=$SIZE
-BEAM_SIZE=$SIZE
-DEPTH=$SIZE
+BATCH_SIZE=16
+BEAM_SIZE=32
+DEPTH=2
 
 SEARCH_ARGS=(
   --beam_size=$BEAM_SIZE
@@ -41,7 +41,7 @@ INPUT_FILE=pros2.txt
 python -m alphageometry \
 --alsologtostderr \
 --problems_file=$(pwd)/$INPUT_FILE \
---problem_name=exercise20_2_1 \
+--problem_name=cmo23_5 \
 --mode=alphageometry \
 "${DDAR_ARGS[@]}" \
 "${SEARCH_ARGS[@]}" \

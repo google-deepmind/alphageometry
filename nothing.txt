@@ -44,3 +44,203 @@ cyclic A B C D, cyclic A B C E => cong A D A E
 005. (AF:FC) * (CB:BD) * (DE:EA) = 1 [08] & BC = BA [00] & DB = DC [02] & (DC:CB) * (EA:AD) * (BF:FE) = 1 [09] & CD:CB = 1_/2 [10] & FG:FA = 1_/2 [11] ⇒  FG:FA = FC:FA [12]
 006. FG:FA = FC:FA [12] & FA:CA = FA:CA [06] ⇒  FG = FC [13]
 007. FG = FC [13] & GA = GF [07] ⇒  AG = CF
+
+001. C,D,B are collinear [02] & DB = DC [03] ⇒  D is midpoint of CB [10]
+002. G,F,A are collinear [08] & GA = GF [09] ⇒  G is midpoint of FA [11]
+003. D is midpoint of CB [10] & G is midpoint of FA [11] ⇒  DC:CB = GA:AF [12]
+004. D,A,E are collinear [04] & BE ⟂ AD [05] ⇒  ∠DEB = ∠BEA [13]
+005. C,D,B are collinear [02] & BC ⟂ AB [01] ⇒  CD ⟂ AB [14]
+006. F,B,E are collinear [06] & BE ⟂ AD [05] ⇒  EF ⟂ DA [15]
+007. CD ⟂ AB [14] & EF ⟂ DA [15] ⇒  ∠(CD-EF) = ∠BAD [16]
+008. D,C,B are collinear [02] & D,A,E are collinear [04] & ∠(CD-EF) = ∠BAD [16] & E,F,B are collinear [06] ⇒  ∠DBE = ∠BAE [17]
+009. ∠DEB = ∠BEA [13] & ∠DBE = ∠BAE [17] (Similar Triangles)⇒  DE:BE = DB:BA [18]
+010. C,A,F are collinear [07] & E,F,B are collinear [06] & D,A,E are collinear [04] & C,D,B are collinear [02] ⇒  (DE:EB) * (CA:DA) * (FB:CF) = 1 [19]
+011. C,A,F are collinear [07] & E,F,B are collinear [06] & D,A,E are collinear [04] & C,D,B are collinear [02] ⇒  (AF:FC) * (CB:BD) * (DE:EA) = 1 [20]
+012. F,B,E are collinear [06] & D,A,E are collinear [04] & BE ⟂ AD [05] ⇒  FE ⟂ EA [21]
+013. FE ⟂ EA [21] & G is midpoint of FA [11] ⇒  FG = EG [22]
+014. FE ⟂ EA [21] & G is midpoint of FA [11] ⇒  AG = EG [23]
+015. DC:CB = GA:AF [12] & BC = BA [00] & GA = GF [09] & DE:BE = DB:BA [18] & DB = DC [03] & (DE:EB) * (CA:DA) * (FB:CF) = 1 [19] & (AF:FC) * (CB:BD) * (DE:EA) = 1 [20] & GE = GF [22] ⇒  CF:AF = GE:AF [24]
+016. CB = AB [00] ⇒  AF:CB = AF:CB [25]
+017. CF:AF = GE:AF [24] & AF:CB = AF:CB [25] ⇒  CF = GE [26]
+018. CF = GE [26] & AG = EG [23] ⇒  AG = CF
+
+
+cmo23_5
+a b c = triangle a b c; d = on_line d b c; e = on_pline e d a b, on_circle e b d; f = on_pline f d a c, on_circle f c d; g = circle g d e f; h = on_circle h o d, on_line h a d ? eqratio30 a e a f b g b e c f c g
+Traceback (most recent call last):
+  File "/environment/miniconda3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/environment/miniconda3/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 650, in <module>
+    app.run(main)
+  File "/home/featurize/work/alphageometry/lib/python3.10/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/home/featurize/work/alphageometry/lib/python3.10/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 637, in main
+    run_alphageometry(
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 553, in run_alphageometry
+    translations = [
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 554, in <listcomp>
+    try_translate_constrained_to_construct(o, g)
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 384, in try_translate_constrained_to_construct
+    head, prem_str = string.split(' : ')
+ValueError: not enough values to unpack (expected 2, got 1)
+
+001. C,F,A are collinear [06] & C,D,B are collinear [02] & E,A,D are collinear [04] & E,F,B are collinear [07] ⇒  (AF:FC) * (CB:BD) * (DE:EA) = 1 [10]
+002. C,F,A are collinear [06] & C,D,B are collinear [02] & E,A,D are collinear [04] & E,F,B are collinear [07] ⇒  (ED:EB) * (CA:AD) * (FB:CF) = 1 [11]
+003. E,A,D are collinear [04] & BE ⟂ AD [05] ⇒  ∠AEB = ∠BED [12]
+004. C,D,B are collinear [02] & E,A,D are collinear [04] & BE ⟂ AD [05] & BC ⟂ AB [01] ⇒  ∠DBA = ∠AEB [13]
+005. E,A,D are collinear [04] ⇒  ∠DAB = ∠EAB [14]
+006. ∠DBA = ∠AEB [13] & ∠DAB = ∠EAB [14] ⇒  ∠BDA = ∠ABE [15]
+007. C,D,B are collinear [02] & E,A,D are collinear [04] & ∠BDA = ∠ABE [15] ⇒  ∠ABE = ∠BDE [16]
+008. ∠AEB = ∠BED [12] & ∠ABE = ∠BDE [16] ⇒  BA:DB = BE:DE [17]
+009. DB = DC [03] (Distance chase)⇒  CD:CB = 1_/2 [18]
+010. GA = GF [09] (Distance chase)⇒  AG:AF = 1_/2 [19]
+011. (AF:FC) * (CB:BD) * (DE:EA) = 1 [10] & BC = BA [00] & DB = DC [03] & (ED:EB) * (CA:AD) * (FB:CF) = 1 [11] & BA:DB = BE:DE [17] & CD:CB = 1_/2 [18] & AG:AF = 1_/2 [19] & GA = GF [09] ⇒  AG:FA = CF:FA [20]
+012. AG:FA = CF:FA [20] & FA:CA = FA:CA [08] ⇒  AG = CF
+
+example2_8_1
+a b c = triangle a b c; d = midpoint d a c; e = on_line e b d; f = on_line f a e, on_line f b c; g = on_line g c e, on_line g a b; h = on_pline h f c g, on_line h b d; i = on_circle i e f, on_circle i f e; j = on_circle j e g, on_circle j g e ? cong h i h j
+example2_8_2
+a b c = triangle a b c; d = midpoint d a c; e = on_line e b d; f = on_line f a e, on_line f b c; g = on_line g c e, on_line g a b; h = on_pline h f c g, on_line h b d; i = on_circle i e f, on_circle i f e; j = on_circle j e g, on_circle j g e ? cong h i i j
+example2_7
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_line e a b, on_line e d c; f = on_line f a d, on_line f b c; p = on_circle p o a; r = on_line r p f, on_circle r o a; s = on_line s p e, on_circle s o a; t = on_line t a c, on_line t b d ? eqratio30 a s s d d c r c b r b a
+
+
+==========================
+ * From theorem premises:
+A B C D E F G H J K L M N O : Points
+C,D,B are collinear [00]
+BE = BD [01]
+ED ∥ AB [02]
+CF = CD [03]
+FD ∥ AC [04]
+GE = GD [05]
+GD = GF [06]
+D,H,A are collinear [07]
+GH = GD [08]
+JA = FC [09]
+J,E,A are collinear [10]
+KB = CH [11]
+K,E,B are collinear [12]
+LE = LJ [13]
+LJ = LF [14]
+ME = MK [15]
+MK = MH [16]
+LN = LF [17]
+F,N,A are collinear [18]
+MO = MH [19]
+H,O,B are collinear [20]
+
+ * Auxiliary Constructions:
+Q : Points
+D,Q,H are collinear [21]
+QH = QD [22]
+
+ * Proof steps:
+001. LE = LJ [13] & LJ = LF [14] & LN = LF [17] ⇒  F,J,E,N are concyclic [23]
+002. F,J,E,N are concyclic [23] & F,N,A are collinear [18] & J,E,A are collinear [10] ⇒  FA:JA = EA:NA [24]
+003. ME = MK [15] & MK = MH [16] & MO = MH [19] ⇒  H,E,O,K are concyclic [25]
+004. H,E,O,K are concyclic [25] & H,O,B are collinear [20] & K,E,B are collinear [12] ⇒  BH:BE = BK:BO [26]
+005. BH:BE = BK:BO [26] & BE = BD [01] & KB = CH [11] ⇒  HB:DB = CH:OB [27]
+006. GH = GD [08] & QH = QD [22] ⇒  HD ⟂ GQ [28]
+007. BE = BD [01] & GE = GD [05] ⇒  DE ⟂ BG [29]
+008. D,Q,H are collinear [21] & D,H,A are collinear [07] & HD ⟂ GQ [28] & DE ⟂ BG [29] & DE ∥ AB [02] ⇒  ∠GBA = ∠GQA [30]
+009. ∠GBA = ∠GQA [30] ⇒  A,Q,G,B are concyclic [31]
+010. CF = CD [03] & GD = GF [06] ⇒  DF ⟂ CG [32]
+011. DF ⟂ CG [32] & DF ∥ AC [04] & DE ⟂ BG [29] & DE ∥ AB [02] ⇒  ∠GBA = ∠GCA [33]
+012. ∠GBA = ∠GCA [33] ⇒  C,G,A,B are concyclic [34]
+013. A,Q,G,B are concyclic [31] & C,G,A,B are concyclic [34] ⇒  C,Q,A,B are concyclic [35]
+014. C,Q,A,B are concyclic [35] ⇒  ∠CBA = ∠CQA [36]
+015. C,Q,A,B are concyclic [35] ⇒  ∠CAQ = ∠CBQ [37]
+016. D,C,B are collinear [00] & D,Q,H are collinear [21] & D,H,A are collinear [07] & ∠CBA = ∠CQA [36] ⇒  ∠DBA = ∠CQD [38]
+017. C,D,B are collinear [00] & ∠CBA = ∠CQA [36] & D,Q,H are collinear [21] & D,H,A are collinear [07] ⇒  ∠DAB = ∠QCD [39]
+018. ∠DBA = ∠CQD [38] & ∠DAB = ∠QCD [39] (Similar Triangles)⇒  DB:AB = DQ:CQ [40]
+019. DQ:CQ = DB:AB [40] & HQ = DQ [22] & EB = DB [01] ⇒  QH:QC = BE:BA [41]
+020. BE = BD [01] ⇒  ∠BDE = ∠DEB [42]
+021. C,D,B are collinear [00] & K,E,B are collinear [12] & ∠BDE = ∠DEB [42] ⇒  ∠EDC = ∠KED [43]
+022. C,D,B are collinear [00] & D,A,H are collinear [07] & ∠CBA = ∠CQA [36] & D,Q,H are collinear [21] & AB ∥ DE [02] ⇒  ∠DCQ = ∠EDH [44]
+023. ∠EDC = ∠KED [43] & ∠DCQ = ∠EDH [44] ⇒  ∠(DE-CQ) = ∠(KE-DH) [45]
+024. D,Q,H are collinear [21] & D,H,A are collinear [07] & ∠(DE-CQ) = ∠(KE-DH) [45] & K,E,B are collinear [12] & DE ∥ AB [02] ⇒  ∠HQC = ∠EBA [46]
+025. QH:QC = BE:BA [41] & ∠HQC = ∠EBA [46] (Similar Triangles)⇒  HQ:HC = EB:EA [47]
+026. HQ:HC = EB:EA [47] & QH = QD [22] & BE = BD [01] ⇒  DQ:CH = DB:EA [48]
+027. D,Q,H are collinear [21] & D,H,A are collinear [07] & C,D,B are collinear [00] & ∠CAQ = ∠CBQ [37] ⇒  ∠DQB = ∠ACD [49]
+028. D,C,B are collinear [00] & ∠CAQ = ∠CBQ [37] & D,Q,H are collinear [21] & D,H,A are collinear [07] ⇒  ∠DBQ = ∠CAD [50]
+029. ∠DQB = ∠ACD [49] & ∠DBQ = ∠CAD [50] (Similar Triangles)⇒  QD:QB = CD:CA [51]
+030. QD:QB = CD:CA [51] & JA = FC [09] & CF = CD [03] & HQ = DQ [22] ⇒  QH:QB = CF:CA [52]
+031. CF = CD [03] ⇒  ∠CFD = ∠FDC [53]
+032. C,D,B are collinear [00] & D,A,H are collinear [07] & ∠CAQ = ∠CBQ [37] & D,Q,H are collinear [21] & AC ∥ DF [04] ⇒  ∠(CD-QB) = ∠FDH [54]
+033. ∠CDF = ∠DFC [53] & ∠(CD-QB) = ∠FDH [54] ⇒  ∠(CF-DH) = ∠(DF-QB) [55]
+034. D,Q,H are collinear [21] & D,H,A are collinear [07] & ∠(CF-DH) = ∠(DF-QB) [55] & DF ∥ AC [04] ⇒  ∠HQB = ∠FCA [56]
+035. QH:QB = CF:CA [52] & ∠HQB = ∠FCA [56] (Similar Triangles)⇒  HQ:HB = FC:FA [57]
+036. HQ:HB = FC:FA [57] & QH = QD [22] & JA = FC [09] ⇒  DQ:HB = JA:FA [58]
+037. JA = FC [09] & KB = CH [11] & FA:JA = EA:NA [24] & HB:DB = CH:OB [27] & DQ:CH = DB:EA [48] & DQ:HB = JA:FA [58] (Ratio chase)⇒  NA = OB
+==========================
+
+2_4
+
+
+ * From theorem premises:
+A B C D E F G H I : Points
+C,B,D are collinear [00]
+CA = DC [01]
+EC = ED [02]
+EA = EC [03]
+FB = FC [04]
+C,B,F are collinear [05]
+FG = FC [06]
+EG = EC [07]
+B,G,H are collinear [08]
+A,C,H are collinear [09]
+A,B,I are collinear [10]
+C,G,I are collinear [11]
+
+ * Auxiliary Constructions:
+J : Points
+J,C,H are collinear [12]
+JH = JC [13]
+
+ * Proof steps:
+001. FG = FC [06] & FB = FC [04] ⇒  FB = FG [14]
+002. FG = FC [06] & FB = FC [04] ⇒  F is the circumcenter of \Delta BGC [15]
+003. FB = FG [14] ⇒  ∠FBG = ∠BGF [16]
+004. EG = EC [07] & FG = FC [06] ⇒  GC ⟂ EF [17]
+005. EG = EC [07] & FG = FC [06] (SSS)⇒  ∠GEF = ∠FEC [18]
+006. F is the circumcenter of \Delta BGC [15] & C,B,F are collinear [05] ⇒  BG ⟂ CG [19]
+007. C,B,D are collinear [00] & ∠FBG = ∠BGF [16] & C,B,F are collinear [05] & GC ⟂ EF [17] & BG ⟂ CG [19] ⇒  ∠GBD = ∠GFE [20]
+008. EC = ED [02] & EA = EC [03] ⇒  EA = ED [21]
+009. CD = CA [01] & EA = ED [21] ⇒  AD ⟂ CE [22]
+010. CD = CA [01] & EA = ED [21] (SSS)⇒  ∠ACE = ∠ECD [23]
+011. C,B,F are collinear [05] & FB = FC [04] ⇒  F is midpoint of CB [24]
+012. J,C,H are collinear [12] & JH = JC [13] ⇒  J is midpoint of CH [25]
+013. F is midpoint of CB [24] & J is midpoint of CH [25] ⇒  FJ ∥ BH [26]
+014. BG ⟂ CG [19] & AD ⟂ CE [22] & FJ ∥ BH [26] & B,G,H are collinear [08] ⇒  ∠(CE-AD) = ∠(JF-CG) [27]
+015. EC = ED [02] & EG = EC [07] & EA = EC [03] ⇒  A,C,G,D are concyclic [28]
+016. A,C,G,D are concyclic [28] ⇒  ∠CAD = ∠CGD [29]
+017. A,C,G,D are concyclic [28] ⇒  ∠AGC = ∠ADC [30]
+018. CD = CA [01] ⇒  ∠CAD = ∠ADC [31]
+019. ∠CAD = ∠CGD [29] & ∠CAD = ∠ADC [31] & C,B,D are collinear [00] ⇒  ∠(AD-CB) = ∠CGD [32]
+020. ∠(CE-AD) = ∠(JF-CG) [27] & ∠(AD-CB) = ∠CGD [32] ⇒  ∠(CE-FJ) = ∠(BC-DG) [33]
+021. C,B,D are collinear [00] & ∠GEF = ∠FEC [18] & GC ⟂ EF [17] & BG ⟂ CG [19] & ∠(CE-FJ) = ∠(BC-DG) [33] & FJ ∥ BH [26] & B,G,H are collinear [08] ⇒  ∠GDB = ∠GEF [34]
+022. ∠GBD = ∠GFE [20] & ∠GDB = ∠GEF [34] (Similar Triangles)⇒  BG:FG = BD:FE [35]
+023. BG:FG = BD:FE [35] & FG = FC [06] & BF = CF [04] ⇒  EF:BD = BF:BG [36]
+024. J,C,H are collinear [12] & A,C,H are collinear [09] & C,B,F are collinear [05] & ∠ACE = ∠ECD [23] & C,B,D are collinear [00] ⇒  ∠JCE = ∠ECF [37]
+025. GC ⟂ EF [17] & BG ⟂ CG [19] & FJ ∥ BH [26] & B,G,H are collinear [08] ⇒  FJ ∥ FE [38]
+026. FJ ∥ FE [38] ⇒  J,E,F are collinear [39]
+027. ∠JCE = ∠ECF [37] & J,E,F are collinear [39] ⇒  JE:EF = JC:CF [40]
+028. B,G,H are collinear [08] & CG ⟂ BG [19] ⇒  CG ⟂ GH [41]
+029. CG ⟂ GH [41] & J is midpoint of CH [25] ⇒  CJ = GJ [42]
+030. JE:EF = JC:CF [40] & JG = JC [42] & BF = CF [04] ⇒  JE:EF = JG:BF [43]
+031. J,C,H are collinear [12] & A,C,H are collinear [09] & ∠AGC = ∠ADC [30] & C,B,D are collinear [00] & ∠CAD = ∠ADC [31] ⇒  ∠DAJ = ∠CGA [44]
+032. ∠(CE-AD) = ∠(JF-CG) [27] & ∠DAJ = ∠CGA [44] ⇒  ∠(CE-AJ) = ∠(JF-AG) [45]
+033. J,E,F are collinear [39] & A,C,H are collinear [09] & ∠(CE-AJ) = ∠(JF-AG) [45] & J,C,H are collinear [12] & FJ ∥ BH [26] & B,G,H are collinear [08] & ∠GEF = ∠FEC [18] & GC ⟂ EF [17] & BG ⟂ CG [19] ⇒  ∠GEJ = ∠GAH [46]
+034. C,B,F are collinear [05] & ∠FBG = ∠BGF [16] & FJ ∥ BH [26] & B,G,H are collinear [08] ⇒  ∠GFJ = ∠JFC [47]
+035. FG = FC [06] & ∠GFJ = ∠JFC [47] (SAS)⇒  ∠GJF = ∠FJC [48]
+036. J,E,F are collinear [39] & B,G,H are collinear [08] & A,C,H are collinear [09] & ∠GJF = ∠FJC [48] & J,C,H are collinear [12] & GC ⟂ EF [17] & BG ⟂ CG [19] ⇒  ∠GJE = ∠GHA [49]
+037. ∠GEJ = ∠GAH [46] & ∠GJE = ∠GHA [49] (Similar Triangles)⇒  JG:HG = JE:HA [50]
+038. JE:EF = JG:BF [43] & JG:GH = JE:AH [50] ⇒  BF:GH = EF:AH [51]
+039. EF:BD = BF:BG [36] & EF:AH = BF:GH [51] ⇒  HG:GB = AH:BD [52]
+040. CA = DC [01] & HG:GB = AH:BD [52] ⇒  (HG:GB) * (BD:DC) * (CA:AH) = 1 [53]
+041. B,G,H are collinear [08] & C,B,D are collinear [00] & A,C,H are collinear [09] & A,B,I are collinear [10] & C,G,I are collinear [11] & (HG:GB) * (BD:DC) * (CA:AH) = 1 [53] ⇒  I,H,D are collinear
