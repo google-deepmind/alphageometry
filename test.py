@@ -1,3 +1,5 @@
-a = "hello world!"
+a = [1,2,3]
+b = [2,3,4]
 
-print('!' in a)
+c = [x for x in a if x in b]
+print(c != [])

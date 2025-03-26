@@ -11,8 +11,8 @@ DDAR_ARGS=(
 
 SIZE=4
 
-BATCH_SIZE=16
-BEAM_SIZE=32
+BATCH_SIZE=8
+BEAM_SIZE=16
 DEPTH=2
 
 SEARCH_ARGS=(
@@ -41,7 +41,7 @@ INPUT_FILE=pros2.txt
 python -m alphageometry \
 --alsologtostderr \
 --problems_file=$(pwd)/$INPUT_FILE \
---problem_name=cmo23_5 \
+--problem_name=example1_11 \
 --mode=alphageometry \
 "${DDAR_ARGS[@]}" \
 "${SEARCH_ARGS[@]}" \
