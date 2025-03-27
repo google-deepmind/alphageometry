@@ -36,12 +36,13 @@ LM_ARGS=(
   --gin_param=Trainer.restore_state_variables=False
 );
 
-INPUT_FILE=pros2.txt
+INPUT_FILE=newpros.txt
+SERIES=Menelaus_a
 
 python -m alphageometry \
 --alsologtostderr \
 --problems_file=$(pwd)/$INPUT_FILE \
---problem_name=example1_11 \
+--problem_name=Menelaus_c32 \
 --mode=alphageometry \
 "${DDAR_ARGS[@]}" \
 "${SEARCH_ARGS[@]}" \
@@ -49,7 +50,7 @@ python -m alphageometry \
 --out_file="kirine.txt"\
 
 
-# for pro in $(cat $INPUT_FILE | grep "example6"); 
+# for pro in $(cat $INPUT_FILE | grep $SERIES); 
 # do
 #   echo "solve problem $pro$"
 #   python -m alphageometry \

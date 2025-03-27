@@ -215,6 +215,12 @@ class Graph:
         self.rtable.add_eq(ab, cd, dep)
       else:
         self.rtable.add_eqratio(ab, cd, mn, pq, dep)
+        _abpq_, _ = self._get_or_create_length_pro_l(ab, pq)
+        _cdmn_, _ = self._get_or_create_length_pro_l(cd, mn)
+        self.rtable.add_length_pro(_abpq_, ab, pq)
+        self.rtable.add_length_pro(_cdmn_, cd, mn)
+        self.rtable.add_eq(_abpq_, _cdmn_, dep)
+        
     
     if name == 'eqratio30': #TODO
       ab, cd, mn, pq, xy, zw = dep.algebra
@@ -658,6 +664,8 @@ class Graph:
       args = list(map(lambda x: g.get(x, lambda: int(x)), pr.goal.args))
       check = nm.check(pr.goal.name, args)
       print(check)
+      if not check:
+        return
 
     g.url = pr.url
     g.build_def = (pr, definitions)
@@ -2252,6 +2260,7 @@ class Graph:
         else: #l2.rep() == l1_ and l1.rep == l2_
           why1 = l2.why_equal([l1_], None) + l1_.why_rep()
           why2 = l1.why_equal([l2_], None) + l2_.why_rep()
+        return lp, why1 + why2
 
     l1, why1 = l1.rep_and_why()
     l2, why2 = l2.rep_and_why()
@@ -2318,7 +2327,10 @@ class Graph:
       """Get or create a new Ratio_Pro from two Length_Pro l1*l2."""
       l1, l3 = lp1._l
       l2, l4 = lp2._l
-      return self._get_or_create_ratio_pro_l(l1, l2, l3, l4, deps)
+      rp, rpo, _ = self._get_or_create_ratio_pro_l(l1, l2, l3, l4, deps)
+      self.connect(lp1, rp, deps)
+      self.connect(lp2, rp, deps)
+      return rp, rpo, _
   
   def _set_ratio_pro_equal(
       self, lp1: Length_Pro, lp2: Length_Pro, lp3: Length_Pro, lp4: Length_Pro, dep:EmptyDependency
@@ -2804,6 +2816,7 @@ class Graph:
 
   def check_eqratio30(self, points: list[Point]) -> bool:
     """Check if 12 points make an eqratio30 predicate."""
+
     a, b, c, d, m, n, p, q, x, y, z, w = points
 
     if {a, b} == {c, d}:
@@ -2860,13 +2873,58 @@ class Graph:
     if Multiset([ab.val, mn.val, xy.val]) == Multiset([cd.val, pq.val, zw.val]):
       return True
 
-    _pqzw_, _ = self._get_or_create_length_pro(pq, zw, deps=None)
+    _abmn_, _ = self._get_or_create_length_pro(ab, mn, deps=None)
+    _abxy_, _ = self._get_or_create_length_pro(ab, xy, deps=None)
     _mnxy_, _ = self._get_or_create_length_pro(mn, xy, deps=None)
+    _cdpq_, _ = self._get_or_create_length_pro(cd, pq, deps=None)
+    _cdzw_, _ = self._get_or_create_length_pro(cd, zw, deps=None)
+    _pqzw_, _ = self._get_or_create_length_pro(pq, zw, deps=None)
 
     for rat1, _, _ in gm.all_ratios(ab._val, cd._val):
       for ratp2, _, _ in gm.all_ratios2(_pqzw_, _mnxy_):
         if self.is_equal(rat1, ratp2):
-          return True
+          return True    
+
+    for rat1, _, _ in gm.all_ratios(ab._val, pq._val):
+      for ratp2, _, _ in gm.all_ratios2(_cdzw_, _mnxy_):
+        if self.is_equal(rat1, ratp2):
+          return True   
+
+    for rat1, _, _ in gm.all_ratios(ab._val, zw._val):
+      for ratp2, _, _ in gm.all_ratios2(_cdpq_, _mnxy_):
+        if self.is_equal(rat1, ratp2):
+          return True   
+
+    for rat1, _, _ in gm.all_ratios(mn._val, cd._val):
+      for ratp2, _, _ in gm.all_ratios2(_pqzw_, _abxy_):
+        if self.is_equal(rat1, ratp2):
+          return True    
+
+    for rat1, _, _ in gm.all_ratios(mn._val, pq._val):
+      for ratp2, _, _ in gm.all_ratios2(_cdzw_, _abxy_):
+        if self.is_equal(rat1, ratp2):
+          return True   
+
+    for rat1, _, _ in gm.all_ratios(mn._val, zw._val):
+      for ratp2, _, _ in gm.all_ratios2(_cdpq_, _abxy_):
+        if self.is_equal(rat1, ratp2):
+          return True   
+    
+    for rat1, _, _ in gm.all_ratios(xy._val, cd._val):
+      for ratp2, _, _ in gm.all_ratios2(_pqzw_, _abmn_):
+        if self.is_equal(rat1, ratp2):
+          return True    
+
+    for rat1, _, _ in gm.all_ratios(xy._val, pq._val):
+      for ratp2, _, _ in gm.all_ratios2(_cdzw_, _abmn_):
+        if self.is_equal(rat1, ratp2):
+          return True   
+
+    for rat1, _, _ in gm.all_ratios(xy._val, zw._val):
+      for ratp2, _, _ in gm.all_ratios2(_cdpq_, _abmn_):
+        if self.is_equal(rat1, ratp2):
+          return True   
+
     return False
 
   def add_simtri_check(

@@ -600,10 +600,19 @@ def all_ratios2(
   level = level or float('inf')
   lp1s = lp1.equivs_upto(level)
   lp2s = lp2.equivs_upto(level)
-
+  lp1sname = [lp.name for lp in lp1s]
+  lp2sname = [lp.name for lp in lp2s]
+  # print("lp1s:",[lp.name for lp in lp1s],lp1s)
+  # print("lp2s:",[lp.name for lp in lp2s],lp2s)
   for ratp in lp1.rep().neighbors(Ratio_Pro):
-    lp1_, lp2_ = ratp._l
-    if lp1_ in lp1s and lp2_ in lp2s:
+    # print("rprp:", ratp.name)
+    lp1_, lp2_ = ratp._lp
+    lp1_name = lp1_.name
+    lp2_name = lp2_.name
+    # print("lp1name:", lp1_.name,lp1_)
+    # print("lp2name:", lp2_.name,lp2_)
+    if lp1_name in lp1sname and lp2_name in lp2sname:
+      print("rpv:",ratp.val)
       yield ratp, lp1s, lp2s
 
 

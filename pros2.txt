@@ -60,3 +60,5 @@ example2_7
 a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_line e a b, on_line e d c; f = on_line f a d, on_line f b c; p = on_circle p o a; r = on_line r p f, on_circle r o a; s = on_line s p e, on_circle s o a; t = on_line t a c, on_line t b d ? eqratio30 a s s d d c r c b r b a
 example2_4
 a b c = triangle a b c; d = on_circle d c a, on_line d b c; o = circle o a c d; m = midpoint m b c; p = on_circle p o c, on_circle p m c; e = on_line e a c, on_line e b p; f = on_line f a b, on_line f c p ? coll d e f
+test_anglebi
+a b c = triangle a b c; i = incenter i a b c; d = on_line d a i, on_line d b c; e = on_tline e a a i, on_line e b c ? eqratio b d c d b e c e

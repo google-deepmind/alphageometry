@@ -483,15 +483,15 @@ class Table:
     for v1, v2 in perm2(list(self.v2e.keys())):  # pylint: disable=g-builtin-op
       if v1 == self.const or v2 == self.const:
         continue
-      v1s = [v1]
-      v2s = [v2]
-      if '*' in v1:
-        v1s = v1.split('*')
-      if '*' in v2:
-        v2s = v2.split('*')
-      vs = [v for v in v1s if v in v2s]
-      if vs != []:
-        continue
+      # v1s = [v1]
+      # v2s = [v2]
+      # if '*' in v1:
+      #   v1s = v1.split('*')
+      # if '*' in v2:
+      #   v2s = v2.split('*')
+      # vs = [v for v in v1s if v in v2s]
+      # if vs != []:
+      #   continue
       yield v1, v2
 
   def modulo(self, e: dict[str, float]) -> dict[str, float]:
@@ -551,21 +551,21 @@ class Table:
         print(f'{cnt}/{lenall}')
       if self.check_record_eq(v1, v2, v3, v4):
         continue
-      v1s = [v1]
-      v2s = [v2]
-      v3s = [v3]
-      v4s = [v4]
-      if '*' in v1:
-        v1s = v1.split('*')
-      if '*' in v2:
-        v2s = v2.split('*')
-      if '*' in v3:
-        v3s = v3.split('*')
-      if '*' in v3:
-        v4s = v4.split('*')
-      v14 = v1s + v4s
-      v23 = v2s + v3s
-      vs = [v for v in v14 if v in v23]
+      # v1s = [v1]
+      # v2s = [v2]
+      # v3s = [v3]
+      # v4s = [v4]
+      # if '*' in v1:
+      #   v1s = v1.split('*')
+      # if '*' in v2:
+      #   v2s = v2.split('*')
+      # if '*' in v3:
+      #   v3s = v3.split('*')
+      # if '*' in v3:
+      #   v4s = v4.split('*')
+      # v14 = v1s + v4s
+      # v23 = v2s + v3s
+      # vs = [v for v in v14 if v in v23]
       e12 = minus(self.v2e[v1], self.v2e[v2])
       e34 = minus(self.v2e[v3], self.v2e[v4])
 
@@ -573,8 +573,8 @@ class Table:
           minus({v1: 1, v2: -1}, {v3: 1, v4: -1}), minus(e12, e34)
       )
       self.record_eq(v1, v2, v3, v4)
-      if vs == []:
-        yield v1, v2, v3, v4, self.why(why_dict)
+      #if vs == []:
+      yield v1, v2, v3, v4, self.why(why_dict)
 
 
 class GeometricTable(Table):
