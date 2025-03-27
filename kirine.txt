@@ -1,26 +1,45 @@
 
 ==========================
  * From theorem premises:
-A B C D E F G : Points
-BC = BA [00]
-D,B,C are collinear [01]
-DB = DC [02]
-D,A,E are collinear [03]
-F,C,A are collinear [04]
-B,F,E are collinear [05]
-FA:CA = FA:CA [06]
-GA = GF [07]
+A B C D E F G H I J K L M N : Points
+D,A,B are collinear [00]
+C,E,A are collinear [01]
+E,D,F are collinear [02]
+FD = FE [03]
+E,D,G are collinear [04]
+H,F,G are collinear [05]
+FG = FH [06]
+I,A,B are collinear [07]
+C,J,A are collinear [08]
+J,I,G are collinear [09]
+K,A,B are collinear [10]
+H,K,L are collinear [11]
+C,L,A are collinear [12]
+E,D,M are collinear [13]
+K,J,M are collinear [14]
+N,E,D are collinear [15]
+L,N,I are collinear [16]
 
  * Auxiliary Constructions:
 : Points
 
 
  * Proof steps:
-001. F,C,A are collinear [04] & D,B,C are collinear [01] & D,A,E are collinear [03] & B,F,E are collinear [05] ⇒  (AF:FC) * (CB:BD) * (DE:EA) = 1 [08]
-002. F,C,A are collinear [04] & D,B,C are collinear [01] & D,A,E are collinear [03] & B,F,E are collinear [05] ⇒  (DC:CB) * (EA:AD) * (BF:FE) = 1 [09]
-003. DB = DC [02] (Distance chase)⇒  CD:CB = 1_/2 [10]
-004. GA = GF [07] (Distance chase)⇒  FG:FA = 1_/2 [11]
-005. (AF:FC) * (CB:BD) * (DE:EA) = 1 [08] & BC = BA [00] & DB = DC [02] & (DC:CB) * (EA:AD) * (BF:FE) = 1 [09] & CD:CB = 1_/2 [10] & FG:FA = 1_/2 [11] ⇒  FG:FA = FC:FA [12]
-006. FG:FA = FC:FA [12] & FA:CA = FA:CA [06] ⇒  FG = FC [13]
-007. FG = FC [13] & GA = GF [07] ⇒  AG = CF
+001. K,A,B are collinear [10] & D,A,B are collinear [00] ⇒  K,A,D are collinear [17]
+002. C,J,A are collinear [08] & C,E,A are collinear [01] ⇒  A,J,E are collinear [18]
+003. E,D,M are collinear [13] & D,K,A are collinear [17] & A,J,E are collinear [18] & K,J,M are collinear [14] ⇒  (EM:DM) * (JA:KA) * (KD:JE) = 1 [19]
+004. D,A,B are collinear [00] & I,A,B are collinear [07] ⇒  D,I,A are collinear [20]
+005. E,D,G are collinear [04] & D,I,A are collinear [20] & A,J,E are collinear [18] & J,I,G are collinear [09] ⇒  (EG:DG) * (JA:AI) * (DI:JE) = 1 [21]
+006. E,D,G are collinear [04] & D,I,A are collinear [20] & A,J,E are collinear [18] & J,I,G are collinear [09] ⇒  (JG:JI) * (AI:DA) * (ED:EG) = 1 [22]
+007. K,A,B are collinear [10] & K,A,D are collinear [17] & I,A,B are collinear [07] ⇒  I,K,D are collinear [23]
+008. E,D,G are collinear [04] & E,D,M are collinear [13] ⇒  D,M,G are collinear [24]
+009. J,I,G are collinear [09] & I,K,D are collinear [23] & D,M,G are collinear [24] & K,J,M are collinear [14] ⇒  (JG:JI) * (DM:KD) * (KI:MG) = 1 [25]
+010. H,F,G are collinear [05] & E,D,G are collinear [04] & E,D,F are collinear [02] ⇒  H,E,D are collinear [26]
+011. C,L,A are collinear [12] & C,E,A are collinear [01] ⇒  A,L,E are collinear [27]
+012. H,K,L are collinear [11] & D,K,A are collinear [17] & H,E,D are collinear [26] & A,L,E are collinear [27] ⇒  (HL:KL) * (KA:DA) * (ED:HE) = 1 [28]
+013. N,E,D are collinear [15] & H,F,G are collinear [05] & E,D,G are collinear [04] & E,D,F are collinear [02] ⇒  D,N,H are collinear [29]
+014. H,K,L are collinear [11] & I,K,D are collinear [23] & D,N,H are collinear [29] & L,N,I are collinear [16] ⇒  (HL:KL) * (ND:DI) * (KI:HN) = 1 [30]
+015. (EM:DM) * (JA:KA) * (KD:JE) = 1 [19] & (EG:DG) * (JA:AI) * (DI:JE) = 1 [21] & (JG:JI) * (DM:KD) * (KI:MG) = 1 [25] & (JG:JI) * (AI:DA) * (ED:EG) = 1 [22] & (HL:KL) * (KA:DA) * (ED:HE) = 1 [28] & (HL:KL) * (ND:DI) * (KI:HN) = 1 [30] (Ratio chase)⇒  (HE:DG) * (MG:EM) * (ND:HN) = 1 [31]
+016. FD = FE [03] & FG = FH [06] (Distance chase)⇒  DG = HE [32]
+017. (HE:DG) * (MG:EM) * (ND:HN) = 1 [31] & DG = HE [32] ⇒  MG:EM = HN:ND
 ==========================

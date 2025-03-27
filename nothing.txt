@@ -44,3 +44,662 @@ cyclic A B C D, cyclic A B C E => cong A D A E
 005. (AF:FC) * (CB:BD) * (DE:EA) = 1 [08] & BC = BA [00] & DB = DC [02] & (DC:CB) * (EA:AD) * (BF:FE) = 1 [09] & CD:CB = 1_/2 [10] & FG:FA = 1_/2 [11] ⇒  FG:FA = FC:FA [12]
 006. FG:FA = FC:FA [12] & FA:CA = FA:CA [06] ⇒  FG = FC [13]
 007. FG = FC [13] & GA = GF [07] ⇒  AG = CF
+
+001. C,D,B are collinear [02] & DB = DC [03] ⇒  D is midpoint of CB [10]
+002. G,F,A are collinear [08] & GA = GF [09] ⇒  G is midpoint of FA [11]
+003. D is midpoint of CB [10] & G is midpoint of FA [11] ⇒  DC:CB = GA:AF [12]
+004. D,A,E are collinear [04] & BE ⟂ AD [05] ⇒  ∠DEB = ∠BEA [13]
+005. C,D,B are collinear [02] & BC ⟂ AB [01] ⇒  CD ⟂ AB [14]
+006. F,B,E are collinear [06] & BE ⟂ AD [05] ⇒  EF ⟂ DA [15]
+007. CD ⟂ AB [14] & EF ⟂ DA [15] ⇒  ∠(CD-EF) = ∠BAD [16]
+008. D,C,B are collinear [02] & D,A,E are collinear [04] & ∠(CD-EF) = ∠BAD [16] & E,F,B are collinear [06] ⇒  ∠DBE = ∠BAE [17]
+009. ∠DEB = ∠BEA [13] & ∠DBE = ∠BAE [17] (Similar Triangles)⇒  DE:BE = DB:BA [18]
+010. C,A,F are collinear [07] & E,F,B are collinear [06] & D,A,E are collinear [04] & C,D,B are collinear [02] ⇒  (DE:EB) * (CA:DA) * (FB:CF) = 1 [19]
+011. C,A,F are collinear [07] & E,F,B are collinear [06] & D,A,E are collinear [04] & C,D,B are collinear [02] ⇒  (AF:FC) * (CB:BD) * (DE:EA) = 1 [20]
+012. F,B,E are collinear [06] & D,A,E are collinear [04] & BE ⟂ AD [05] ⇒  FE ⟂ EA [21]
+013. FE ⟂ EA [21] & G is midpoint of FA [11] ⇒  FG = EG [22]
+014. FE ⟂ EA [21] & G is midpoint of FA [11] ⇒  AG = EG [23]
+015. DC:CB = GA:AF [12] & BC = BA [00] & GA = GF [09] & DE:BE = DB:BA [18] & DB = DC [03] & (DE:EB) * (CA:DA) * (FB:CF) = 1 [19] & (AF:FC) * (CB:BD) * (DE:EA) = 1 [20] & GE = GF [22] ⇒  CF:AF = GE:AF [24]
+016. CB = AB [00] ⇒  AF:CB = AF:CB [25]
+017. CF:AF = GE:AF [24] & AF:CB = AF:CB [25] ⇒  CF = GE [26]
+018. CF = GE [26] & AG = EG [23] ⇒  AG = CF
+
+
+cmo23_5
+a b c = triangle a b c; d = on_line d b c; e = on_pline e d a b, on_circle e b d; f = on_pline f d a c, on_circle f c d; g = circle g d e f; h = on_circle h o d, on_line h a d ? eqratio30 a e a f b g b e c f c g
+Traceback (most recent call last):
+  File "/environment/miniconda3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/environment/miniconda3/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 650, in <module>
+    app.run(main)
+  File "/home/featurize/work/alphageometry/lib/python3.10/site-packages/absl/app.py", line 308, in run
+    _run_main(main, args)
+  File "/home/featurize/work/alphageometry/lib/python3.10/site-packages/absl/app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 637, in main
+    run_alphageometry(
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 553, in run_alphageometry
+    translations = [
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 554, in <listcomp>
+    try_translate_constrained_to_construct(o, g)
+  File "/home/featurize/work/alphageometry/alphageometry.py", line 384, in try_translate_constrained_to_construct
+    head, prem_str = string.split(' : ')
+ValueError: not enough values to unpack (expected 2, got 1)
+
+001. C,F,A are collinear [06] & C,D,B are collinear [02] & E,A,D are collinear [04] & E,F,B are collinear [07] ⇒  (AF:FC) * (CB:BD) * (DE:EA) = 1 [10]
+002. C,F,A are collinear [06] & C,D,B are collinear [02] & E,A,D are collinear [04] & E,F,B are collinear [07] ⇒  (ED:EB) * (CA:AD) * (FB:CF) = 1 [11]
+003. E,A,D are collinear [04] & BE ⟂ AD [05] ⇒  ∠AEB = ∠BED [12]
+004. C,D,B are collinear [02] & E,A,D are collinear [04] & BE ⟂ AD [05] & BC ⟂ AB [01] ⇒  ∠DBA = ∠AEB [13]
+005. E,A,D are collinear [04] ⇒  ∠DAB = ∠EAB [14]
+006. ∠DBA = ∠AEB [13] & ∠DAB = ∠EAB [14] ⇒  ∠BDA = ∠ABE [15]
+007. C,D,B are collinear [02] & E,A,D are collinear [04] & ∠BDA = ∠ABE [15] ⇒  ∠ABE = ∠BDE [16]
+008. ∠AEB = ∠BED [12] & ∠ABE = ∠BDE [16] ⇒  BA:DB = BE:DE [17]
+009. DB = DC [03] (Distance chase)⇒  CD:CB = 1_/2 [18]
+010. GA = GF [09] (Distance chase)⇒  AG:AF = 1_/2 [19]
+011. (AF:FC) * (CB:BD) * (DE:EA) = 1 [10] & BC = BA [00] & DB = DC [03] & (ED:EB) * (CA:AD) * (FB:CF) = 1 [11] & BA:DB = BE:DE [17] & CD:CB = 1_/2 [18] & AG:AF = 1_/2 [19] & GA = GF [09] ⇒  AG:FA = CF:FA [20]
+012. AG:FA = CF:FA [20] & FA:CA = FA:CA [08] ⇒  AG = CF
+
+example2_8_1
+a b c = triangle a b c; d = midpoint d a c; e = on_line e b d; f = on_line f a e, on_line f b c; g = on_line g c e, on_line g a b; h = on_pline h f c g, on_line h b d; i = on_circle i e f, on_circle i f e; j = on_circle j e g, on_circle j g e ? cong h i h j
+example2_8_2
+a b c = triangle a b c; d = midpoint d a c; e = on_line e b d; f = on_line f a e, on_line f b c; g = on_line g c e, on_line g a b; h = on_pline h f c g, on_line h b d; i = on_circle i e f, on_circle i f e; j = on_circle j e g, on_circle j g e ? cong h i i j
+example2_7
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_line e a b, on_line e d c; f = on_line f a d, on_line f b c; p = on_circle p o a; r = on_line r p f, on_circle r o a; s = on_line s p e, on_circle s o a; t = on_line t a c, on_line t b d ? eqratio30 a s s d d c r c b r b a
+
+
+==========================
+ * From theorem premises:
+A B C D E F G H J K L M N O : Points
+C,D,B are collinear [00]
+BE = BD [01]
+ED ∥ AB [02]
+CF = CD [03]
+FD ∥ AC [04]
+GE = GD [05]
+GD = GF [06]
+D,H,A are collinear [07]
+GH = GD [08]
+JA = FC [09]
+J,E,A are collinear [10]
+KB = CH [11]
+K,E,B are collinear [12]
+LE = LJ [13]
+LJ = LF [14]
+ME = MK [15]
+MK = MH [16]
+LN = LF [17]
+F,N,A are collinear [18]
+MO = MH [19]
+H,O,B are collinear [20]
+
+ * Auxiliary Constructions:
+Q : Points
+D,Q,H are collinear [21]
+QH = QD [22]
+
+ * Proof steps:
+001. LE = LJ [13] & LJ = LF [14] & LN = LF [17] ⇒  F,J,E,N are concyclic [23]
+002. F,J,E,N are concyclic [23] & F,N,A are collinear [18] & J,E,A are collinear [10] ⇒  FA:JA = EA:NA [24]
+003. ME = MK [15] & MK = MH [16] & MO = MH [19] ⇒  H,E,O,K are concyclic [25]
+004. H,E,O,K are concyclic [25] & H,O,B are collinear [20] & K,E,B are collinear [12] ⇒  BH:BE = BK:BO [26]
+005. BH:BE = BK:BO [26] & BE = BD [01] & KB = CH [11] ⇒  HB:DB = CH:OB [27]
+006. GH = GD [08] & QH = QD [22] ⇒  HD ⟂ GQ [28]
+007. BE = BD [01] & GE = GD [05] ⇒  DE ⟂ BG [29]
+008. D,Q,H are collinear [21] & D,H,A are collinear [07] & HD ⟂ GQ [28] & DE ⟂ BG [29] & DE ∥ AB [02] ⇒  ∠GBA = ∠GQA [30]
+009. ∠GBA = ∠GQA [30] ⇒  A,Q,G,B are concyclic [31]
+010. CF = CD [03] & GD = GF [06] ⇒  DF ⟂ CG [32]
+011. DF ⟂ CG [32] & DF ∥ AC [04] & DE ⟂ BG [29] & DE ∥ AB [02] ⇒  ∠GBA = ∠GCA [33]
+012. ∠GBA = ∠GCA [33] ⇒  C,G,A,B are concyclic [34]
+013. A,Q,G,B are concyclic [31] & C,G,A,B are concyclic [34] ⇒  C,Q,A,B are concyclic [35]
+014. C,Q,A,B are concyclic [35] ⇒  ∠CBA = ∠CQA [36]
+015. C,Q,A,B are concyclic [35] ⇒  ∠CAQ = ∠CBQ [37]
+016. D,C,B are collinear [00] & D,Q,H are collinear [21] & D,H,A are collinear [07] & ∠CBA = ∠CQA [36] ⇒  ∠DBA = ∠CQD [38]
+017. C,D,B are collinear [00] & ∠CBA = ∠CQA [36] & D,Q,H are collinear [21] & D,H,A are collinear [07] ⇒  ∠DAB = ∠QCD [39]
+018. ∠DBA = ∠CQD [38] & ∠DAB = ∠QCD [39] (Similar Triangles)⇒  DB:AB = DQ:CQ [40]
+019. DQ:CQ = DB:AB [40] & HQ = DQ [22] & EB = DB [01] ⇒  QH:QC = BE:BA [41]
+020. BE = BD [01] ⇒  ∠BDE = ∠DEB [42]
+021. C,D,B are collinear [00] & K,E,B are collinear [12] & ∠BDE = ∠DEB [42] ⇒  ∠EDC = ∠KED [43]
+022. C,D,B are collinear [00] & D,A,H are collinear [07] & ∠CBA = ∠CQA [36] & D,Q,H are collinear [21] & AB ∥ DE [02] ⇒  ∠DCQ = ∠EDH [44]
+023. ∠EDC = ∠KED [43] & ∠DCQ = ∠EDH [44] ⇒  ∠(DE-CQ) = ∠(KE-DH) [45]
+024. D,Q,H are collinear [21] & D,H,A are collinear [07] & ∠(DE-CQ) = ∠(KE-DH) [45] & K,E,B are collinear [12] & DE ∥ AB [02] ⇒  ∠HQC = ∠EBA [46]
+025. QH:QC = BE:BA [41] & ∠HQC = ∠EBA [46] (Similar Triangles)⇒  HQ:HC = EB:EA [47]
+026. HQ:HC = EB:EA [47] & QH = QD [22] & BE = BD [01] ⇒  DQ:CH = DB:EA [48]
+027. D,Q,H are collinear [21] & D,H,A are collinear [07] & C,D,B are collinear [00] & ∠CAQ = ∠CBQ [37] ⇒  ∠DQB = ∠ACD [49]
+028. D,C,B are collinear [00] & ∠CAQ = ∠CBQ [37] & D,Q,H are collinear [21] & D,H,A are collinear [07] ⇒  ∠DBQ = ∠CAD [50]
+029. ∠DQB = ∠ACD [49] & ∠DBQ = ∠CAD [50] (Similar Triangles)⇒  QD:QB = CD:CA [51]
+030. QD:QB = CD:CA [51] & JA = FC [09] & CF = CD [03] & HQ = DQ [22] ⇒  QH:QB = CF:CA [52]
+031. CF = CD [03] ⇒  ∠CFD = ∠FDC [53]
+032. C,D,B are collinear [00] & D,A,H are collinear [07] & ∠CAQ = ∠CBQ [37] & D,Q,H are collinear [21] & AC ∥ DF [04] ⇒  ∠(CD-QB) = ∠FDH [54]
+033. ∠CDF = ∠DFC [53] & ∠(CD-QB) = ∠FDH [54] ⇒  ∠(CF-DH) = ∠(DF-QB) [55]
+034. D,Q,H are collinear [21] & D,H,A are collinear [07] & ∠(CF-DH) = ∠(DF-QB) [55] & DF ∥ AC [04] ⇒  ∠HQB = ∠FCA [56]
+035. QH:QB = CF:CA [52] & ∠HQB = ∠FCA [56] (Similar Triangles)⇒  HQ:HB = FC:FA [57]
+036. HQ:HB = FC:FA [57] & QH = QD [22] & JA = FC [09] ⇒  DQ:HB = JA:FA [58]
+037. JA = FC [09] & KB = CH [11] & FA:JA = EA:NA [24] & HB:DB = CH:OB [27] & DQ:CH = DB:EA [48] & DQ:HB = JA:FA [58] (Ratio chase)⇒  NA = OB
+==========================
+
+2_4
+
+
+ * From theorem premises:
+A B C D E F G H I : Points
+C,B,D are collinear [00]
+CA = DC [01]
+EC = ED [02]
+EA = EC [03]
+FB = FC [04]
+C,B,F are collinear [05]
+FG = FC [06]
+EG = EC [07]
+B,G,H are collinear [08]
+A,C,H are collinear [09]
+A,B,I are collinear [10]
+C,G,I are collinear [11]
+
+ * Auxiliary Constructions:
+J : Points
+J,C,H are collinear [12]
+JH = JC [13]
+
+ * Proof steps:
+001. FG = FC [06] & FB = FC [04] ⇒  FB = FG [14]
+002. FG = FC [06] & FB = FC [04] ⇒  F is the circumcenter of \Delta BGC [15]
+003. FB = FG [14] ⇒  ∠FBG = ∠BGF [16]
+004. EG = EC [07] & FG = FC [06] ⇒  GC ⟂ EF [17]
+005. EG = EC [07] & FG = FC [06] (SSS)⇒  ∠GEF = ∠FEC [18]
+006. F is the circumcenter of \Delta BGC [15] & C,B,F are collinear [05] ⇒  BG ⟂ CG [19]
+007. C,B,D are collinear [00] & ∠FBG = ∠BGF [16] & C,B,F are collinear [05] & GC ⟂ EF [17] & BG ⟂ CG [19] ⇒  ∠GBD = ∠GFE [20]
+008. EC = ED [02] & EA = EC [03] ⇒  EA = ED [21]
+009. CD = CA [01] & EA = ED [21] ⇒  AD ⟂ CE [22]
+010. CD = CA [01] & EA = ED [21] (SSS)⇒  ∠ACE = ∠ECD [23]
+011. C,B,F are collinear [05] & FB = FC [04] ⇒  F is midpoint of CB [24]
+012. J,C,H are collinear [12] & JH = JC [13] ⇒  J is midpoint of CH [25]
+013. F is midpoint of CB [24] & J is midpoint of CH [25] ⇒  FJ ∥ BH [26]
+014. BG ⟂ CG [19] & AD ⟂ CE [22] & FJ ∥ BH [26] & B,G,H are collinear [08] ⇒  ∠(CE-AD) = ∠(JF-CG) [27]
+015. EC = ED [02] & EG = EC [07] & EA = EC [03] ⇒  A,C,G,D are concyclic [28]
+016. A,C,G,D are concyclic [28] ⇒  ∠CAD = ∠CGD [29]
+017. A,C,G,D are concyclic [28] ⇒  ∠AGC = ∠ADC [30]
+018. CD = CA [01] ⇒  ∠CAD = ∠ADC [31]
+019. ∠CAD = ∠CGD [29] & ∠CAD = ∠ADC [31] & C,B,D are collinear [00] ⇒  ∠(AD-CB) = ∠CGD [32]
+020. ∠(CE-AD) = ∠(JF-CG) [27] & ∠(AD-CB) = ∠CGD [32] ⇒  ∠(CE-FJ) = ∠(BC-DG) [33]
+021. C,B,D are collinear [00] & ∠GEF = ∠FEC [18] & GC ⟂ EF [17] & BG ⟂ CG [19] & ∠(CE-FJ) = ∠(BC-DG) [33] & FJ ∥ BH [26] & B,G,H are collinear [08] ⇒  ∠GDB = ∠GEF [34]
+022. ∠GBD = ∠GFE [20] & ∠GDB = ∠GEF [34] (Similar Triangles)⇒  BG:FG = BD:FE [35]
+023. BG:FG = BD:FE [35] & FG = FC [06] & BF = CF [04] ⇒  EF:BD = BF:BG [36]
+024. J,C,H are collinear [12] & A,C,H are collinear [09] & C,B,F are collinear [05] & ∠ACE = ∠ECD [23] & C,B,D are collinear [00] ⇒  ∠JCE = ∠ECF [37]
+025. GC ⟂ EF [17] & BG ⟂ CG [19] & FJ ∥ BH [26] & B,G,H are collinear [08] ⇒  FJ ∥ FE [38]
+026. FJ ∥ FE [38] ⇒  J,E,F are collinear [39]
+027. ∠JCE = ∠ECF [37] & J,E,F are collinear [39] ⇒  JE:EF = JC:CF [40]
+028. B,G,H are collinear [08] & CG ⟂ BG [19] ⇒  CG ⟂ GH [41]
+029. CG ⟂ GH [41] & J is midpoint of CH [25] ⇒  CJ = GJ [42]
+030. JE:EF = JC:CF [40] & JG = JC [42] & BF = CF [04] ⇒  JE:EF = JG:BF [43]
+031. J,C,H are collinear [12] & A,C,H are collinear [09] & ∠AGC = ∠ADC [30] & C,B,D are collinear [00] & ∠CAD = ∠ADC [31] ⇒  ∠DAJ = ∠CGA [44]
+032. ∠(CE-AD) = ∠(JF-CG) [27] & ∠DAJ = ∠CGA [44] ⇒  ∠(CE-AJ) = ∠(JF-AG) [45]
+033. J,E,F are collinear [39] & A,C,H are collinear [09] & ∠(CE-AJ) = ∠(JF-AG) [45] & J,C,H are collinear [12] & FJ ∥ BH [26] & B,G,H are collinear [08] & ∠GEF = ∠FEC [18] & GC ⟂ EF [17] & BG ⟂ CG [19] ⇒  ∠GEJ = ∠GAH [46]
+034. C,B,F are collinear [05] & ∠FBG = ∠BGF [16] & FJ ∥ BH [26] & B,G,H are collinear [08] ⇒  ∠GFJ = ∠JFC [47]
+035. FG = FC [06] & ∠GFJ = ∠JFC [47] (SAS)⇒  ∠GJF = ∠FJC [48]
+036. J,E,F are collinear [39] & B,G,H are collinear [08] & A,C,H are collinear [09] & ∠GJF = ∠FJC [48] & J,C,H are collinear [12] & GC ⟂ EF [17] & BG ⟂ CG [19] ⇒  ∠GJE = ∠GHA [49]
+037. ∠GEJ = ∠GAH [46] & ∠GJE = ∠GHA [49] (Similar Triangles)⇒  JG:HG = JE:HA [50]
+038. JE:EF = JG:BF [43] & JG:GH = JE:AH [50] ⇒  BF:GH = EF:AH [51]
+039. EF:BD = BF:BG [36] & EF:AH = BF:GH [51] ⇒  HG:GB = AH:BD [52]
+040. CA = DC [01] & HG:GB = AH:BD [52] ⇒  (HG:GB) * (BD:DC) * (CA:AH) = 1 [53]
+041. B,G,H are collinear [08] & C,B,D are collinear [00] & A,C,H are collinear [09] & A,B,I are collinear [10] & C,G,I are collinear [11] & (HG:GB) * (BD:DC) * (CA:AH) = 1 [53] ⇒  I,H,D are collinear
+
+True
+len1 0
+len2 2
+len1 2
+len2 2
+len1 0
+len2 0
+len1 4
+len2 12
+len1 0
+len2 2
+hello from 1
+len1 2
+len2 2
+len1 4
+len2 2
+len1 6
+len2 2
+len1 8
+len2 2
+len1 10
+len2 2
+len1 12
+len2 2
+len1 14
+len2 2
+len1 16
+len2 2
+len1 18
+len2 2
+len1 20
+len2 2
+len1 20
+len2 2
+len1 22
+len2 2
+len1 22
+len2 2
+len1 24
+len2 2
+len1 26
+len2 2
+len1 28
+len2 2
+len1 0
+len2 0
+len1 12
+len2 12
+len1 30
+len2 36296
+1000/36296
+2000/36296
+3000/36296
+4000/36296
+5000/36296
+6000/36296
+7000/36296
+8000/36296
+9000/36296
+10000/36296
+11000/36296
+12000/36296
+13000/36296
+14000/36296
+15000/36296
+16000/36296
+17000/36296
+18000/36296
+19000/36296
+20000/36296
+21000/36296
+22000/36296
+23000/36296
+24000/36296
+25000/36296
+26000/36296
+27000/36296
+28000/36296
+29000/36296
+30000/36296
+31000/36296
+32000/36296
+33000/36296
+34000/36296
+35000/36296
+36000/36296
+1000/3438
+2000/3438
+3000/3438
+yamero
+hello from 2
+len1 0
+len2 0
+len1 12
+len2 12
+len1 36296
+len2 156642
+1000/156642
+2000/156642
+3000/156642
+4000/156642
+5000/156642
+6000/156642
+7000/156642
+8000/156642
+9000/156642
+10000/156642
+11000/156642
+12000/156642
+13000/156642
+14000/156642
+15000/156642
+16000/156642
+17000/156642
+18000/156642
+19000/156642
+20000/156642
+21000/156642
+22000/156642
+23000/156642
+24000/156642
+25000/156642
+26000/156642
+27000/156642
+28000/156642
+29000/156642
+30000/156642
+31000/156642
+32000/156642
+33000/156642
+34000/156642
+35000/156642
+36000/156642
+37000/156642
+38000/156642
+39000/156642
+40000/156642
+41000/156642
+42000/156642
+43000/156642
+44000/156642
+45000/156642
+46000/156642
+47000/156642
+48000/156642
+49000/156642
+50000/156642
+51000/156642
+52000/156642
+53000/156642
+54000/156642
+55000/156642
+56000/156642
+57000/156642
+58000/156642
+59000/156642
+60000/156642
+61000/156642
+62000/156642
+63000/156642
+64000/156642
+65000/156642
+66000/156642
+67000/156642
+68000/156642
+69000/156642
+70000/156642
+71000/156642
+72000/156642
+73000/156642
+74000/156642
+75000/156642
+76000/156642
+77000/156642
+78000/156642
+79000/156642
+80000/156642
+81000/156642
+82000/156642
+83000/156642
+84000/156642
+85000/156642
+86000/156642
+87000/156642
+88000/156642
+89000/156642
+90000/156642
+91000/156642
+92000/156642
+93000/156642
+94000/156642
+95000/156642
+96000/156642
+97000/156642
+98000/156642
+99000/156642
+100000/156642
+101000/156642
+102000/156642
+103000/156642
+104000/156642
+105000/156642
+106000/156642
+107000/156642
+108000/156642
+109000/156642
+110000/156642
+111000/156642
+112000/156642
+113000/156642
+114000/156642
+115000/156642
+116000/156642
+117000/156642
+118000/156642
+119000/156642
+120000/156642
+121000/156642
+122000/156642
+123000/156642
+124000/156642
+125000/156642
+126000/156642
+127000/156642
+128000/156642
+129000/156642
+130000/156642
+131000/156642
+132000/156642
+133000/156642
+134000/156642
+135000/156642
+136000/156642
+137000/156642
+138000/156642
+139000/156642
+140000/156642
+141000/156642
+142000/156642
+143000/156642
+144000/156642
+145000/156642
+146000/156642
+147000/156642
+148000/156642
+149000/156642
+150000/156642
+151000/156642
+152000/156642
+153000/156642
+154000/156642
+155000/156642
+156000/156642
+1000/7832
+2000/7832
+3000/7832
+4000/7832
+5000/7832
+6000/7832
+7000/7832
+yamero
+satori
+2 [226.20313000679016, 2725.939281463623]
+hello from 3
+len1 0
+len2 0
+len1 12
+len2 12
+len1 156642
+len2 165658
+1000/165658
+2000/165658
+3000/165658
+4000/165658
+5000/165658
+6000/165658
+7000/165658
+8000/165658
+9000/165658
+10000/165658
+11000/165658
+12000/165658
+13000/165658
+14000/165658
+15000/165658
+16000/165658
+17000/165658
+18000/165658
+19000/165658
+20000/165658
+21000/165658
+22000/165658
+23000/165658
+24000/165658
+25000/165658
+26000/165658
+27000/165658
+28000/165658
+29000/165658
+30000/165658
+31000/165658
+32000/165658
+33000/165658
+34000/165658
+35000/165658
+36000/165658
+37000/165658
+38000/165658
+39000/165658
+40000/165658
+41000/165658
+42000/165658
+43000/165658
+44000/165658
+45000/165658
+46000/165658
+47000/165658
+48000/165658
+49000/165658
+50000/165658
+51000/165658
+52000/165658
+53000/165658
+54000/165658
+55000/165658
+56000/165658
+57000/165658
+58000/165658
+59000/165658
+60000/165658
+61000/165658
+62000/165658
+63000/165658
+64000/165658
+65000/165658
+66000/165658
+67000/165658
+68000/165658
+69000/165658
+70000/165658
+71000/165658
+72000/165658
+73000/165658
+74000/165658
+75000/165658
+76000/165658
+77000/165658
+78000/165658
+79000/165658
+80000/165658
+81000/165658
+82000/165658
+83000/165658
+84000/165658
+85000/165658
+86000/165658
+87000/165658
+88000/165658
+89000/165658
+90000/165658
+91000/165658
+92000/165658
+93000/165658
+94000/165658
+95000/165658
+96000/165658
+97000/165658
+98000/165658
+99000/165658
+100000/165658
+101000/165658
+102000/165658
+103000/165658
+104000/165658
+105000/165658
+106000/165658
+107000/165658
+108000/165658
+109000/165658
+110000/165658
+111000/165658
+112000/165658
+113000/165658
+114000/165658
+115000/165658
+116000/165658
+117000/165658
+118000/165658
+119000/165658
+120000/165658
+121000/165658
+122000/165658
+123000/165658
+124000/165658
+125000/165658
+126000/165658
+127000/165658
+128000/165658
+129000/165658
+130000/165658
+131000/165658
+132000/165658
+133000/165658
+134000/165658
+135000/165658
+136000/165658
+137000/165658
+138000/165658
+139000/165658
+140000/165658
+141000/165658
+142000/165658
+143000/165658
+144000/165658
+145000/165658
+146000/165658
+147000/165658
+148000/165658
+149000/165658
+150000/165658
+151000/165658
+152000/165658
+153000/165658
+154000/165658
+155000/165658
+156000/165658
+157000/165658
+158000/165658
+159000/165658
+160000/165658
+161000/165658
+162000/165658
+163000/165658
+164000/165658
+165000/165658
+yamero
+satori
+3 [226.20313000679016, 2725.939281463623, 4785.815370321274]
+hello from 4
+len1 165658
+len2 2
+len1 165656
+len2 2
+len1 0
+len2 0
+len1 12
+len2 12
+len1 165654
+len2 130900
+1000/130900
+2000/130900
+3000/130900
+4000/130900
+5000/130900
+6000/130900
+7000/130900
+8000/130900
+9000/130900

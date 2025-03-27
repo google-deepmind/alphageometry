@@ -1,6 +1,5 @@
-from multiset import Multiset
+a = [1,2,3]
+b = [2,3,4]
 
-A = Multiset([1,2,2,3])
-B = Multiset([2,3,4,5])
-
-print(A,B)
+c = [x for x in a if x in b]
+print(c != [])

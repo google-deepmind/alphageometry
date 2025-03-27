@@ -808,6 +808,16 @@ def check_eqratio(points: list[Point]) -> bool:
   gh = g.distance(h)
   return close_enough(ab * gh, cd * ef)
 
+def check_eqratio30(points: list[Point]) -> bool:
+  a, b, c, d, e, f, g, h, x, y, z, w = points
+  ab = a.distance(b)
+  cd = c.distance(d)
+  ef = e.distance(f)
+  gh = g.distance(h)
+  xy = x.distance(y)
+  zw = z.distance(w)
+  return close_enough(ab * ef * xy, cd * gh * zw)
+
 
 def check_cong(points: list[Point]) -> bool:
   a, b, c, d = points

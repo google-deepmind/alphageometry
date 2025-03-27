@@ -47,4 +47,16 @@ a b c = triangle a b c; d = midpoint d b c; e = on_line e c a; f = on_line f a b
 exercise20_2
 a b = segment a b; c = on_tline c b a b, on_circle c b a; d = midpoint d b c; e = foot e b a d; f = on_line f b e, on_line f a c; g = midpoint g a f ? cong a g c f
 example1_11
-a b c = triangle a b c; d = on_line d a b; e = on_line e a c; f = midpoint f d e; g = on_line g d e; h = mirror h f g; i = on_line i a b; j = on_line j g i, on_line j a c; k = on_line k a b; l = on_line l k h, on_line l a c; m = on_line m j k, on_line m d e; n = on_line n i l, on_line n d e ? cong f m f n
+a b c = triangle a b c; d = on_line d a b; e = on_line e a c; f = midpoint f d e; g = on_line g d e; h = mirror h g f; i = on_line i a b; j = on_line j g i, on_line j a c; k = on_line k a b; l = on_line l k h, on_line l a c; m = on_line m j k, on_line m d e; n = on_line n i l, on_line n d e ? cong f m f n
+cmo23_5
+a b c = triangle a b c; d = on_line d b c; e = on_pline e d a b, on_circle e b d; f = on_pline f d a c, on_circle f c d; g = circle g d e f; h = on_circle h g d, on_line h a d ? eqratio30 a e a f b h b e c f c h
+reduced_cmo_2023_p5_b
+a b c = triangle a b c; k = on_line k b c; p = on_pline p k a b, on_circle p b k; q = on_pline q k a c, on_circle q c k; y = circle p k q; t = on_circle t y k, on_line t a k; z1 = on_line z1 p q; d = on_line d a p, eqdistance d a q c; f = on_line f p b, eqdistance f b c t; y1 = circle p d q; y2 = circle p f t; e = on_circle e y1 q, on_line q a; g = on_circle g y2 t, on_line g t b ? cong a e b g
+example2_8_1
+a b c = triangle a b c; d = midpoint d a c; e = on_line e b d; f = on_line f a e, on_line f b c; g = on_line g c e, on_line g a b; h = on_pline h f c e, on_line h b d; i = on_circle i e f, on_circle i f e; j = on_circle j e g, on_circle j g e ? cong h i h j
+example2_8_2
+a b c = triangle a b c; d = midpoint d a c; e = on_line e b d; f = on_line f a e, on_line f b c; g = on_line g c e, on_line g a b; h = on_pline h f c e, on_line h b d; i = on_circle i e f, on_circle i f e; j = on_circle j e g, on_circle j g e ? cong h i i j
+example2_7
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_line e a b, on_line e d c; f = on_line f a d, on_line f b c; p = on_circle p o a; r = on_line r p f, on_circle r o a; s = on_line s p e, on_circle s o a; t = on_line t a c, on_line t b d ? eqratio30 a s s d d c r c b r b a
+example2_4
+a b c = triangle a b c; d = on_circle d c a, on_line d b c; o = circle o a c d; m = midpoint m b c; p = on_circle p o c, on_circle p m c; e = on_line e a c, on_line e b p; f = on_line f a b, on_line f c p ? coll d e f
