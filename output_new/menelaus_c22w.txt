@@ -1,4 +1,3 @@
-
 ==========================
  * From theorem premises:
 A B C D E F G H I : Points

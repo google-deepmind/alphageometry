@@ -734,7 +734,6 @@ I,D,F are collinear [09]
 008. IF:DF = AF:CF [11] & IF:DF = IA:CD [12] & AG:BG = AH:BD [14] & (CF:AF) * (AE:CB) * (BD:ED) = 1 [15] & (BG:AG) * (AE:CB) * (CD:ED) = 1 [16] (Ratio chase)⇒  IA = AH
 ==========================
 
-
 Menelaus_a2
 a b c = triangle a b c; o = circle o a b c; p = on_line p b c, on_tline p a o a; q = on_line q a c, on_tline q b o b; r = on_line r a b, on_tline r c o c ? coll p q r
 Menelaus_a7

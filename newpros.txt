@@ -1,7 +1,12 @@
 Menelaus_c32
 a b c = triangle a b c; i = incenter i a b c; d = on_line d a i, on_line d b c; e = on_line e b i, on_line e c a; f = on_tline f c c i, on_line f a b ? coll d e f
-Menelaus_a
-a b c = triangle a b c ? eqratio30 a b a c a c b c b c a b
 example2_1
 a b c = triangle a b c; d = foot d a b c; h = on_line h a d; e = on_line e a c, on_line e b h; f = on_line f a b, on_line f c h; p = on_pline p a b c, on_line p d f; q = on_line q p a, on_line q d e ? cong a p a q
-why_eqangle
+tangent
+a b c = triangle a b c; o = circle o a b c; p = on_tline p a o a, on_line p b c ? eqratio30 a b a c a b a c p c p b
+Menelaus_a2
+a b c = triangle a b c; o = circle o a b c; p = on_line p b c, on_tline p a o a; q = on_line q a c, on_tline q b o b; r = on_line r a b, on_tline r c o c ? coll p q r
+Menelaus_c3
+a b = segment a b; c = on_tline c b a b, on_circle c b a; d = midpoint d b c; e = foot e b a d; f = on_line f b e, on_line f a c; g = midpoint g a f ? cong a g c f
+Menelaus_c22
+a b c = triangle a b c; d = on_line d b c; f = on_line f a c; e = mirror e f d; p = on_line p a d, on_line p b e; m = on_line m a b, on_line m d f; n = on_line n p c, on_line n d f ? eqratio d n f n d m e m

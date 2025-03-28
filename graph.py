@@ -652,10 +652,13 @@ class Graph:
         g.plevel = plevel
 
       except (nm.InvalidLineIntersectError, nm.InvalidQuadSolveError):
+        print("InvalidError")
         continue
       except DepCheckFailError:
+        print("CheckFailError")
         continue
       except (PointTooCloseError, PointTooFarError):
+        print("PointError")
         continue
 
       if not pr.goal:
@@ -2727,6 +2730,7 @@ class Graph:
     z, w = lzw._obj.points
 
     is_eq1 = self.is_equal(ab_cd, pqzw_mnxy)
+    #is_eq1 = self.is_equal(ab_cd, mnxy_pqzw)
     deps1 = None
     if deps:
       deps1 = deps.populate('eqratio30', [a, b, c, d, m, n, p, q, x, y, z, w])
@@ -2735,8 +2739,10 @@ class Graph:
       add += [deps1]
     self.cache_dep('eqratio30', [a, b, c, d, m, n, p, q, x, y, z, w], deps1)
     self.make_equal(ab_cd, pqzw_mnxy, deps=deps1)
+    #self.make_equal(ab_cd, mnxy_pqzw, deps=deps1)
 
     is_eq2 = self.is_equal(cd_ab, mnxy_pqzw)
+    #is_eq2 = self.is_equal(cd_ab, pqzw_mnxy)
     deps2 = None
     if deps:
       deps2 = deps.populate('eqratio30', [c, d, a, b, p, q, m, n, z, w, x, y])
@@ -2745,6 +2751,7 @@ class Graph:
       add += [deps2]
     self.cache_dep('eqratio30', [c, d, a, b, p, q, m, n, z, w, x, y], deps2)
     self.make_equal(cd_ab, mnxy_pqzw, deps=deps2)
+    #self.make_equal(cd_ab, pqzw_mnxy, deps=deps2)
     return add
 
   def add_eqratio30(
