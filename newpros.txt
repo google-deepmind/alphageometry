@@ -1,6 +1,7 @@
 Menelaus_c32
-a b c = triangle a b c; i = incenter i a b c; d = on_line d a i, on_line d b c; e = on_line e b i, on_line e c a; f = on_tline f c c i, on_line f a b ? eqratio30 d b d c e c e a c a c b
+a b c = triangle a b c; i = incenter i a b c; d = on_line d a i, on_line d b c; e = on_line e b i, on_line e c a; f = on_tline f c c i, on_line f a b ? coll d e f
 Menelaus_a
 a b c = triangle a b c ? eqratio30 a b a c a c b c b c a b
 example2_1
 a b c = triangle a b c; d = foot d a b c; h = on_line h a d; e = on_line e a c, on_line e b h; f = on_line f a b, on_line f c h; p = on_pline p a b c, on_line p d f; q = on_line q p a, on_line q d e ? cong a p a q
+why_eqangle

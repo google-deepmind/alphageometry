@@ -11,8 +11,8 @@ DDAR_ARGS=(
 
 SIZE=4
 
-BATCH_SIZE=8
-BEAM_SIZE=16
+BATCH_SIZE=2
+BEAM_SIZE=2
 DEPTH=2
 
 SEARCH_ARGS=(
@@ -42,7 +42,7 @@ SERIES=Menelaus_a
 python -m alphageometry \
 --alsologtostderr \
 --problems_file=$(pwd)/$INPUT_FILE \
---problem_name=Menelaus_c32 \
+--problem_name=example2_1 \
 --mode=alphageometry \
 "${DDAR_ARGS[@]}" \
 "${SEARCH_ARGS[@]}" \

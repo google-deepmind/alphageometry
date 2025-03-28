@@ -517,14 +517,14 @@ def why_eqratio(
 def why_eqratio30(
     l1: gm.Length,
     l2: gm.Length,
-    lp46: gm.Length_Pro,
     lp35: gm.Length_Pro,
+    lp46: gm.Length_Pro,
     level: int,
 ) -> list[Dependency]:
   """Why two ratios are equal, returns a Dependency objects."""
   all12 = list(gm.all_ratios(l1, l2, level))
   all43 = list(gm.all_ratios2(lp46, lp35, level))
-
+  print(all12,all43)
   min_why = None
   for rat12, l1s, l2s in all12:
     for ratp43, lp4s, lp3s in all43:
@@ -532,7 +532,7 @@ def why_eqratio30(
       if why0 is None:
         continue
       l1_, l2_ = rat12._l
-      lp46_, lp35_ = ratp43._l
+      lp46_, lp35_ = ratp43._lp
       why1 = gm.bfs_backtrack(l1, [l1_], l1s)
       why2 = gm.bfs_backtrack(l2, [l2_], l2s)
       why3 = gm.bfs_backtrack(lp35, [lp35_], lp3s)
@@ -546,7 +546,7 @@ def why_eqratio30(
 
   _, rat12, ratp43, why0, why1, why2, why3, why4 = min_why
   l1_, l2_ = rat12._l
-  lp46_, lp35_ = ratp43._l
+  lp46_, lp35_ = ratp43._lp
 
   if l1 == l1_ and l2 == l2_ and lp35 == lp35_ and lp46 == lp46_:
     return why0

@@ -556,10 +556,11 @@ class Ratio_Pro(Node):
 
   def set_lengths(self, lp13: Length_Pro, lp24: Length_Pro) -> None:
     self._lp = lp13, lp24
+   
 
   @property
   def muls(self) -> tuple[Length_Pro, Length_Pro]:
-    lp13, lp24 = self._ml
+    lp13, lp24 = self._lp
     if lp13 is None or lp24 is None:
       return lp13, lp24
     return lp13.rep(), lp24.rep()
@@ -600,19 +601,21 @@ def all_ratios2(
   level = level or float('inf')
   lp1s = lp1.equivs_upto(level)
   lp2s = lp2.equivs_upto(level)
-  lp1sname = [lp.name for lp in lp1s]
-  lp2sname = [lp.name for lp in lp2s]
-  # print("lp1s:",[lp.name for lp in lp1s],lp1s)
-  # print("lp2s:",[lp.name for lp in lp2s],lp2s)
-  for ratp in lp1.rep().neighbors(Ratio_Pro):
+  # lp1sname = [lp.name for lp in lp1s]
+  # lp2sname = [lp.name for lp in lp2s]
+  
+  # print("\nlp1s:",lp1sname,lp1s)
+  # print("lp2s:",lp2sname,lp2s)
+  for ratp in lp1.neighbors(Ratio_Pro,do_rep = False):
     # print("rprp:", ratp.name)
     lp1_, lp2_ = ratp._lp
-    lp1_name = lp1_.name
-    lp2_name = lp2_.name
-    # print("lp1name:", lp1_.name,lp1_)
-    # print("lp2name:", lp2_.name,lp2_)
-    if lp1_name in lp1sname and lp2_name in lp2sname:
-      print("rpv:",ratp.val)
+    # lp1_name = lp1_.name
+    # lp2_name = lp2_.name
+    # print("\nrpv:",ratp.name)
+    # print("lp1name:", lp1_name,lp1_)
+    # print("lp2name:", lp2_name,lp2_)
+    
+    if lp1_ in lp1s and lp2_ in lp2s:
       yield ratp, lp1s, lp2s
 
 

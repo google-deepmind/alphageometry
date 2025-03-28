@@ -103,6 +103,7 @@ def match_eqratio_eqratio_eqratio(
         # eqangle a b c d m n p q (eqratio)
         e, f = g.two_points_of_length(l2)
         r, u = g.two_points_of_length(l4)
+        #debugname([a, b, c, d, e, f, m, n, p, q, r, u])
         yield dict(zip('abcdefmnpqru', [a, b, c, d, e, f, m, n, p, q, r, u]))
 
 
@@ -977,7 +978,7 @@ def match_ceva(
         bes = be.neighbors(gm.Point, return_set=True)
         p = intersect1(ads, bes)
         if p is not None and g.check_coll([p, c, f]):
-          debugname([p, a, b, c, d, e, f])
+          #debugname([p, a, b, c, d, e, f])
           yield dict(zip('PABCDEF', [p, a, b, c, d, e, f]))
   tb = time.time()
   #print(tb-ta)
@@ -1848,7 +1849,8 @@ def bfs_one_level(
       hash_conclusion = pr.hashed(name, args)
       if hash_conclusion in g.cache:
         continue
-
+      if name == 'cyclic':
+        print(theorem.name,mp,args)
       add = g.add_piece(name, args, deps=deps)
       added += add
 

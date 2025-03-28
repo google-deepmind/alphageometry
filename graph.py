@@ -1163,12 +1163,17 @@ class Graph:
 
   def make_equal(self, x: gm.Node, y: gm.Node, deps: Dependency) -> None:
     """Make that two nodes x and y are equal, i.e. merge their value node."""
+    if {type(x),type(y)} == {Ratio,Ratio_Pro}:
+      pass
+      #print(x.name, y.name)
+
     if x.val is None:
       x, y = y, x
     self.connect_val(x, deps=None)
     self.connect_val(y, deps=None)
     vx = x._val
     vy = y._val
+    
 
     if vx == vy:
       return
@@ -1185,6 +1190,55 @@ class Graph:
       merges = [self.vhalfpi, vx, vy]
 
     self.merge(merges, deps)
+
+    if type(x) is Ratio and type(y) is Ratio:
+      return
+      assert x != y.opposite, f'{x.name},{y.name}'
+      x1, x2 = x._l
+      y1, y2 = y._l
+      for z in x.neighbors(Ratio_Pro, do_rep=False):
+        lp13, lp24 = z._lp
+        l1, l3 = lp13.lengths
+        l2, l4 = lp24.lengths
+        if self.is_equal(l3, x1):
+          l1, l3 = l3, l1
+        if self.is_equal(l4, x2):
+          l2, l4 = l4, l2
+        assert self.is_equal(l1, x1) and self.is_equal(l2, x2), f'{l1.name},{l2.name},{l3.name},{l4.name},{x1.name},{x2.name}'
+        # (x1 * l3) / (x2 * l4) -> (y1 * l3) / (y2 * l4)
+        if self.is_equal(l3, y2) and self.is_equal(l4, y1):
+          continue
+        #print(f'{l1.name},{l2.name},{l3.name},{l4.name},{z.name},{x.name},{y.name}')
+        if self.is_equal(l3, y2): #simplify
+          r, _, _ = self._get_or_create_ratio_l(y1, l4)
+          self.make_equal(z, r, deps)
+        elif self.is_equal(l4, y1): #simplify
+          r, _, _ = self._get_or_create_ratio_l(l3, y2)
+          self.make_equal(z, r, deps)
+        else:
+          rp, _, _ = self._get_or_create_ratio_pro_l(y1, y2, l3, l4)
+          self.make_equal(z, rp, deps)
+      for z in y.neighbors(Ratio_Pro, do_rep= False):
+        lp13, lp24 = z._lp
+        l1, l3 = lp13.lengths
+        l2, l4 = lp24.lengths
+        if self.is_equal(l3, y1):
+          l1, l3 = l3, l1
+        if self.is_equal(l4, y2):
+          l2, l4 = l4, l2
+        assert self.is_equal(l1, y1) and self.is_equal(l2, y2),f'{l1.name},{l2.name},{l3.name},{l4.name},{y1.name},{y2.name}'
+        if self.is_equal(l3, x2) and self.is_equal(l4, x1):
+          continue
+        #print(f'{l1.name},{l2.name},{l3.name},{l4.name},{z.name},{y.name},{x.name}')
+        if self.is_equal(l3, x2): #simplify
+          r, _, _ = self._get_or_create_ratio_l(x1, l4)
+          self.make_equal(z, r, deps)
+        elif self.is_equal(l4, x1): #simplify
+          r, _, _  = self._get_or_create_ratio_l(l3, x2)
+          self.make_equal(z, r, deps)
+        else:
+          rp, _, _  = self._get_or_create_ratio_pro_l(x1, x2, l3, l4)
+          self.make_equal(z, rp, deps)
 
   def merge_vals(self, vx: gm.Node, vy: gm.Node, deps: Dependency) -> None:
     if vx == vy:
@@ -1662,6 +1716,7 @@ class Graph:
     """Add a new cyclic predicate that 4 points are concyclic."""
     points = list(set(points))
     og_points = list(points)
+    print([p.name for p in points])
 
     all_circles = []
     for p1, p2, p3 in utils.comb3(points):
@@ -2216,7 +2271,7 @@ class Graph:
     return self._get_or_create_ratio_l(s1._val, s2._val, deps)
 
   def _get_or_create_ratio_l(
-      self, l1: Length, l2: Length, deps: Dependency
+      self, l1: Length, l2: Length, deps=None
   ) -> tuple[Ratio, Ratio, list[Dependency]]:
     """Get or create a new Ratio from two Lenghts l1 and l2."""
     for r in self.type2nodes[Ratio]:
@@ -2262,6 +2317,9 @@ class Graph:
           why2 = l1.why_equal([l2_], None) + l2_.why_rep()
         return lp, why1 + why2
 
+    newname = f'{l1.name}*{l2.name}'
+    for lp in self.type2nodes[Length_Pro]:
+      assert lp.name != newname, f'{newname},{len(self.type2nodes[Length_Pro])}'
     l1, why1 = l1.rep_and_why()
     l2, why2 = l2.rep_and_why()
     lp12 = self.new_node(Length_Pro, f'{l1.name}*{l2.name}')
@@ -2306,10 +2364,8 @@ class Graph:
     l2, why2 = l2.rep_and_why()
     l3, why3 = l3.rep_and_why()
     l4, why4 = l4.rep_and_why()
-    lp13 = self.new_node(Length_Pro, f'{l1.name}*{l3.name}')
-    lp24 = self.new_node(Length_Pro, f'{l2.name}*{l4.name}')
-    lp13.set_lengths(l1, l3)
-    lp24.set_lengths(l2, l4)
+    lp13, _ = self._get_or_create_length_pro_l(l1, l3)
+    lp24, _ = self._get_or_create_length_pro_l(l2, l4)
     rp1324 = self.new_node(Ratio_Pro, f'{lp13.name}/{lp24.name}')
     rp2413 = self.new_node(Ratio_Pro, f'{lp24.name}/{lp13.name}')
     self.connect(lp13, rp1324, deps)
@@ -2319,6 +2375,19 @@ class Graph:
     rp2413.set_lengths(lp24, lp13)
     rp1324.opposite = rp2413
     rp2413.opposite = rp1324
+    r12, r21, _ = self._get_or_create_ratio_l(l1, l2)
+    r14, r41, _ = self._get_or_create_ratio_l(l1, l4)
+    r32, r23, _ = self._get_or_create_ratio_l(l3, l2)
+    r34, r43, _ = self._get_or_create_ratio_l(l3, l4)
+    self.connect(r12, rp1324, deps)
+    self.connect(r14, rp1324, deps)
+    self.connect(r32, rp1324, deps)
+    self.connect(r34, rp1324, deps)
+    self.connect(r21, rp2413, deps)
+    self.connect(r41, rp2413, deps)
+    self.connect(r23, rp2413, deps)
+    self.connect(r43, rp2413, deps)
+
     return rp1324, rp2413, why1 + why2 + why3 + why4
   
   def _get_or_create_ratio_pro_lp(
@@ -2330,6 +2399,17 @@ class Graph:
       rp, rpo, _ = self._get_or_create_ratio_pro_l(l1, l2, l3, l4, deps)
       self.connect(lp1, rp, deps)
       self.connect(lp2, rp, deps)
+      return rp, rpo, _
+
+  def _get_or_create_ratio_pro_r(
+      self, r1: Ratio, r2: Ratio, deps=None
+  ) -> tuple[Ratio_Pro, Ratio_Pro, list[Dependency]]:
+      """Get or create a new Ratio_Pro from two Length_Pro l1*l2."""
+      l1, l2 = r1._l
+      l3, l4 = r2._l
+      rp, rpo, _ = self._get_or_create_ratio_pro_l(l1, l2, l3, l4, deps)
+      self.connect(r1, rp, deps)
+      self.connect(r2, rp, deps)
       return rp, rpo, _
   
   def _set_ratio_pro_equal(
@@ -2646,7 +2726,7 @@ class Graph:
     x, y = lxy._obj.points
     z, w = lzw._obj.points
 
-    is_eq1 = self.is_equal(ab_cd, mnxy_pqzw)
+    is_eq1 = self.is_equal(ab_cd, pqzw_mnxy)
     deps1 = None
     if deps:
       deps1 = deps.populate('eqratio30', [a, b, c, d, m, n, p, q, x, y, z, w])
@@ -2654,9 +2734,9 @@ class Graph:
     if not is_eq1:
       add += [deps1]
     self.cache_dep('eqratio30', [a, b, c, d, m, n, p, q, x, y, z, w], deps1)
-    self.make_equal(ab_cd, mnxy_pqzw, deps=deps1)
+    self.make_equal(ab_cd, pqzw_mnxy, deps=deps1)
 
-    is_eq2 = self.is_equal(cd_ab, pqzw_mnxy)
+    is_eq2 = self.is_equal(cd_ab, mnxy_pqzw)
     deps2 = None
     if deps:
       deps2 = deps.populate('eqratio30', [c, d, a, b, p, q, m, n, z, w, x, y])
@@ -2664,7 +2744,7 @@ class Graph:
     if not is_eq2:
       add += [deps2]
     self.cache_dep('eqratio30', [c, d, a, b, p, q, m, n, z, w, x, y], deps2)
-    self.make_equal(cd_ab, pqzw_mnxy, deps=deps2)
+    self.make_equal(cd_ab, mnxy_pqzw, deps=deps2)
     return add
 
   def add_eqratio30(
@@ -2813,6 +2893,11 @@ class Graph:
         if self.is_equal(rat1, rat2):
           return True
     return False
+
+  def all_equiv_ratio_or_pro(self, rp: Ratio_Pro) -> list[Union(Ratio, Ratio_Pro)]:
+    r2p = []
+    for rt in self.type2nodes[Ratio]:
+      return r2p
 
   def check_eqratio30(self, points: list[Point]) -> bool:
     """Check if 12 points make an eqratio30 predicate."""
