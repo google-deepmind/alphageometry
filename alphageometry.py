@@ -586,7 +586,7 @@ def run_alphageometry(
 
         # Update the constructive statement of the problem with the aux point:
         candidate_pstring = insert_aux_to_premise(pstring, translation)
-
+        print(candidate_pstring)
         logging.info('Solving: "%s"', candidate_pstring)
         p_new = pr.Problem.from_txt(candidate_pstring)
 

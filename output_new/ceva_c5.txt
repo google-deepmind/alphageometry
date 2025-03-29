@@ -1,0 +1,33 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G : Points
+C,D,B are collinear [00]
+∠DAB = ∠CAD [01]
+E,D,A are collinear [02]
+BE ⟂ AD [03]
+C,B,F are collinear [04]
+FB = FC [05]
+G,A,F are collinear [06]
+G,E,B are collinear [07]
+
+ * Auxiliary Constructions:
+H : Points
+B,H,A are collinear [08]
+HB = HA [09]
+
+ * Proof steps:
+001. C,B,F are collinear [04] & C,D,B are collinear [00] ⇒  D,F,B are collinear [10]
+002. E,D,A are collinear [02] & AD ⟂ BE [03] ⇒  AE ⟂ EB [11]
+003. B,H,A are collinear [08] & HB = HA [09] ⇒  H is midpoint of BA [12]
+004. AE ⟂ EB [11] & H is midpoint of BA [12] ⇒  AH = EH [13]
+005. AH = EH [13] ⇒  ∠HAE = ∠AEH [14]
+006. C,B,F are collinear [04] & FB = FC [05] ⇒  F is midpoint of BC [15]
+007. H is midpoint of BA [12] & F is midpoint of BC [15] ⇒  HF ∥ AC [16]
+008. E,D,A are collinear [02] & ∠HAE = ∠AEH [14] & B,H,A are collinear [08] & ∠DAB = ∠CAD [01] & AC ∥ FH [16] ⇒  ∠(HF-ED) = ∠HED [17]
+009. ∠(HF-ED) = ∠HED [17] ⇒  HF ∥ EH [18]
+010. FH ∥ EH [18] ⇒  E,H,F are collinear [19]
+011. G,A,F are collinear [06] & B,H,A are collinear [08] & D,F,B are collinear [10] & E,D,A are collinear [02] & G,E,B are collinear [07] & E,H,F are collinear [19] (Ceva)⇒  (AH:HB) * (FG:GA) * (BD:DF) = 1 [20]
+012. (AH:HB) * (FG:GA) * (BD:DF) = 1 [20] & HB = HA [09] ⇒  FG:GA = DF:BD [21]
+013. FG:GA = DF:BD [21] & G,A,F are collinear [06] & D,F,B are collinear [10] ⇒  GD ∥ AB
+==========================

@@ -1,0 +1,30 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+DA = DB [00]
+DB = DC [01]
+BE ⟂ BD [02]
+CE ⟂ CD [03]
+DC ⟂ FC [04]
+AF ⟂ AD [05]
+DB ⟂ GB [06]
+DA ⟂ GA [07]
+A,H,E are collinear [08]
+B,H,F are collinear [09]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. DB ⟂ GB [06] & BE ⟂ BD [02] ⇒  B,G,E are collinear [10]
+002. DC ⟂ FC [04] & CE ⟂ CD [03] ⇒  E,F,C are collinear [11]
+003. DA ⟂ GA [07] & AF ⟂ AD [05] ⇒  A,F,G are collinear [12]
+004. DA = DB [00] & DA ⟂ AG [07] & BG ⟂ DB [06] (Circle Power)⇒  GB = AG [13]
+005. DB = DC [01] & CE ⟂ CD [03] & BE ⟂ BD [02] (Circle Power)⇒  EC = BE [14]
+006. DB = DC [01] & DA = DB [00] ⇒  DA = DC [15]
+007. DA = DC [15] & AF ⟂ AD [05] & DC ⟂ CF [04] (Circle Power)⇒  CF = FA [16]
+008. GB = AG [13] & EC = BE [14] & CF = FA [16] ⇒  (GB:BE) * (EC:CF) * (FA:AG) = 1 [17]
+009. B,G,E are collinear [10] & E,F,C are collinear [11] & A,F,G are collinear [12] & A,H,E are collinear [08] & B,H,F are collinear [09] & (GB:BE) * (EC:CF) * (FA:AG) = 1 [17] (Ceva)⇒  G,H,C are collinear
+==========================

@@ -13,7 +13,7 @@ SIZE=4
 
 BATCH_SIZE=8
 BEAM_SIZE=16
-DEPTH=2
+DEPTH=4
 
 SEARCH_ARGS=(
   --beam_size=$BEAM_SIZE
@@ -42,7 +42,7 @@ SERIES=Menelaus_a
 python -m alphageometry \
 --alsologtostderr \
 --problems_file=$(pwd)/$INPUT_FILE \
---problem_name=Menelaus_b15 \
+--problem_name=Menelaus_Newton \
 --mode=alphageometry \
 "${DDAR_ARGS[@]}" \
 "${SEARCH_ARGS[@]}" \
