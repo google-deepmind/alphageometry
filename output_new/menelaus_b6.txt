@@ -1,0 +1,42 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J : Points
+AD ⟂ BC [00]
+BD ⟂ AC [01]
+E,A,B are collinear [02]
+D,F,E are collinear [03]
+C,F,B are collinear [04]
+D,E,G are collinear [05]
+C,A,G are collinear [06]
+C,H,B are collinear [07]
+DH ⟂ DE [08]
+D,H,I are collinear [09]
+I,A,B are collinear [10]
+D,J,H are collinear [11]
+C,J,A are collinear [12]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. D,F,E are collinear [03] & D,E,G are collinear [05] ⇒  F,G,E are collinear [13]
+002. F,G,E are collinear [13] & C,F,B are collinear [04] & C,A,G are collinear [06] & E,A,B are collinear [02] (Menelaus)⇒  (EG:FE) * (CA:AG) * (FB:CB) = 1 [14]
+003. D,J,H are collinear [11] & D,H,I are collinear [09] ⇒  H,J,I are collinear [15]
+004. H,J,I are collinear [15] & C,H,B are collinear [07] & C,J,A are collinear [12] & I,A,B are collinear [10] (Menelaus)⇒  (JI:HI) * (CA:JA) * (HB:CB) = 1 [16]
+005. C,F,B are collinear [04] & AD ⟂ BC [00] ⇒  DA ⟂ CF [17]
+006. D,F,E are collinear [03] & D,J,H are collinear [11] & DE ⟂ DH [08] ⇒  DF ⟂ DJ [18]
+007. DA ⟂ CF [17] & DF ⟂ DJ [18] ⇒  ∠ADF = ∠(CF-DJ) [19]
+008. DA ⟂ CF [17] & DF ⟂ DJ [18] ⇒  ∠ADJ = ∠CFD [20]
+009. D,E,G are collinear [05] & C,H,B are collinear [07] & ∠ADF = ∠(CF-DJ) [19] & D,F,E are collinear [03] & C,F,B are collinear [04] & D,J,H are collinear [11] ⇒  ∠ADG = ∠BHD [21]
+010. C,J,A are collinear [12] & BD ⟂ AC [01] ⇒  DB ⟂ CJ [22]
+011. DF ⟂ DJ [18] & DB ⟂ CJ [22] ⇒  ∠(DF-CJ) = ∠JDB [23]
+012. DF ⟂ DJ [18] & DB ⟂ CJ [22] ⇒  ∠FDB = ∠DJC [24]
+013. C,A,G are collinear [06] & D,E,G are collinear [05] & ∠(DF-CJ) = ∠JDB [23] & D,F,E are collinear [03] & C,J,A are collinear [12] & D,J,H are collinear [11] ⇒  ∠AGD = ∠BDH [25]
+014. ∠ADG = ∠BHD [21] & ∠AGD = ∠BDH [25] (Similar Triangles)⇒  DA:AG = HB:DB [26]
+015. C,F,B are collinear [04] & D,F,E are collinear [03] & D,J,H are collinear [11] & ∠ADJ = ∠CFD [20] ⇒  ∠BFD = ∠ADJ [27]
+016. D,F,E are collinear [03] & C,J,A are collinear [12] & D,J,H are collinear [11] & ∠FDB = ∠DJC [24] ⇒  ∠BDF = ∠AJD [28]
+017. ∠BFD = ∠ADJ [27] & ∠BDF = ∠AJD [28] (Similar Triangles)⇒  FB:DB = DA:JA [29]
+018. (EG:FE) * (CA:AG) * (FB:CB) = 1 [14] & (JI:HI) * (CA:JA) * (HB:CB) = 1 [16] & DA:AG = HB:DB [26] & FB:DB = DA:JA [29] (Ratio chase)⇒  FE:EG = HI:JI
+==========================

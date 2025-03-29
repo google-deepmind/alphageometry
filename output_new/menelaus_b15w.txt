@@ -1,0 +1,48 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+B,D,C are collinear [00]
+DB = DC [01]
+∠ACE = ∠ECB [02]
+∠BAE = ∠EAC [03]
+F,A,C are collinear [04]
+F,D,E are collinear [05]
+GB = GC [06]
+GA = GB [07]
+GH = GA [08]
+H,B,E are collinear [09]
+
+ * Auxiliary Constructions:
+I : Points
+A,I,C are collinear [10]
+B,I,E are collinear [11]
+
+ * Proof steps:
+001. GB = GC [06] & GA = GB [07] & GH = GA [08] ⇒  H,B,A,C are concyclic [12]
+002. H,B,A,C are concyclic [12] ⇒  ∠HBA = ∠HCA [13]
+003. ∠HBA = ∠HCA [13] & H,B,E are collinear [09] ⇒  ∠EBA = ∠HCA [14]
+004. A,I,C are collinear [10] & ∠BAE = ∠EAC [03] ⇒  ∠BAE = ∠EAI [15]
+005. ∠BAE = ∠EAI [15] & B,I,E are collinear [11] ⇒  BE:BA = IE:AI [16]
+006. ∠BAE = ∠EAI [15] & B,I,E are collinear [11] ⇒  IE:BE = AI:BA [17]
+007. A,I,C are collinear [10] & ∠BCE = ∠ECA [02] ⇒  ∠BCE = ∠ECI [18]
+008. ∠BCE = ∠ECI [18] & B,I,E are collinear [11] ⇒  BE:BC = IE:IC [19]
+009. BE:BA = IE:AI [16] & BE:BC = IE:IC [19] ⇒  AI:IC = BA:BC [20]
+010. AI:IC = BA:BC [20] & A,I,C are collinear [10] ⇒  ∠ABI = ∠IBC [21]
+011. ∠ABI = ∠IBC [21] & B,I,E are collinear [11] ⇒  ∠ABE = ∠EBC [22]
+012. A,I,C are collinear [10] & B,I,E are collinear [11] & ∠HCA = ∠EBA [14] ⇒  ∠HCI = ∠IBA [23]
+013. B,I,E are collinear [11] & H,B,E are collinear [09] & A,I,C are collinear [10] ⇒  ∠HIC = ∠BIA [24]
+014. ∠HCI = ∠IBA [23] & ∠HIC = ∠BIA [24] (Similar Triangles)⇒  HI:HC = AI:BA [25]
+015. A,I,C are collinear [10] & F,A,C are collinear [04] ⇒  C,I,F are collinear [26]
+016. B,I,E are collinear [11] & B,D,C are collinear [00] & C,I,F are collinear [26] & F,D,E are collinear [05] (Menelaus)⇒  (BD:DC) * (IE:EB) * (CF:FI) = 1 [27]
+017. HI:HC = AI:BA [25] & IE:BE = AI:BA [17] & (BD:DC) * (IE:EB) * (CF:FI) = 1 [27] & DB = DC [01] ⇒  FI:FC = HI:HC [28]
+018. FI:FC = HI:HC [28] & C,I,F are collinear [26] ⇒  ∠IHF = ∠FHC [29]
+019. ∠IHF = ∠FHC [29] & B,I,E are collinear [11] & H,B,E are collinear [09] ⇒  ∠(BE-FH) = ∠FHC [30]
+020. ∠ACE = ∠ECB [02] & ∠EBA = ∠HCA [14] & ∠ABE = ∠EBC [22] & ∠(BE-FH) = ∠FHC [30] (Angle chase)⇒  CE ∥ FH [31]
+021. F,A,C are collinear [04] & ∠ACE = ∠ECB [02] & CE ∥ FH [31] ⇒  ∠CFH = ∠ECB [32]
+022. ∠CHF = ∠(FH-BE) [30] & FH ∥ CE [31] ⇒  ∠CHF = ∠CEB [33]
+023. ∠CFH = ∠ECB [32] & ∠CHF = ∠CEB [33] (Similar Triangles)⇒  FH:HC = EC:BE [34]
+024. H,B,E are collinear [09] & ∠CHF = ∠(FH-BE) [30] & FH ∥ CE [31] ⇒  ∠HCE = ∠CEH [35]
+025. ∠HCE = ∠CEH [35] ⇒  HC = HE [36]
+026. FH:HC = EC:BE [34] & HE = HC [36] ⇒  HF:HE = EC:EB
+==========================

@@ -1,0 +1,37 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I : Points
+C,D,B are collinear [00]
+A,E,C are collinear [01]
+E,D,F are collinear [02]
+DE = DF [03]
+G,F,B are collinear [04]
+A,G,D are collinear [05]
+E,D,H are collinear [06]
+A,B,H are collinear [07]
+E,I,D are collinear [08]
+G,I,C are collinear [09]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. E,D,H are collinear [06] & C,D,B are collinear [00] & A,E,C are collinear [01] & A,B,H are collinear [07] (Menelaus)⇒  (EH:DH) * (AC:AE) * (DB:CB) = 1 [10]
+002. E,I,D are collinear [08] & E,D,F are collinear [02] ⇒  D,I,F are collinear [11]
+003. G,F,B are collinear [04] & C,D,B are collinear [00] & D,I,F are collinear [11] & G,I,C are collinear [09] (Menelaus)⇒  (GF:GB) * (CB:DC) * (ID:IF) = 1 [12]
+004. G,F,B are collinear [04] & C,D,B are collinear [00] & D,I,F are collinear [11] & G,I,C are collinear [09] (Menelaus)⇒  (GI:GC) * (CB:DB) * (DF:IF) = 1 [13]
+005. G,F,B are collinear [04] & C,D,B are collinear [00] & D,I,F are collinear [11] & G,I,C are collinear [09] (Menelaus)⇒  (GI:IC) * (FB:DB) * (DC:GF) = 1 [14]
+006. A,G,D are collinear [05] & A,E,C are collinear [01] & E,I,D are collinear [08] & G,I,C are collinear [09] (Menelaus)⇒  (GD:AG) * (AC:EC) * (EI:ID) = 1 [15]
+007. A,G,D are collinear [05] & A,E,C are collinear [01] & E,I,D are collinear [08] & G,I,C are collinear [09] (Menelaus)⇒  (IG:GC) * (CA:AE) * (ED:DI) = 1 [16]
+008. A,G,D are collinear [05] & A,E,C are collinear [01] & E,I,D are collinear [08] & G,I,C are collinear [09] (Menelaus)⇒  (GI:IC) * (AD:AE) * (EC:GD) = 1 [17]
+009. (IG:GC) * (CA:AE) * (ED:DI) = 1 [16] & DE = DF [03] ⇒  (GI:GC) * (AC:AE) * (DF:ID) = 1 [18]
+010. E,D,F are collinear [02] & E,D,H are collinear [06] ⇒  F,H,D are collinear [19]
+011. G,F,B are collinear [04] & F,H,D are collinear [19] & A,G,D are collinear [05] & A,B,H are collinear [07] (Menelaus)⇒  (GB:FB) * (AD:AG) * (FH:DH) = 1 [20]
+012. (GF:GB) * (CB:DC) * (ID:IF) = 1 [12] & (GI:GC) * (CB:DB) * (DF:IF) = 1 [13] & (GI:IC) * (FB:DB) * (DC:GF) = 1 [14] & (GD:AG) * (AC:EC) * (EI:ID) = 1 [15] & (GI:GC) * (AC:AE) * (DF:ID) = 1 [18] & (GI:IC) * (AD:AE) * (EC:GD) = 1 [17] & (GB:FB) * (AD:AG) * (FH:DH) = 1 [20] (Ratio chase)⇒  (AE:AC) * (CB:DB) * (DH:FH) * (EI:IF) = 1 [21]
+013. (GI:GC) * (CB:DB) * (DF:IF) = 1 [13] & (GI:IC) * (FB:DB) * (DC:GF) = 1 [14] & (GD:AG) * (AC:EC) * (EI:ID) = 1 [15] & (GI:GC) * (AC:AE) * (DF:ID) = 1 [18] & (GI:IC) * (AD:AE) * (EC:GD) = 1 [17] & (GB:FB) * (AD:AG) * (FH:DH) = 1 [20] (Ratio chase)⇒  (CB:GB) * (GF:DC) * (DH:FH) * (EI:IF) = 1 [22]
+014. (EH:DH) * (AC:AE) * (DB:CB) = 1 [10] & (AE:AC) * (CB:DB) * (DH:FH) * (EI:IF) = 1 [21] & (CB:GB) * (GF:DC) * (DH:FH) * (EI:IF) = 1 [22] & (IF:ID) * (GB:CB) * (DC:GF) = 1 [12] ⇒  IF:ID = EH:DH [23]
+015. IF:ID = EH:DH [23] & D,I,F are collinear [11] & E,D,H are collinear [06] ⇒  DF:DE = ID:HD [24]
+016. DF:DE = ID:HD [24] & DE = DF [03] ⇒  ID = HD
+==========================

@@ -1112,12 +1112,38 @@ def match_ceva_rev(
   tb = time.time()
   #print(tb-ta)
 
+def match_eqratio6_coll_coll_eqratio(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match eqratio6 B A B C Q P Q R, coll A B C, coll P Q R => eqratio B A A C Q P P R"""
+  """Avoid harmonic"""
+  enums = g_matcher('eqratio6')
+
+  record = set()
+  for b, a, b, c, q, p, q, r in enums:  # pylint: disable=redeclared-assigned-name,unused-variable
+    if (a, b, c) == (p, q, r):
+      continue
+    if any([x in record for x in rotate_simtri(a, b, c, p, q, r)]):
+      continue
+    if not (g.check_coll([a, b, c]) and g.check_coll([p, q, r])):
+      continue
+    if not (g.check_onseg([b, a, c]) == g.check_onseg([q, p, r])): # Avoid harmonic
+      continue
+
+    record.add((a, b, c, p, q, r))
+    debugname([a, b, c, p, q, r])
+    yield dict(zip('ABCPQR', [a, b, c, p, q, r]))
+    yield dict(zip('ABCPQR', [c, b, a, r, q, p]))
+
 def rotate_simtri(
     a: gm.Point, b: gm.Point, c: gm.Point, x: gm.Point, y: gm.Point, z: gm.Point
 ) -> Generator[tuple[gm.Point, ...], None, None]:
   """Rotate points around for similar triangle predicates."""
-  yield (z, y, x, c, b, a)
+  #yield (z, y, x, c, b, a)
   for p in [
+      (a, b, c, x, y, z),
       (b, c, a, y, z, x),
       (c, a, b, z, x, y),
       (x, y, z, a, b, c),
@@ -1690,6 +1716,7 @@ BUILT_IN_FNS = {
     'coll_coll_coll_coll_coll_coll_eqratio30': match_ceva,
     'coll_coll_coll_eqratio30_coll': match_menelaus_rev,
     'coll_coll_coll_coll_coll_eqratio30_coll': match_ceva_rev,
+    'eqratio6_coll_coll_eqratio': match_eqratio6_coll_coll_eqratio,
     #'circle_perp_coll_eqratio': match_generic_debug,
     #'cyclic_cyclic_cong': match_test,
 }
@@ -1849,8 +1876,6 @@ def bfs_one_level(
       hash_conclusion = pr.hashed(name, args)
       if hash_conclusion in g.cache:
         continue
-      if name == 'cyclic':
-        print(theorem.name,mp,args)
       add = g.add_piece(name, args, deps=deps)
       added += add
 

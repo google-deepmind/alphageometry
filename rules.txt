@@ -57,3 +57,4 @@ circle O A B C, cong O A O D, perp O A A G, perp O B B G, coll H A C, coll H B D
 circle O A B C, cong O A O D, cong O A O E, coll G A B, coll G D E, coll H B C, coll H E F, coll I C D, coll I F A, coll G H I => cong O A O F
 perp A B A C, perp A D B C, coll B C D => eqratio B A B D B C B A
 perp A B A C, coll B C D, perp A D B C => eqratio D A D B D C D A
+eqratio6 B A B C Q P Q R, coll A B C, coll P Q R => eqratio B A A C Q P P R

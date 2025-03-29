@@ -9,4 +9,22 @@ a b c = triangle a b c; o = circle o a b c; p = on_line p b c, on_tline p a o a;
 Menelaus_c3
 a b = segment a b; c = on_tline c b a b, on_circle c b a; d = midpoint d b c; e = foot e b a d; f = on_line f b e, on_line f a c; g = midpoint g a f ? cong a g c f
 Menelaus_c22
-a b c = triangle a b c; d = on_line d b c; f = on_line f a c; e = mirror e f d; p = on_line p a d, on_line p b e; m = on_line m a b, on_line m d f; n = on_line n p c, on_line n d f ? eqratio d n f n d m e m
+a b c = triangle a b c; d = on_line d b c; f = on_line f a c; e = mirror e f d; p = on_line p a d, on_line p b e; m = on_line m a b, on_line m d f; n = on_line n p c, on_line n d f ? cong d m d n
+Menelaus_b3
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; q = on_line q a c, on_line q b d; e = foot e q a b; f = foot f q b c; g = foot g q c d; h = foot h q d a; p = on_line p e h, on_line p b d ? coll p f g
+Menelaus_b10
+a b c = triangle a b c; d = foot d a b c; x e g o1 = excenter2 x e g o1 c a b; y f h o2 = excenter2 y f h o2 b a c; q = on_line q a d, on_line q f h ? coll q e g
+Menelaus_a11
+a b c = triangle a b c; d = on_line d a b; e = on_line e a c; f = midpoint f d e; g = on_line g d e; h = mirror h g f; i = on_line i a b; j = on_line j g i, on_line j a c; k = on_line k a b; l = on_line l k h, on_line l a c; m = on_line m j k, on_line m d e; n = on_line n i l, on_line n d e ? cong f m f n
+Menelaus_Desargues
+a b c = triangle a b c; d e = segment d e; g = on_line g a d, on_line g b e; f = on_line f g c; l = on_line l a b, on_line l d e; m = on_line m b c, on_line m e f; n = on_line n a c, on_line n d f ? coll l m n
+Menelaus_Pappus
+a b = segment a b; c d = segment c d; e = on_line e a c; f = on_line f b d; g = on_line g a b, on_line g d e; h = on_line h b c, on_line h e f; i = on_line i c d, on_line i f a; j = on_line j c d, on_line j e f; k = on_line k a b, on_line k e f; l = on_line l a b, on_line l c d ? coll g h i
+Menelaus_Newton
+a b c = triangle a b c; d = free; e = on_line e a b, on_line e c d; f = on_line f a d, on_line f b c; g = midpoint g a c; h = midpoint h b d; i = midpoint i e f ? coll g h i
+Menelaus_b6
+a b c = triangle a b c; h = orthocenter h a b c; e = on_line e a b; f = on_line f b c, on_line f e h; d = on_line d a c, on_line d e h; m = on_tline m h e h, on_line m b c; n = on_line n a b, on_line n m h; p = on_line p a c, on_line p m h ? eqratio d e e f p n m n
+Menelaus_b15
+a b c = triangle a b c; m = midpoint m b c; i = incenter i a b c; d = on_line d m i, on_line d a c; o = circle o a b c; e = on_line e b i, on_circle e o a ? eqratio e d e i i c i b
+Menelaus_b15w
+a b c = triangle a b c; m = midpoint m b c; i = incenter i a b c; d = on_line d m i, on_line d a c; o = circle o a b c; e = on_line e b i, on_circle e o a; f = on_line f b i, on_line f a c ? eqratio e d e i i c i b

@@ -524,7 +524,7 @@ def why_eqratio30(
   """Why two ratios are equal, returns a Dependency objects."""
   all12 = list(gm.all_ratios(l1, l2, level))
   all43 = list(gm.all_ratios2(lp46, lp35, level))
-  print(all12,all43)
+  #print(all12,all43)
   min_why = None
   for rat12, l1s, l2s in all12:
     for ratp43, lp4s, lp3s in all43:

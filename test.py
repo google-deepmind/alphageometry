@@ -1,5 +1,6 @@
-a = [1,2,3]
-b = [2,3,4]
+a = True
+b = False
+c = True
+d = False
 
-c = [x for x in a if x in b]
-print(c != [])
+print(a==b, a==c,b==c,b==d)

@@ -1480,6 +1480,7 @@ class Graph:
     self.connect_val(cd, deps=None)
 
     if ab.val == cd.val:
+      return []
       raise ValueError(f'{ab.name} and {cd.name} Cannot be perp.')
 
     args = [a, b, c, d]
@@ -1719,7 +1720,7 @@ class Graph:
     """Add a new cyclic predicate that 4 points are concyclic."""
     points = list(set(points))
     og_points = list(points)
-    print([p.name for p in points])
+    #print([p.name for p in points])
 
     all_circles = []
     for p1, p2, p3 in utils.comb3(points):

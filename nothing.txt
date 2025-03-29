@@ -742,6 +742,10 @@ Menelaus_a9
 a b c = triangle a b c; e = midpoint e b c; f = angle_bisector f b a c, on_line f b c; k = on_line k a e, on_pline k f a c ? perp a f k c
 Menelaus_a9w
 a b c = triangle a b c; e = midpoint e b c; f = angle_bisector f b a c, on_line f b c; k = on_line k a e, on_pline k f a c; d = on_line d a b, on_line d c k ? cong a d a c
+Menelaus_b2a
+a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f a b; g = on_line g b e, on_line g c f; x = on_pline x g b c, on_line x a b; y = on_line y g h, on_line y a c; p = on_line p b y, on_line p c g; q = on_line q c x, on_line q b g ? eqratio m p a b m q a c 
+Menelaus_b2b
+a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f a b; g = on_line g b e, on_line g c f; x = on_pline x g b c, on_line x a b; y = on_line y g h, on_line y a c; p = on_line p b y, on_line p c g; q = on_line q c x, on_line q b g ? eqratio m p a b p q b c
 Menelaus_b3
 a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; q = on_line q a c, on_line q b d; e = foot e q a b; f = foot f q b c; g = foot g q c d; h = foot h q d a; p = on_line p e h, on_line p b d ? coll p f g
 Menelaus_b6
