@@ -1,6 +1,5 @@
-a = True
-b = False
-c = True
-d = False
+import random
 
-print(a==b, a==c,b==c,b==d)
+for _ in range(10): 
+    a = random.randint(1,50)
+    print(a)

@@ -27,3 +27,5 @@ I,D,F are collinear [09]
 007. A,B,G are collinear [04] & E,A,D are collinear [01] & C,B,D are collinear [00] & C,E,G are collinear [05] (Menelaus)⇒  (BG:AG) * (AE:CB) * (CD:ED) = 1 [16]
 008. IF:DF = AF:CF [11] & IF:DF = IA:CD [12] & AG:BG = AH:BD [14] & (CF:AF) * (AE:CB) * (BD:ED) = 1 [15] & (BG:AG) * (AE:CB) * (CD:ED) = 1 [16] (Ratio chase)⇒  IA = AH
 ==========================
+
+

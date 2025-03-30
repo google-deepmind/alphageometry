@@ -1,0 +1,34 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+CA = CB [00]
+BD ⟂ BC [01]
+AE ⟂ AC [02]
+C,E,D are collinear [03]
+B,F,E are collinear [04]
+A,F,D are collinear [05]
+A,G,E are collinear [06]
+B,G,D are collinear [07]
+H,E,D are collinear [08]
+HG ⟂ DE [09]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. A,G,E are collinear [06] & AC ⟂ AE [02] ⇒  AC ⟂ AG [10]
+002. B,G,D are collinear [07] & BC ⟂ BD [01] ⇒  BC ⟂ BG [11]
+003. CA = CB [00] & AC ⟂ AG [10] & BC ⟂ BG [11] (Circle Power)⇒  GA = BG [12]
+004. H,E,D are collinear [08] & C,E,D are collinear [03] & HG ⟂ DE [09] & AE ⟂ AC [02] ⇒  ∠CAE = ∠EHG [13]
+005. C,E,D are collinear [03] & H,E,D are collinear [08] & A,G,E are collinear [06] ⇒  ∠CEA = ∠HEG [14]
+006. ∠CAE = ∠EHG [13] & ∠CEA = ∠HEG [14] (Similar Triangles)⇒  AC:AE = HG:HE [15]
+007. H,E,D are collinear [08] & C,E,D are collinear [03] & HG ⟂ DE [09] & BD ⟂ BC [01] ⇒  ∠CBD = ∠DHG [16]
+008. H,E,D are collinear [08] & C,E,D are collinear [03] & B,G,D are collinear [07] ⇒  ∠CDB = ∠HDG [17]
+009. ∠CBD = ∠DHG [16] & ∠CDB = ∠HDG [17] (Similar Triangles)⇒  BC:BD = HG:HD [18]
+010. HG:HD = BC:BD [18] & AC = BC [00] ⇒  HG:HD = AC:BD [19]
+011. HG:HE = AC:AE [15] & HG:HD = AC:BD [19] ⇒  EH:AE = HD:DB [20]
+012. GA = BG [12] & EH:AE = HD:DB [20] ⇒  (GA:AE) * (EH:HD) * (DB:BG) = 1 [21]
+013. A,G,E are collinear [06] & E,H,D are collinear [08] & B,G,D are collinear [07] & B,F,E are collinear [04] & A,F,D are collinear [05] & (GA:AE) * (EH:HD) * (DB:BG) = 1 [21] (Ceva)⇒  H,G,F are collinear
+==========================

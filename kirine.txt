@@ -1,22 +1,47 @@
 
 ==========================
  * From theorem premises:
-A B C D E F G : Points
-C,B,D are collinear [00]
-C,A,E are collinear [01]
-∠ADE = ∠EDC [02]
-B,F,A are collinear [03]
-∠ADF = ∠FDB [04]
-G,B,E are collinear [05]
-G,F,C are collinear [06]
+A B C G D E F H I J L : Points
+∠GAB = ∠CAG [00]
+∠ACG = ∠GCB [01]
+DG ⟂ BC [02]
+C,B,D are collinear [03]
+C,E,A are collinear [04]
+EG ⟂ AC [05]
+B,F,A are collinear [06]
+FG ⟂ AB [07]
+BC ⟂ HD [08]
+HI = HD [09]
+CI = CD [10]
+HJ = HD [11]
+BJ = BD [12]
+C,B,L are collinear [13]
+F,E,L are collinear [14]
 
  * Auxiliary Constructions:
-: Points
-
+K : Points
+C,K,I are collinear [15]
+B,J,K are collinear [16]
 
  * Proof steps:
-001. ∠CDE = ∠EDA [02] & C,A,E are collinear [01] ⇒  CE:AE = CD:DA [07]
-002. ∠BDF = ∠FDA [04] & B,F,A are collinear [03] ⇒  FB:FA = DB:DA [08]
-003. CE:AE = CD:DA [07] & FB:FA = DB:DA [08] (Ratio chase)⇒  (AE:FA) * (FB:DB) * (CD:CE) = 1 [09]
-004. B,F,A are collinear [03] & C,B,D are collinear [00] & C,A,E are collinear [01] & G,B,E are collinear [05] & G,F,C are collinear [06] & (AE:FA) * (FB:DB) * (CD:CE) = 1 [09] (Ceva)⇒  G,D,A are collinear
+001. HJ = HD [11] & HI = HD [09] ⇒  HI = HJ [17]
+002. HI = HD [09] & CI = CD [10] (SSS)⇒  ∠HDC = ∠CIH [18]
+003. I,K,C are collinear [15] & ∠HDC = ∠CIH [18] & BC ⟂ HD [08] & DG ⟂ BC [02] & C,B,D are collinear [03] ⇒  HI ⟂ IK [19]
+004. HJ = HD [11] & BJ = BD [12] (SSS)⇒  ∠HDB = ∠BJH [20]
+005. B,K,J are collinear [16] & ∠HDB = ∠BJH [20] & BC ⟂ HD [08] & DG ⟂ BC [02] & C,B,D are collinear [03] ⇒  HJ ⟂ JK [21]
+006. HI = HJ [17] & HI ⟂ IK [19] & HJ ⟂ JK [21] (Circle Power)⇒  KI = JK [22]
+007. C,B,L are collinear [13] & B,F,A are collinear [06] & C,E,A are collinear [04] & F,E,L are collinear [14] (Menelaus)⇒  (AE:FA) * (BF:LB) * (CL:EC) = 1 [23]
+008. B,F,A are collinear [06] & C,E,A are collinear [04] & EG ⟂ AC [05] & FG ⟂ AB [07] ⇒  ∠GFA = ∠AEG [24]
+009. B,F,A are collinear [06] & C,E,A are collinear [04] & ∠GAB = ∠CAG [00] ⇒  ∠GAF = ∠EAG [25]
+010. ∠GFA = ∠AEG [24] & ∠GAF = ∠EAG [25] (Similar Triangles)⇒  AF = AE [26]
+011. ∠GFA = ∠AEG [24] & ∠GAF = ∠EAG [25] (Similar Triangles)⇒  GF = GE [27]
+012. C,B,D are collinear [03] & C,E,A are collinear [04] & EG ⟂ AC [05] & DG ⟂ BC [02] ⇒  ∠GDC = ∠CEG [28]
+013. C,B,D are collinear [03] & C,E,A are collinear [04] & ∠GCB = ∠ACG [01] ⇒  ∠GCD = ∠ECG [29]
+014. ∠GDC = ∠CEG [28] & ∠GCD = ∠ECG [29] (Similar Triangles)⇒  GD = GE [30]
+015. GD = GE [30] & GF = GE [27] ⇒  GF = GD [31]
+016. B,F,A are collinear [06] & FG ⟂ AB [07] ⇒  FG ⟂ BF [32]
+017. C,B,D are collinear [03] & DG ⟂ BC [02] ⇒  GD ⟂ DB [33]
+018. GF = GD [31] & FG ⟂ BF [32] & GD ⟂ DB [33] (Circle Power)⇒  BF = BD [34]
+019. KI = JK [22] & (AE:FA) * (BF:LB) * (CL:EC) = 1 [23] & AF = AE [26] & CI = CD [10] & BF = BD [34] & BJ = BD [12] ⇒  (KI:IC) * (CL:LB) * (BJ:JK) = 1 [35]
+020. C,K,I are collinear [15] & C,B,L are collinear [13] & B,J,K are collinear [16] & (KI:IC) * (CL:LB) * (BJ:JK) = 1 [35] (Menelaus)⇒  I,J,L are collinear
 ==========================

@@ -42,7 +42,7 @@ SERIES=Menelaus_a
 python -m alphageometry \
 --alsologtostderr \
 --problems_file=$(pwd)/$INPUT_FILE \
---problem_name=Menelaus_Newton \
+--problem_name=Menelaus_b9w \
 --mode=alphageometry \
 "${DDAR_ARGS[@]}" \
 "${SEARCH_ARGS[@]}" \

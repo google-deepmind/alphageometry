@@ -667,8 +667,9 @@ class Graph:
       args = list(map(lambda x: g.get(x, lambda: int(x)), pr.goal.args))
       check = nm.check(pr.goal.name, args)
       print(check)
-      if not check:
-        return
+      #check = True
+      #if not check:
+        #return
 
     g.url = pr.url
     g.build_def = (pr, definitions)
@@ -1720,7 +1721,7 @@ class Graph:
     """Add a new cyclic predicate that 4 points are concyclic."""
     points = list(set(points))
     og_points = list(points)
-    #print([p.name for p in points])
+    print([p.name for p in points])
 
     all_circles = []
     for p1, p2, p3 in utils.comb3(points):

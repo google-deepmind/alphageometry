@@ -1026,9 +1026,9 @@ def match_menelaus_rev(
         recordp.add((f, d, e))
         recordp.add((f, e, d))
 
-        x1 = g.check_onseg([d, b, c])
-        x2 = g.check_onseg([e, c, a])
-        x3 = g.check_onseg([f, a, b])
+        x1 = int(g.check_onseg([d, b, c]))
+        x2 = int(g.check_onseg([e, c, a]))
+        x3 = int(g.check_onseg([f, a, b]))
         if x1 + x2 + x3 not in {0, 2}:
           continue
         if g.check_eqratio30([a, f, f, b, b, d, d, c, c, e, e, a]):
@@ -1079,11 +1079,12 @@ def match_ceva_rev(
         recordp.add((f, d, e))
         recordp.add((f, e, d))
 
-        x1 = g.check_onseg([d, b, c])
-        x2 = g.check_onseg([e, c, a])
-        x3 = g.check_onseg([f, a, b])
+        x1 = int(g.check_onseg([d, b, c]))
+        x2 = int(g.check_onseg([e, c, a]))
+        x3 = int(g.check_onseg([f, a, b]))
         if x1 + x2 + x3 not in {1, 3}:
           continue
+        #print(x1+x2+x3)
         if g.check_eqratio30([a, f, f, b, b, d, d, c, c, e, e, a]):
           ad = g._get_line(a, d)
           be = g._get_line(b, e)
@@ -1093,21 +1094,21 @@ def match_ceva_rev(
             bes = be.neighbors(gm.Point, return_set=True)
             pab = intersect1(ads, bes)
             if pab:
-              #debugname([pab, c, a, b, f, d, e])
+              #debugname([pab, c, a, b, f, d, e],(x3,x1,x2))
               yield dict(zip('PABCDEF', [pab, c, a, b, f, d, e]))
           if be and cf:
             bes = be.neighbors(gm.Point, return_set=True)
             cfs = cf.neighbors(gm.Point, return_set=True)
             pbc = intersect1(bes, cfs)
             if pbc:
-              #debugname([pbc, a, b, c, d, e, f])
+              #debugname([pbc, a, b, c, d, e, f],(x1,x2,x3))
               yield dict(zip('PABCDEF', [pbc, a, b, c, d, e, f]))
           if cf and ad:
             cfs = cf.neighbors(gm.Point, return_set=True)
             ads = ad.neighbors(gm.Point, return_set=True)
             pca = intersect1(cfs, ads)
             if pca:
-              #debugname([pca, b, c, a, e, f, d])
+              #debugname([pca, b, c, a, e, f, d],(x2,x3,x1))
               yield dict(zip('PABCDEF', [pca, b, c, a, e, f, d]))
   tb = time.time()
   #print(tb-ta)
@@ -1133,7 +1134,7 @@ def match_eqratio6_coll_coll_eqratio(
       continue
 
     record.add((a, b, c, p, q, r))
-    debugname([a, b, c, p, q, r])
+    #debugname([a, b, c, p, q, r])
     yield dict(zip('ABCPQR', [a, b, c, p, q, r]))
     yield dict(zip('ABCPQR', [c, b, a, r, q, p]))
 

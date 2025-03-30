@@ -1,0 +1,54 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J K L M N : Points
+D,A,B are collinear [00]
+E,A,C are collinear [01]
+FD = FE [02]
+D,E,F are collinear [03]
+D,E,G are collinear [04]
+G,H,F are collinear [05]
+B,A,I are collinear [06]
+A,J,C are collinear [07]
+G,J,I are collinear [08]
+K,A,B are collinear [09]
+L,A,C are collinear [10]
+K,L,H are collinear [11]
+K,M,J are collinear [12]
+D,E,M are collinear [13]
+D,N,E are collinear [14]
+N,L,I are collinear [15]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. B,A,I are collinear [06] & D,A,B are collinear [00] ⇒  D,I,A are collinear [16]
+002. L,A,C are collinear [10] & E,A,C are collinear [01] ⇒  L,A,E are collinear [17]
+003. D,N,E are collinear [14] & D,I,A are collinear [16] & A,L,E are collinear [17] & N,L,I are collinear [15] (Menelaus)⇒  (DN:NE) * (AI:LA) * (LE:DI) = 1 [18]
+004. A,J,C are collinear [07] & E,A,C are collinear [01] ⇒  A,J,E are collinear [19]
+005. D,E,G are collinear [04] & D,I,A are collinear [16] & A,J,E are collinear [19] & G,J,I are collinear [08] (Menelaus)⇒  (EG:DG) * (AJ:AI) * (DI:EJ) = 1 [20]
+006. D,E,G are collinear [04] & D,I,A are collinear [16] & A,J,E are collinear [19] & G,J,I are collinear [08] (Menelaus)⇒  (GJ:GI) * (EA:DA) * (DI:EJ) = 1 [21]
+007. D,E,G are collinear [04] & D,I,A are collinear [16] & A,J,E are collinear [19] & G,J,I are collinear [08] (Menelaus)⇒  (GJ:JI) * (AI:DA) * (DE:EG) = 1 [22]
+008. D,A,B are collinear [00] & K,A,B are collinear [09] ⇒  K,A,D are collinear [23]
+009. K,M,J are collinear [12] & D,K,A are collinear [23] & A,J,E are collinear [19] & D,E,M are collinear [13] (Menelaus)⇒  (MJ:KM) * (EA:DA) * (KD:EJ) = 1 [24]
+010. K,M,J are collinear [12] & D,K,A are collinear [23] & A,J,E are collinear [19] & D,E,M are collinear [13] (Menelaus)⇒  (EM:DM) * (AJ:KA) * (KD:EJ) = 1 [25]
+011. K,A,B are collinear [09] & K,A,D are collinear [23] & A,I,B are collinear [06] ⇒  I,K,D are collinear [26]
+012. D,E,M are collinear [13] & D,E,G are collinear [04] ⇒  D,M,G are collinear [27]
+013. G,J,I are collinear [08] & I,K,D are collinear [26] & D,M,G are collinear [27] & K,M,J are collinear [12] (Menelaus)⇒  (GJ:JI) * (DM:KD) * (KI:GM) = 1 [28]
+014. G,J,I are collinear [08] & I,K,D are collinear [26] & D,M,G are collinear [27] & K,M,J are collinear [12] (Menelaus)⇒  (MJ:KJ) * (DG:DI) * (KI:GM) = 1 [29]
+015. G,J,I are collinear [08] & I,K,D are collinear [26] & D,M,G are collinear [27] & K,M,J are collinear [12] (Menelaus)⇒  (KJ:KM) * (DM:DG) * (GI:JI) = 1 [30]
+016. D,N,E are collinear [14] & G,H,F are collinear [05] & D,E,G are collinear [04] & D,E,F are collinear [03] ⇒  D,N,H are collinear [31]
+017. K,L,H are collinear [11] & I,K,D are collinear [26] & D,N,H are collinear [31] & N,L,I are collinear [15] (Menelaus)⇒  (LH:KL) * (DN:DI) * (KI:NH) = 1 [32]
+018. K,L,H are collinear [11] & I,K,D are collinear [26] & D,N,H are collinear [31] & N,L,I are collinear [15] (Menelaus)⇒  (NL:LI) * (DH:KD) * (KI:NH) = 1 [33]
+019. G,H,F are collinear [05] & D,E,G are collinear [04] & D,E,F are collinear [03] ⇒  D,E,H are collinear [34]
+020. K,L,H are collinear [11] & D,K,A are collinear [23] & D,E,H are collinear [34] & A,L,E are collinear [17] (Menelaus)⇒  (LH:KL) * (KA:DA) * (DE:EH) = 1 [35]
+021. D,N,E are collinear [14] & D,E,G are collinear [04] ⇒  E,N,G are collinear [36]
+022. L,A,C are collinear [10] & L,A,E are collinear [17] & A,J,C are collinear [07] ⇒  J,L,E are collinear [37]
+023. N,L,I are collinear [15] & E,N,G are collinear [36] & G,J,I are collinear [08] & J,L,E are collinear [37] (Menelaus)⇒  (LI:NL) * (NE:EG) * (GJ:JI) = 1 [38]
+024. (NE:DN) * (LA:AI) * (DI:LE) = 1 [18] & (EG:DG) * (AJ:AI) * (DI:EJ) = 1 [20] & (GJ:GI) * (EA:DA) * (DI:EJ) = 1 [21] & (MJ:KM) * (EA:DA) * (KD:EJ) = 1 [24] & (GJ:JI) * (DM:KD) * (KI:GM) = 1 [28] & (GJ:JI) * (AI:DA) * (DE:EG) = 1 [22] & (LH:KL) * (DN:DI) * (KI:NH) = 1 [32] & (LH:KL) * (KA:DA) * (DE:EH) = 1 [35] & (MJ:KJ) * (DG:DI) * (KI:GM) = 1 [29] & (NL:LI) * (DH:KD) * (KI:NH) = 1 [33] & (KJ:KM) * (DM:DG) * (GI:JI) = 1 [30] & (LI:NL) * (NE:EG) * (GJ:JI) = 1 [38] (Ratio chase)⇒  (KA:LA) * (EJ:DI) * (AI:AJ) * (LE:KD) = 1 [39]
+025. (DN:NE) * (AI:LA) * (LE:DI) = 1 [18] & (KA:LA) * (EJ:DI) * (AI:AJ) * (LE:KD) = 1 [39] & (EM:DM) * (AJ:KA) * (KD:EJ) = 1 [25] ⇒  ME:MD = ND:NE [40]
+026. ME:MD = ND:NE [40] & D,E,M are collinear [13] & D,N,E are collinear [14] ⇒  ME = ND [41]
+027. FD = FE [02] & ME = ND [41] (Distance chase)⇒  FN = MF
+==========================

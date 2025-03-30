@@ -744,7 +744,7 @@ Menelaus_b2a x
 a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f a b; g = on_line g b e, on_line g c f; x = on_pline x g b c, on_line x a b; y = on_line y g h, on_line y a c; p = on_line p b y, on_line p c g; q = on_line q c x, on_line q b g ? eqratio m p a b m q a c 
 Menelaus_b2b x
 a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f a b; g = on_line g b e, on_line g c f; x = on_pline x g b c, on_line x a b; y = on_line y g h, on_line y a c; p = on_line p b y, on_line p c g; q = on_line q c x, on_line q b g ? eqratio m p a b p q b c
-Menelaus_b3 x
+Menelaus_b3 v
 a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; q = on_line q a c, on_line q b d; e = foot e q a b; f = foot f q b c; g = foot g q c d; h = foot h q d a; p = on_line p e h, on_line p b d ? coll p f g
 Menelaus_b6 v
 a b c = triangle a b c; h = orthocenter h a b c; e = on_line e a b; f = on_line f b c, on_line f e h; d = on_line d a c, on_line d e h; m = on_tline m h e h, on_line m b c; n = on_line n a b, on_line n m h; p = on_line p a c, on_line p m h ? eqratio d e e f p n m n
@@ -752,15 +752,15 @@ Menelaus_b9 x
 a b c = triangle a b c; d e f i = incenter2 d e f i a b c; x = on_tline x d b c; i2 = incenter i2 x b c; y = foot y i2 x c; z = foot z i2 x b ? cyclic x y e f
 Menelaus_b9w x
 a b c = triangle a b c; d e f i = incenter2 d e f i a b c; x = on_tline x d b c; i2 = incenter i2 x b c; y = foot y i2 x c; z = foot z i2 x b; p = on_line p b c, on_line p e f ? coll p x y
-Menelaus_b10 x
+Menelaus_b10 ?
 a b c = triangle a b c; d = foot d a b c; x e g o1 = excenter2 x e g o1 c a b; y f h o2 = excenter2 y f h o2 b a c; q = on_line q a d, on_line q f h ? coll q e g
 Menelaus_b11 x
 a b c = triangle a b c; o = circle o a b c; p = on_tline p a o a, on_tline p b o b; d = on_line d p c, on_circle d o a; e = on_pline e c p a, on_line e a b; f = on_line f c e, on_line f a d; k = on_line k c d, on_line k a b ? cong e c e f
 Menelaus_b11w x
 a b c = triangle a b c; o = circle o a b c; p = on_tline p a o a, on_tline p b o b; d = on_line d p c, on_circle d o a; e = on_pline e c p a, on_line e a b; f = on_line f c e, on_line f a d; k = on_line k c d, on_line k a b; m = on_line m o p, on_line m a b ? cyclic o m c d
-Menelaus_b12 x
+Menelaus_b12 v
 a b c = triangle a b c; m = midpoint m a b; d = on_line d b c; e = mirror e m d; f = on_line f a b; g = on_line g a c; k = on_line k f e, on_line k g d; v = on_line v f d, on_line v g e; l = on_line l a k, on_line l b c; t = on_line t a v, on_line t b c ? cong d t e l
-Menelaus_b13 x
+Menelaus_b13 v
 x y = segment x y; p = on_line p x y; a = on_circle a x p; b c = tangent b c a y p; d = on_line d a b, on_circle d x a; e = on_line e a c, on_circle e x a; r = on_line r d e, on_line r b c; q = on_line q p r, on_circle q x a ? coll a q y
 Menelaus_b15w v
 a b c = triangle a b c; m = midpoint m b c; i = incenter i a b c; d = on_line d m i, on_line d a c; o = circle o a b c; e = on_line e b i, on_circle e o a; f = on_line f b i, on_line f a c ? eqratio e d e i i c i b
@@ -786,5 +786,66 @@ Ceva_c22 o
 a b d = triangle a b d; c = angle_bisector c b a d; e = on_line e c d; f = on_line f b e, on_line f a c; g = on_line g d f, on_line g b c; h = on_line h a c, on_line h b d ? eqangle a g a c a c a e
 Ceva_c32 v
 a b c = triangle a b c; d = on_line d b c; e = angle_bisector e a d c, on_line e a c; f = angle_bisector f a d b, on_line f a b; g = on_line g b e, on_line g c f ? coll g a d
-Ceva_b2 x
+Ceva_b2 v
 c d = segment c d; o = midpoint o c d; a = on_line a c d, on_tline a d o d; b = on_line b c d, on_tline b c o c; e = on_line e a c, on_line e b d; r = on_line r a d, on_line r b c; h = foot h r a b ? coll r e h
+
+
+==========================
+ * From theorem premises:
+A B C D E F : Points
+D,B,C are collinear [00]
+D,E,A are collinear [01]
+C,F,A are collinear [02]
+B,E,F are collinear [03]
+
+ * Auxiliary Constructions:
+G H I : Points
+G,C,E are collinear [04]
+G,B,A are collinear [05]
+G,H,D are collinear [06]
+HA ∥ BC [07]
+D,F,I are collinear [08]
+H,I,A are collinear [09]
+
+ * Proof steps:
+001. C,F,A are collinear [02] & D,E,A are collinear [01] & D,B,C are collinear [00] & B,E,F are collinear [03] (Menelaus)⇒  (CF:FA) * (EA:BC) * (BD:DE) = 1 [10]
+002. D,B,C are collinear [00] & C,F,A are collinear [02] & D,E,A are collinear [01] & G,C,E are collinear [04] & G,B,A are collinear [05] & (CF:FA) * (EA:BC) * (BD:DE) = 1 [10] (Ceva)⇒  G,D,F are collinear [11]
+003. B,C,D are collinear [00] & C,F,A are collinear [02] & G,D,F are collinear [11] & G,H,D are collinear [06] & D,F,I are collinear [08] & H,I,A are collinear [09] & AH ∥ BC [07] ⇒  ∠ACD = ∠AFD
+==========================
+
+
+==========================
+ * From theorem premises:
+A B C G D E F H I J L : Points
+∠GAB = ∠CAG [00]
+∠GCA = ∠BCG [01]
+D,B,C are collinear [02]
+DG ⟂ BC [03]
+C,A,E are collinear [04]
+EG ⟂ AC [05]
+B,F,A are collinear [06]
+FG ⟂ AB [07]
+BC ⟂ HD [08]
+HI = HD [09]
+CI = CD [10]
+HJ = HD [11]
+BJ = BD [12]
+B,C,L are collinear [13]
+F,L,E are collinear [14]
+
+ * Auxiliary Constructions:
+K : Points
+K,C,I are collinear [15]
+K,J,B are collinear [16]
+
+ * Proof steps:
+001. HI = HD [09] & HJ = HD [11] ⇒  HJ = HI [17]
+002. HJ = HD [11] & BJ = BD [12] (SSS)⇒  ∠HJB = ∠BDH [18]
+003. K,J,B are collinear [16] & ∠HJB = ∠BDH [18] & D,B,C are collinear [02] & BC ⟂ HD [08] & DG ⟂ BC [03] ⇒  JH ⟂ KJ [19]
+004. HI = HD [09] & CI = CD [10] (SSS)⇒  ∠HDC = ∠CIH [20]
+005. K,C,I are collinear [15] & ∠HDC = ∠CIH [20] & BC ⟂ HD [08] & DG ⟂ BC [03] & D,B,C are collinear [02] ⇒  HI ⟂ IK [21]
+006. HJ = HI [17] & JH ⟂ KJ [19] & HI ⟂ IK [21] (Circle Power)⇒  KI = JK [22]
+007. B,C,L are collinear [13] & B,F,A are collinear [06] & C,A,E are collinear [04] & F,L,E are collinear [14] (Menelaus)⇒  (AE:FA) * (BF:LB) * (CL:EC) = 1 [23]
+008. B,F,A are collinear [06] & C,A,E are collinear [04] & EG ⟂ AC [05] & FG ⟂ AB [07] ⇒  ∠GFA = ∠AEG [24]
+009. B,F,A are collinear [06] & C,A,E are collinear [04] & ∠GAB = ∠CAG [00] ⇒  ∠GAF = ∠EAG [25]
+010. ∠GFA = ∠AEG [24] & ∠GAF = ∠EAG [25] (Similar Triangles)⇒  AF = AE [26]

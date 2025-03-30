@@ -1,0 +1,54 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J K : Points
+DA = DB [00]
+DB = DC [01]
+DE = DA [02]
+C,F,A are collinear [03]
+E,F,B are collinear [04]
+G,B,A are collinear [05]
+FG ⟂ AB [06]
+C,H,B are collinear [07]
+FH ⟂ BC [08]
+C,E,I are collinear [09]
+FI ⟂ CE [10]
+J,E,A are collinear [11]
+FJ ⟂ AE [12]
+K,E,B are collinear [13]
+G,K,J are collinear [14]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. J,E,A are collinear [11] & K,E,B are collinear [13] & G,B,A are collinear [05] & G,K,J are collinear [14] (Menelaus)⇒  (JA:EJ) * (GB:GA) * (KE:KB) = 1 [15]
+002. C,B,H are collinear [07] & FH ⟂ BC [08] ⇒  FH ⟂ CH [16]
+003. E,A,J are collinear [11] & FJ ⟂ AE [12] ⇒  FJ ⟂ JE [17]
+004. FH ⟂ CH [16] & FJ ⟂ JE [17] ⇒  ∠(FH-JE) = ∠(CH-FJ) [18]
+005. C,B,H are collinear [07] & E,A,J are collinear [11] & ∠(FH-JE) = ∠(CH-FJ) [18] ⇒  ∠FHC = ∠EJF [19]
+006. DA = DB [00] & DE = DA [02] & DB = DC [01] ⇒  C,E,B,A are concyclic [20]
+007. C,E,B,A are concyclic [20] ⇒  ∠ACB = ∠AEB [21]
+008. C,E,B,A are concyclic [20] ⇒  ∠EBC = ∠EAC [22]
+009. C,E,B,A are concyclic [20] ⇒  ∠BEC = ∠BAC [23]
+010. C,E,B,A are concyclic [20] ⇒  ∠ACE = ∠ABE [24]
+011. C,F,A are collinear [03] & C,B,H are collinear [07] & E,A,J are collinear [11] & E,F,B are collinear [04] & ∠ACB = ∠AEB [21] ⇒  ∠FCH = ∠JEF [25]
+012. ∠FHC = ∠EJF [19] & ∠FCH = ∠JEF [25] (Similar Triangles)⇒  FH:CH = FJ:EJ [26]
+013. C,B,H are collinear [07] & A,E,J are collinear [11] & ∠(FH-JE) = ∠(CH-FJ) [18] ⇒  ∠FHB = ∠AJF [27]
+014. E,F,B are collinear [04] & C,H,B are collinear [07] & J,E,A are collinear [11] & C,F,A are collinear [03] & ∠EBC = ∠EAC [22] ⇒  ∠FBH = ∠JAF [28]
+015. ∠FHB = ∠AJF [27] & ∠FBH = ∠JAF [28] (Similar Triangles)⇒  FH:HB = FJ:JA [29]
+016. G,B,A are collinear [05] & AB ⟂ FG [06] ⇒  GB ⟂ GF [30]
+017. FI ⟂ CE [10] & GB ⟂ GF [30] ⇒  ∠(CE-GF) = ∠(IF-GB) [31]
+018. C,E,I are collinear [09] & G,B,A are collinear [05] & ∠(CE-GF) = ∠(IF-GB) [31] ⇒  ∠FIE = ∠AGF [32]
+019. E,F,B are collinear [04] & C,E,I are collinear [09] & G,B,A are collinear [05] & C,F,A are collinear [03] & ∠BEC = ∠BAC [23] ⇒  ∠FEI = ∠GAF [33]
+020. ∠FIE = ∠AGF [32] & ∠FEI = ∠GAF [33] (Similar Triangles)⇒  IF:EI = GF:GA [34]
+021. (JA:EJ) * (GB:GA) * (KE:KB) = 1 [15] & FH:CH = FJ:EJ [26] & FH:HB = FJ:JA [29] & IF:EI = GF:GA [34] (Ratio chase)⇒  (GB:KB) * (IF:CH) * (HB:EI) * (KE:GF) = 1 [35]
+022. (JA:EJ) * (GB:GA) * (KE:KB) = 1 [15] & IF:EI = GF:GA [34] (Ratio chase)⇒  (JA:EI) * (KE:GF) * (GB:KB) * (IF:EJ) = 1 [36]
+023. C,E,I are collinear [09] & G,B,A are collinear [05] & ∠(CE-GF) = ∠(IF-GB) [31] ⇒  ∠FIC = ∠BGF [37]
+024. C,F,A are collinear [03] & C,E,I are collinear [09] & G,B,A are collinear [05] & E,F,B are collinear [04] & ∠ACE = ∠ABE [24] ⇒  ∠FCI = ∠GBF [38]
+025. ∠FIC = ∠BGF [37] & ∠FCI = ∠GBF [38] (Similar Triangles)⇒  IF:CI = GF:GB [39]
+026. IF:CI = GF:GB [39] & IF:EI = GF:GA [34] ⇒  CI:EI = GB:GA [40]
+027. (GB:KB) * (IF:CH) * (HB:EI) * (KE:GF) = 1 [35] & (JA:EI) * (KE:GF) * (GB:KB) * (IF:EJ) = 1 [36] & (GB:GA) * (JA:KB) * (KE:EJ) = 1 [15] & CI:EI = GB:GA [40] ⇒  (CI:IE) * (EK:KB) * (BH:HC) = 1 [41]
+028. C,E,I are collinear [09] & K,E,B are collinear [13] & C,H,B are collinear [07] & (CI:IE) * (EK:KB) * (BH:HC) = 1 [41] (Menelaus)⇒  K,I,H are collinear
+==========================

@@ -1149,7 +1149,22 @@ class Dependency(Construction):
 
       if self.why is None:
         self.why = why_eqratio30(ab._val, cd._val, mn_xy, pq_zw, level)
-
+      if self.why is None:
+        self.why = why_eqratio30(ab._val, pq._val, mn_xy, cd_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(ab._val, zw._val, mn_xy, cd_pq, level)
+      if self.why is None:
+        self.why = why_eqratio30(mn._val, cd._val, ab_xy, pq_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(mn._val, pq._val, ab_xy, cd_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(mn._val, zw._val, ab_xy, cd_pq, level)
+      if self.why is None:
+        self.why = why_eqratio30(xy._val, cd._val, ab_mn, pq_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(xy._val, pq._val, ab_mn, cd_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(xy._val, zw._val, ab_mn, cd_pq, level)
       if self.why is None:
         self.why = []
 
