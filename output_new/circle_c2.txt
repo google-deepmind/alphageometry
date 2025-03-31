@@ -1,0 +1,33 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I : Points
+DA = DB [00]
+DB = DC [01]
+DE = DA [02]
+E,F,C are collinear [03]
+B,F,A are collinear [04]
+B,G,C are collinear [05]
+GF ∥ AE [06]
+HD = HG [07]
+D,H,G are collinear [08]
+DI = DA [09]
+HI = HG [10]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. DA = DB [00] & DE = DA [02] & DB = DC [01] ⇒  E,B,A,C are concyclic [11]
+002. E,B,A,C are concyclic [11] ⇒  ∠BCE = ∠BAE [12]
+003. E,B,A,C are concyclic [11] ⇒  ∠ABC = ∠AEC [13]
+004. B,G,C are collinear [05] & E,F,C are collinear [03] & B,F,A are collinear [04] & ∠BCE = ∠BAE [12] & AE ∥ FG [06] ⇒  ∠GCF = ∠BFG [14]
+005. E,F,C are collinear [03] & B,F,A are collinear [04] & B,G,C are collinear [05] & ∠AEC = ∠ABC [13] & AE ∥ FG [06] ⇒  ∠GFC = ∠FBG [15]
+006. ∠GCF = ∠BFG [14] & ∠GFC = ∠FBG [15] (Similar Triangles)⇒  GC:FG = FG:BG [16]
+007. DI = DA [09] & DA = DB [00] & DB = DC [01] ⇒  D is the circumcenter of \Delta IBC [17]
+008. HI = HG [10] & HD = HG [07] ⇒  H is the circumcenter of \Delta DIG [18]
+009. H is the circumcenter of \Delta DIG [18] & D,H,G are collinear [08] ⇒  DI ⟂ GI [19]
+010. D is the circumcenter of \Delta IBC [17] & DI ⟂ GI [19] & B,G,C are collinear [05] (Circle Power)⇒  IG:BG = GC:IG [20]
+011. GC:FG = FG:BG [16] & IG:BG = GC:IG [20] (Ratio chase)⇒  FG = IG
+==========================

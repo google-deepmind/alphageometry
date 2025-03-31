@@ -1,0 +1,51 @@
+3 [171.88209223747253, 3241.3160371780396, 25048.504298210144]
+solved
+('eqratio30', 'a', 'b', 'a', 'j', 'c', 'i', 'b', 'i', 'e', 'j', 'c', 'e')
+<problem.Dependency object at 0x7f8048e1e020>
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J : Points
+DA = DB [00]
+DB = DC [01]
+DE = DA [02]
+B,A,F are collinear [03]
+E,C,F are collinear [04]
+E,G,A are collinear [05]
+G,C,B are collinear [06]
+DH = DA [07]
+DI = DA [08]
+I,F,H are collinear [09]
+DJ = DA [10]
+G,H,J are collinear [11]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. E,G,A are collinear [05] & B,A,F are collinear [03] & E,C,F are collinear [04] & G,C,B are collinear [06] (Menelaus)⇒  (EG:GA) * (BA:FB) * (CF:EC) = 1 [12]
+002. E,G,A are collinear [05] & B,A,F are collinear [03] & E,C,F are collinear [04] & G,C,B are collinear [06] (Menelaus)⇒  (GC:GB) * (BA:FA) * (EF:EC) = 1 [13]
+003. DE = DA [02] & DJ = DA [10] & DA = DB [00] & DB = DC [01] & DH = DA [07] ⇒  E,A,H,J are concyclic [14]
+004. E,A,H,J are concyclic [14] & E,G,A are collinear [05] & G,H,J are collinear [11] (Circle Power)⇒  EG:GH = GJ:GA [15]
+005. E,A,H,J are concyclic [14] ⇒  ∠EAJ = ∠EHJ [16]
+006. E,A,H,J are concyclic [14] ⇒  ∠EAH = ∠EJH [17]
+007. E,G,A are collinear [05] & G,H,J are collinear [11] & ∠EAJ = ∠EHJ [16] ⇒  ∠GEH = ∠AJG [18]
+008. G,E,A are collinear [05] & ∠EAJ = ∠EHJ [16] & G,H,J are collinear [11] ⇒  ∠GHE = ∠JAG [19]
+009. ∠GEH = ∠AJG [18] & ∠GHE = ∠JAG [19] (Similar Triangles)⇒  EG:EH = GJ:AJ [20]
+010. E,G,A are collinear [05] & ∠EAH = ∠EJH [17] & G,H,J are collinear [11] ⇒  ∠GEJ = ∠AHG [21]
+011. G,H,J are collinear [11] & G,E,A are collinear [05] & ∠EAH = ∠EJH [17] ⇒  ∠GJE = ∠HAG [22]
+012. ∠GEJ = ∠AHG [21] & ∠GJE = ∠HAG [22] (Similar Triangles)⇒  EG:EJ = GH:HA [23]
+013. DE = DA [02] & DI = DA [08] & DA = DB [00] & DB = DC [01] & DH = DA [07] ⇒  A,H,I,B are concyclic [24]
+014. A,H,I,B are concyclic [24] ⇒  ∠AHI = ∠ABI [25]
+015. A,F,B are collinear [03] & ∠AHI = ∠ABI [25] & I,F,H are collinear [09] ⇒  ∠FBI = ∠AHF [26]
+016. I,H,F are collinear [09] & B,F,A are collinear [03] & ∠AHI = ∠ABI [25] ⇒  ∠FIB = ∠HAF [27]
+017. ∠FBI = ∠AHF [26] & ∠FIB = ∠HAF [27] (Similar Triangles)⇒  FB:IB = FH:HA [28]
+018. DE = DA [02] & DI = DA [08] & DA = DB [00] & DB = DC [01] & DH = DA [07] ⇒  E,C,H,I are concyclic [29]
+019. E,C,H,I are concyclic [29] ⇒  ∠ECI = ∠EHI [30]
+020. I,H,F are collinear [09] & E,C,F are collinear [04] & ∠ECI = ∠EHI [30] ⇒  ∠CIF = ∠FEH [31]
+021. E,C,F are collinear [04] & I,F,H are collinear [09] ⇒  ∠CFI = ∠EFH [32]
+022. ∠CIF = ∠FEH [31] & ∠CFI = ∠EFH [32] (Similar Triangles)⇒  CI:CF = EH:FH [33]
+023. (EG:GA) * (BA:FB) * (CF:EC) = 1 [12] & (GC:GB) * (BA:FA) * (EF:EC) = 1 [13] & EG:GH = GJ:GA [15] & EG:EH = GJ:AJ [20] & EG:EJ = GH:HA [23] & FB:IB = FH:HA [28] & CI:CF = EH:FH [33] (Ratio chase)⇒  (FA:AJ) * (GB:IB) * (CI:GC) * (EJ:EF) = 1 [34]
+024. (FA:AJ) * (GB:IB) * (CI:GC) * (EJ:EF) = 1 [34] & (EC:BA) * (FA:GC) * (GB:EF) = 1 [13] ⇒  (AJ:JE) * (EC:IC) * (BI:BA) = 1
+==========================

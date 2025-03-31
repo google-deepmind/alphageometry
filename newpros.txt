@@ -30,25 +30,55 @@ Menelaus_b3
 a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; q = on_line q a c, on_line q b d; e = foot e q a b; f = foot f q b c; g = foot g q c d; h = foot h q d a; p = on_line p e h, on_line p b d ? coll p f g
 Menelaus_b6
 a b c = triangle a b c; h = orthocenter h a b c; e = on_line e a b; f = on_line f b c, on_line f e h; d = on_line d a c, on_line d e h; m = on_tline m h e h, on_line m b c; n = on_line n a b, on_line n m h; p = on_line p a c, on_line p m h ? eqratio d e e f p n m n
+Menelaus_b9w
+a b c = triangle a b c; d e f i = incenter2 d e f i a b c; j = on_tline j d b c; y = on_circle y j d, on_circle y c d; z = on_circle z j d, on_circle z b d; x = on_line x z b, on_line x y c; p = on_line p b c, on_line p e f ? coll p y z
+Menelaus_b9
+a b c = triangle a b c; d e f i = incenter2 d e f i a b c; j = on_tline j d b c; y = on_circle y j d, on_circle y c d; z = on_circle z j d, on_circle z b d; x = on_line x z b, on_line x y c; p = on_line p b c, on_line p e f ? cyclic e f y z
 Menelaus_b10
 a b c = triangle a b c; d = foot d a b c; x e g o1 = excenter2 x e g o1 c a b; y f h o2 = excenter2 y f h o2 b a c; q = on_line q a d, on_line q f h ? coll q e g
-Menelaus_b15
-a b c = triangle a b c; m = midpoint m b c; i = incenter i a b c; d = on_line d m i, on_line d a c; o = circle o a b c; e = on_line e b i, on_circle e o a; f = on_line f b i, on_line f a c ? eqratio e d e i i c i b
-Ceva_a1
-a b c = triangle a b c; d = foot d a b c; h = on_line h a d; e = on_line e a c, on_line e b h; f = on_line f a b, on_line f c h; p = on_pline p a b c, on_line p d f; q = on_line q p a, on_line q d e ? cong a p a q
-tangent
-a b c = triangle a b c; o = circle o a b c; p = on_tline p a o a, on_line p b c ? eqratio30 a b a c a b a c p c p b
 Menelaus_b11
 a b c = triangle a b c; o = circle o a b c; p = on_tline p a o a, on_tline p b o b; d = on_line d p c, on_circle d o a; e = on_pline e c p a, on_line e a b; f = on_line f c e, on_line f a d; k = on_line k c d, on_line k a b; m = on_line m o p, on_line m a b ? cyclic o m c d
 Menelaus_b12
 a b c = triangle a b c; m = midpoint m b c; d = on_line d b c; e = mirror e d m; f = on_line f a b; g = on_line g a c; k = on_line k f e, on_line k g d; v = on_line v f d, on_line v g e; l = on_line l a k, on_line l b c; t = on_line t a v, on_line t b c ? cong d t e l
 Menelaus_b13
 x y = segment x y; p = on_line p x y; a = on_circle a x p; b c = tangent b c a y p; d = on_line d a b, on_circle d x a; e = on_line e a c, on_circle e x a; r = on_line r d e, on_line r b c; q = on_line q p r, on_circle q x a ? coll a q y
+Menelaus_b15
+a b c = triangle a b c; m = midpoint m b c; i = incenter i a b c; d = on_line d m i, on_line d a c; o = circle o a b c; e = on_line e b i, on_circle e o a; f = on_line f b i, on_line f a c ? eqratio e d e i i c i b
+Ceva_a1
+a b c = triangle a b c; d = foot d a b c; h = on_line h a d; e = on_line e a c, on_line e b h; f = on_line f a b, on_line f c h; p = on_pline p a b c, on_line p d f; q = on_line q p a, on_line q d e ? cong a p a q
+tangent
+a b c = triangle a b c; o = circle o a b c; p = on_tline p a o a, on_line p b c ? eqratio30 a b a c a b a c p c p b
 Menelaus_b2a
 a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f a b; g = on_line g b e, on_line g c f; x = on_pline x g b c, on_line x a b; y = on_line y g x, on_line y a c; p = on_line p b y, on_line p c g; q = on_line q c x, on_line q b g ? eqratio d p a b d q a c
 Menelaus_b2b
 a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f a b; g = on_line g b e, on_line g c f; x = on_pline x g b c, on_line x a b; y = on_line y g x, on_line y a c; p = on_line p b y, on_line p c g; q = on_line q c x, on_line q b g ? eqratio d p a b p q b c
-Menelaus_b9w
-a b c = triangle a b c; d e f i = incenter2 d e f i a b c; j = on_tline j d b c; y = on_circle y j d, on_circle y c d; z = on_circle z j d, on_circle z b d; x = on_line x z b, on_line x y c; p = on_line p b c, on_line p e f ? coll p y z
-Menelaus_b9
-a b c = triangle a b c; d e f i = incenter2 d e f i a b c; j = on_tline j d b c; y = on_circle y j d, on_circle y c d; z = on_circle z j d, on_circle z b d; x = on_line x z b, on_line x y c; p = on_line p b c, on_line p e f ? cyclic e f y z
+Ceva_a4
+a b c = triangle a b c; d = on_circle d c a, on_line d b c; o = circle o a c d; m = midpoint m b c; p = on_circle p o c, on_circle p m c; e = on_line e a c, on_line e b p; f = on_line f a b, on_line f c p ? coll d e f
+Ceva_a7
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_line e a b, on_line e d c; f = on_line f a d, on_line f b c; p = on_circle p o a; r = on_line r p e, on_circle r o a; s = on_line s p f, on_circle s o a; t = on_line t a c, on_line t b d ? eqratio30 a s s d d c r c b r b a
+Circle_a2
+b c = segment b c; a = on_bline a b c; i = incenter i a b c; o = on_bline o b i; p = on_circle p a b, on_circle p o b; q = on_circle q i b, on_circle q o b; r = on_line r i p, on_line r b q ? perp b r c r
+Circle_a5
+a b c = triangle a b c; d e f x = excenter2 d e f x a b c; o1 = circle o1 a e f; p = on_line p b c, on_circle p o1 a; q = on_line q b c, on_circle q o1 a; m = midpoint m a d; o2 = circle o2 m p q; t = on_circle t o2 m, on_circle t x d ? coll o2 x t
+Circle_a6
+a b c = triangle a b c; o = circle o a b c; h = orthocenter h a b c; s = on_circle s o a; p = on_line p b c, on_tline p s a s; o2 = circle o2 a s p; x = on_line x s h, on_circle x o2 a; r = on_line r a b, on_line r o p; q = on_line q a c, on_line q o p; y = foot y q a r; z = foot z r a q ? coll x y z
+Circle_a8
+a b c = triangle a b c; o = circle o a b c; d = on_line d a o, on_line d b c; u = foot u d a c; v = foot v d a b; e = on_tline e a a o, on_line e d u; f = on_tline f a a o, on_line f d v; p = on_line p e c, on_line p f b; x = on_line x b p, on_circle x o a; y = on_line y c p, on_circle y o a ? perp p d b c
+Circle_b4
+a b c = triangle a b c; o = circle o a b c; i = circle i o b c; g = on_circle g i o; x = circle x a b g; y = circle y a c g; e = on_line e a c, on_circle e x a; f = on_line f a b, on_circle f y a; k = on_line k b e, on_line k c f; t = on_line t a k, on_line t b c ? coll t o g
+Circle_b5
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_line e a d, on_line e b c; m = midpoint m a d; n = midpoint n b c; w = circle w e m n; x = on_circle x o a, on_circle x w e; y = on_circle y o a, on_circle y w e; z = on_line z a b, on_line z c d ? coll x y z
+Circle_b7w
+a b c = triangle a b c; d e f i = incenter2 d e f i a b c; p = on_line p a d, on_circle p i d; q = on_line q e f, on_tline q p a d; x = on_line x d e, on_line x a q; y = on_line y d f, on_line y a q; u = on_line u d i, on_pline u a b c; v = on_line v d i, on_circle v i d ? cong a x a y
+Circle_b13
+a b c = triangle a b c; d = foot d a b c; e = foot e b c a; m = midpoint a b; o = circle o a b c; f = on_line f d e, on_circle f o a; k = on_line k d e, on_circle k o a; w = circle w m d e; p = on_line p m k, on_circle p w m; q = on_line q m f, on_circle q w m ? cyclic a p q b
+Circle_b15
+a b = segment a b; o = on_bline o a b; p = on_tline p a o a, on_tline p b o b; c = on_circle c o a; d = on_line d p c, on_circle d o a; e = on_pline e c p b, on_circle e o a; f = on_line f a e, on_line f p b; g = on_line g d e, on_line g p b ? cong g f g b
+Circle_c2
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_line e a b, on_line e c d; f = on_line f b c, on_pline f e a d; m = midpoint m o f; g = on_circle g o a, on_circle g m f ? cong f e f g
+Circle_c3
+a b c = triangle a b c; d = angle_bisector d b a c, on_line d b c; m = midpoint m b c; o = circle o a d m; l = on_line l a b, on_circle l o a; n = on_line n a c, on_circle n o a ? cong b l c n
+Pascal_a1
+a b c = triangle a b c; o = circle o a b c; p = free; a1 = on_line a1 a p, on_circle a1 o a; b1 = on_line b1 b p, on_circle b1 o b; c1 = on_line c1 c p, on_circle c1 o c; q = on_circle q o a; x = on_line x q a1, on_line x b c; y = on_line y q b1, on_line y a c; z = on_line z q c1, on_line z a b ? coll x y z
+Pascal_b2
+a c = segment a c; o = midpoint o a c; b = on_circle b o a; d = on_circle d o a; m = on_line m a d, on_line m b c; n = on_tline n b o b, on_tline n d o d; p = on_line p a b, on_line p c d ? perp a c m n

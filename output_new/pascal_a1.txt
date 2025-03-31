@@ -1,0 +1,31 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J K L : Points
+DB = DC [00]
+DA = DB [01]
+DF = DA [02]
+E,F,A are collinear [03]
+DG = DB [04]
+G,E,B are collinear [05]
+DH = DC [06]
+H,E,C are collinear [07]
+DI = DA [08]
+F,J,I are collinear [09]
+C,J,B are collinear [10]
+C,K,A are collinear [11]
+I,K,G are collinear [12]
+L,B,A are collinear [13]
+H,L,I are collinear [14]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. DH = DC [06] & DB = DC [00] & DA = DB [01] & DI = DA [08] & DG = DB [04] & DF = DA [02] ⇒  C,A,G,B,H,I are concyclic [15]
+002. C,A,G,B,H,I are concyclic [15] & C,K,A are collinear [11] & I,K,G are collinear [12] & L,B,A are collinear [13] & H,L,I are collinear [14] & G,E,B are collinear [05] & H,E,C are collinear [07] (Pascal)⇒  E,L,K are collinear [16]
+003. DH = DC [06] & DB = DC [00] & DA = DB [01] & DI = DA [08] & DG = DB [04] & DF = DA [02] ⇒  C,F,A,G,B,I are concyclic [17]
+004. C,F,A,G,B,I are concyclic [17] & C,K,A are collinear [11] & I,K,G are collinear [12] & E,F,A are collinear [03] & G,E,B are collinear [05] & F,J,I are collinear [09] & C,J,B are collinear [10] (Pascal)⇒  K,E,J are collinear [18]
+005. E,L,K are collinear [16] & K,E,J are collinear [18] ⇒  J,K,L are collinear
+==========================

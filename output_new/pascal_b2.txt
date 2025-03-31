@@ -1,0 +1,35 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G : Points
+CA = CB [00]
+B,C,A are collinear [01]
+CD = CA [02]
+CE = CA [03]
+B,F,D are collinear [04]
+E,F,A are collinear [05]
+DG ⟂ CD [06]
+EG ⟂ CE [07]
+
+ * Auxiliary Constructions:
+H : Points
+B,E,H are collinear [08]
+H,D,A are collinear [09]
+
+ * Proof steps:
+001. CE = CA [03] & CD = CA [02] & CA = CB [00] ⇒  C is the circumcenter of \Delta DEB [10]
+002. CE = CA [03] & CD = CA [02] & CA = CB [00] ⇒  B,D,E,A are concyclic [11]
+003. C is the circumcenter of \Delta DEB [10] & CD = CA [02] & DG ⟂ CD [06] & EG ⟂ CE [07] & B,F,D are collinear [04] & E,F,A are collinear [05] & B,E,H are collinear [08] & H,D,A are collinear [09] (Pascal)⇒  H,G,F are collinear [12]
+004. B,D,E,A are concyclic [11] ⇒  ∠DEB = ∠DAB [13]
+005. CA = CB [00] & CD = CA [02] ⇒  C is the circumcenter of \Delta DBA [14]
+006. C is the circumcenter of \Delta DBA [14] & B,C,A are collinear [01] ⇒  BD ⟂ AD [15]
+007. CA = CB [00] & CE = CA [03] ⇒  C is the circumcenter of \Delta EBA [16]
+008. C is the circumcenter of \Delta EBA [16] & B,C,A are collinear [01] ⇒  BE ⟂ AE [17]
+009. H,E,B are collinear [08] & E,F,A are collinear [05] & H,D,A are collinear [09] & B,F,D are collinear [04] & BD ⟂ AD [15] & BE ⟂ AE [17] ⇒  ∠HEF = ∠HDF [18]
+010. ∠HEF = ∠HDF [18] ⇒  H,E,F,D are concyclic [19]
+011. H,E,F,D are concyclic [19] ⇒  ∠HED = ∠HFD [20]
+012. B,F,D are collinear [04] & H,G,F are collinear [12] & H,D,A are collinear [09] & B,C,A are collinear [01] & ∠DEB = ∠DAB [13] & ∠HED = ∠HFD [20] & B,E,H are collinear [08] ⇒  ∠(BF-HG) = ∠(HD-BC) [21]
+013. H,D,A are collinear [09] & B,F,D are collinear [04] & AD ⟂ BD [15] ⇒  HD ⟂ BF [22]
+014. ∠(BF-HG) = ∠(HD-BC) [21] & HD ⟂ BF [22] ⇒  BC ⟂ HG [23]
+015. BC ⟂ HG [23] & B,C,A are collinear [01] & H,G,F are collinear [12] ⇒  AB ⟂ FG
+==========================

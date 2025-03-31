@@ -96,5 +96,5 @@ A,K,L are collinear [16]
 069. ∠(GI-AC) = ∠CAG [67] & ∠(IG-FK) = ∠(AC-FD) [84] ⇒  ∠(AC-FK) = ∠(AG-DF) [85]
 070. ∠CAK = ∠GAD [65] & ∠(AC-FK) = ∠(AG-DF) [85] ⇒  ∠KAD = ∠KFD [86]
 071. ∠KAD = ∠KFD [86] ⇒  A,F,D,K are concyclic [87]
-072. A,B,K,C are concyclic [44] & A,F,D,K are concyclic [87] & F,D,B,C are concyclic [22] & A,K,L are collinear [16] & B,L,C are collinear [15] ⇒  F,D,L are collinear
+072. A,B,K,C are concyclic [44] & A,F,D,K are concyclic [87] & F,D,B,C are concyclic [22] & A,K,L are collinear [16] & B,L,C are collinear [15] (Radical Axis) ⇒  F,D,L are collinear
 ==========================
