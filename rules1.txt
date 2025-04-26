@@ -1,2 +1,1 @@
-coll A F B, coll B D C, coll C E A, coll D E F => eqratio30 A F F B B D D C C E E A
-eqratio a b c d m n p q, eqratio c d e f p q r u => eqratio a b e f m n r u
+circle O A B C, cong O A O D, cong O A O E, coll G A B, coll G D E, coll H B C, coll H E F, coll I C D, coll I F A, coll G H I => cong O A O F

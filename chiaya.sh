@@ -6,7 +6,7 @@ export PYTHONPATH=$PYTHONPATH:$MELIAD_PATH
 
 DDAR_ARGS=(
   --defs_file=$(pwd)/defs.txt \
-  --rules_file=$(pwd)/rules.txt \
+  --rules_file=$(pwd)/rules1.txt \
 );
 
 SIZE=4
@@ -36,13 +36,13 @@ LM_ARGS=(
   --gin_param=Trainer.restore_state_variables=False
 );
 
-INPUT_FILE=newpros.txt
+INPUT_FILE=speed.txt
 SERIES=Menelaus_a
 
 python -m alphageometry \
 --alsologtostderr \
 --problems_file=$(pwd)/$INPUT_FILE \
---problem_name=Ceva_a4 \
+--problem_name=test_pascal6_rev \
 --mode=alphageometry \
 "${DDAR_ARGS[@]}" \
 "${SEARCH_ARGS[@]}" \

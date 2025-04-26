@@ -496,7 +496,7 @@ def match_cyclic2power(
       if p:
         yield dict(zip('PABCD',[p,a,d,b,c]))
   tb = time.time()
-  #print("c2p",tb-ta)
+  print('c2p:',tb-ta)
 
 def match_cyclic2power_tan(
     g: gh.Graph,
@@ -521,7 +521,7 @@ def match_cyclic2power_tan(
           yield dict(zip('OPABC', [o, p, a, b, c]))
         break
   tb = time.time()
-  #print(tb-ta)
+  print('c2pt:',tb-ta)
 
 
 def match_power2cyclic(
@@ -545,7 +545,7 @@ def match_power2cyclic(
           if g.check_eqratio([p, a, p, c, p, d, p, b]) and not g.check_coll([p,a,c]):
             yield dict(zip('PABCD', [p, a, b, c, d]))
   tb = time.time()
-  #print("p2c",tb-ta)
+  print('p2c:',tb-ta)
           
 def match_pascal6(
     g: gh.Graph,
@@ -599,7 +599,7 @@ def match_pascal6(
         if gg and h and i:
           yield dict(zip('ABCDEFGHI',[a,b,c,d,e,f,gg,h,i]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 def match_pascal6_rev(
     g: gh.Graph,
@@ -650,7 +650,7 @@ def match_pascal6_rev(
           if h and i and g.check_coll([gg,h,i]):
             yield dict(zip('OABCDEFGHI',[o,a,b,c,d,e,f,gg,h,i]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 def match_pascal5(
     g: gh.Graph,
@@ -702,7 +702,7 @@ def match_pascal5(
       if gg and h and i:
         yield dict(zip('OABCDEGHI',[o,a,b,c,d,e,gg,h,i]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 def match_pascal41(
     g: gh.Graph,
@@ -762,7 +762,7 @@ def match_pascal41(
       if gg and h and i:
         yield dict(zip('OABCDGHI',[o,a,b,c,d,gg,h,i]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 def match_pascal42(
     g: gh.Graph,
@@ -822,7 +822,7 @@ def match_pascal42(
       if gg and h and i:
         yield dict(zip('OABCDGHI',[o,a,b,c,d,gg,h,i]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 def match_radical_axis(
     g: gh.Graph,
@@ -876,7 +876,7 @@ def match_radical_axis(
         if p3:
           yield dict(zip('ABCDEFP',[c,d,e,f,a,b,p3]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 def match_menelaus(
     g: gh.Graph,
@@ -924,7 +924,7 @@ def match_menelaus(
           #debugname([a, b, c, d, e, f])
           yield dict(zip('ABCDEF', [a, b, c, d, e, f]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 
 def match_ceva(
@@ -933,7 +933,7 @@ def match_ceva(
     theorem: pr.Theorem,
 ) -> Generator[dict[str, gm.Point], None, None]:
   """Match coll A F B, coll B D C, coll C E A, coll B P E, coll C P F, coll A P D => eqratio30 A F F B B D D C C E E A"""
-  #print("ceva")
+  print("ceva")
   recordl = set()
   ta = time.time()
   all_lines = g.type2nodes[gm.Line]
@@ -981,7 +981,7 @@ def match_ceva(
           #debugname([p, a, b, c, d, e, f])
           yield dict(zip('PABCDEF', [p, a, b, c, d, e, f]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 def match_menelaus_rev(
     g: gh.Graph,
@@ -1034,7 +1034,7 @@ def match_menelaus_rev(
         if g.check_eqratio30([a, f, f, b, b, d, d, c, c, e, e, a]):
           yield dict(zip('ABCDEF', [a, b, c, d, e, f]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
   
 def match_ceva_rev(
     g: gh.Graph,
@@ -1111,7 +1111,7 @@ def match_ceva_rev(
               #debugname([pca, b, c, a, e, f, d],(x2,x3,x1))
               yield dict(zip('PABCDEF', [pca, b, c, a, e, f, d]))
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 def match_eqratio6_coll_coll_eqratio(
     g: gh.Graph,
@@ -1557,7 +1557,7 @@ def match_generic(
     theorem: pr.Theorem
 ) -> Generator[dict[str, gm.Point], None, None]:
   """Match any generic rule that is not one of the above match_*() rules."""
-  #debugname(theorem)
+  debugname(theorem)
   ta = time.time()
   clause2enum = {}
 
@@ -1601,7 +1601,7 @@ def match_generic(
     yield mapping
 
   tb = time.time()
-  #print(tb-ta)
+  print(tb-ta)
 
 
 def match_generic_debug(
@@ -1712,7 +1712,7 @@ BUILT_IN_FNS = {
     'circle_cong_cong_perp_coll_coll_coll_coll_coll_coll' : match_pascal5,
     'circle_cong_perp_coll_coll_coll_perp_coll_coll' : match_pascal41,
     'circle_cong_perp_perp_coll_coll_coll_coll_coll' : match_pascal42,
-    'circle_cong_cong_coll_coll_coll_coll_coll_coll_coll_cong' : match_pascal6_rev,
+    #'circle_cong_cong_coll_coll_coll_coll_coll_coll_coll_cong' : match_pascal6_rev,
     'coll_coll_coll_coll_eqratio30': match_menelaus,
     'coll_coll_coll_coll_coll_coll_eqratio30': match_ceva,
     'coll_coll_coll_eqratio30_coll': match_menelaus_rev,
