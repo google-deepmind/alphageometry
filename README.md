@@ -17,6 +17,8 @@ introduced in the [Nature 2024](https://www.nature.com/articles/s41586-023-06747
 <img alt="fig1" width="800px" src="fig1.svg">
 </center>
 
+**Update (Jan 2026):** AlphaGeometry2 is [published](https://jmlr.org/papers/v26/25-1654.html), its code for DDAR is released at [alphageometry2](https://github.com/google-deepmind/alphageometry2).
+
 
 ## Dependencies
 
