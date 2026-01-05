@@ -2060,7 +2060,7 @@ class Graph:
   def _get_or_create_ratio_l(
       self, l1: Length, l2: Length, deps: Dependency
   ) -> tuple[Ratio, Ratio, list[Dependency]]:
-    """Get or create a new Ratio from two Lenghts l1 and l2."""
+    """Get or create a new Ratio from two Lengths l1 and l2."""
     for r in self.type2nodes[Ratio]:
       if r.lengths == (l1.rep(), l2.rep()):
         l1_, l2_ = r._l
@@ -2736,7 +2736,7 @@ class Graph:
   def all_eqangles_distinct_linepairss(
       self,
   ) -> Generator[tuple[Line, ...], None, None]:
-    """No eqangles betcause para-para, or para-corresponding, or same."""
+    """No eqangles because para-para, or para-corresponding, or same."""
 
     for measure in self.type2nodes[Measure]:
       angs = measure.neighbors(Angle)
