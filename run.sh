@@ -17,12 +17,17 @@
 set -e
 set -x
 
-virtualenv -p python3 .
+virtualenv -p python3.10 .
 source ./bin/activate
 
+sudo apt-get install python3.10-tk # temporary solution
+pip install -U pip
 pip install --require-hashes -r requirements.txt
 
-gdown --folder https://bit.ly/alphageometry
+GDRIVE_URL=$(curl -s -L -o /dev/null -w "%{url_effective}" https://bit.ly/alphageometry)
+pip install -U gdown # temporary solution
+echo "Downloading GDrive folder: $GDRIVE_URL"
+gdown --folder "$GDRIVE_URL"
 DATA=ag_ckpt_vocab
 
 MELIAD_PATH=meliad_lib/meliad
