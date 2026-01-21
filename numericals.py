@@ -889,8 +889,8 @@ def draw_angle(
 
 def naming_position(
     ax: matplotlib.axes.Axes, p: Point, lines: list[Line], circles: list[Circle]
-) -> tuple[float, float]:
-  """Figure out a good naming position on the drawing."""
+) -> tuple[Point, float]:
+  """Figure out a good naming position on the drawing. return values is a tuple of [position, radius]"""
   _ = ax
   r = 0.08
   c = Circle(center=p, radius=r)
@@ -916,10 +916,7 @@ def naming_position(
   d, a = max(angs)
   ang = a + d / 2
 
-  name_pos = p + Point(np.cos(ang), np.sin(ang)) * r
-
-  x, y = (name_pos.x - r / 1.5, name_pos.y - r / 1.5)
-  return x, y
+  return p + Point(np.cos(ang), np.sin(ang)) * r, r
 
 
 def draw_point(
@@ -930,8 +927,8 @@ def draw_point(
     circles: list[Circle],
     color: Any = 'white',
     size: float = 15,
-) -> None:
-  """draw a point."""
+) -> tuple[float, float, float, float]:
+  """draw a point. return value is the range of x/y postion."""
   ax.scatter(p.x, p.y, color=color, s=size)
 
   if color == 'white':
@@ -943,9 +940,11 @@ def draw_point(
   if len(name) > 1:
     name = name[0] + '_' + name[1:]
 
-  ax.annotate(
-      name, naming_position(ax, p, lines, circles), color=color, fontsize=15
-  )
+  naming_p, r = naming_position(ax, p, lines, circles)
+  char_size = Point(r / 1.5, r / 1.5)
+  loc = naming_p - char_size
+  ax.annotate(name, (loc.x, loc.y), color=color, fontsize=15)
+  return min(p.x, naming_p.x-char_size.x), max(p.x, naming_p.x+char_size.x), min(p.y, naming_p.y-char_size.y), max(p.y, naming_p.y+char_size.y)
 
 
 def _draw_line(
@@ -1139,7 +1138,7 @@ def _draw(
     goal: Any,
     equals: list[tuple[Any, Any]],
     highlights: list[tuple[str, list[gm.Point]]],
-):
+)->tuple[float, float, float, float]:
   """Draw everything."""
   colors = ['red', 'green', 'blue', 'orange', 'magenta', 'purple']
   pcolor = 'black'
@@ -1159,8 +1158,12 @@ def _draw(
     line_boundaries.append((p1, p2))
   circles = [draw_circle(ax, c, color=ccolor) for c in circles]
 
+  x_min, x_max, y_min, y_max = 0.0, 0.0, 0.0, 0.0
+  first = True
   for p in points:
-    draw_point(ax, p.num, p.name, line_boundaries, circles, color=pcolor)
+    x0, x1, y0, y1 = draw_point(ax, p.num, p.name, line_boundaries, circles, color=pcolor)
+    x_min, x_max, y_min, y_max = (min(x_min, x0), max(x_max, x1), min(y_min, y0), max(y_max, y1)) if not first else (x0, x1, y0, y1)
+    first = False
 
   if equals:
     for i, segs in enumerate(equals['segments']):
@@ -1187,6 +1190,7 @@ def _draw(
     lcolor = color1 = color2 = 'red'
     highlight(ax, name, args, lcolor, color1, color2)
 
+  return x_min, x_max, y_min, y_max
 
 THEME = 'dark'
 
@@ -1224,15 +1228,11 @@ def draw(
   else:
     ax.set_facecolor((1.0, 1.0, 1.0))
 
-  _draw(ax, points, lines, circles, goal, equals, highlights)
+  xmin, xmax, ymin, ymax = _draw(ax, points, lines, circles, goal, equals, highlights)
 
   plt.axis('equal')
   fig.subplots_adjust(left=0, right=1, top=1, bottom=0, wspace=0, hspace=0)
   if points:
-    xmin = min([p.num.x for p in points])
-    xmax = max([p.num.x for p in points])
-    ymin = min([p.num.y for p in points])
-    ymax = max([p.num.y for p in points])
     plt.margins((xmax - xmin) * 0.1, (ymax - ymin) * 0.1)
 
   plt.show(block=block)
