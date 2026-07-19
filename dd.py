@@ -1061,7 +1061,7 @@ def bfs_one_level(
         dep = Dependency(p.name, p_args, rule_name='', level=level)
         try:
           dep = dep.why_me_or_cache(g, level)
-        except:  # pylint: disable=bare-except
+        except Exception:  # pylint: disable=broad-exception-caught
           fail = True
           break
 
