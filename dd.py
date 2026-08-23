@@ -27,6 +27,7 @@ import numericals as nm
 import problem as pr
 from problem import Dependency, EmptyDependency
 
+import time
 
 def intersect1(set1: set[Any], set2: set[Any]) -> Any:
   for x in set1:
@@ -34,6 +35,17 @@ def intersect1(set1: set[Any], set2: set[Any]) -> Any:
       return x
   return None
 
+def intersect2(set1: set[Any], set2: set[Any]) -> Any:
+  a = None
+  b = None
+  for x in set1:
+    if x in set2:
+      if a == None:
+        a = x
+      else:
+        b = x
+        break
+  return a,b
 
 def diff_point(l: gm.Line, a: gm.Point) -> gm.Point:
   for x in l.neighbors(gm.Point):
@@ -41,6 +53,7 @@ def diff_point(l: gm.Line, a: gm.Point) -> gm.Point:
       return x
   return None
 
+import time
 
 # pylint: disable=protected-access
 # pylint: disable=unused-argument
@@ -87,9 +100,10 @@ def match_eqratio_eqratio_eqratio(
         c, d = g.two_points_of_length(l12)
         m, n = g.two_points_of_length(l3)
         p, q = g.two_points_of_length(l34)
-        # eqangle a b c d m n p q
+        # eqangle a b c d m n p q (eqratio)
         e, f = g.two_points_of_length(l2)
         r, u = g.two_points_of_length(l4)
+        #debugname([a, b, c, d, e, f, m, n, p, q, r, u])
         yield dict(zip('abcdefmnpqru', [a, b, c, d, e, f, m, n, p, q, r, u]))
 
 
@@ -442,13 +456,695 @@ def match_cyclic_eqangle(
     record.add((b, a, d, c))
     yield dict(zip('ABPQ', [a, b, c, d]))
 
+def match_cyclic2power(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match cyclic A B C D, coll P A B, coll P C D => eqratio P A P C P D P B"""
+  ta = time.time()
+  record = set()
+  for a,b,c,d in g_matcher('cyclic'):
+    if (a,b,c,d) in record:
+      continue
+    points = [a,b,c,d]
+    perms = utils.perm4(points)
+    for p in perms:
+      record.add(p)
+    ab = g._get_line(a, b)
+    cd = g._get_line(c, d)
+    if ab and cd:
+      p1s = ab.neighbors(gm.Point, return_set=True)
+      p2s = cd.neighbors(gm.Point, return_set=True)
+      p = intersect1(p1s, p2s)
+      if p:
+        yield dict(zip('PABCD',[p,a,b,c,d]))
+    ac = g._get_line(a, c)
+    bd = g._get_line(b, d)
+    if ac and bd:
+      p1s = ac.neighbors(gm.Point, return_set=True)
+      p2s = bd.neighbors(gm.Point, return_set=True)
+      p = intersect1(p1s, p2s)
+      if p:
+        yield dict(zip('PABCD',[p,a,c,b,d]))
+    ad = g._get_line(a, d)
+    bc = g._get_line(b, c)
+    if ad and bc:
+      p1s = ad.neighbors(gm.Point, return_set=True)
+      p2s = bc.neighbors(gm.Point, return_set=True)
+      p = intersect1(p1s, p2s)
+      if p:
+        yield dict(zip('PABCD',[p,a,d,b,c]))
+  tb = time.time()
+  print('c2p:',tb-ta)
+
+def match_cyclic2power_tan(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match circle O A B C, perp O A A P, coll P B C => eqratio P A P B P C P A """
+  ta = time.time()
+  for o,a,b,c in g.all_circles():
+    bc = g._get_line(b,c)
+    if not bc:
+      continue
+    oa = g._get_line(o, a)
+    if not (oa and oa.val): 
+      continue
+    for l in a.neighbors(gm.Line):
+      if g.check_perpl(oa, l):
+        p1s = l.neighbors(gm.Point, return_set=True)
+        p2s = bc.neighbors(gm.Point, return_set=True)
+        p = intersect1(p1s, p2s)
+        if p:
+          yield dict(zip('OPABC', [o, p, a, b, c]))
+        break
+  tb = time.time()
+  print('c2pt:',tb-ta)
+
+
+def match_power2cyclic(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match coll P A B, coll P C D, ncoll A B C D, eqratio P A P C P D P B => cyclic A B C D"""
+  ta = time.time()
+  all_lines = g.type2nodes[gm.Line]
+  for l1,l2 in utils.comb2(all_lines):
+      l1s = l1.neighbors(gm.Point, return_set=True)
+      l2s = l2.neighbors(gm.Point, return_set=True)
+      p = intersect1(l1s,l2s)
+      if not p:
+        continue
+      l1s = list(l1s)
+      l2s = list(l2s)
+      for a,b in utils.comb2(l1s):
+        for c,d in utils.comb2(l2s):
+          if g.check_eqratio([p, a, p, c, p, d, p, b]) and not g.check_coll([p,a,c]):
+            yield dict(zip('PABCD', [p, a, b, c, d]))
+  tb = time.time()
+  print('p2c:',tb-ta)
+          
+def match_pascal6(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match cyclic A B C D E F, coll G A B, coll G D E, coll H B C, coll H E F, coll I C D, coll I F A => coll G H I"""
+  ta = time.time()
+  recordc = set()
+  record = set()
+  for o,x,y,z in g.all_circles():
+    if (o,x) in recordc:
+      continue
+    circle = g.get_circle_thru_triplet(x,y,z)
+    for op in circle.neighbors(gm.Point):
+      recordc.add((o,op))
+    for a, b, c, d, e, f in utils.perm6(circle.neighbors(gm.Point)):
+      if (a,b,c,d,e,f) in record:
+        continue
+      # 6! = 60 * 12
+      record.add((a,b,c,d,e,f))
+      record.add((b,c,d,e,f,a))
+      record.add((c,d,e,f,a,b))
+      record.add((d,e,f,a,b,c))
+      record.add((e,f,a,b,c,d))
+      record.add((f,a,b,c,d,e))
+      record.add((f,e,d,c,b,a))
+      record.add((e,d,c,b,a,f))
+      record.add((d,c,b,a,f,e))
+      record.add((c,b,a,f,e,d))
+      record.add((b,a,f,e,d,c))
+      record.add((a,f,e,d,c,b))
+
+      ab = g._get_line(a, b)
+      bc = g._get_line(b, c)
+      cd = g._get_line(c, d)
+      de = g._get_line(d, e)
+      ef = g._get_line(e, f)
+      fa = g._get_line(f, a)
+
+      if ab and bc and cd and de and ef and fa:
+        g1s = ab.neighbors(gm.Point, return_set=True)
+        g2s = de.neighbors(gm.Point, return_set=True)
+        h1s = bc.neighbors(gm.Point, return_set=True)
+        h2s = ef.neighbors(gm.Point, return_set=True)
+        i1s = cd.neighbors(gm.Point, return_set=True)
+        i2s = fa.neighbors(gm.Point, return_set=True)
+        gg = intersect1(g1s, g2s)
+        h = intersect1(h1s, h2s)
+        i = intersect1(i1s, i2s)
+        if gg and h and i:
+          yield dict(zip('ABCDEFGHI',[a,b,c,d,e,f,gg,h,i]))
+  tb = time.time()
+  print(tb-ta)
+
+def match_pascal6_rev(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match cyclic A B C D E, coll G A B, coll G D E, coll H B C, coll H E F, coll I C D, coll I F A, coll G H I => cyclic A B C D E F"""
+  ta = time.time()
+  recordc = set()
+  record = set()
+  for o,x,y,z in g.all_circles():
+    if (o,x) in recordc:
+      continue
+    circle = g.get_circle_thru_triplet(x,y,z)
+    for op in circle.neighbors(gm.Point):
+      recordc.add((o,op))
+    for a, b, c, d, e in utils.perm5(circle.neighbors(gm.Point)):
+      if (a,b,c,d,e) in record or (e,d,c,b,a) in record:
+        continue
+      record.add((a,b,c,d,e))
+
+      ab = g._get_line(a, b)
+      bc = g._get_line(b, c)
+      cd = g._get_line(c, d)
+      de = g._get_line(d, e)
+
+      if not (ab and bc and cd and de):
+        continue
+      
+      g1s = ab.neighbors(gm.Point, return_set=True)
+      g2s = de.neighbors(gm.Point, return_set=True)
+      gg = intersect1(g1s, g2s)
+      if not gg:
+        continue
+
+      for f in g.all_points():
+        if f in {o,a,b,c,d,e}:
+          continue
+        ef = g._get_line(e, f)
+        fa = g._get_line(f, a)
+        if ef and fa:
+          h1s = bc.neighbors(gm.Point, return_set=True)
+          h2s = ef.neighbors(gm.Point, return_set=True)
+          i1s = cd.neighbors(gm.Point, return_set=True)
+          i2s = fa.neighbors(gm.Point, return_set=True)
+          h = intersect1(h1s, h2s)
+          i = intersect1(i1s, i2s)
+          if h and i and g.check_coll([gg,h,i]):
+            yield dict(zip('OABCDEFGHI',[o,a,b,c,d,e,f,gg,h,i]))
+  tb = time.time()
+  print(tb-ta)
+
+def match_pascal5(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match cyclic A B C D E, perp O A A G, coll G C D, coll H A B, coll H D E, coll I B C, coll I E A => coll G H I"""
+  ta = time.time()
+  recordc = set()
+  record = set()
+  for o,x,y,z in g.all_circles():
+    if (o,x) in recordc:
+      continue
+    circle = g.get_circle_thru_triplet(x,y,z)
+    for op in circle.neighbors(gm.Point):
+      recordc.add((o,op))    
+    for a,b,c,d,e in utils.perm5(circle.neighbors(gm.Point)):
+      if (a,b,c,d,e) in record or (a,e,d,c,b) in record:
+        continue
+      record.add((a,b,c,d,e))
+
+      ab = g._get_line(a, b)
+      bc = g._get_line(b, c)
+      cd = g._get_line(c, d)
+      de = g._get_line(d, e)
+      ea = g._get_line(e, a)
+
+      if not (ab and bc and cd and de and ea):
+        continue
+      oa = g._get_line(o, a)
+      if not (oa and oa.val):
+        continue
+      la = None
+      for l in a.neighbors(gm.Line):
+        if g.check_perpl(oa, l):
+          la = l
+          break
+      if not la:
+        continue
+      g1s = la.neighbors(gm.Point, return_set=True)
+      g2s = cd.neighbors(gm.Point, return_set=True)
+      h1s = ab.neighbors(gm.Point, return_set=True)
+      h2s = de.neighbors(gm.Point, return_set=True)
+      i1s = bc.neighbors(gm.Point, return_set=True)
+      i2s = ea.neighbors(gm.Point, return_set=True)
+      gg = intersect1(g1s, g2s)
+      h = intersect1(h1s, h2s)
+      i = intersect1(i1s, i2s)
+      if gg and h and i:
+        yield dict(zip('OABCDEGHI',[o,a,b,c,d,e,gg,h,i]))
+  tb = time.time()
+  print(tb-ta)
+
+def match_pascal41(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """circle O A B C, cong O A O D, perp O A A G, coll G B C, coll H A B, coll H C D, perp O B B I, coll I D A => coll G H I (AABBCD)"""
+  ta = time.time()
+  recordc = set()
+  record = set()
+  for o,x,y,z in g.all_circles():
+    if (o,x) in recordc:
+      continue
+    circle = g.get_circle_thru_triplet(x,y,z)
+    for op in circle.neighbors(gm.Point):
+      recordc.add((o,op))    
+    for a,b,c,d in utils.perm4(circle.neighbors(gm.Point)):
+      if (a,b,c,d) in record or (b,a,d,c) in record:
+        continue
+      record.add((a,b,c,d))
+      ab = g._get_line(a, b)
+      bc = g._get_line(b, c)
+      cd = g._get_line(c, d)
+      da = g._get_line(d, a)
+      if not (ab and bc and cd and da):
+        continue
+      oa = g._get_line(o, a)
+      if not (oa and oa.val): 
+        continue
+      la = None
+      for l in a.neighbors(gm.Line):
+        if g.check_perpl(oa, l):
+          la = l
+          break
+      if not la:
+        continue
+      ob = g._get_line(o, b)
+      if not (ob and ob.val): 
+        continue
+      lb = None
+      for l in b.neighbors(gm.Line):
+        if g.check_perpl(ob, l):
+          lb = l
+          break
+      if not lb:
+        continue
+      
+      g1s = la.neighbors(gm.Point, return_set=True)
+      g2s = bc.neighbors(gm.Point, return_set=True)
+      h1s = ab.neighbors(gm.Point, return_set=True)
+      h2s = cd.neighbors(gm.Point, return_set=True)
+      i1s = lb.neighbors(gm.Point, return_set=True)
+      i2s = da.neighbors(gm.Point, return_set=True)
+      gg = intersect1(g1s, g2s)
+      h = intersect1(h1s, h2s)
+      i = intersect1(i1s, i2s)
+      if gg and h and i:
+        yield dict(zip('OABCDGHI',[o,a,b,c,d,gg,h,i]))
+  tb = time.time()
+  print(tb-ta)
+
+def match_pascal42(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """circle O A B C, cong O A O D, perp O A A G, perp O B B G, coll H A C, coll H B D, coll I C B, coll I D A => coll G H I (AACBBD)"""
+  ta = time.time()
+  recordc = set()
+  record = set()
+  for o,x,y,z in g.all_circles():
+    if (o,x) in recordc:
+      continue
+    circle = g.get_circle_thru_triplet(x,y,z)
+    for op in circle.neighbors(gm.Point):
+      recordc.add((o,op)) 
+    for a,b,c,d in utils.perm4(circle.neighbors(gm.Point)):
+      if (a,b,c,d) in record or (b,a,c,d) in record or (a,b,d,c) in record or (b,a,d,c) in record:
+        continue
+      record.add((a,b,c,d))
+      ac = g._get_line(a, c)
+      bd = g._get_line(b, d)
+      bc = g._get_line(c, b)
+      ad = g._get_line(d, a)
+      if not (ac and bc and ad and bd):
+        continue
+      oa = g._get_line(o, a)
+      if not (oa and oa.val): 
+        continue
+      la = None
+      for l in a.neighbors(gm.Line):
+        if g.check_perpl(oa, l):
+          la = l
+          break
+      if not la:
+        continue
+      ob = g._get_line(o, b)
+      if not (ob and ob.val): 
+        continue
+      lb = None
+      for l in b.neighbors(gm.Line):
+        if g.check_perpl(ob, l):
+          lb = l
+          break
+      if not lb:
+        continue
+      
+      g1s = la.neighbors(gm.Point, return_set=True)
+      g2s = lb.neighbors(gm.Point, return_set=True)
+      h1s = ac.neighbors(gm.Point, return_set=True)
+      h2s = bd.neighbors(gm.Point, return_set=True)
+      i1s = ad.neighbors(gm.Point, return_set=True)
+      i2s = bc.neighbors(gm.Point, return_set=True)
+      gg = intersect1(g1s, g2s)
+      h = intersect1(h1s, h2s)
+      i = intersect1(i1s, i2s)
+      if gg and h and i:
+        yield dict(zip('OABCDGHI',[o,a,b,c,d,gg,h,i]))
+  tb = time.time()
+  print(tb-ta)
+
+def match_radical_axis(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """cyclic A B C D, cyclic A B E F, cyclic C D E F, coll P A B, coll P C D => coll P E F"""
+  ta = time.time()
+  circles = set()
+  recordc = set()
+  for o,x,y,z in g.all_circles():
+    if (o,x) in recordc:
+      continue
+    circle = g.get_circle_thru_triplet(x,y,z)
+    for op in circle.neighbors(gm.Point):
+      recordc.add((o,op)) 
+    circles.add(circle)
+  
+  intersectps = {}
+  circles = list(circles)
+  for c1,c2 in utils.comb2(circles):
+    c1s = c1.neighbors(gm.Point, return_set=True)
+    c2s = c2.neighbors(gm.Point, return_set=True)
+    intersectps[(c1,c2)] = intersectps[(c2,c1)] = {x for x in c1s if x in c2s}
+
+  for c1,c2,c3 in utils.comb3(circles):
+    c12 = intersectps[(c1,c2)]
+    c13 = intersectps[(c1,c3)]
+    c23 = intersectps[(c2,c3)]
+    if len(c12) == 2 and len(c13) == 2 and len(c23) == 2:
+      a,b = c12
+      c,d = c13
+      e,f = c23
+      assert a and b and c and d and e and f
+      ab = g._get_line(a,b)
+      cd = g._get_line(c,d)
+      ef = g._get_line(e,f)
+      if ab and cd and ef:
+        pab = ab.neighbors(gm.Point, return_set=True)
+        pcd = cd.neighbors(gm.Point, return_set=True)
+        pef = ef.neighbors(gm.Point, return_set=True)
+        p1 = intersect1(pab,pcd)
+        p2 = intersect1(pab,pef)
+        p3 = intersect1(pcd,pef)
+        # if p1 and p2 and p3:
+        #   continue
+        if p1:
+          yield dict(zip('ABCDEFP',[a,b,c,d,e,f,p1]))
+        if p2:
+          yield dict(zip('ABCDEFP',[a,b,e,f,c,d,p2]))
+        if p3:
+          yield dict(zip('ABCDEFP',[c,d,e,f,a,b,p3]))
+  tb = time.time()
+  print(tb-ta)
+
+def match_menelaus(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match coll A F B, coll B D C, coll C E A, coll D E F => eqratio30 A F F B B D D C C E E A"""
+  #print("menelaus")
+  recordl = set()
+  ta = time.time()
+  all_lines = g.type2nodes[gm.Line]
+  for l1,l2,l3 in utils.comb3(all_lines):
+      l1s = l1.neighbors(gm.Point, return_set=True)
+      l2s = l2.neighbors(gm.Point, return_set=True)
+      l3s = l3.neighbors(gm.Point, return_set=True)
+      # l1: bc, l2: ca, l3: ab
+      a = intersect1(l2s,l3s)
+      b = intersect1(l1s,l3s)
+      c = intersect1(l1s,l2s)
+      if not (a and b and c):
+        continue
+      if a == b or b == c or c == a:
+        continue
+      if (a, b, c) in recordl:
+        continue
+      recordl.add((a, b, c))
+      recordl.add((a, c, b))
+      recordl.add((b, a, c))
+      recordl.add((b, c, a))
+      recordl.add((c, a, b))
+      recordl.add((c, b, a))
+      recordp = set()
+      for d, e, f in utils.cross3(l1s, l2s, l3s):
+        if d in {a, b, c} or e in {a, b, c} or f in {a, b, c}:
+          continue
+        if (d, e, f) in recordp:
+          continue
+        recordp.add((d, e, f))
+        recordp.add((d, f, e))
+        recordp.add((e, d, f))
+        recordp.add((e, f, d))
+        recordp.add((f, d, e))
+        recordp.add((f, e, d))
+        if g.check_coll([d, e, f]):
+          #debugname([a, b, c, d, e, f])
+          yield dict(zip('ABCDEF', [a, b, c, d, e, f]))
+  tb = time.time()
+  print(tb-ta)
+
+
+def match_ceva(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match coll A F B, coll B D C, coll C E A, coll B P E, coll C P F, coll A P D => eqratio30 A F F B B D D C C E E A"""
+  print("ceva")
+  recordl = set()
+  ta = time.time()
+  all_lines = g.type2nodes[gm.Line]
+  for l1,l2,l3 in utils.comb3(all_lines):
+      l1s = l1.neighbors(gm.Point, return_set=True)
+      l2s = l2.neighbors(gm.Point, return_set=True)
+      l3s = l3.neighbors(gm.Point, return_set=True)
+      # l1: bc, l2: ca, l3: ab
+      a = intersect1(l2s,l3s)
+      b = intersect1(l1s,l3s)
+      c = intersect1(l1s,l2s)
+      if not (a and b and c):
+        continue
+      if a == b or b == c or c == a:
+        continue
+      if (a, b, c) in recordl:
+        continue
+      recordl.add((a, b, c))
+      recordl.add((a, c, b))
+      recordl.add((b, a, c))
+      recordl.add((b, c, a))
+      recordl.add((c, a, b))
+      recordl.add((c, b, a))
+      recordp = set()
+      for d, e, f in utils.cross3(l1s, l2s, l3s):
+        if d in {a, b, c} or e in {a, b, c} or f in {a, b, c}:
+          continue
+        if (d, e, f) in recordp:
+          continue
+        recordp.add((d, e, f))
+        recordp.add((d, f, e))
+        recordp.add((e, d, f))
+        recordp.add((e, f, d))
+        recordp.add((f, d, e))
+        recordp.add((f, e, d))
+
+        ad = g._get_line(a, d)
+        be = g._get_line(b, e)
+        if not (ad and be):
+          continue
+        ads = ad.neighbors(gm.Point, return_set=True)
+        bes = be.neighbors(gm.Point, return_set=True)
+        p = intersect1(ads, bes)
+        if p is not None and g.check_coll([p, c, f]):
+          #debugname([p, a, b, c, d, e, f])
+          yield dict(zip('PABCDEF', [p, a, b, c, d, e, f]))
+  tb = time.time()
+  print(tb-ta)
+
+def match_menelaus_rev(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match coll A F B, coll B D C, coll C E A, eqratio30 A F F B B D D C C E E A => coll D E F"""
+  #print("menelaus_rev")
+  recordl = set()
+  ta = time.time()
+  all_lines = g.type2nodes[gm.Line]
+  for l1,l2,l3 in utils.comb3(all_lines):
+      l1s = l1.neighbors(gm.Point, return_set=True)
+      l2s = l2.neighbors(gm.Point, return_set=True)
+      l3s = l3.neighbors(gm.Point, return_set=True)
+      # l1: bc, l2: ca, l3: ab
+      a = intersect1(l2s,l3s)
+      b = intersect1(l1s,l3s)
+      c = intersect1(l1s,l2s)
+      if not (a and b and c):
+        continue
+      if a == b or b == c or c == a:
+        continue
+      if (a, b, c) in recordl:
+        continue
+      recordl.add((a, b, c))
+      recordl.add((a, c, b))
+      recordl.add((b, a, c))
+      recordl.add((b, c, a))
+      recordl.add((c, a, b))
+      recordl.add((c, b, a))
+      recordp = set()
+      for d, e, f in utils.cross3(l1s, l2s, l3s):
+        if d in {a, b, c} or e in {a, b, c} or f in {a, b, c}:
+          continue
+        if (d, e, f) in recordp:
+          continue
+        recordp.add((d, e, f))
+        recordp.add((d, f, e))
+        recordp.add((e, d, f))
+        recordp.add((e, f, d))
+        recordp.add((f, d, e))
+        recordp.add((f, e, d))
+
+        x1 = int(g.check_onseg([d, b, c]))
+        x2 = int(g.check_onseg([e, c, a]))
+        x3 = int(g.check_onseg([f, a, b]))
+        if x1 + x2 + x3 not in {0, 2}:
+          continue
+        if g.check_eqratio30([a, f, f, b, b, d, d, c, c, e, e, a]):
+          yield dict(zip('ABCDEF', [a, b, c, d, e, f]))
+  tb = time.time()
+  print(tb-ta)
+  
+def match_ceva_rev(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match coll A F B, coll B D C, coll C E A, coll B P E, coll C P F, eqratio30 A F F B B D D C C E E A => coll A P D"""
+  #print("ceva_rev")
+  recordl = set()
+  ta = time.time()
+  all_lines = g.type2nodes[gm.Line]
+  for l1,l2,l3 in utils.comb3(all_lines):
+      l1s = l1.neighbors(gm.Point, return_set=True)
+      l2s = l2.neighbors(gm.Point, return_set=True)
+      l3s = l3.neighbors(gm.Point, return_set=True)
+      # l1: bc, l2: ca, l3: ab
+      a = intersect1(l2s,l3s)
+      b = intersect1(l1s,l3s)
+      c = intersect1(l1s,l2s)
+      if not (a and b and c):
+        continue
+      if a == b or b == c or c == a:
+        continue
+      if (a, b, c) in recordl:
+        continue
+      recordl.add((a, b, c))
+      recordl.add((a, c, b))
+      recordl.add((b, a, c))
+      recordl.add((b, c, a))
+      recordl.add((c, a, b))
+      recordl.add((c, b, a))
+      recordp = set()
+      for d, e, f in utils.cross3(l1s, l2s, l3s):
+        if d in {a, b, c} or e in {a, b, c} or f in {a, b, c}:
+          continue
+        if (d, e, f) in recordp:
+          continue
+        recordp.add((d, e, f))
+        recordp.add((d, f, e))
+        recordp.add((e, d, f))
+        recordp.add((e, f, d))
+        recordp.add((f, d, e))
+        recordp.add((f, e, d))
+
+        x1 = int(g.check_onseg([d, b, c]))
+        x2 = int(g.check_onseg([e, c, a]))
+        x3 = int(g.check_onseg([f, a, b]))
+        if x1 + x2 + x3 not in {1, 3}:
+          continue
+        #print(x1+x2+x3)
+        if g.check_eqratio30([a, f, f, b, b, d, d, c, c, e, e, a]):
+          ad = g._get_line(a, d)
+          be = g._get_line(b, e)
+          cf = g._get_line(c, f)
+          if ad and be:
+            ads = ad.neighbors(gm.Point, return_set=True)
+            bes = be.neighbors(gm.Point, return_set=True)
+            pab = intersect1(ads, bes)
+            if pab:
+              #debugname([pab, c, a, b, f, d, e],(x3,x1,x2))
+              yield dict(zip('PABCDEF', [pab, c, a, b, f, d, e]))
+          if be and cf:
+            bes = be.neighbors(gm.Point, return_set=True)
+            cfs = cf.neighbors(gm.Point, return_set=True)
+            pbc = intersect1(bes, cfs)
+            if pbc:
+              #debugname([pbc, a, b, c, d, e, f],(x1,x2,x3))
+              yield dict(zip('PABCDEF', [pbc, a, b, c, d, e, f]))
+          if cf and ad:
+            cfs = cf.neighbors(gm.Point, return_set=True)
+            ads = ad.neighbors(gm.Point, return_set=True)
+            pca = intersect1(cfs, ads)
+            if pca:
+              #debugname([pca, b, c, a, e, f, d],(x2,x3,x1))
+              yield dict(zip('PABCDEF', [pca, b, c, a, e, f, d]))
+  tb = time.time()
+  print(tb-ta)
+
+def match_eqratio6_coll_coll_eqratio(
+    g: gh.Graph,
+    g_matcher: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem,
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match eqratio6 B A B C Q P Q R, coll A B C, coll P Q R => eqratio B A A C Q P P R"""
+  """Avoid harmonic"""
+  enums = g_matcher('eqratio6')
+
+  record = set()
+  for b, a, b, c, q, p, q, r in enums:  # pylint: disable=redeclared-assigned-name,unused-variable
+    if (a, b, c) == (p, q, r):
+      continue
+    if any([x in record for x in rotate_simtri(a, b, c, p, q, r)]):
+      continue
+    if not (g.check_coll([a, b, c]) and g.check_coll([p, q, r])):
+      continue
+    if not (g.check_onseg([b, a, c]) == g.check_onseg([q, p, r])): # Avoid harmonic
+      continue
+
+    record.add((a, b, c, p, q, r))
+    #debugname([a, b, c, p, q, r])
+    yield dict(zip('ABCPQR', [a, b, c, p, q, r]))
+    yield dict(zip('ABCPQR', [c, b, a, r, q, p]))
 
 def rotate_simtri(
     a: gm.Point, b: gm.Point, c: gm.Point, x: gm.Point, y: gm.Point, z: gm.Point
 ) -> Generator[tuple[gm.Point, ...], None, None]:
   """Rotate points around for similar triangle predicates."""
-  yield (z, y, x, c, b, a)
+  #yield (z, y, x, c, b, a)
   for p in [
+      (a, b, c, x, y, z),
       (b, c, a, y, z, x),
       (c, a, b, z, x, y),
       (x, y, z, a, b, c),
@@ -731,14 +1427,14 @@ def match_eqratio6_coll_ncoll_eqangle6(
     theorem: pr.Theorem,
 ) -> Generator[dict[str, gm.Point], None, None]:
   """Match eqratio6 d b d c a b a c, coll d b c, ncoll a b c => eqangle6 a b a d a d a c."""
-  records = set()
+  record = set()
   for b, d, c in g_matcher('coll'):
     for a in g.all_points():
       if g.check_coll([a, b, c]):
         continue
-      if (a, b, d, c) in records or (a, c, d, b) in records:
+      if (a, b, d, c) in record or (a, c, d, b) in record:
         continue
-      records.add((a, b, d, c))
+      record.add((a, b, d, c))
 
       if g.check_eqratio([d, b, d, c, a, b, a, c]):
         yield dict(zip('abcd', [a, b, c, d]))
@@ -750,14 +1446,14 @@ def match_eqangle6_coll_ncoll_eqratio6(
     theorem: pr.Theorem,
 ) -> Generator[dict[str, gm.Point], None, None]:
   """Match eqangle6 a b a d a d a c, coll d b c, ncoll a b c => eqratio6 d b d c a b a c."""
-  records = set()
+  record = set()
   for b, d, c in g_matcher('coll'):
     for a in g.all_points():
       if g.check_coll([a, b, c]):
         continue
-      if (a, b, d, c) in records or (a, c, d, b) in records:
+      if (a, b, d, c) in record or (a, c, d, b) in record:
         continue
-      records.add((a, b, d, c))
+      record.add((a, b, d, c))
 
       if g.check_eqangle([a, b, a, d, a, d, a, c]):
         yield dict(zip('abcd', [a, b, c, d]))
@@ -774,7 +1470,6 @@ def match_eqangle6_ncoll_cyclic(
       continue
     if nm.check_ncoll([x.num for x in [a, b, c, x]]):
       yield dict(zip('ABPQ', [b, c, a, x]))
-
 
 def match_all(
     name: str, g: gh.Graph
@@ -804,6 +1499,10 @@ def match_all(
     return g.all_midps()
   if name == 'circle':
     return g.all_circles()
+  if name == 'cyclic6':
+    return g.all_cyclics6()
+  if name == 'cyclic5':
+    return g.all_cyclics5()
   raise ValueError(f'Unrecognize {name}')
 
 
@@ -858,6 +1557,8 @@ def match_generic(
     theorem: pr.Theorem
 ) -> Generator[dict[str, gm.Point], None, None]:
   """Match any generic rule that is not one of the above match_*() rules."""
+  debugname(theorem)
+  ta = time.time()
   clause2enum = {}
 
   clauses = []
@@ -899,6 +1600,76 @@ def match_generic(
 
     yield mapping
 
+  tb = time.time()
+  print(tb-ta)
+
+
+def match_generic_debug(
+    g: gh.Graph,
+    cache: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem
+) -> Generator[dict[str, gm.Point], None, None]:
+  """Match any generic rule that is not one of the above match_*() rules."""
+  
+  tchiaya = time.time()
+  clause2enum = {}
+  clauses = []
+  numerical_checks = []
+  for clause in theorem.premise:
+    if clause.name in ['ncoll', 'npara', 'nperp', 'sameside']:
+      numerical_checks.append(clause)
+      continue
+
+    enum = cache(clause.name)
+    if len(enum) == 0:  # pylint: disable=g-explicit-length-test
+      return 0
+
+    clause2enum[clause] = enum
+    clauses.append((len(set(clause.args)), clause))
+
+  clauses = sorted(clauses, key=lambda x: x[0], reverse=True)
+  _, clauses = zip(*clauses)
+
+  for mapping in try_to_map([(c, clause2enum[c]) for c in clauses], {}):
+    if not mapping:
+      continue
+
+    checks_ok = True
+    for check in numerical_checks:
+      args = [mapping[a] for a in check.args]
+      if check.name == 'ncoll':
+        checks_ok = g.check_ncoll(args)
+      elif check.name == 'npara':
+        checks_ok = g.check_npara(args)
+      elif check.name == 'nperp':
+        checks_ok = g.check_nperp(args)
+      elif check.name == 'sameside':
+        checks_ok = g.check_sameside(args)
+      if not checks_ok:
+        break
+    if not checks_ok:
+      continue
+
+    yield mapping
+  tkirine = time.time()
+  #print(theorem.name,tkirine-tchiaya)
+
+def match_test(
+    g: gh.Graph,
+    cache: Callable[str, list[tuple[gm.Point, ...]]],
+    theorem: pr.Theorem
+) -> Generator[dict[str, gm.Point], None, None]:
+  """test"""
+  debugname(theorem)
+  tchiaya = time.time()
+  
+  for o,x,y,z in g.all_circles():
+    circle = g.get_circle_thru_triplet(x,y,z)
+    sox = g._get_segment(o,x).val
+    #print(vars(sox))
+  
+  tkirine = time.time()
+  #print(tkirine-tchiaya,theorem.name)
 
 BUILT_IN_FNS = {
     'cong_cong_cong_cyclic': match_cong_cong_cong_cyclic,
@@ -933,6 +1704,22 @@ BUILT_IN_FNS = {
     'eqratio6_coll_ncoll_eqangle6': match_eqratio6_coll_ncoll_eqangle6,
     'eqangle6_coll_ncoll_eqratio6': match_eqangle6_coll_ncoll_eqratio6,
     'eqangle6_ncoll_cyclic': match_eqangle6_ncoll_cyclic,
+    'cyclic_coll_coll_eqratio': match_cyclic2power,
+    'circle_perp_coll_eqratio': match_cyclic2power_tan,
+    'coll_coll_ncoll_eqratio_cyclic': match_power2cyclic,
+    'cyclic_cyclic_cyclic_coll_coll_coll': match_radical_axis,
+    'cyclic_coll_coll_coll_coll_coll_coll_coll': match_pascal6,
+    'circle_cong_cong_perp_coll_coll_coll_coll_coll_coll' : match_pascal5,
+    'circle_cong_perp_coll_coll_coll_perp_coll_coll' : match_pascal41,
+    'circle_cong_perp_perp_coll_coll_coll_coll_coll' : match_pascal42,
+    #'circle_cong_cong_coll_coll_coll_coll_coll_coll_coll_cong' : match_pascal6_rev,
+    'coll_coll_coll_coll_eqratio30': match_menelaus,
+    'coll_coll_coll_coll_coll_coll_eqratio30': match_ceva,
+    'coll_coll_coll_eqratio30_coll': match_menelaus_rev,
+    'coll_coll_coll_coll_coll_eqratio30_coll': match_ceva_rev,
+    'eqratio6_coll_coll_eqratio': match_eqratio6_coll_coll_eqratio,
+    #'circle_perp_coll_eqratio': match_generic_debug,
+    #'cyclic_cyclic_cong': match_test,
 }
 
 
@@ -1090,7 +1877,6 @@ def bfs_one_level(
       hash_conclusion = pr.hashed(name, args)
       if hash_conclusion in g.cache:
         continue
-
       add = g.add_piece(name, args, deps=deps)
       added += add
 
@@ -1154,3 +1940,9 @@ def apply_derivations(
     for arg in args:
       applied += g.do_algebra(name, arg)
   return applied
+
+def debugname(ps,n=0):
+  if type(ps) is list:
+    print(n,[p.name for p in ps])
+  else:
+    print(n,ps.name)

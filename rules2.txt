@@ -1,0 +1,6 @@
+cong O A O B, cong O B O C, cong O C O D => cyclic A B C D
+A A B B C D
+AA BC / AB CD / BB DA
+
+A A C B B D
+AA BB / AC BD / CB DA

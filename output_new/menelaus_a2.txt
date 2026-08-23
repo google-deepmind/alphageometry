@@ -1,0 +1,39 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G : Points
+DA = DB [00]
+DB = DC [01]
+C,E,B are collinear [02]
+AE ⟂ AD [03]
+A,C,F are collinear [04]
+BF ⟂ BD [05]
+A,G,B are collinear [06]
+CG ⟂ CD [07]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. DA = DB [00] & DB = DC [01] ⇒  D is the circumcenter of \Delta BAC [08]
+002. D is the circumcenter of \Delta BAC [08] & BF ⟂ BD [05] & A,C,F are collinear [04] (Circle Power)⇒  FB:AF = CF:FB [09]
+003. D is the circumcenter of \Delta BAC [08] & AE ⟂ AD [03] & C,E,B are collinear [02] (Circle Power)⇒  AE:EB = CE:AE [10]
+004. D is the circumcenter of \Delta BAC [08] & CG ⟂ CD [07] & A,G,B are collinear [06] (Circle Power)⇒  CG:GB = AG:CG [11]
+005. D is the circumcenter of \Delta BAC [08] & BF ⟂ BD [05] ⇒  ∠FBA = ∠BCA [12]
+006. D is the circumcenter of \Delta BAC [08] & BF ⟂ BD [05] ⇒  ∠CBF = ∠CAB [13]
+007. A,C,F are collinear [04] & ∠FBA = ∠BCA [12] ⇒  ∠FBA = ∠BCF [14]
+008. A,F,C are collinear [04] & ∠CAB = ∠CBF [13] ⇒  ∠FAB = ∠CBF [15]
+009. ∠FBA = ∠BCF [14] & ∠FAB = ∠CBF [15] (Similar Triangles)⇒  FB:AB = CF:CB [16]
+010. D is the circumcenter of \Delta BAC [08] & AE ⟂ AD [03] ⇒  ∠BAE = ∠BCA [17]
+011. C,E,B are collinear [02] & ∠BAE = ∠BCA [17] ⇒  ∠BAE = ∠ECA [18]
+012. C,E,B are collinear [02] ⇒  ∠BEA = ∠CEA [19]
+013. ∠BAE = ∠ECA [18] & ∠BEA = ∠CEA [19] (Similar Triangles)⇒  AB:EB = AC:AE [20]
+014. D is the circumcenter of \Delta BAC [08] & CG ⟂ CD [07] ⇒  ∠BCG = ∠BAC [21]
+015. D is the circumcenter of \Delta BAC [08] & CG ⟂ CD [07] ⇒  ∠GCA = ∠CBA [22]
+016. A,G,B are collinear [06] & ∠BAC = ∠BCG [21] ⇒  ∠GAC = ∠BCG [23]
+017. A,G,B are collinear [06] & ∠GCA = ∠CBA [22] ⇒  ∠GCA = ∠CBG [24]
+018. ∠GAC = ∠BCG [23] & ∠GCA = ∠CBG [24] (Similar Triangles)⇒  AG:AC = CG:CB [25]
+019. FB:AF = CF:FB [09] & AE:EB = CE:AE [10] & CG:GB = AG:CG [11] & FB:AB = CF:CB [16] & AB:EB = AC:AE [20] & AG:AC = CG:CB [25] (Ratio chase)⇒  (GB:AG) * (AF:EB) * (CE:CF) = 1 [26]
+020. A,G,B are collinear [06] & C,E,B are collinear [02] & A,C,F are collinear [04] & (GB:AG) * (AF:EB) * (CE:CF) = 1 [26] (Menelaus)⇒  F,G,E are collinear
+==========================

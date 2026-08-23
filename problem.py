@@ -456,52 +456,52 @@ class Theorem:
 
 
 def why_eqratio(
-    d1: gm.Direction,
-    d2: gm.Direction,
-    d3: gm.Direction,
-    d4: gm.Direction,
+    l1: gm.Length,
+    l2: gm.Length,
+    l3: gm.Length,
+    l4: gm.Length,
     level: int,
 ) -> list[Dependency]:
   """Why two ratios are equal, returns a Dependency objects."""
-  all12 = list(gm.all_ratios(d1, d2, level))
-  all34 = list(gm.all_ratios(d3, d4, level))
+  all12 = list(gm.all_ratios(l1, l2, level))
+  all34 = list(gm.all_ratios(l3, l4, level))
 
   min_why = None
-  for ang12, d1s, d2s in all12:
-    for ang34, d3s, d4s in all34:
-      why0 = gm.why_equal(ang12, ang34, level)
+  for rat12, l1s, l2s in all12:
+    for rat34, l3s, l4s in all34:
+      why0 = gm.why_equal(rat12, rat34, level)
       if why0 is None:
         continue
-      d1_, d2_ = ang12._l
-      d3_, d4_ = ang34._l
-      why1 = gm.bfs_backtrack(d1, [d1_], d1s)
-      why2 = gm.bfs_backtrack(d2, [d2_], d2s)
-      why3 = gm.bfs_backtrack(d3, [d3_], d3s)
-      why4 = gm.bfs_backtrack(d4, [d4_], d4s)
+      l1_, l2_ = rat12._l
+      l3_, l4_ = rat34._l
+      why1 = gm.bfs_backtrack(l1, [l1_], l1s)
+      why2 = gm.bfs_backtrack(l2, [l2_], l2s)
+      why3 = gm.bfs_backtrack(l3, [l3_], l3s)
+      why4 = gm.bfs_backtrack(l4, [l4_], l4s)
       why = why0 + why1 + why2 + why3 + why4
       if min_why is None or len(why) < len(min_why[0]):
-        min_why = why, ang12, ang34, why0, why1, why2, why3, why4
+        min_why = why, rat12, rat34, why0, why1, why2, why3, why4
 
   if min_why is None:
     return None
 
-  _, ang12, ang34, why0, why1, why2, why3, why4 = min_why
-  d1_, d2_ = ang12._l
-  d3_, d4_ = ang34._l
+  _, rat12, rat34, why0, why1, why2, why3, why4 = min_why
+  l1_, l2_ = rat12._l
+  l3_, l4_ = rat34._l
 
-  if d1 == d1_ and d2 == d2_ and d3 == d3_ and d4 == d4_:
+  if l1 == l1_ and l2 == l2_ and l3 == l3_ and l4 == l4_:
     return why0
 
-  (a_, b_), (c_, d_) = d1_._obj.points, d2_._obj.points
-  (e_, f_), (g_, h_) = d3_._obj.points, d4_._obj.points
+  (a_, b_), (c_, d_) = l1_._obj.points, l2_._obj.points
+  (e_, f_), (g_, h_) = l3_._obj.points, l4_._obj.points
   deps = []
   if why0:
     dep = Dependency('eqratio', [a_, b_, c_, d_, e_, f_, g_, h_], '', level)
     dep.why = why0
     deps.append(dep)
 
-  (a, b), (c, d) = d1._obj.points, d2._obj.points
-  (e, f), (g, h) = d3._obj.points, d4._obj.points
+  (a, b), (c, d) = l1._obj.points, l2._obj.points
+  (e, f), (g, h) = l3._obj.points, l4._obj.points
   for why, (x, y), (x_, y_) in zip(
       [why1, why2, why3, why4],
       [(a, b), (c, d), (e, f), (g, h)],
@@ -512,6 +512,80 @@ def why_eqratio(
       dep.why = why
       deps.append(dep)
 
+  return deps
+
+def why_eqratio30(
+    l1: gm.Length,
+    l2: gm.Length,
+    lp35: gm.Length_Pro,
+    lp46: gm.Length_Pro,
+    level: int,
+) -> list[Dependency]:
+  """Why two ratios are equal, returns a Dependency objects."""
+  all12 = list(gm.all_ratios(l1, l2, level))
+  all43 = list(gm.all_ratios2(lp46, lp35, level))
+  #print(all12,all43)
+  min_why = None
+  for rat12, l1s, l2s in all12:
+    for ratp43, lp4s, lp3s in all43:
+      why0 = gm.why_equal(rat12, ratp43, level)
+      if why0 is None:
+        continue
+      l1_, l2_ = rat12._l
+      lp46_, lp35_ = ratp43._lp
+      why1 = gm.bfs_backtrack(l1, [l1_], l1s)
+      why2 = gm.bfs_backtrack(l2, [l2_], l2s)
+      why3 = gm.bfs_backtrack(lp35, [lp35_], lp3s)
+      why4 = gm.bfs_backtrack(lp46, [lp46_], lp4s)
+      why = why0 + why1 + why2 + why3 + why4
+      if min_why is None or len(why) < len(min_why[0]):
+        min_why = why, rat12, ratp43, why0, why1, why2, why3, why4
+
+  if min_why is None:
+    return None
+
+  _, rat12, ratp43, why0, why1, why2, why3, why4 = min_why
+  l1_, l2_ = rat12._l
+  lp46_, lp35_ = ratp43._lp
+
+  if l1 == l1_ and l2 == l2_ and lp35 == lp35_ and lp46 == lp46_:
+    return why0
+  
+  l3_, l5_ = lp35._l
+  l4_, l6_ = lp46._l
+
+  (a_, b_), (c_, d_) = l1_._obj.points, l2_._obj.points
+  (m_, n_), (p_, q_) = l3_._obj.points, l4_._obj.points
+  (x_, y_), (z_, w_) = l5_._obj.points, l6_._obj.points
+  deps = []
+  if why0:
+    dep = Dependency('eqratio30', [a_, b_, c_, d_, m_, n_, p_, q_, x_, y_, z_, w_], '', level)
+    dep.why = why0
+    deps.append(dep)
+
+  l3, l5 = lp35._l
+  l4, l6 = lp46._l
+
+  (a, b), (c, d) = l1._obj.points, l2._obj.points
+  (m, n), (p, q) = l3._obj.points, l4._obj.points
+  (x, y), (z, w) = l5._obj.points, l6._obj.points
+
+  if why1:
+    dep = Dependency('cong', [a, b, a_, b_], '', level)
+    dep.why = why1
+    deps.append(dep)
+  if why2:
+    dep = Dependency('cong', [c, d, c_, d_], '', level)
+    dep.why = why2
+    deps.append(dep)
+  if why3:
+    dep = Dependency('eqratio', [m, n, m_, n_, x_, y_, x, y], '', level)
+    dep.why = why3
+    deps.append(dep)
+  if why4:
+    dep = Dependency('eqratio', [p, q, p_, q_, z_, w_, z, w], '', level)
+    dep.why = why4
+    deps.append(dep)
   return deps
 
 
@@ -688,6 +762,7 @@ class Dependency(Construction):
     self.trace = None
 
   def _find(self, dep_hashed: tuple[str, ...]) -> Dependency:
+    #self.why = [w for w in self.why if type(w) is not EmptyDependency]
     for w in self.why:
       f = w._find(dep_hashed)
       if f:
@@ -969,6 +1044,131 @@ class Dependency(Construction):
         elif ab._val and cd._val and mn._val and pq._val:
           self.why = why_eqangle(ab._val, cd._val, mn._val, pq._val, level)
 
+    elif self.name == 'eqratio30':
+      a, b, c, d, m, n, p, q, x, y, z, w = self.args
+      ab = g._get_segment(a, b)
+      cd = g._get_segment(c, d)
+      mn = g._get_segment(m, n)
+      pq = g._get_segment(p, q)
+      xy = g._get_segment(x, y)
+      zw = g._get_segment(z, w)
+      if ab is None or cd is None or mn is None or pq is None or xy is None or zw is None:
+        if {a, b} == {c, d}:
+          dp = Dependency('eqratio', [m, n, p, q, z, w, x, y], None, level)
+          self.why = [dp.why_me_or_cache(g, level)]
+        if {a, b} == {p, q}:
+          dp = Dependency('eqratio', [m, n, c, d, z, w, x, y], None, level)
+          self.why = [dp.why_me_or_cache(g, level)]
+        if {a, b} == {z, w}:
+          dp = Dependency('eqratio', [m, n, p, q, c, d, x, y], None, level)
+          self.why = [dp.why_me_or_cache(g, level)]  
+        if {m, n} == {c, d}:
+          dp = Dependency('eqratio', [a, b, p, q, z, w, x, y], None, level)
+          self.why = [dp.why_me_or_cache(g, level)]
+        if {m, n} == {p, q}:
+          dp = Dependency('eqratio', [a, b, c, d, z, w, x, y], None, level)
+          self.why = [dp.why_me_or_cache(g, level)]
+        if {m, n} == {z, w}:
+          dp = Dependency('eqratio', [a, b, p, q, c, d, x, y], None, level)
+          self.why = [dp.why_me_or_cache(g, level)]  
+        if {x, y} == {c, d}:
+          dp = Dependency('eqratio', [a, b, p, q, z, w, m, n], None, level)
+          self.why = [dp.why_me_or_cache(g, level)]
+        if {x, y} == {p, q}:
+          dp = Dependency('eqratio', [a, b, c, d, z, w, m, n], None, level)
+          self.why = [dp.why_me_or_cache(g, level)]
+        if {x, y} == {z, w}:
+          dp = Dependency('eqratio', [a, b, p, q, c, d, m, n], None, level)
+          self.why = [dp.why_me_or_cache(g, level)]  
+        return
+      
+      ab_mn, _ = g._get_or_create_length_pro(ab, mn, deps=None)
+      ab_xy, _ = g._get_or_create_length_pro(ab, xy, deps=None)
+      mn_xy, _ = g._get_or_create_length_pro(mn, xy, deps=None)
+      cd_pq, _ = g._get_or_create_length_pro(cd, pq, deps=None)
+      cd_zw, _ = g._get_or_create_length_pro(cd, zw, deps=None)
+      pq_zw, _ = g._get_or_create_length_pro(pq, zw, deps=None)
+
+      self.why = []
+      if g.is_equal(ab, cd) or g.is_equal(mn_xy, pq_zw):
+        dep1 = Dependency('cong', [a, b, c, d], None, level)
+        dep1.why_me(g, level)
+        dep2 = Dependency('eqratio', [m, n, p, q, z, w, x, y], None, level)
+        dep2.why_me(g, level)
+        self.why += [dep1, dep2]
+      elif g.is_equal(ab, pq) or g.is_equal(mn_xy, cd_zw):
+        dep1 = Dependency('cong', [a, b, p, q], None, level)
+        dep1.why_me(g, level)
+        dep2 = Dependency('eqratio', [m, n, c, d, z, w, x, y], None, level)
+        dep2.why_me(g, level)
+        self.why += [dep1, dep2]
+      elif g.is_equal(ab, zw) or g.is_equal(mn_xy, cd_pq):
+        dep1 = Dependency('cong', [a, b, z, w], None, level)
+        dep1.why_me(g, level)
+        dep2 = Dependency('eqratio', [m, n, c, d, p, q, x, y], None, level)
+        dep2.why_me(g, level)
+        self.why += [dep1, dep2]
+      elif g.is_equal(mn, cd) or g.is_equal(ab_xy, pq_zw):
+        dep1 = Dependency('cong', [m, n, c, d], None, level)
+        dep1.why_me(g, level)
+        dep2 = Dependency('eqratio', [a, b, p, q, z, w, x, y], None, level)
+        dep2.why_me(g, level)
+        self.why += [dep1, dep2]
+      elif g.is_equal(mn, pq) or g.is_equal(ab_xy, cd_zw):
+        dep1 = Dependency('cong', [m, n, p, q], None, level)
+        dep1.why_me(g, level)
+        dep2 = Dependency('eqratio', [a, b, c, d, z, w, x, y], None, level)
+        dep2.why_me(g, level)
+        self.why += [dep1, dep2]
+      elif g.is_equal(mn, zw) or g.is_equal(ab_xy, cd_pq):
+        dep1 = Dependency('cong', [m, n, z, w], None, level)
+        dep1.why_me(g, level)
+        dep2 = Dependency('eqratio', [a, b, c, d, p, q, x, y], None, level)
+        dep2.why_me(g, level)
+        self.why += [dep1, dep2]
+      elif g.is_equal(xy, cd) or g.is_equal(ab_mn, pq_zw):
+        dep1 = Dependency('cong', [x, y, c, d], None, level)
+        dep1.why_me(g, level)
+        dep2 = Dependency('eqratio', [a, b, p, q, z, w, m, n], None, level)
+        dep2.why_me(g, level)
+        self.why += [dep1, dep2]
+      elif g.is_equal(xy, pq) or g.is_equal(ab_mn, cd_zw):
+        dep1 = Dependency('cong', [x, y, p, q], None, level)
+        dep1.why_me(g, level)
+        dep2 = Dependency('eqratio', [a, b, c, d, z, w, m, n], None, level)
+        dep2.why_me(g, level)
+        self.why += [dep1, dep2]
+      elif g.is_equal(xy, zw) or g.is_equal(ab_mn, cd_pq):
+        dep1 = Dependency('cong', [x, y, z, w], None, level)
+        dep1.why_me(g, level)
+        dep2 = Dependency('eqratio', [a, b, c, d, p, q, m, n], None, level)
+        dep2.why_me(g, level)
+        self.why += [dep1, dep2]
+      else:
+        self.why = None
+
+      if self.why is None:
+        self.why = why_eqratio30(ab._val, cd._val, mn_xy, pq_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(ab._val, pq._val, mn_xy, cd_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(ab._val, zw._val, mn_xy, cd_pq, level)
+      if self.why is None:
+        self.why = why_eqratio30(mn._val, cd._val, ab_xy, pq_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(mn._val, pq._val, ab_xy, cd_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(mn._val, zw._val, ab_xy, cd_pq, level)
+      if self.why is None:
+        self.why = why_eqratio30(xy._val, cd._val, ab_mn, pq_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(xy._val, pq._val, ab_mn, cd_zw, level)
+      if self.why is None:
+        self.why = why_eqratio30(xy._val, zw._val, ab_mn, cd_pq, level)
+      if self.why is None:
+        self.why = []
+
+
     elif self.name in ['diff', 'npara', 'nperp', 'ncoll', 'sameside']:
       self.why = []
 
@@ -1129,5 +1329,55 @@ def hashed_txt(name: str, args: list[str]) -> tuple[str, ...]:
 
   if name in ['sameside', 's_angle']:
     return (name,) + tuple(args)
+  
+  if name in ['eqratio30']:
+    a, b, c, d, e, f, g, h, i, j, k, l = args
+    a, b = sorted([a, b])
+    c, d = sorted([c, d])
+    e, f = sorted([e, f])
+    g, h = sorted([g, h])
+    i, j = sorted([i, j])
+    k, l = sorted([k, l])
+    ratios1 = [(a, b),(e, f),(i, j)]
+    ratios1.sort()
+    ratios2 = [(c, d),(g, h),(k, l)]
+    ratios2.sort()
+    if ratios1 > ratios2:
+      ratios1, ratios2 = ratios2, ratios1
+    a, b = ratios1[0]
+    e, f = ratios1[1]
+    i, j = ratios1[2]
+    c, d = ratios2[0]
+    g, h = ratios2[1]
+    k, l = ratios2[2]
+    
+    return (name, a, b, c, d, e, f, g, h, i, j, k, l)
+  
+  if name in ['eqratio40']:
+    a, b, c, d, e, f, g, h, i, j, k, l, x, y, z, w = args
+    a, b = sorted([a, b])
+    c, d = sorted([c, d])
+    e, f = sorted([e, f])
+    g, h = sorted([g, h])
+    i, j = sorted([i, j])
+    k, l = sorted([k, l])
+    x, y = sorted([x, y])
+    z, w = sorted([z, w])
+    ratios1 = [(a, b),(e, f),(i, j),(x, y)]
+    ratios1.sort()
+    ratios2 = [(c, d),(g, h),(k, l),(z, w)]
+    ratios2.sort()
+    if ratios1 > ratios2:
+      ratios1, ratios2 = ratios2, ratios1
+    a, b = ratios1[0]
+    e, f = ratios1[1]
+    i, j = ratios1[2]
+    x, y = ratios1[3]
+    c, d = ratios2[0]
+    g, h = ratios2[1]
+    k, l = ratios2[2]
+    z, w = ratios2[3]
+    
+    return (name, a, b, c, d, e, f, g, h, i, j, k, l, x, y, z, w)
 
   raise ValueError(f'Not recognize {name} to hash.')

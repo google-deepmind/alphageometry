@@ -1,0 +1,31 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I : Points
+C,B,D are collinear [00]
+E,A,D are collinear [01]
+C,A,F are collinear [02]
+B,E,F are collinear [03]
+A,B,G are collinear [04]
+C,E,G are collinear [05]
+HA ∥ BC [06]
+D,G,H are collinear [07]
+I,A,H are collinear [08]
+I,D,F are collinear [09]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. I,A,H are collinear [08] & C,B,D are collinear [00] & AH ∥ BC [06] ⇒  IA ∥ DC [10]
+002. IA ∥ DC [10] & I,D,F are collinear [09] & C,A,F are collinear [02] ⇒  IF:DF = AF:CF [11]
+003. IA ∥ DC [10] & I,D,F are collinear [09] & C,A,F are collinear [02] ⇒  IF:DF = IA:CD [12]
+004. C,B,D are collinear [00] & AH ∥ BC [06] ⇒  AH ∥ BD [13]
+005. AH ∥ BD [13] & A,B,G are collinear [04] & D,G,H are collinear [07] ⇒  AG:BG = AH:BD [14]
+006. C,A,F are collinear [02] & E,A,D are collinear [01] & C,B,D are collinear [00] & B,E,F are collinear [03] (Menelaus)⇒  (CF:AF) * (AE:CB) * (BD:ED) = 1 [15]
+007. A,B,G are collinear [04] & E,A,D are collinear [01] & C,B,D are collinear [00] & C,E,G are collinear [05] (Menelaus)⇒  (BG:AG) * (AE:CB) * (CD:ED) = 1 [16]
+008. IF:DF = AF:CF [11] & IF:DF = IA:CD [12] & AG:BG = AH:BD [14] & (CF:AF) * (AE:CB) * (BD:ED) = 1 [15] & (BG:AG) * (AE:CB) * (CD:ED) = 1 [16] (Ratio chase)⇒  IA = AH
+==========================
+
+

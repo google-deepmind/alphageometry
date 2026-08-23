@@ -14,20 +14,15 @@
 # ==============================================================================
 
 # !/bin/bash
-set -e
-set -x
 
 virtualenv -p python3 .
 source ./bin/activate
 
 pip install --require-hashes -r requirements.txt
 
-gdown --folder https://bit.ly/alphageometry
 DATA=ag_ckpt_vocab
 
 MELIAD_PATH=meliad_lib/meliad
-mkdir -p $MELIAD_PATH
-git clone https://github.com/google-research/meliad $MELIAD_PATH
 export PYTHONPATH=$PYTHONPATH:$MELIAD_PATH
 
 DDAR_ARGS=(
@@ -70,3 +65,5 @@ python -m alphageometry \
 "${DDAR_ARGS[@]}" \
 "${SEARCH_ARGS[@]}" \
 "${LM_ARGS[@]}"
+set -e
+set -x

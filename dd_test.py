@@ -44,6 +44,9 @@ class DDTest(unittest.TestCase):
     g, _ = gh.Graph.build_problem(p, DDTest.defs)
     goal_args = g.names2nodes(p.goal.args)
 
+    for _,rule in DDTest.rules.items():
+      print(rule.name)
+
     success = False
     for level in range(MAX_LEVEL):
       added, _, _, _ = dd.bfs_one_level(g, DDTest.rules, level, p)

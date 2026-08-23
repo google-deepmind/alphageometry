@@ -1,0 +1,24 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J : Points
+DA = DB [00]
+DB = DC [01]
+DE = DA [02]
+DF = DA [03]
+A,G,B are collinear [04]
+E,F,G are collinear [05]
+C,B,H are collinear [06]
+C,E,I are collinear [07]
+H,I,G are collinear [08]
+J,F,H are collinear [09]
+A,J,I are collinear [10]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. DA = DB [00] & DB = DC [01] ⇒  D is the circumcenter of \Delta ABC [11]
+002. D is the circumcenter of \Delta ABC [11] & DE = DA [02] & DF = DA [03] & A,G,B are collinear [04] & E,F,G are collinear [05] & C,B,H are collinear [06] & J,F,H are collinear [09] & C,E,I are collinear [07] & A,J,I are collinear [10] & H,I,G are collinear [08] ⇒  DA = DJ
+==========================

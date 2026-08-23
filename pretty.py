@@ -115,6 +115,10 @@ def pretty_nl(name: str, args: list[str]) -> str:
     return f'{pretty_angle(a, b, c, d)} = {pretty_angle(e, f, g, h)}'
   if name in ['eqratio', 'eqratio6', '/']:
     return '{}{}:{}{} = {}{}:{}{}'.format(*args)
+  if name == 'eqratio30':
+    return '({}{}:{}{}) * ({}{}:{}{}) * ({}{}:{}{}) = 1'.format(*args)
+  if name == 'eqratio40':
+    return '({}{}:{}{}) * ({}{}:{}{}) * ({}{}:{}{}) * ({}{}:{}{}) = 1'.format(*args)
   if name == 'eqratio3':
     a, b, c, d, o, o = args  # pylint: disable=redeclared-assigned-name
     return f'S {o} {a} {b} {o} {c} {d}'

@@ -27,7 +27,7 @@ import numpy as np
 from numpy.random import uniform as unif  # pylint: disable=g-importing-member
 
 
-matplotlib.use('TkAgg')
+matplotlib.use('Agg')
 
 
 ATOM = 1e-12
@@ -401,7 +401,6 @@ class Circle:
         self.center = self.radius = self.r2 = None
         return
         # raise ValueError('Circle without center need p1 p2 p3')
-
       l12 = _perpendicular_bisector(p1, p2)
       l23 = _perpendicular_bisector(p2, p3)
       center = line_line_intersection(l12, l23)
@@ -679,6 +678,20 @@ def check_sameside(points: list[Point]) -> bool:
   yz = y - z
   return ba.dot(bc) * yx.dot(yz) > 0
 
+def check_onseg(points: list[Point]) -> bool:
+  b, a, c = points
+  # whether b(on line ac) is on segment ac 
+  ba = b - a
+  bc = b - c
+  return ba.dot(bc) < 0
+
+def check_offseg(points: list[Point]) -> bool:
+  b, a, c = points
+  # whether b(on line ac) is not on segment ac 
+  ba = b - a
+  bc = b - c
+  return ba.dot(bc) > 0
+
 
 def check_para_or_coll(points: list[Point]) -> bool:
   return check_para(points) or check_coll(points)
@@ -702,7 +715,8 @@ def check_perp(points: list[Point]) -> bool:
 
 def check_cyclic(points: list[Point]) -> bool:
   points = list(set(points))
-  (a, b, c), *ps = points
+  # fixed bug
+  (a, b, c, *ps) = points
   circle = Circle(p1=a, p2=b, p3=c)
   for d in ps:
     if not close_enough(d.distance(circle.center), circle.radius):
@@ -793,6 +807,16 @@ def check_eqratio(points: list[Point]) -> bool:
   ef = e.distance(f)
   gh = g.distance(h)
   return close_enough(ab * gh, cd * ef)
+
+def check_eqratio30(points: list[Point]) -> bool:
+  a, b, c, d, e, f, g, h, x, y, z, w = points
+  ab = a.distance(b)
+  cd = c.distance(d)
+  ef = e.distance(f)
+  gh = g.distance(h)
+  xy = x.distance(y)
+  zw = z.distance(w)
+  return close_enough(ab * ef * xy, cd * gh * zw)
 
 
 def check_cong(points: list[Point]) -> bool:

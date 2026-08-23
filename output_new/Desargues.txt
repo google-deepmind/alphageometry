@@ -1,0 +1,26 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J : Points
+D,F,A are collinear [00]
+B,F,E are collinear [01]
+F,C,G are collinear [02]
+B,H,A are collinear [03]
+D,H,E are collinear [04]
+B,I,C are collinear [05]
+I,E,G are collinear [06]
+J,C,A are collinear [07]
+D,J,G are collinear [08]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. B,H,A are collinear [03] & D,F,A are collinear [00] & B,F,E are collinear [01] & D,H,E are collinear [04] (Menelaus)⇒  (BH:HA) * (DA:BE) * (FE:DF) = 1 [09]
+002. B,I,C are collinear [05] & B,F,E are collinear [01] & F,C,G are collinear [02] & I,E,G are collinear [06] (Menelaus)⇒  (IC:BI) * (BE:CG) * (FG:FE) = 1 [10]
+003. (BH:HA) * (DA:BE) * (FE:DF) = 1 [09] & (IC:BI) * (BE:CG) * (FG:FE) = 1 [10] (Ratio chase)⇒  (DA:HA) * (FG:BI) * (BH:CG) * (IC:DF) = 1 [11]
+004. J,C,A are collinear [07] & D,F,A are collinear [00] & F,C,G are collinear [02] & D,J,G are collinear [08] (Menelaus)⇒  (CJ:JA) * (DA:CG) * (FG:DF) = 1 [12]
+005. (DA:HA) * (FG:BI) * (BH:CG) * (IC:DF) = 1 [11] & (CJ:JA) * (DA:CG) * (FG:DF) = 1 [12] ⇒  (CJ:JA) * (AH:HB) * (BI:IC) = 1 [13]
+006. J,C,A are collinear [07] & B,H,A are collinear [03] & B,I,C are collinear [05] & (CJ:JA) * (AH:HB) * (BI:IC) = 1 [13] (Menelaus)⇒  I,H,J are collinear
+==========================

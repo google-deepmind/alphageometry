@@ -1,0 +1,36 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J K L : Points
+D,C,B are collinear [00]
+C,B,E are collinear [01]
+D,F,E are collinear [02]
+A,B,G are collinear [03]
+A,H,C are collinear [04]
+G,F,I are collinear [05]
+I,H,E are collinear [06]
+G,J,E are collinear [07]
+J,F,H are collinear [08]
+K,A,I are collinear [09]
+K,C,B are collinear [10]
+A,J,L are collinear [11]
+C,B,L are collinear [12]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. K,C,B are collinear [10] & D,F,E are collinear [02] & C,B,E are collinear [01] & D,C,B are collinear [00] ⇒  F,K,B are collinear [13]
+002. K,A,I are collinear [09] & F,K,B are collinear [13] & A,B,G are collinear [03] & G,F,I are collinear [05] (Menelaus)⇒  (AI:KI) * (GB:AG) * (KF:FB) = 1 [14]
+003. C,B,L are collinear [12] & C,B,E are collinear [01] ⇒  E,L,B are collinear [15]
+004. A,J,L are collinear [11] & E,L,B are collinear [15] & A,B,G are collinear [03] & G,J,E are collinear [07] (Menelaus)⇒  (AJ:JL) * (GB:AG) * (LE:BE) = 1 [16]
+005. K,C,B are collinear [10] & C,B,E are collinear [01] ⇒  K,C,E are collinear [17]
+006. K,A,I are collinear [09] & E,K,C are collinear [17] & A,H,C are collinear [04] & I,H,E are collinear [06] (Menelaus)⇒  (AI:KI) * (HC:AH) * (KE:CE) = 1 [18]
+007. C,B,L are collinear [12] & D,F,E are collinear [02] & C,B,E are collinear [01] & D,C,B are collinear [00] ⇒  F,L,C are collinear [19]
+008. A,J,L are collinear [11] & F,L,C are collinear [19] & A,H,C are collinear [04] & J,F,H are collinear [08] (Menelaus)⇒  (AJ:JL) * (HC:AH) * (FL:FC) = 1 [20]
+009. (AI:KI) * (GB:AG) * (KF:FB) = 1 [14] & (AJ:JL) * (GB:AG) * (LE:BE) = 1 [16] & (AI:KI) * (HC:AH) * (KE:CE) = 1 [18] & (AJ:JL) * (HC:AH) * (FL:FC) = 1 [20] (Ratio chase)⇒  KF:KE = LE:FL [21]
+010. D,F,E are collinear [02] & C,B,E are collinear [01] & D,C,B are collinear [00] & C,B,L are collinear [12] ⇒  E,L,F are collinear [22]
+011. D,F,E are collinear [02] & C,B,E are collinear [01] & D,C,B are collinear [00] & K,C,B are collinear [10] & K,C,E are collinear [17] ⇒  F,K,E are collinear [23]
+012. KF:KE = LE:FL [21] & E,L,F are collinear [22] & F,K,E are collinear [23] ⇒  LE = KF
+==========================

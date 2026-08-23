@@ -1,0 +1,59 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J : Points
+C,A,B are collinear [00]
+AD = AC [01]
+BE = BC [02]
+DE ⟂ BE [03]
+BF = BC [04]
+DF ⟂ BF [05]
+AG = AD [06]
+E,G,D are collinear [07]
+AH = AD [08]
+H,F,D are collinear [09]
+I,E,F are collinear [10]
+I,H,G are collinear [11]
+AJ = AD [12]
+I,C,J are collinear [13]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. BE = BC [02] & BF = BC [04] ⇒  BF = BE [14]
+002. BF = BE [14] & DF ⟂ BF [05] & DE ⟂ BE [03] (Circle Power)⇒  DF = DE [15]
+003. AD = AC [01] & AJ = AD [12] & AG = AD [06] ⇒  C,G,D,J are concyclic [16]
+004. C,G,D,J are concyclic [16] & AD = AC [01] & AH = AD [08] & AG = AD [06] ⇒  J,C,H,D are concyclic [17]
+005. J,C,H,D are concyclic [17] ⇒  ∠JCH = ∠JDH [18]
+006. ∠JCH = ∠JDH [18] & I,C,J are collinear [13] & H,F,D are collinear [09] ⇒  ∠ICH = ∠JDF [19]
+007. I,E,F are collinear [10] & E,G,D are collinear [07] & H,F,D are collinear [09] & I,H,G are collinear [11] (Menelaus)⇒  (IF:IE) * (HD:GD) * (EG:HF) = 1 [20]
+008. I,E,F are collinear [10] & E,G,D are collinear [07] & H,F,D are collinear [09] & I,H,G are collinear [11] (Menelaus)⇒  (IF:EF) * (ED:GD) * (HG:IH) = 1 [21]
+009. I,E,F are collinear [10] & E,G,D are collinear [07] & H,F,D are collinear [09] & I,H,G are collinear [11] (Menelaus)⇒  (IE:EF) * (FD:HD) * (HG:IG) = 1 [22]
+010. (IF:IE) * (HD:GD) * (EG:HF) = 1 [20] & (IF:EF) * (ED:GD) * (HG:IH) = 1 [21] & (IE:EF) * (FD:HD) * (HG:IG) = 1 [22] (Ratio chase)⇒  EG:IG = HF:IH [23]
+011. C,G,D,J are concyclic [16] ⇒  ∠JCG = ∠JDG [24]
+012. ∠JCG = ∠JDG [24] & I,C,J are collinear [13] & E,G,D are collinear [07] ⇒  ∠ICG = ∠JDE [25]
+013. AD = AC [01] ⇒  ∠ADC = ∠DCA [26]
+014. ∠ADC = ∠DCA [26] & C,A,B are collinear [00] ⇒  ∠ADC = ∠(CD-AB) [27]
+015. AJ = AD [12] ⇒  ∠ADJ = ∠DJA [28]
+016. AJ = AD [12] & AD = AC [01] ⇒  AC = AJ [29]
+017. AC = AJ [29] ⇒  ∠ACJ = ∠CJA [30]
+018. ∠ACJ = ∠CJA [30] & C,A,B are collinear [00] & I,C,J are collinear [13] ⇒  ∠(AB-CI) = ∠(CI-AJ) [31]
+019. BE = BC [02] ⇒  ∠BCE = ∠CEB [32]
+020. ∠BCE = ∠CEB [32] & C,A,B are collinear [00] ⇒  ∠(AB-CE) = ∠CEB [33]
+021. DE ⟂ BE [03] & ∠ICG = ∠JDE [25] & ∠ADC = ∠(CD-AB) [27] & ∠ADJ = ∠DJA [28] & ∠(AB-CI) = ∠(CI-AJ) [31] & ∠(AB-CE) = ∠CEB [33] (Angle chase)⇒  ∠GCE = ∠ECD [34]
+022. ∠GCE = ∠ECD [34] & E,G,D are collinear [07] ⇒  EG:CG = ED:CD [35]
+023. BF = BC [04] ⇒  ∠BFC = ∠FCB [36]
+024. ∠BFC = ∠FCB [36] & C,A,B are collinear [00] ⇒  ∠BFC = ∠(CF-AB) [37]
+025. DF ⟂ BF [05] & ∠ICH = ∠JDF [19] & ∠ADC = ∠(CD-AB) [27] & ∠ADJ = ∠DJA [28] & ∠(AB-CI) = ∠(CI-AJ) [31] & ∠BFC = ∠(CF-AB) [37] (Angle chase)⇒  ∠HCF = ∠FCD [38]
+026. ∠HCF = ∠FCD [38] & H,F,D are collinear [09] ⇒  HF:CH = FD:CD [39]
+027. EG:CG = ED:CD [35] & DF = DE [15] & HF:CH = FD:CD [39] ⇒  HF:CH = EG:CG [40]
+028. EG:IG = HF:IH [23] & HF:CH = EG:CG [40] ⇒  IH:IG = CH:CG [41]
+029. IH:IG = CH:CG [41] & I,H,G are collinear [11] ⇒  ∠ICH = ∠GCI [42]
+030. ∠ICH = ∠JDF [19] & ∠ICH = ∠GCI [42] & ∠GCI = ∠EDJ [25] ⇒  ∠EDJ = ∠JDF [43]
+031. DF = DE [15] & ∠EDJ = ∠JDF [43] (SAS)⇒  JE = JF [44]
+032. BF = BE [14] & JE = JF [44] ⇒  FE ⟂ BJ [45]
+033. BF = BE [14] & DF = DE [15] ⇒  EF ⟂ BD [46]
+034. FE ⟂ BJ [45] & EF ⟂ BD [46] ⇒  J,D,B are collinear
+==========================

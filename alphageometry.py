@@ -29,7 +29,6 @@ import lm_inference as lm
 import pretty as pt
 import problem as pr
 
-
 _GIN_SEARCH_PATHS = flags.DEFINE_list(
     'gin_search_paths',
     ['third_party/py/meliad/transformer/configs'],
@@ -174,6 +173,20 @@ def write_solution(g: gh.Graph, p: pr.Problem, out_file: str) -> None:
       'r38': '(Similar Triangles)',
       'r39': '(Similar Triangles)',
       'r40': '(Congruent Triangles)',
+      'r43': '(Menelaus)',
+      'r44': '(Menelaus)',
+      'r45': '(Ceva)',
+      'r46': '(Ceva)',
+      'r47': '(Circle Power)',
+      'r48': '(Circle Power)',
+      'r49': '(Circle Power)',
+      'r50': '(Circle Power)',
+      'r51': '(Radical Axis)',
+      'r52': '(Pascal)',
+      'r53': '(Pascal)',
+      'r54': '(Pascal)',
+      'r55': '(Pascal)',
+      'r56': '(Pascal)',
       'a00': '(Distance chase)',
       'a01': '(Ratio chase)',
       'a02': '(Angle chase)',
@@ -189,6 +202,7 @@ def write_solution(g: gh.Graph, p: pr.Problem, out_file: str) -> None:
 
   solution += '==========================\n'
   logging.info(solution)
+  print(solution)
   if out_file:
     with open(out_file, 'w') as f:
       f.write(solution)
@@ -380,7 +394,8 @@ def try_translate_constrained_to_construct(string: str, g: gh.Graph) -> str:
   """
   if string[-1] != ';':
     return 'ERROR: must end with ;'
-
+  if ':' not in string:
+    return 'ERROR: must contain :'
   head, prem_str = string.split(' : ')
   point = head.strip()
 
@@ -571,7 +586,7 @@ def run_alphageometry(
 
         # Update the constructive statement of the problem with the aux point:
         candidate_pstring = insert_aux_to_premise(pstring, translation)
-
+        print(candidate_pstring)
         logging.info('Solving: "%s"', candidate_pstring)
         p_new = pr.Problem.from_txt(candidate_pstring)
 
@@ -604,7 +619,6 @@ def run_alphageometry(
 def main(_):
   global DEFINITIONS
   global RULES
-
   # definitions of terms used in our domain-specific language.
   DEFINITIONS = pr.Definition.from_txt_file(_DEFS_FILE.value, to_dict=True)
   # load inference rules used in DD.
@@ -649,3 +663,4 @@ def main(_):
 
 if __name__ == '__main__':
   app.run(main)
+

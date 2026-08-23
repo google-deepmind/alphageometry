@@ -1,0 +1,33 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G : Points
+∠DAB = ∠CAD [00]
+∠ACD = ∠DCB [01]
+A,E,D are collinear [02]
+E,C,B are collinear [03]
+F,D,B are collinear [04]
+A,C,F are collinear [05]
+G,A,B are collinear [06]
+CG ⟂ CD [07]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. A,C,F are collinear [05] & ∠CAD = ∠DAB [00] ⇒  ∠FAD = ∠DAB [08]
+002. ∠FAD = ∠DAB [08] & F,D,B are collinear [04] ⇒  FD:DB = AF:AB [09]
+003. A,C,F are collinear [05] & ∠ACD = ∠DCB [01] ⇒  ∠FCD = ∠DCB [10]
+004. ∠FCD = ∠DCB [10] & F,D,B are collinear [04] ⇒  FD:DB = CF:CB [11]
+005. F,D,B are collinear [04] & A,E,D are collinear [02] & A,C,F are collinear [05] & E,C,B are collinear [03] (Menelaus)⇒  (FB:DB) * (AC:AE) * (ED:CF) = 1 [12]
+006. F,D,B are collinear [04] & A,E,D are collinear [02] & A,C,F are collinear [05] & E,C,B are collinear [03] (Menelaus)⇒  (FD:FB) * (AE:AD) * (CB:EC) = 1 [13]
+007. ∠ACD = ∠DCB [01] & CG ⟂ CD [07] (Angle chase)⇒  ∠ACG = ∠GCB [14]
+008. ∠ACG = ∠GCB [14] & G,A,B are collinear [06] ⇒  GA:GB = AC:CB [15]
+009. FD:DB = AF:AB [09] & FD:DB = CF:CB [11] & (FB:DB) * (AC:AE) * (ED:CF) = 1 [12] & GA:GB = AC:CB [15] (Ratio chase)⇒  (AF:AB) * (DB:FB) * (AE:GA) * (GB:ED) = 1 [16]
+010. E,C,B are collinear [03] & ∠ACD = ∠DCB [01] ⇒  ∠ACD = ∠DCE [17]
+011. ∠ACD = ∠DCE [17] & A,E,D are collinear [02] ⇒  AD:ED = AC:EC [18]
+012. AD:ED = AC:EC [18] & FD:DB = AF:AB [09] & FD:DB = CF:CB [11] & (FB:DB) * (AC:AE) * (ED:CF) = 1 [12] (Ratio chase)⇒  (AF:AB) * (DB:FB) * (AE:AD) * (CB:EC) = 1 [19]
+013. (AF:AB) * (DB:FB) * (AE:GA) * (GB:ED) = 1 [16] & (AF:AB) * (DB:FB) * (AE:AD) * (CB:EC) = 1 [19] & (FD:FB) * (AE:AD) * (CB:EC) = 1 [13] ⇒  (DF:FB) * (BG:GA) * (AE:ED) = 1 [20]
+014. F,D,B are collinear [04] & G,A,B are collinear [06] & A,E,D are collinear [02] & (DF:FB) * (BG:GA) * (AE:ED) = 1 [20] (Menelaus)⇒  G,E,F are collinear
+==========================

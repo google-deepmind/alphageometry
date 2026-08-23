@@ -1,0 +1,48 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I : Points
+A,E,C are collinear [00]
+D,B,F are collinear [01]
+A,G,B are collinear [02]
+G,D,E are collinear [03]
+H,B,C are collinear [04]
+E,H,F are collinear [05]
+D,I,C are collinear [06]
+A,I,F are collinear [07]
+
+ * Auxiliary Constructions:
+J K L : Points
+E,F,J are collinear [08]
+D,J,C are collinear [09]
+A,K,B are collinear [10]
+E,K,F are collinear [11]
+D,L,C are collinear [12]
+A,L,B are collinear [13]
+
+ * Proof steps:
+001. L,D,C are collinear [12] & D,I,C are collinear [06] ⇒  D,L,I are collinear [14]
+002. D,L,C are collinear [12] & D,L,I are collinear [14] ⇒  C,I,L are collinear [15]
+003. A,L,B are collinear [13] & A,G,B are collinear [02] ⇒  A,L,G are collinear [16]
+004. A,L,B are collinear [13] & A,L,G are collinear [16] ⇒  L,G,B are collinear [17]
+005. G,D,E are collinear [03] & A,E,C are collinear [00] & A,L,G are collinear [16] & L,D,C are collinear [12] (Menelaus)⇒  (GD:DE) * (AL:AC) * (EC:LG) = 1 [18]
+006. G,D,E are collinear [03] & A,E,C are collinear [00] & A,L,G are collinear [16] & L,D,C are collinear [12] (Menelaus)⇒  (LD:LC) * (AC:AE) * (GE:GD) = 1 [19]
+007. E,H,F are collinear [05] & E,K,F are collinear [11] ⇒  E,K,H are collinear [20]
+008. H,B,C are collinear [04] & A,E,C are collinear [00] & A,K,B are collinear [10] & E,K,H are collinear [20] (Menelaus)⇒  (HB:HC) * (AK:AE) * (EC:KB) = 1 [21]
+009. E,F,J are collinear [08] & E,K,F are collinear [11] ⇒  K,J,E are collinear [22]
+010. A,L,B are collinear [13] & A,K,B are collinear [10] ⇒  A,L,K are collinear [23]
+011. D,L,C are collinear [12] & D,J,C are collinear [09] ⇒  C,L,J are collinear [24]
+012. K,J,E are collinear [22] & A,E,C are collinear [00] & A,L,K are collinear [23] & C,L,J are collinear [24] (Menelaus)⇒  (JK:EJ) * (AL:AC) * (EC:LK) = 1 [25]
+013. K,J,E are collinear [22] & A,E,C are collinear [00] & A,L,K are collinear [23] & C,L,J are collinear [24] (Menelaus)⇒  (LJ:JC) * (AK:AE) * (EC:LK) = 1 [26]
+014. K,J,E are collinear [22] & A,E,C are collinear [00] & A,L,K are collinear [23] & C,L,J are collinear [24] (Menelaus)⇒  (LJ:LC) * (AC:AE) * (EK:JK) = 1 [27]
+015. D,I,C are collinear [06] & D,J,C are collinear [09] ⇒  J,I,C are collinear [28]
+016. J,I,C are collinear [28] & A,E,C are collinear [00] & E,F,J are collinear [08] & A,I,F are collinear [07] (Menelaus)⇒  (IJ:IC) * (AC:AE) * (EF:JF) = 1 [29]
+017. J,I,C are collinear [28] & A,E,C are collinear [00] & E,F,J are collinear [08] & A,I,F are collinear [07] (Menelaus)⇒  (IF:AI) * (AC:EC) * (EJ:JF) = 1 [30]
+018. J,I,C are collinear [28] & A,E,C are collinear [00] & E,F,J are collinear [08] & A,I,F are collinear [07] (Menelaus)⇒  (IF:AF) * (AE:EC) * (JC:IJ) = 1 [31]
+019. A,G,B are collinear [02] & A,K,B are collinear [10] ⇒  B,K,G are collinear [32]
+020. G,D,E are collinear [03] & D,B,F are collinear [01] & B,K,G are collinear [32] & E,K,F are collinear [11] (Menelaus)⇒  (GE:DE) * (KB:BF) * (DF:GK) = 1 [33]
+021. G,D,E are collinear [03] & D,B,F are collinear [01] & B,K,G are collinear [32] & E,K,F are collinear [11] (Menelaus)⇒  (EK:EF) * (GB:DB) * (DF:GK) = 1 [34]
+022. A,I,F are collinear [07] & D,B,F are collinear [01] & L,I,D are collinear [14] & A,L,B are collinear [13] (Menelaus)⇒  (AI:AF) * (BF:DB) * (LD:LI) = 1 [35]
+023. (GD:DE) * (AL:AC) * (EC:LG) = 1 [18] & (HB:HC) * (AK:AE) * (EC:KB) = 1 [21] & (JK:EJ) * (AL:AC) * (EC:LK) = 1 [25] & (LJ:JC) * (AK:AE) * (EC:LK) = 1 [26] & (LD:LC) * (AC:AE) * (GE:GD) = 1 [19] & (LJ:LC) * (AC:AE) * (EK:JK) = 1 [27] & (IJ:IC) * (AC:AE) * (EF:JF) = 1 [29] & (IF:AI) * (AC:EC) * (EJ:JF) = 1 [30] & (IF:AF) * (AE:EC) * (JC:IJ) = 1 [31] & (GE:DE) * (KB:BF) * (DF:GK) = 1 [33] & (EK:EF) * (GB:DB) * (DF:GK) = 1 [34] & (AI:AF) * (BF:DB) * (LD:LI) = 1 [35] (Ratio chase)⇒  (LG:GB) * (HB:HC) * (IC:LI) = 1 [36]
+024. C,I,L are collinear [15] & L,G,B are collinear [17] & H,B,C are collinear [04] & (LG:GB) * (HB:HC) * (IC:LI) = 1 [36] (Menelaus)⇒  G,H,I are collinear
+==========================

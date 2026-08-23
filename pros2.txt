@@ -1,0 +1,66 @@
+test_circle
+a b c = triangle a b c; o = circle o a b c; d = on_tline d a b c, on_circle d o a ? cyclic a b c a
+test_ccc2p
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; p = on_line p a b, on_line p c d ? eqratio p a p c p d p b
+test_ccc2pt1
+a b c = triangle a b c; o = circle o a b c; p = on_line p b c, on_tline p a o a; d = on_circle d o a; e = on_line e p d, on_circle e o a ? eqratio p a p b p c p a
+test_ccc2pt2
+a b c = triangle a b c; o = circle o a b c; p = on_line p b c, on_tline p a o a; d = on_circle d o a; e = on_line e p d, on_circle e o a ? eqratio p a p d p e p a
+test_ccc2pt3
+a b c = triangle a b c; o = circle o a b c; p = on_line p b a, on_tline p c o c; d = on_circle d o a; e = on_line e p d, on_circle e o a ? eqratio p c p b p a p c
+test_ccc2pt4
+a b c = triangle a b c; o = circle o a b c; p = on_line p b a, on_tline p c o c; d = on_circle d o a; e = on_line e p d, on_circle e o a ? eqratio p c p d p e p c
+test_pascal61
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_circle e o a; f = on_circle f o a; g = on_line g a b, on_line g d e; h = on_line h b c, on_line h e f; i = on_line i c d, on_line i f a ? coll g h i
+test_pascal62
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_circle e o a; f = on_circle f o a; g = on_line g a b, on_line g d e; h = on_line h b c, on_line h e f; i = on_line i c d, on_line i f a; a1 b1 c1 = triangle a1 b1 c1; o1 = circle o1 a1 b1 c1; d1 = on_circle d1 o1 a1; e1 = on_circle e1 o1 a1; f1 = on_circle f1 o1 a1 ? coll g h i
+test_pascal63
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_circle e o a; f = on_circle f o a; g = on_line g a b, on_line g d e; h = on_line h b c, on_line h e f; i = on_line i c d, on_line i f a; a1 = free; b1 = free; c1 = free; o1 = circle o1 a1 b1 c1; d1 = on_circle d1 o1 a1; e1 = on_circle e1 o1 a1; f1 = on_circle f1 o1 a1 ? coll g h i
+test_circle2
+a b c = triangle a b c; o = circle o a b c; d = free; w = circle w a b d ? cong o a w a
+test_pascal5
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_circle e o a; g = on_tline g a o a, on_line g c d; h = on_line h a b, on_line h d e; i = on_line i b c, on_line i e a ? coll g h i
+test_pascal41
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; g = on_tline g a o a, on_line g b c; h = on_line h a b, on_line h c d; i = on_tline i b o b, on_line i d a ? coll g h i
+test_pascal42
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; g = on_tline g a o a, on_tline g b o b; h = on_line h a c, on_line h b d; i = on_line i c b, on_line i d a ? coll g h i
+test_pascal6_rev
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_circle e o a; g = on_line g a b, on_line g d e; h = on_line h b c; i = on_line i g h, on_line i c d; f = on_line f h e, on_line f a i ? cong o a o f
+test_p2ccc
+a b = segment a b; o = on_bline o a b; w = on_bline w a b; c = on_circle c o a; d = on_circle d o a; p = on_line p a b, on_line p c d; e = on_circle e w a; f = on_circle f w a, on_line f p e ? cyclic c d e f
+test_radical_axis1
+a b = segment a b; o1 = on_bline o1 a b; o2 = on_bline o2 a b; o3 = free; c = on_circle c o1 a; d = on_circle d o1 a, on_circle d o3 c; e = on_circle e o2 a, on_circle e o3 c; f = on_circle f o2 a, on_circle f o3 c; g = on_line g c d, on_line g e f ? coll g a b
+test_radical_axis2
+a b c = triangle a b c; e = free; o1 = circle o1 a b c; o2 = circle o2 a b e; o3 = on_bline o3 c e; d = on_circle d o1 a, on_circle d o3 c; f = on_circle f o2 a, on_circle f o3 c; g = on_line g c d, on_line g e f ? coll g a b
+test_radical_axis_rev
+a b c = triangle a b c; d = on_line a b; o1 = circle o1 a b c; e = on_line e c d, on_circle e o1 a; o2 = on_bline o2 c e; f = on_circle f o2 c; g = on_circle g o2 c, on_line g d f ? cyclic a b f g
+test_gcenter1
+a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; g = on_line g b e, on_line g a d; f = on_line f a b, on_line f c g ? cong f a f b
+test_gcenter2
+a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f a b; g = on_line g b e, on_line g c f ? coll a g d
+test_icenter1
+a b c = triangle a b c; d = angle_bisector d b a c, on_line d b c; e = angle_bisector e a b c, on_line e a c; i = on_line i a d, on_line i b e; f = on_line f c i, on_line f a b ? eqangle c a c f c f c b
+example2_1
+a b c = triangle a b c; d = foot d a b c; h = on_line h a d; e = on_line e a c, on_line e b h; f = on_line f a b, on_line f c h; p = on_pline p a b c, on_line p d f; q = on_line q p a, on_line q d e ? cong a p a q
+test_menelaus
+a b c = triangle a b c; d = midpoint d b c; e = on_line e c a; f = on_line f a b, on_line f d e ? eqratio c e e a b f f a
+exercise20_2
+a b = segment a b; c = on_tline c b a b, on_circle c b a; d = midpoint d b c; e = foot e b a d; f = on_line f b e, on_line f a c; g = midpoint g a f ? cong a g c f
+example1_11
+a b c = triangle a b c; d = on_line d a b; e = on_line e a c; f = midpoint f d e; g = on_line g d e; h = mirror h g f; i = on_line i a b; j = on_line j g i, on_line j a c; k = on_line k a b; l = on_line l k h, on_line l a c; m = on_line m j k, on_line m d e; n = on_line n i l, on_line n d e ? cong f m f n
+cmo23_5
+a b c = triangle a b c; d = on_line d b c; e = on_pline e d a b, on_circle e b d; f = on_pline f d a c, on_circle f c d; g = circle g d e f; h = on_circle h g d, on_line h a d ? eqratio30 a e a f b h b e c f c h
+reduced_cmo_2023_p5_b
+a b c = triangle a b c; k = on_line k b c; p = on_pline p k a b, on_circle p b k; q = on_pline q k a c, on_circle q c k; y = circle p k q; t = on_circle t y k, on_line t a k; z1 = on_line z1 p q; d = on_line d a p, eqdistance d a q c; f = on_line f p b, eqdistance f b c t; y1 = circle p d q; y2 = circle p f t; e = on_circle e y1 q, on_line q a; g = on_circle g y2 t, on_line g t b ? cong a e b g
+example2_8_1
+a b c = triangle a b c; d = midpoint d a c; e = on_line e b d; f = on_line f a e, on_line f b c; g = on_line g c e, on_line g a b; h = on_pline h f c e, on_line h b d; i = on_circle i e f, on_circle i f e; j = on_circle j e g, on_circle j g e ? cong h i h j
+example2_8_2
+a b c = triangle a b c; d = midpoint d a c; e = on_line e b d; f = on_line f a e, on_line f b c; g = on_line g c e, on_line g a b; h = on_pline h f c e, on_line h b d; i = on_circle i e f, on_circle i f e; j = on_circle j e g, on_circle j g e ? cong h i i j
+example2_7
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_line e a b, on_line e d c; f = on_line f a d, on_line f b c; p = on_circle p o a; r = on_line r p f, on_circle r o a; s = on_line s p e, on_circle s o a; t = on_line t a c, on_line t b d ? eqratio30 a s s d d c r c b r b a
+example2_4
+a b c = triangle a b c; d = on_circle d c a, on_line d b c; o = circle o a c d; m = midpoint m b c; p = on_circle p o c, on_circle p m c; e = on_line e a c, on_line e b p; f = on_line f a b, on_line f c p ? coll d e f
+test_anglebi
+a b c = triangle a b c; i = incenter i a b c; d = on_line d a i, on_line d b c; e = on_tline e a a i, on_line e b c ? eqratio b d c d b e c e
+test_413
+a b = segment a b; c = on_circle c a b; d = midpoint d b c; e = foot e d a c; f = midpoint f d e; g = on_line g a f, on_line g b e ? perp a f b e

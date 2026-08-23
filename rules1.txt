@@ -1,0 +1,1 @@
+circle O A B C, cong O A O D, cong O A O E, coll G A B, coll G D E, coll H B C, coll H E F, coll I C D, coll I F A, coll G H I => cong O A O F

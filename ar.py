@@ -17,7 +17,7 @@
 
 from collections import defaultdict  # pylint: disable=g-importing-member
 from fractions import Fraction as frac  # pylint: disable=g-importing-member
-from typing import Any, Generator
+from typing import Any, Generator, Union
 
 import geometry as gm
 import numpy as np
@@ -219,9 +219,16 @@ def update_groups(
   Returns:
     groups1, links, history: result of the update.
   """
+  print("len1",len(groups1))
+  print("len2",len(groups2))
+  cnt = 0
+  lenall = len(groups2)
   history = []
   links = []
   for g2 in groups2:
+    cnt += 1
+    if cnt % 1000 == 0:
+      print(f'{cnt}/{lenall}')
     joins = [None] * len(groups1)  # mark which one in groups1 is merged
     merged_g1 = set()  # merge them into this.
     old = None  # any elem in g2 that belong to any set in groups1 (old)
@@ -265,8 +272,7 @@ def update_groups(
       new_groups1 += [set(new)]
 
     groups1 = new_groups1
-    history.append(groups1)
-
+    #history.append(groups1)
   return groups1, links, history
 
 
@@ -363,7 +369,7 @@ class Table:
   def register2(
       self, a: str, b: str, m: float, n: float, dep: pr.Dependency
   ) -> None:
-    self.register([(a, m), (b, -n)], dep)
+    self.register([(a, n), (b, -m)], dep)
 
   def register3(self, a: str, b: str, f: float, dep: pr.Dependency) -> None:
     self.register([(a, 1), (b, -1), (self.const, -f)], dep)
@@ -372,6 +378,11 @@ class Table:
       self, a: str, b: str, c: str, d: str, dep: pr.Dependency
   ) -> None:
     self.register([(a, 1), (b, -1), (c, -1), (d, 1)], dep)
+
+  def register5(
+      self, a: str, b: str, c: str, dep: pr.Dependency
+  ) -> None:
+    self.register([(a, 1), (b, -1), (c, -1)], dep)
 
   def why(self, e: dict[str, float]) -> list[Any]:
     """AR traceback == MILP."""
@@ -401,7 +412,7 @@ class Table:
     deps = []
     for i, dep in enumerate(self.deps):
       if x[2 * i] > 1e-12 or x[2 * i + 1] > 1e-12:
-        if dep not in deps:
+        if dep is not None and dep not in deps:
           deps.append(dep)
     return deps
 
@@ -426,7 +437,7 @@ class Table:
       self, a: str, b: str, m: float, n: float, dep: pr.Dependency
   ) -> None:
     # a/b = m/n
-    if not self.add_expr([(a, m), (b, -n)]):
+    if not self.add_expr([(a, n), (b, -m)]):
       return []
     self.register2(a, b, m, n, dep)
 
@@ -455,10 +466,32 @@ class Table:
         self.groups, [{(a, b), (c, d)}, {(b, a), (d, c)}]
     )
 
+
+  def add_eq5(self, a: str, b: str, c: str, dep: pr.Dependency) -> None:
+    # a = b + c
+    self.eqs.add((a, b, c))
+    self.eqs.add((a, c, b))
+
+    expr = list(minus({a: 1, b: -1}, {c: 1}).items())
+
+    if not self.add_expr(expr):
+      return []
+
+    self.register5(a, b, c, dep)
+
   def pairs(self) -> Generator[list[tuple[str, str]], None, None]:
     for v1, v2 in perm2(list(self.v2e.keys())):  # pylint: disable=g-builtin-op
       if v1 == self.const or v2 == self.const:
         continue
+      # v1s = [v1]
+      # v2s = [v2]
+      # if '*' in v1:
+      #   v1s = v1.split('*')
+      # if '*' in v2:
+      #   v2s = v2.split('*')
+      # vs = [v for v in v1s if v in v2s]
+      # if vs != []:
+      #   continue
       yield v1, v2
 
   def modulo(self, e: dict[str, float]) -> dict[str, float]:
@@ -503,16 +536,36 @@ class Table:
           value = simplify(frac.numerator, frac.denominator)
           yield v1, v2, value, self.why(why_dict)
         continue
-
+      
       groups.append(vv)
 
     if not return_quads:
       return
 
     self.groups, links, _ = update_groups(self.groups, groups)
+    lenall = len(links)
+    cnt = 0
     for (v1, v2), (v3, v4) in links:
+      cnt += 1
+      if cnt % 1000 == 0:
+        print(f'{cnt}/{lenall}')
       if self.check_record_eq(v1, v2, v3, v4):
         continue
+      # v1s = [v1]
+      # v2s = [v2]
+      # v3s = [v3]
+      # v4s = [v4]
+      # if '*' in v1:
+      #   v1s = v1.split('*')
+      # if '*' in v2:
+      #   v2s = v2.split('*')
+      # if '*' in v3:
+      #   v3s = v3.split('*')
+      # if '*' in v3:
+      #   v4s = v4.split('*')
+      # v14 = v1s + v4s
+      # v23 = v2s + v3s
+      # vs = [v for v in v14 if v in v23]
       e12 = minus(self.v2e[v1], self.v2e[v2])
       e34 = minus(self.v2e[v3], self.v2e[v4])
 
@@ -520,6 +573,7 @@ class Table:
           minus({v1: 1, v2: -1}, {v3: 1, v4: -1}), minus(e12, e34)
       )
       self.record_eq(v1, v2, v3, v4)
+      #if vs == []:
       yield v1, v2, v3, v4, self.why(why_dict)
 
 
@@ -543,6 +597,7 @@ class GeometricTable(Table):
     for out in super().get_all_eqs_and_why(return_quads):
       if len(out) == 3:
         x, y, why = out
+        #print('out2', x, y)
         x, y = self.map2obj([x, y])
         yield x, y, why
       if len(out) == 4:
@@ -551,6 +606,7 @@ class GeometricTable(Table):
         yield x, y, f, why
       if len(out) == 5:
         a, b, x, y, why = out
+        #print('out4', a, b, x, y)
         a, b, x, y = self.map2obj([a, b, x, y])
         yield a, b, x, y, why
 
@@ -575,17 +631,30 @@ class RatioTable(GeometricTable):
 
   def add_eqratio(
       self,
-      l1: gm.Length,
-      l2: gm.Length,
-      l3: gm.Length,
-      l4: gm.Length,
+      l1: Union[gm.Length, gm.Length_Pro],
+      l2: Union[gm.Length, gm.Length_Pro],
+      l3: Union[gm.Length, gm.Length_Pro],
+      l4: Union[gm.Length, gm.Length_Pro],
       dep: pr.Dependency,
   ) -> None:
     l1, l2, l3, l4 = self.get_name([l1, l2, l3, l4])
-    return self.add_eq4(l1, l2, l3, l4, dep)
+    return super().add_eq4(l1, l2, l3, l4, dep)
+
+  def add_length_pro(
+      self,
+      lp: gm.Length_Pro,
+      l1: gm.Length,
+      l2: gm.Length,
+      dep=None,
+  ) -> None:
+    if lp.name in self.v2obj:
+      return
+    lp, l1, l2 = self.get_name([lp, l1, l2])
+    return super().add_eq5(lp, l1, l2, dep)
 
   def get_all_eqs_and_why(self) -> Generator[Any, None, None]:
     return super().get_all_eqs_and_why(True)
+
 
 
 class AngleTable(GeometricTable):

@@ -13,6 +13,8 @@
 # limitations under the License.
 # ==============================================================================
 
+source ./bin/activate
+
 DATA=ag_ckpt_vocab
 MELIAD_PATH=meliad_lib/meliad
 export PYTHONPATH=$PYTHONPATH:$MELIAD_PATH

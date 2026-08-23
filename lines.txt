@@ -1,0 +1,12 @@
+gcenter
+a b c = triangle a b c; d = midpoint d b c; e = midpoint e c a; f = midpoint f a b; g = on_line g b e, on_line g c f ? coll a g d
+hcenter
+a b c = triangle a b c; d = foot d a b c; e = foot e b c a; f = foot f c a b; g = on_line g b e, on_line g c f ? coll a g d
+icenter
+a b c = triangle a b c; d = angle_bisector d a b c, angle_bisector d a c b ? eqangle a b a d a d a c
+ocenter
+a b c = triangle a b c; d = on_bline d a b, on_bline d a c ? cong d b d c 
+radical_axis
+a b = segment a b; o1 = on_bline o1 a b; o2 = on_bline o2 a b; o3 = free; c = on_circle c o1 a; d = on_circle d o1 a, on_circle d o3 c; e = on_circle e o2 a, on_circle e o3 c; f = on_circle f o2 a, on_circle f o3 c; g = on_line g c d, on_line g e f ? coll g a b
+radical_axis2
+a b c = triangle a b c; e = free; o1 = circle o1 a b c; o2 = circle o2 a b e; o3 = on_bline o3 c e; d = on_circle d o1 a, on_circle d o3 c; f = on_circle f o2 a, on_circle f o3 c; g = on_line g c d, on_line g e f ? coll g a b

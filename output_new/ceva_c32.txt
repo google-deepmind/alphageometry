@@ -1,0 +1,22 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G : Points
+C,B,D are collinear [00]
+C,A,E are collinear [01]
+∠ADE = ∠EDC [02]
+B,F,A are collinear [03]
+∠ADF = ∠FDB [04]
+G,B,E are collinear [05]
+G,F,C are collinear [06]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. ∠CDE = ∠EDA [02] & C,A,E are collinear [01] ⇒  CE:AE = CD:DA [07]
+002. ∠BDF = ∠FDA [04] & B,F,A are collinear [03] ⇒  FB:FA = DB:DA [08]
+003. CE:AE = CD:DA [07] & FB:FA = DB:DA [08] (Ratio chase)⇒  (AE:FA) * (FB:DB) * (CD:CE) = 1 [09]
+004. B,F,A are collinear [03] & C,B,D are collinear [00] & C,A,E are collinear [01] & G,B,E are collinear [05] & G,F,C are collinear [06] & (AE:FA) * (FB:DB) * (CD:CE) = 1 [09] (Ceva)⇒  G,D,A are collinear
+==========================

@@ -1,0 +1,21 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G : Points
+D,B,C are collinear [00]
+DB = DC [01]
+D,A,E are collinear [02]
+A,B,F are collinear [03]
+E,F,C are collinear [04]
+A,G,C are collinear [05]
+G,B,E are collinear [06]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. A,G,C are collinear [05] & D,B,C are collinear [00] & A,B,F are collinear [03] & E,F,C are collinear [04] & G,B,E are collinear [06] & D,A,E are collinear [02] (Ceva)⇒  (CD:DB) * (AG:GC) * (BF:FA) = 1 [07]
+002. (CD:DB) * (AG:GC) * (BF:FA) = 1 [07] & DB = DC [01] ⇒  AG:GC = FA:BF [08]
+003. AG:GC = FA:BF [08] & A,G,C are collinear [05] & A,B,F are collinear [03] ⇒  GF ∥ CB
+==========================

@@ -1,0 +1,31 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+B,D,C are collinear [00]
+∠BAD = ∠DAC [01]
+B,E,C are collinear [02]
+EB = EC [03]
+FD = FE [04]
+FA = FD [05]
+FG = FA [06]
+B,G,A are collinear [07]
+FH = FA [08]
+H,C,A are collinear [09]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. FD = FE [04] & FA = FD [05] & FG = FA [06] ⇒  E,D,G,A are concyclic [10]
+002. B,D,C are collinear [00] & B,E,C are collinear [02] ⇒  B,D,E are collinear [11]
+003. B,D,C are collinear [00] & B,E,C are collinear [02] ⇒  C,D,E are collinear [12]
+004. E,D,G,A are concyclic [10] & B,D,E are collinear [11] & B,G,A are collinear [07] (Circle Power)⇒  BD:BA = BG:BE [13]
+005. ∠BAD = ∠DAC [01] & B,D,C are collinear [00] ⇒  BD:BA = DC:CA [14]
+006. FD = FE [04] & FA = FD [05] & FH = FA [08] & FG = FA [06] & E,D,G,A are concyclic [10] ⇒  H,E,D,A are concyclic [15]
+007. H,E,D,A are concyclic [15] & C,D,E are collinear [12] & H,C,A are collinear [09] (Circle Power)⇒  DC:CA = CH:EC [16]
+008. BD:BA = BG:BE [13] & EB = EC [03] & BD:BA = DC:CA [14] & DC:CA = CH:EC [16] ⇒  CH:BE = BG:BE [17]
+009. BE = EC [03] ⇒  BE:BA = BE:BA [18]
+010. CH:BE = BG:BE [17] & BE:BA = BE:BA [18] ⇒  CH = BG
+==========================

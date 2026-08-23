@@ -1,0 +1,54 @@
+
+==========================
+ * From theorem premises:
+A B C D E F G H I J K L : Points
+C,B,D are collinear [00]
+AD ⟂ BC [01]
+C,E,A are collinear [02]
+BE ⟂ AC [03]
+B,F,A are collinear [04]
+FA = FB [05]
+GA = GB [06]
+GB = GC [07]
+GH = GA [08]
+E,H,D are collinear [09]
+E,I,D are collinear [10]
+∠DFI = ∠DFI [11]
+GI = GA [12]
+JF = JD [13]
+JD = JE [14]
+K,I,F are collinear [15]
+JK = JF [16]
+H,F,L are collinear [17]
+JL = JF [18]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. C,B,D are collinear [00] & AD ⟂ BC [01] ⇒  AD ⟂ DB [19]
+002. B,F,A are collinear [04] & FA = FB [05] ⇒  F is midpoint of BA [20]
+003. AD ⟂ DB [19] & F is midpoint of BA [20] ⇒  AF = DF [21]
+004. C,E,A are collinear [02] & AC ⟂ BE [03] ⇒  AE ⟂ EB [22]
+005. AE ⟂ EB [22] & F is midpoint of BA [20] ⇒  AF = EF [23]
+006. AF = DF [21] & AF = EF [23] ⇒  FE = FD [24]
+007. FE = FD [24] ⇒  ∠DEF = ∠FDE [25]
+008. JF = JD [13] & JK = JF [16] & JD = JE [14] ⇒  K,E,F,D are concyclic [26]
+009. K,E,F,D are concyclic [26] ⇒  ∠KFE = ∠KDE [27]
+010. K,I,F are collinear [15] & E,I,D are collinear [10] & ∠DEF = ∠FDE [25] & ∠KFE = ∠KDE [27] ⇒  ∠DKF = ∠FDI [28]
+011. K,I,F are collinear [15] & ∠DFI = ∠DFI [11] ⇒  ∠DFK = ∠DFI [29]
+012. ∠DKF = ∠FDI [28] & ∠DFK = ∠DFI [29] (Similar Triangles)⇒  FD:FK = FI:FD [30]
+013. FD:FK = FI:FD [30] & EF = DF [24] & AF = DF [21] & FA = FB [05] & FA = EF [23] ⇒  FB:FI = FK:FA [31]
+014. K,I,F are collinear [15] & B,F,A are collinear [04] & FB:FI = FK:FA [31] ⇒  K,B,I,A are concyclic [32]
+015. JF = JD [13] & JL = JF [18] & JD = JE [14] ⇒  E,F,D,L are concyclic [33]
+016. E,F,D,L are concyclic [33] ⇒  ∠LFD = ∠LED [34]
+017. E,H,D are collinear [09] & ∠DEF = ∠FDE [25] & ∠LFD = ∠LED [34] & H,F,L are collinear [17] ⇒  ∠(HF-EL) = ∠HEF [35]
+018. E,D,F,L are concyclic [33] & K,E,F,D are concyclic [26] ⇒  L,K,F,E are concyclic [36]
+019. L,K,F,E are concyclic [36] ⇒  ∠LKF = ∠LEF [37]
+020. K,I,F are collinear [15] & ∠LKF = ∠LEF [37] ⇒  ∠ELK = ∠(EF-KI) [38]
+021. ∠(HF-EL) = ∠HEF [35] & ∠ELK = ∠(EF-KI) [38] ⇒  ∠(HF-KL) = ∠(EH-KI) [39]
+022. H,F,L are collinear [17] & E,I,D are collinear [10] & E,H,D are collinear [09] & K,I,F are collinear [15] & ∠(HF-KL) = ∠(EH-KI) [39] ⇒  ∠LHI = ∠LKI [40]
+023. ∠LHI = ∠LKI [40] ⇒  K,H,I,L are concyclic [41]
+024. K,B,I,A are concyclic [32] & GA = GB [06] & GI = GA [12] & GB = GC [07] & GH = GA [08] & K,H,I,L are concyclic [41] ⇒  A,K,L,B are concyclic
+==========================

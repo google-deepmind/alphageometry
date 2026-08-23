@@ -1,0 +1,42 @@
+==========================
+ * From theorem premises:
+A B C D E F G : Points
+BC = BA [00]
+BC ⟂ AB [01]
+D,B,C are collinear [02]
+DB = DC [03]
+E,D,A are collinear [04]
+BE ⟂ AD [05]
+F,C,A are collinear [06]
+E,B,F are collinear [07]
+F,A,G are collinear [08]
+GA = GF [09]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. F,C,A are collinear [06] & D,B,C are collinear [02] & E,D,A are collinear [04] & E,B,F are collinear [07] (Menelaus)⇒  (AF:FC) * (CB:BD) * (DE:EA) = 1 [10]
+002. (AF:FC) * (CB:BD) * (DE:EA) = 1 [10] & BC = BA [00] & DB = DC [03] ⇒  (FC:FA) * (EA:BA) * (DC:ED) = 1 [11]
+003. D,B,C are collinear [02] & E,D,A are collinear [04] & BE ⟂ AD [05] & BC ⟂ AB [01] ⇒  ∠ABD = ∠DEB [12]
+004. D,B,C are collinear [02] & E,D,A are collinear [04] ⇒  ∠ADB = ∠EDB [13]
+005. ∠ABD = ∠DEB [12] & ∠ADB = ∠EDB [13] (Similar Triangles)⇒  BA:BD = EB:ED [14]
+006. ∠ABD = ∠DEB [12] & ∠ADB = ∠EDB [13] (Similar Triangles)⇒  AB:AD = BE:BD [15]
+007. BA:BD = EB:ED [14] & DB = DC [03] ⇒  BA:DC = EB:ED [16]
+008. D,B,C are collinear [02] & BC ⟂ AB [01] ⇒  DB ⟂ BA [17]
+009. DB ⟂ BA [17] & BE ⟂ AD [05] & E,D,A are collinear [04] ⇒  BA:EA = DA:BA [18]
+010. BA:DC = EB:ED [16] & BA:EA = DA:BA [18] (Ratio chase)⇒  (DA:BA) * (EB:ED) * (EA:BA) * (DC:BA) = 1 [19]
+011. AB:AD = BE:BD [15] & DB = DC [03] ⇒  BA:DA = EB:DC [20]
+012. DB = DC [03] & BA:DA = EB:DC [20] & (FA:FC) * (BA:EA) * (ED:DC) = 1 [11] (Ratio chase)⇒  (DA:FA) * (EB:ED) * (EA:BA) * (FC:BA) = 1 [21]
+013. D,B,C are collinear [02] & DB = DC [03] ⇒  D is midpoint of BC [22]
+014. G,F,A are collinear [08] & GA = GF [09] ⇒  G is midpoint of FA [23]
+015. D is midpoint of BC [22] & G is midpoint of FA [23] ⇒  DB:BC = GF:FA [24]
+016. E,B,F are collinear [07] & E,D,A are collinear [04] & BE ⟂ AD [05] ⇒  FE ⟂ EA [25]
+017. FE ⟂ EA [25] & G is midpoint of FA [23] ⇒  FG = EG [26]
+018. FE ⟂ EA [25] & G is midpoint of FA [23] ⇒  AG = EG [27]
+019. (FC:FA) * (EA:BA) * (DC:ED) = 1 [11] & (DA:BA) * (EB:ED) * (EA:BA) * (DC:BA) = 1 [19] & (DA:FA) * (EB:ED) * (EA:BA) * (FC:BA) = 1 [21] & DB:BC = GF:FA [24] & DB = DC [03] & BC = BA [00] & EG = FG [26] ⇒  EG:FA = FC:FA [28]
+020. BC = BA [00] ⇒  FA:BC = FA:BC [29]
+021. EG:FA = FC:FA [28] & FA:BC = FA:BC [29] ⇒  EG = FC [30]
+022. EG = FC [30] & AG = EG [27] ⇒  AG = CF
+==========================

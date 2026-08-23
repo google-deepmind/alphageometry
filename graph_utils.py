@@ -30,6 +30,14 @@ def _cross(elems1, elems2):
 def cross(elems1, elems2):
   return list(_cross(elems1, elems2))
 
+def _cross3(elems1, elems2, elems3):
+  for e1 in elems1:
+    for e2 in elems2:
+      for e3 in elems3:
+        yield e1, e2, e3
+
+def cross3(elems1, elems2, elems3):
+  return list(_cross3(elems1, elems2, elems3))
 
 def _comb2(elems):
   if len(elems) < 2:
@@ -130,3 +138,46 @@ def _perm4(elems):
 
 def perm4(elems):
   return list(_perm4(elems))
+
+def _perm5(elems):
+  for x in elems:
+    for y in elems:
+      if y == x:
+        continue
+      for z in elems:
+        if z in (x, y):
+          continue
+        for t in elems:
+          if t in (x, y, z):
+            continue
+          for u in elems:
+            if u not in (x, y, z, t):
+              yield x, y, z, t, u
+
+def perm5(elems):
+  if len(elems) < 5:
+    return []
+  return list(_perm5(elems))
+
+def _perm6(elems):
+  for x in elems:
+    for y in elems:
+      if y == x:
+        continue
+      for z in elems:
+        if z in (x, y):
+          continue
+        for t in elems:
+          if t in (x, y, z):
+            continue
+          for u in elems:
+            if u in (x, y, z, t):
+              continue
+            for v in elems:
+              if v not in (x, y, z, t, u):
+                yield x, y, z, t, u, v
+
+def perm6(elems):
+  if len(elems) < 6:
+    return []
+  return list(_perm6(elems))

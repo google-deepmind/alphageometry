@@ -1,0 +1,64 @@
+
+==========================
+ * From theorem premises:
+A B C G D E F H I J : Points
+∠ACG = ∠GCB [00]
+∠BAG = ∠GAC [01]
+C,B,D are collinear [02]
+DG ⟂ BC [03]
+C,E,A are collinear [04]
+EG ⟂ AC [05]
+B,F,A are collinear [06]
+FG ⟂ AB [07]
+BC ⟂ HD [08]
+CI = CD [09]
+HI = HD [10]
+HJ = HD [11]
+BJ = BD [12]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. D,C,B are collinear [02] & C,E,A are collinear [04] & EG ⟂ AC [05] & DG ⟂ BC [03] ⇒  ∠GDC = ∠CEG [13]
+002. C,B,D are collinear [02] & C,E,A are collinear [04] & ∠GCB = ∠ACG [00] ⇒  ∠GCD = ∠ECG [14]
+003. ∠GDC = ∠CEG [13] & ∠GCD = ∠ECG [14] (Similar Triangles)⇒  CD = CE [15]
+004. ∠GDC = ∠CEG [13] & ∠GCD = ∠ECG [14] (Similar Triangles)⇒  GD = GE [16]
+005. CD = CE [15] & GD = GE [16] ⇒  DE ⟂ CG [17]
+006. HJ = HD [11] & BJ = BD [12] ⇒  DJ ⟂ BH [18]
+007. DE ⟂ CG [17] & DJ ⟂ BH [18] ⇒  ∠(DJ-HB) = ∠(CG-DE) [19]
+008. CI = CD [09] & CD = CE [15] ⇒  C is the circumcenter of \Delta DIE [20]
+009. BC ⟂ HD [08] & DG ⟂ BC [03] & D,C,B are collinear [02] ⇒  HD ⟂ DC [21]
+010. C is the circumcenter of \Delta DIE [20] & HD ⟂ DC [21] ⇒  ∠HDI = ∠DEI [22]
+011. BC ⟂ HD [08] & DG ⟂ BC [03] & DJ ⟂ BH [18] ⇒  ∠(HB-DJ) = ∠(DH-CB) [23]
+012. HI = HD [10] & HJ = HD [11] ⇒  H is the circumcenter of \Delta DIJ [24]
+013. H is the circumcenter of \Delta DIJ [24] & HD ⟂ DC [21] ⇒  ∠CDI = ∠DJI [25]
+014. ∠CDI = ∠DJI [25] & C,B,D are collinear [02] ⇒  ∠(BC-DI) = ∠DJI [26]
+015. ∠(HB-DJ) = ∠(DH-CB) [23] & ∠(BC-DI) = ∠DJI [26] ⇒  ∠(HB-JI) = ∠HDI [27]
+016. ∠HDI = ∠DEI [22] & BC ⟂ HD [08] & DG ⟂ BC [03] & ∠(HB-JI) = ∠HDI [27] ⇒  ∠(HB-JI) = ∠DEI [28]
+017. ∠(DJ-HB) = ∠(CG-DE) [19] & ∠(HB-JI) = ∠DEI [28] ⇒  ∠DJI = ∠(CG-EI) [29]
+018. C,E,A are collinear [04] & B,F,A are collinear [06] & FG ⟂ AB [07] & EG ⟂ AC [05] ⇒  ∠GEA = ∠AFG [30]
+019. C,E,A are collinear [04] & B,F,A are collinear [06] & ∠GAC = ∠BAG [01] ⇒  ∠GAE = ∠FAG [31]
+020. ∠GEA = ∠AFG [30] & ∠GAE = ∠FAG [31] (Similar Triangles)⇒  GE = GF [32]
+021. ∠GEA = ∠AFG [30] & ∠GAE = ∠FAG [31] (Similar Triangles)⇒  AE = AF [33]
+022. GD = GE [16] & GE = GF [32] ⇒  GF = GD [34]
+023. GD = GE [16] & GE = GF [32] ⇒  G is the circumcenter of \Delta FDE [35]
+024. B,F,A are collinear [06] & AB ⟂ FG [07] ⇒  BF ⟂ FG [36]
+025. D,C,B are collinear [02] & DG ⟂ BC [03] ⇒  GD ⟂ DB [37]
+026. GF = GD [34] & BF ⟂ FG [36] & GD ⟂ DB [37] (Circle Power)⇒  BF = BD [38]
+027. BJ = BD [12] & BF = BD [38] ⇒  B is the circumcenter of \Delta DJF [39]
+028. B is the circumcenter of \Delta DJF [39] & BF ⟂ FG [36] ⇒  ∠DFG = ∠DJF [40]
+029. GE = GF [32] & AE = AF [33] ⇒  EF ⟂ AG [41]
+030. DE ⟂ CG [17] & EF ⟂ AG [41] ⇒  ∠(GA-FE) = ∠(DE-CG) [42]
+031. C,E,A are collinear [04] & AC ⟂ EG [05] ⇒  CE ⟂ GE [43]
+032. G is the circumcenter of \Delta FDE [35] & CE ⟂ GE [43] ⇒  ∠CEF = ∠EDF [44]
+033. B,F,A are collinear [06] & C,E,A are collinear [04] & FG ⟂ AB [07] & EG ⟂ AC [05] ⇒  ∠AFG = ∠AEG [45]
+034. ∠AFG = ∠AEG [45] ⇒  G,F,E,A are concyclic [46]
+035. G,F,E,A are concyclic [46] ⇒  ∠GFE = ∠GAE [47]
+036. ∠CEF = ∠EDF [44] & C,E,A are collinear [04] & ∠GFE = ∠GAE [47] ⇒  ∠AGF = ∠EDF [48]
+037. ∠(GA-FE) = ∠(DE-CG) [42] & ∠AGF = ∠EDF [48] ⇒  ∠(CG-EF) = ∠DFG [49]
+038. ∠DFG = ∠DJF [40] & ∠(CG-EF) = ∠DFG [49] ⇒  ∠(CG-FE) = ∠DJF [50]
+039. ∠DJI = ∠(CG-EI) [29] & ∠(CG-FE) = ∠DJF [50] ⇒  ∠EIJ = ∠EFJ [51]
+040. ∠EIJ = ∠EFJ [51] ⇒  J,F,E,I are concyclic
+==========================

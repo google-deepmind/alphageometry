@@ -1,0 +1,58 @@
+example_cyclic2power
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; p = on_line p a b, on_line p c d ? eqratio p a p c p d p b
+example_radical_axis3
+a b c = triangle a b c; d = on_line a b; o1 = circle o1 a b c; e = on_line e c d, on_circle e o1 a; o2 = on_bline o2 c e; f = on_circle f o2 c; g = on_circle g o2 c, on_line g d f ? cyclic a b f g
+example7_1
+b c = segment b c; a = on_bline a b c; d = on_line d a b; h = on_pline h d b c, on_line h a c; e = mirror e h c; f = on_line f d e, on_line f b c; o1 = circle o1 b d f; o2 = circle o2 c e f; g = on_circle g o1 f, on_circle g o2 f ? perp g f d e
+example7_2
+b c = segment b c; a = on_bline a b c; i = incenter i a b c; o = on_bline o b i; p = on_circle p a b, on_circle p o b; q = on_circle q i b, on_circle q o b; r = on_line r i p, on_line r b q ? perp b r c r
+example7_4
+a b c = triangle a b c; o = circle o a b c; a1 = midpoint a1 b c; a2 = on_line a2 a a1, on_circle a2 o a; qa = foot qa a1 a o; pa = on_line pa a1 qa, on_tline pa a2 o a2; b1 = midpoint b1 c a; b2 = on_line b2 b b1, on_circle b2 o b; qb = foot qb b1 b o; pb = on_line pb b1 qb, on_tline pb b2 o b2; c1 = midpoint c1 a b; c2 = on_line c2 c c1, on_circle c2 o c; qc = foot qc c1 c o; pc = on_line pc c1 qc, on_tline pc c2 o c2 ? coll pa pb pc
+example7_5
+a b c = triangle a b c; d e f x = excenter2 d e f x a b c; o1 = circle o1 a e f; p = on_line p b c, on_circle p o1 a; q = on_line q b c, on_circle q o1 a; m = midpoint m a d; o2 = circle o2 m p q; t = on_circle t o2 m, on_circle t x d ? coll o2 x t
+example7_6
+a b c = triangle a b c; o = circle o a b c; h = orthocenter h a b c; s = on_circle s o a; p = on_line p b c, on_tline p s a s; o2 = circle o2 a s p; x = on_line x s h, on_circle x o2 a; r = on_line r a b, on_line r o p; q = on_line q a c, on_line q o p; y = foot y q a r; z = foot z r a q ? coll x y z
+example7_7_1
+a b = segment a b; o1 = on_tline o1 a a b; o2 = on_tline o2 b b a; p = on_circle p o1 a, on_circle p o2 b; q = on_circle q o1 a, on_circle q o2 b; c = on_tline c p p o1, on_circle c o2 b; t = on_line t a p, on_line t b c; o3 = circle o3 p q t ? perp b p p o3
+example7_7_2
+a b = segment a b; o1 = on_tline o1 a a b; o2 = on_tline o2 b b a; p = on_circle p o1 a, on_circle p o2 b; q = on_circle q o1 a, on_circle q o2 b; c = on_tline c p p o1, on_circle c o2 b; t = on_line t a p, on_line t b c; o3 = circle o3 p q t ? perp b t t o3
+example7_8
+a b c = triangle a b c; o = circle o a b c; d = on_line d a o, on_line d b c; u = foot u d a c; v = foot v d a b; e = on_tline e a a o, on_line e d u; f = on_tline f a a o, on_line f d v; p = on_line p e c, on_line p f b ? perp p d b c
+example7_9
+a b c = triangle a b c; o = circle o a b c; h = orthocenter h a b c; d = on_line d a h, on_line d b c; e = on_line e a h, on_circle e o a; x = midpoint x d e; p = on_circle p o a, on_circle p x e; q = on_circle q p h, on_tline q p p h; m = midpoint m b c ? cyclic p d m q
+example7_10
+a b c = triangle a b c; h = orthocenter h a b c; o = circle o a b c; d = on_circle d o a, on_circle d a c; k = on_line k a d, on_circle k a b; l = on_line l b c, on_pline l k c d; m = midpoint m b c; n = foot n h a l; t = midpoint t a h ? coll m n t
+exercise7_1
+a b = segment a b; x = on_bline x a b; y = on_bline y a b; c = on_circle c x a; d = on_circle d y a, on_line d b c; e = on_circle e x a, on_line e d a; f = on_circle f y a, on_line f c a; o = circle o a e f ? perp o b c d
+exercise7_2
+a b c = segment a b c; d = foot d a b c; e = foot e b c a; f = foot f c a b; h = on_line h a d, on_line h b e; p = on_line p b e, on_line p d f; q = on_line q a b, on_tline q p b c; n = on_line n e q, on_line n a d ? cong a n a h
+exercise7_4
+a b c = triangle a b c; o = circle o a b c; i = circle i o b c; g = on_circle g i o; x = circle x a b g; y = circle y a c g; e = on_line e a c, on_circle e x a; f = on_line f a b, on_circle f y a; k = on_line k b e, on_line k c f; t = on_line t a k, on_line t b c ? coll t o g
+exercise7_5
+a b c = triangle a b c; o = circle o a b c; d = on_circle d o a; e = on_line e a d, on_line e b c; m = midpoint m a d; n = midpoint n b c; w = circle w e m n; x = on_circle x o a, on_circle x w e; y = on_circle y o a, on_circle y w e; z = on_line z a b, on_line z c d ? coll x y z
+exercise7_7
+a b c = triangle a b c; d e f i = incenter2 d e f i a b c; p = on_line p a d, on_circle p i d; q = on_line q e f, on_tline q p a d; x = on_line x d e, on_line x a q; y = on_line y d f, on_line y a q ? cong a x a y
+exercise7_8
+a b c = triangle a b c; x y z i = incenter2 x y z i a b c; g = on_line g b y, on_line g c z; r = on_pline r y b c, on_pline r b c y; s = on_pline s z b c, on_pline s b c z ? cong g r g s
+exercise7_9
+b c = segment b c; a = on_bline a b c; i = incenter i a b c; o = circle o a b c; m = on_circle m b i, on_circle m o b; n = on_circle n c i, on_circle n o c; d = on_circle d o a; e = on_line e a d, on_line e b i; f = on_line f a d, on_line f c i; p = on_line p d m, on_line p c i; q = on_line q d n, on_line q b i; x = on_line x c e, on_line x b f ? cyclic d p i x
+exercise7_10
+a b c = triangle a b c; i = incenter i a b c; d = foot d i b c; o1 = incenter o1 a b d; o2 = incenter o2 a c d; e = foot e o1 a b; f = foot f o1 a d; g = foot g o2 a c; p = on_line p e g, on_circle p o1 e; q = on_line q e g, on_circle q o2 g; x = on_tline x p o1 p, on_tline x q o2 q ? coll x a d
+exercise7_11
+b c = segment b c; a = on_bline a b c; d = on_line d a c; o = circle o b c d; k = on_circle k o b; t = on_line t c k, on_pline t a b c; m = midpoint m d t ? eqangle k t k a a c a m
+exercise7_12
+a b c = triangle a b c; d e f i = incenter2 d e f i a b c; z = midpoint z b c; m = midpoint m a b; n = midpoint n a c; x = on_circle x i d, on_circle x z b; y = on_circle y i d, on_circle y z b; p = on_line p e f, on_line p x y ? coll p m n
+exercise7_13
+a b c = triangle a b c; d = foot d a b c; e = foot e b c a; m = midpoint a b; o = circle o a b c; f = on_line f d e, on_circle f o a; k = on_line k d e, on_circle k o a; w = circle w m d e; p = on_line p m k, on_circle p w m; q = on_line q m f, on_circle q w m ? cyclic a p q b
+exercise7_14_1
+a b = segment a b; o = on_bline o a b; p = on_bline p a b; c = on_tline c a a p, on_circle c o a; d = on_tline d a a o, on_circle d o a; e = midpoint e a c; f = midpoint f a d ? cyclic a e b f
+exercise7_14_2
+a b = segment a b; o = on_bline o a b; p = on_bline p a b; c = on_tline c a a p, on_circle c o a; d = on_tline d a a o, on_circle d o a; e = midpoint e a c; w = circle w a b e; f = on_circle f w a, on_line f a d; g = on_circle g o a; h = on_line h a g, on_circle h p a; k = on_line k a g, on_circle k w a ? cong k g k h
+exercise7_15
+a b = segment a b; o = on_bline o a b; p = on_tline p a o a, on_tline p b o b; c = on_circle c o a; d = on_line d p c, on_circle d o a; e = on_pline e c p b, on_circle e o a; f = on_line f a e, on_line f p b; g = on_line g d e, on_line g p b ? cong g f g b
+example6_1
+a b c = triangle a b c; o = circle o a b c; p = free; a1 = on_line a1 a p, on_circle a1 o a; b1 = on_line b1 b p, on_circle b1 o b; c1 = on_line c1 c p, on_circle c1 o c; q = on_circle q o a; x = on_line x q a1, on_line x b c; y = on_line y q b1, on_line y a c; z = on_line z q c1, on_line z a b ? coll x y z
+example6_2
+a b = segment a b; o = midpoint o a b; p = on_tline p b o b; c = on_circle c o a; d = on_line d p c, on_circle d o a; e = on_line e a c, on_line e p o; f = on_line f a d, on_line f p o ? cong o e o f
+example6_3
+a b c = triangle a b c; d = foot d a b c; e = foot e b c a; f = foot f c a b; h = on_line h a d, on_line h b e; p = reflect p e a d; q = reflect q f a d; x = on_line x b q, on_line x c p; y = on_line y b p, on_line y c q; z = on_line z a x, on_line z h y ? coll z b c
