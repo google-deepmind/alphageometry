@@ -41,6 +41,21 @@ class ProblemTest(unittest.TestCase):
         '{S} a : ; b : ; c : ; h : T a b c h 00 T a c b h 01 ? T a h b c',
     )
 
+  def test_problem_parser_allows_whitespace_around_delimiters(self):
+    canonical = (
+        'a b c = triangle a b c; h = on_tline h b a c, '
+        'on_tline h c a b ? perp a h b c'
+    )
+    irregular = (
+        '  a   b c=triangle   a b c ;h = on_tline h b a c,  '
+        'on_tline h c a b; ?perp a h b c  '
+    )
+
+    expected = pr.Problem.from_txt(canonical, translate=False)
+    actual = pr.Problem.from_txt(irregular, translate=False)
+
+    self.assertEqual(actual.txt(), expected.txt())
+
   def test_orthocenter_translate(self):
     txt = 'a b c = triangle a b c; h = on_tline h b a c, on_tline h c a b ? perp a h b c'  # pylint: disable=line-too-long
 

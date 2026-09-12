@@ -51,7 +51,7 @@ class Construction:
 
   @classmethod
   def from_txt(cls, data: str) -> Construction:
-    data = data.split(' ')
+    data = data.strip().split()
     return Construction(data[0], data[1:])
 
   def __init__(self, name: str, args: list[str]):
@@ -71,12 +71,13 @@ class Clause:
 
   @classmethod
   def from_txt(cls, data: str) -> Clause:
-    if data == ' =':
+    data = data.strip()
+    if data == '=':
       return Clause([], [])
-    points, constructions = data.split(' = ')
+    points, constructions = data.split('=', maxsplit=1)
     return Clause(
-        points.split(' '),
-        [Construction.from_txt(c) for c in constructions.split(', ')],
+        points.strip().split(),
+        [Construction.from_txt(c) for c in constructions.split(',')],
     )
 
   def __init__(self, points: list[str], constructions: list[Construction]):
@@ -162,15 +163,15 @@ class Problem:
     """Load a problem from a str object."""
     url = ''
     if '\n' in data:
-      url, data = data.split('\n')
+      url, data = data.split('\n', maxsplit=1)
 
-    if ' ? ' in data:
-      clauses, goal = data.split(' ? ')
+    if '?' in data:
+      clauses, goal = data.split('?', maxsplit=1)
       goal = Construction.from_txt(goal)
     else:
       clauses, goal = data, None
 
-    clauses = clauses.split('; ')
+    clauses = [c.strip() for c in clauses.split(';') if c.strip()]
     problem = Problem(
         url=url, clauses=[Clause.from_txt(c) for c in clauses], goal=goal
     )
